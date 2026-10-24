@@ -1,0 +1,57 @@
+# 클라이언트·Prism 연동 런처 구현 계획
+
+현재 사용자 지시(2026-10-25)를 구현하는 실행 계획입니다. 초기 서버 중심 계획을 대체합니다.
+
+**목표:** Windows x64 / macOS Apple Silicon에서 선린밸리 전용 화면으로 원본 4.1.5A·추가 모드·한국어·KubeJS 아이템을 설치하고, Prism 원본으로 Microsoft 로그인 및 게임을 실행합니다.
+
+**구조:** Electron의 메인 프로세스가 파일·다운로드·Prism 프로세스를 관리합니다. React 화면은 제한된 IPC만 사용합니다. Prism은 수정하지 않은 공식 프로그램을 전용 데이터 디렉터리로 실행하며 인증 토큰을 선린밸리가 읽지 않습니다.
+
+## 제약과 검토 초점
+
+- Minecraft 1.20.1, 실제 원본의 Forge 47.4.0, Java 17.
+- Sunlit Valley 4.1.5A 원본 ZIP·파일 ID·해시 고정, 추가 모드 4종.
+- 새 전체 번역 프로젝트 없음. 원본 한국어 + `lang:ko_kr`, 새 아이템 문구만 추가.
+- 건피권·닉변권·선린 급식은 KubeJS 등록, 리소스팩은 외형·언어 담당. 급식은 hunger 8 / saturation 1.0.
+- 관리자 GUI·OP·관리 인벤토리·서버 보상·퀘스트·NPC·월드 초기화 제외.
+- 다운로드 손상·경로 탈출·재설치 시 사용자 설정 덮어쓰기·사용자 파일 삭제·로그인 필요 상태를 검토한다.
+
+## Task 1: 원본·추가 모드와 리소스
+
+파일: `client-pack/manifest.json`, `build-scripts/resolve-pack.py`, `kubejs-custom/startup_scripts/sunrin_items.js`, `resourcepacks/Sunrin-Custom/`.
+
+- [x] 원본 ZIP manifest와 고정 소스 lock의 파일 ID·해시를 대조한다.
+- [x] 추가 4종의 Forge 1.20.1 JAR·의존성을 실제 확인하고 잠근다.
+- [x] 기존 한국어와 옵션 적용 순서를 확인한다.
+- [x] KubeJS 등록 결과·음식 값·리소스 ZIP을 실패→구현→통과로 검증한다.
+
+## Task 2: 안전한 설치 코어
+
+파일: `launcher/src/main/files.ts`, `instance.ts`, `runtime.ts`, `installer.ts`; 테스트: `launcher/tests/`.
+
+- [x] 경로 탈출·손상 다운로드 보존·최초 options 가져오기·독립 인스턴스 생성 테스트를 먼저 실행한다.
+- [x] 원본 overrides, 371개 파일, KubeJS와 커스텀 팩을 설치한다. 해시·임시 파일·완료 영수증을 사용한다.
+- [x] Java 17과 고정 Prism 공식 원본을 플랫폼별 설치한다.
+- [x] 업데이트·복구는 관리 파일만 처리하고 사용자 파일·월드를 보존한다.
+
+## Task 3: 데스크톱 연결과 화면
+
+파일: `launcher/src/main/index.ts`, `preload/index.ts`, `shared.ts`, `renderer/`.
+
+- [x] 배경·타이틀·메인 버튼·설정으로 실제 Electron 화면을 만든다.
+- [x] 상태·진행률·오류를 IPC로 전달한다. 경로·메모리·초기 옵션·셰이더 공유를 저장한다.
+- [x] Prism 계정 관리 열기와 지정 인스턴스 실행을 연결한다.
+
+## Task 4: 통합 검증과 배포
+
+- [x] 단위·리소스·resolver 테스트, TypeScript 검사, 프로덕션 빌드를 실행한다.
+- [x] 실제 Apple Silicon에서 설치 경로를 검증하고 Electron 화면과 Prism 기동을 확인한다.
+- [x] Windows x64 및 macOS arm64 패키지를 생성한다. 실제 Microsoft 로그인과 Windows 게임 실행 검증 여부를 구별한다.
+- [x] 별도 코드 리뷰를 받고 중요 오류를 수정한다. README와 현황·에셋 문서를 현재 구현으로 갱신한다.
+
+## 배포 전 플레이어 확인
+
+- [ ] 실제 Microsoft 계정으로 Prism 로그인 완료 및 Minecraft 월드 진입
+- [ ] 게임 안 아이템 이름·식사·음성·음악·조명 동작 확인
+- [ ] Windows x64 실기 실행 확인
+
+코드 서명·macOS 공증 및 별도 온라인 업데이트 호스팅은 아직 준비하지 않았습니다. 현재 배포물은 개발용입니다.

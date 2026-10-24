@@ -1,0 +1,2410 @@
+{
+  "archiveSha256": "6902439ba377c139b712cc42132d73498ff1f5ee77d795d141d255098391d7c9",
+  "files": [
+    {
+      "path": "config/fancymenu/assets/changelog_ko_kr.markdown",
+      "description": "원본 모드팩 한국어 메뉴 변경 내역",
+      "sha256": "1cbb9fd68b22b907fd1f3527d15380b1dcf5d747a05b2412b590fc20556a69de"
+    },
+    {
+      "path": "kubejs/assets/additional_attributes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0a4f68142c6c76d8f410587d42d34a62d3818c7aa5ae97063ee7cee281335355"
+    },
+    {
+      "path": "kubejs/assets/ali/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a02fd137ba820234d911743efb0908866e49c62d681881d5e332c593a1770b72"
+    },
+    {
+      "path": "kubejs/assets/amendments/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "106d52cd68967e1629e5879aa1ba200855e6d4186a4e2e49481f143cb34aebb1"
+    },
+    {
+      "path": "kubejs/assets/aquaculture/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "997d08d07322b944416f0785e94eab8f4eaeb0024cdcc771a7bff1eb14b99e69"
+    },
+    {
+      "path": "kubejs/assets/armorstatues/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b5486910bd9e9a22e7cf060f47c4c11da5b384ff91198fa7e08b480c79923938"
+    },
+    {
+      "path": "kubejs/assets/atmospheric/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d06e7832b67f0a85c9d70511f8b0647e2e7d2911e31c6b598bf19150b20c6c5f"
+    },
+    {
+      "path": "kubejs/assets/automobility/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f77719d877680803e734a1978c4ca0386cf59f572c56965939ed0dd91e81ed57"
+    },
+    {
+      "path": "kubejs/assets/autumnity/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3bff4b86bc847d2155085c881e1eb125b4fbf20119ef2b2a18e102bf9c926492"
+    },
+    {
+      "path": "kubejs/assets/bakery/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "763e64e0707aea6d25c702d7c35a85121d7b1aef22a42ff8b524ca88d332ddb3"
+    },
+    {
+      "path": "kubejs/assets/balloonbox/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c93c8bd684bb4a0346db900566e4de0d2c794af297eb3a6b116170b53c82a02c"
+    },
+    {
+      "path": "kubejs/assets/balm/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "77336d98a47d4e85740c390ee3b00b3f6de4af789607efa37dcdc543d3ac3347"
+    },
+    {
+      "path": "kubejs/assets/bcc/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e84732cd38309da08dc4cb0a4a9fd5a085ed604d8b2f51e8baef88d3c1b10ec6"
+    },
+    {
+      "path": "kubejs/assets/beachparty/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "27df80c8b50a1bae98f42990e538ea19bc678fcacc12465b8c1cf4b0913b6f88"
+    },
+    {
+      "path": "kubejs/assets/beautify/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "771f3db412f973a9ff6236417268fb020444c0bfffd5f0cfdb057af14ae0ce38"
+    },
+    {
+      "path": "kubejs/assets/betteradvancements/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "aa437ed29bf3ce75fb3b77af908c0945fca916a0f69afc455fc976dfbd6d839d"
+    },
+    {
+      "path": "kubejs/assets/betterarcheology/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4d236bea5516794240946ed4df63de545ae2be67e2778d422105c0b8c925c0dd"
+    },
+    {
+      "path": "kubejs/assets/botania/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e4b84486ba14871935961ebc99c8c5669f93c70d3628b4de1c82b48caf30a90c"
+    },
+    {
+      "path": "kubejs/assets/botania_seeds/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "828084468ef098f4a10166566fc8ade6acb6400ac386cf2b693d41a3fb66779e"
+    },
+    {
+      "path": "kubejs/assets/bountiful/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a25060681866328cab26b239c0d9f664e8d8aec41369da6e270ca12e1c8246f3"
+    },
+    {
+      "path": "kubejs/assets/brewery/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "df202c0d97d7f92c4733b788d27cd3e09a784c190ae126b890613252a96c21fe"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "275f267fb9cca54b7ceb6344832de6e9d95ccc05eb57a5e2d9cf916619aeaad4"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/categories/gadgets.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a70f728b4db2464f1a9b540344c691eed0a8b55a35b803d7ae7825678055d6f3"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/categories/mechanics.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "936e92c3cf85fc152201fe17f715d4f29ad89b71c19b33442a1d1852769dffaa"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/categories/modes.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5bd74a3368f41628d75dc88b240304446b3eb8f8f215a13e731871d82370dec7"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/categories/templates.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2193b7d152c70a3ba9ef8f97bab6cc3012dac092c07d5086b06f78dd53d4a2e1"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/basics.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6c6340f76b68e6cd4c55f2c6f2e852145a88e550e877b83cd1619d64741be75e"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/buildinggadget.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b768f1fcea5644a4596a56ec3af707dce470959ac039b3fcea750ef0043fffec"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/copypaste.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9af862b40c286677f7f9a2f158b63e1a91a919f5446684e1f50c03047a646dea"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/cutpaste.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d0f92362d0e2402916ee3f0186efe91b5eb7838b2b7dfb2541968b91320a37d3"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/destruction.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4c72362848ef8f876c39c0ae0752f9d788b00454c5af0f49da566df5e721c62e"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/exchanginggadget.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3757e6aad1f2f5a4121dcd6ed7e0660199333ae38578f248efc97457292d16d9"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_anchor.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d3121288e6128c9daa94ee1f4a6a4ef21fa42cb0cd4865b859124bea7da623fb"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_bindinv.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "247f804a007bf6ee24f5deb8ca755e93d748b42b0d0bd9bd33bc84bf16c7c08b"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_build_animations.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5de09ea8f5ecbf5b4e57416296bc6284a835fa5ea37b6d624ffbe315a797f201"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_fluidhandling.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0cef3496ed37eb1d3df8f9570bb1a337f2f4c8723aa192e822a2c7a103069bb1"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_pastereplace.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3b27749619cde89fcbc844bd89f99c25c831487a8db25559127454b1a73534fb"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_place_on_top.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "cc34249cd3dfb52f3e97dee2c4d112e7a9cc380568fbb91b794a36a8ea6fd913"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_raytrace_fluids.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6831c185939e22a2888b006c40d941572fc7c0df4275090501e95b932b52e362"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_rotate.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b184feb0b707d4cb758e0e690a1907862c872a5a27e2fb370cb139509abc8613"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mech_undo.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "dad86ef24566ea7c3d3fa36f40a18f376fe43c4a65e93e636b4d452bfd249875"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_basics.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f4e98f8acdb2f89e9d76d4362a3ca299a8fb7d1ec69cb2eaceb91b2910210f59"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_build_to_me.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0002cb71025bf53f777c63c91f9ee51402dc15374adbe79393fb2882a03e7868"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_grid.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "ffa083c87c3fd0bdb8f64d0af4210252c77832bd282586b1b49eb74c77379c96"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_horz_row.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9b4a72de82593f480add09a931bd241fc8e05c2fc2d9886648743bb19402ee39"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_horz_wall.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e6e9f7eeb568045b808a325f0924766e4bf46fd7356726278192f201e99f0aa6"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_stairs.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2ebde83cc54edf2cbad107eff3a6bbf5f759e45cc362790209b65d2febad589b"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_surface.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6132a65acda611f5b60f5d558cc40c76de15f32c6f0dc1b19aa48962bf2a2bf5"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_vertcol.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "439e55de69771254ede4918d8ee8303d9a607707378866226d239c040cae4b2f"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/mode_vertwall.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "eab669c9f63bfb52230176ca9fd3cc3e738098be3cb448808b7a159c1315e18f"
+    },
+    {
+      "path": "kubejs/assets/buildinggadgets2/patchouli_books/buildinggadgets2book/ko_kr/entries/template_manager.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "11678e9e46dc1c97777799425e1030d27e9e557ee6d1955dfd5437e5caef7e68"
+    },
+    {
+      "path": "kubejs/assets/buzzier_bees/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f5f05b044b1a597db182efc2ba73a4a1762ecc530e8b333eebd2fdb937ac5d34"
+    },
+    {
+      "path": "kubejs/assets/bwncr/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "426d1302ddc1a3bb46e1c4d5b0044ca04f32cf1a02039a7ab211f1bd9288d39d"
+    },
+    {
+      "path": "kubejs/assets/candlelight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "caa4d339e517c3cb175a995cf4dea6c9e92dacfdaf86131ff2c5b564118defcd"
+    },
+    {
+      "path": "kubejs/assets/chimes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3e0ddbbaba642261627af2cabe74ce20f01f717eda5367684791e0056135bc24"
+    },
+    {
+      "path": "kubejs/assets/classicpipes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "37e20b736b2883b71ed3ca5987ca3dbedbf2e7dde0f1ee2aacd0958964b18338"
+    },
+    {
+      "path": "kubejs/assets/clayworks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1df98c7f17ec2cc7a0f5dbe6f3bb117c5df565f9a175efa8b1538f175b85641d"
+    },
+    {
+      "path": "kubejs/assets/cluttered/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "31fa1f5c66736aa5b574d34eaa3beeb74e860d23f9cedb618c5257ab8bca08a8"
+    },
+    {
+      "path": "kubejs/assets/comforts/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "cfcef98b1ffbc710ddacc2dc4fa769a50f2ff394114ef0c550e56afe9ea17d58"
+    },
+    {
+      "path": "kubejs/assets/cozycafe/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4c1bbf6589f504955cd0aee97d19a51ac2772da47005e6445446f872c68ab86b"
+    },
+    {
+      "path": "kubejs/assets/crabbersdelight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "365b8007a969a113184d0d742d63db5ba1cf733b1397f5878ac67f1de10503a3"
+    },
+    {
+      "path": "kubejs/assets/create/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c217a1b7a4610409fd50177f367f5314da3493707c3e2f44966881a41a1a0d63"
+    },
+    {
+      "path": "kubejs/assets/create_central_kitchen_kor/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5a6666f416087d172e7812a6ea46ff021625b0fc912a593bc7943717d14774b2"
+    },
+    {
+      "path": "kubejs/assets/create_factory_logistics/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5801701ac8507ca7982503fde85887bea3c28e797320c712fa0d2e48524c4cff"
+    },
+    {
+      "path": "kubejs/assets/create_hypertube/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c269117308417b80d4e935294ebf25161ec54869c5636c7da913ce6d29c6b07a"
+    },
+    {
+      "path": "kubejs/assets/createentitycontroller/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "736f3076a99f649e416d71cde6b58c5babf97f8d4d7a2e23c1d9bc0af8029093"
+    },
+    {
+      "path": "kubejs/assets/createrailwaysnavigator/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a6fb45d3692b80547a37eef2f3655993a3a13841fd32f3de2abf239e45d2f787"
+    },
+    {
+      "path": "kubejs/assets/createutilities/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2180f338a5c7a8ce8244ababf3500000fc611b74b3fd267af8854cb7a5a96887"
+    },
+    {
+      "path": "kubejs/assets/creeperconfetti/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "776f8ff917c6b67493e13a2464a7664c2eea5749758a8a12751b30e5f63808bc"
+    },
+    {
+      "path": "kubejs/assets/crittersandcompanions/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9152f0a9e8779fdd76fc2df1cedbc19e1155c63417366b73d64ef71d34776842"
+    },
+    {
+      "path": "kubejs/assets/croptania/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3b5a32ac6b1da36488c57ecb4478edc39ed0b1f0c62e1e3453f06ecaeaaf163f"
+    },
+    {
+      "path": "kubejs/assets/decorative_blocks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "37a6fa57b621912872f73a5f5e6f8475a2965892dba3360a25f630f340cf356c"
+    },
+    {
+      "path": "kubejs/assets/dew_drop_farmland_growth/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f27767e7a4b415a94f6ee100e7727bce524dbc5692738c939add72e657adcd57"
+    },
+    {
+      "path": "kubejs/assets/dew_drop_watering_cans/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "033fe0f25cdfa18c8f5ad420334a75bd625983d244d8802ed2e119f8432ccdb0"
+    },
+    {
+      "path": "kubejs/assets/dialog/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "bb0e69d2673542f91e76d1ccf61774239117cc71f3000c3aee9eef7d3b85805a"
+    },
+    {
+      "path": "kubejs/assets/domesticationinnovation/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "228c41e03deb138077d00a696c3973d0019918108b437e7bb85d7073f290337d"
+    },
+    {
+      "path": "kubejs/assets/dramaticdoors/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "ddd55db4d076d364a40555688a64e3b7ec86ff7093fb4474dc420cb23a2edbef"
+    },
+    {
+      "path": "kubejs/assets/emi/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "762828412cff31b94d7580d31cec2f1c21a4e5f3cdbb46631530ddc2331342db"
+    },
+    {
+      "path": "kubejs/assets/enchantmentdisabletag/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2cf5212efee44ee4737bc3a5bb7a9f44dea3780c0e9c062a148e56bd6e874baa"
+    },
+    {
+      "path": "kubejs/assets/enchdesc/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1208c29cb60f8b16e936902506a15e3a318e41019b9afa77465bcb9bb43c7354"
+    },
+    {
+      "path": "kubejs/assets/entity_model_features/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f69dfa047152eba1dfd0a3eaedbae30266ce9daa544a1e0eff3ee9168d05a11d"
+    },
+    {
+      "path": "kubejs/assets/entity_texture_features/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5cc56068ece24b73148e522b9e553b8f753f297680d283a7bececa51c8356520"
+    },
+    {
+      "path": "kubejs/assets/entityculling/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b06a4659668d10577c7b922155dc83af203bbcb7e6ae4ac51a87ec4947d05841"
+    },
+    {
+      "path": "kubejs/assets/entityjs/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "26097b9697d689168ba69020a2e41bbc4a585bb518448adcf8d16ab704a10d03"
+    },
+    {
+      "path": "kubejs/assets/etcetera/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a91cccbd8173449b7e77f0b5da0374904bc543cf0b8f7ad3add059d8c780fe5c"
+    },
+    {
+      "path": "kubejs/assets/etched/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5c72d85ac41a07751d1dc591ec611a3227fae4b91aaa90fe83f04e0f0aca410a"
+    },
+    {
+      "path": "kubejs/assets/everycomp/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "82839bd06984b7f4bcc8f961b262de8724982daf400a4f1a7a55ad5a2b73ba9f"
+    },
+    {
+      "path": "kubejs/assets/extra_gauges/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2c55620367fd7608cb962f6b3fd74f1ecabfaf023921abe162cbdaa1ad69898e"
+    },
+    {
+      "path": "kubejs/assets/extractinator/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "96c3c5e834af4c9721d4434f65270ef859c7fa66191d871164e93993cd186646"
+    },
+    {
+      "path": "kubejs/assets/extremesoundmuffler/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "ecf3c6f17c3b58f5d236066efeab9d9927442793494633a6934f88e8f026cf8d"
+    },
+    {
+      "path": "kubejs/assets/fallingtrees/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "747c9283eb1da3aaa99a87cfb87a39f5e57d55999243db561fc3642ea0252d05"
+    },
+    {
+      "path": "kubejs/assets/fancymenu/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "101041caf30698f7346ea189db1a8fdab393fb6d07593ea9accc207df750ab71"
+    },
+    {
+      "path": "kubejs/assets/fantasyfurniture/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "77e315e800ce43587aea38681703475efc5c370f58d556a254df471aff0d6f21"
+    },
+    {
+      "path": "kubejs/assets/farm_and_charm/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c27e0440d5e605a25d0c409d58f44c3740159ebb820fe6e73b46c2cca2e106ad"
+    },
+    {
+      "path": "kubejs/assets/farmersdelight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "7a36dd81617d63340cbff3a0d56031892b43722a61754c690c593c7899963dfb"
+    },
+    {
+      "path": "kubejs/assets/farmingforblockheads/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c5d2963e8271f9f326bd8c0a05dbed58f7869ec26528a56afcced1893fab1224"
+    },
+    {
+      "path": "kubejs/assets/farmlife/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "34eb5febe771fe9589b63b4c6c7c9064ea36a06ea740c36863f7fe5ed8826b64"
+    },
+    {
+      "path": "kubejs/assets/ftbchunks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "cf4fcc28783b24c104132a7b7aa0f19fdc7329e8ca99bb7ed1f5d9d1be3d7aa6"
+    },
+    {
+      "path": "kubejs/assets/ftblibrary/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c1b7b8292433c8f2a0e29111d0b89ac2f9b25ac1abb225f2a62c3afddc82671d"
+    },
+    {
+      "path": "kubejs/assets/ftbquestlocalizer/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "69c021bf0c6dba24928c932510cbbe8842e9010a73f5d941f66f074be1f5bd1a"
+    },
+    {
+      "path": "kubejs/assets/ftbquests/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "91201306399a0e819060bf463a6dd69ebe29e0e0e81338c9dab77c49ec3d6693"
+    },
+    {
+      "path": "kubejs/assets/ftbteams/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "dbd7b448ada40248a909ccfb0b8423a9ef34b8fdf396e92ff4f4574bedc25eca"
+    },
+    {
+      "path": "kubejs/assets/functionalstorage/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b3a26026283920723163c3c4752e30ac0d7d6f0273e4775bd096c5edf7e58af3"
+    },
+    {
+      "path": "kubejs/assets/furniture/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "22f72b8c1e9d0f5dc01959e1cf7469dbbbb4a4b0eea8ed7af11371fa5283fa03"
+    },
+    {
+      "path": "kubejs/assets/gag/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c59639d2c67af130ac72a8ea6b20c7376279de9bd1db8fddb928d9c32b6154c3"
+    },
+    {
+      "path": "kubejs/assets/gamediscs/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "19aff655c58aa9d640861c91ea37e73b7d0c3210138ae80c903c3b151f806332"
+    },
+    {
+      "path": "kubejs/assets/golemoverhaul/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0bd39dc6f0e53264cd86552c06d81a5cf64240ba8f305ee9988ae676a0f247ef"
+    },
+    {
+      "path": "kubejs/assets/hamsters/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "96341a1bf292ca17dd460c69ba1f12afecda9bb3e5b1200ced40d324cb481506"
+    },
+    {
+      "path": "kubejs/assets/herbalbrews/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9f9b638f7b20f82c462a18dcd9a8b96265d104c8c4ea511967fa357a98c43dcd"
+    },
+    {
+      "path": "kubejs/assets/horseman/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e05485d626dd46cfa03fe1a373fae5ddc29bbd955ae6795c2a18af339035a003"
+    },
+    {
+      "path": "kubejs/assets/irons_rpg_tweaks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "85dd7296b5641611de62a218f7965081481d15b29a082de3c38a873bfd0ccbbe"
+    },
+    {
+      "path": "kubejs/assets/jeed/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d5bbec0ab1bcd767f5cf6a84822b9ec6700899acc4887c94ca33185adca38501"
+    },
+    {
+      "path": "kubejs/assets/jei/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "44be5ff54e173e6c391179e16887be00acbba5f08cc1e6598a12a949ccbf630d"
+    },
+    {
+      "path": "kubejs/assets/jmi/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "beed971cbac5828b6f5392ca701c2d852163a593ea86d858923f2749507491c0"
+    },
+    {
+      "path": "kubejs/assets/justhammers/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c1ee057685e32523e50d0b9714e36006b154219da3d6191078da9330c59e2bb1"
+    },
+    {
+      "path": "kubejs/assets/kata/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1297e3022c71856e92b77d544c3c77653ccbb0604428ddbed5463fa591e12c65"
+    },
+    {
+      "path": "kubejs/assets/kiwi/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b98faf9322ded69a822cdcc05ced1dc53b47a6146d3cd8da0ca2a5dca816645d"
+    },
+    {
+      "path": "kubejs/assets/labels/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "427db5ba76c7025e2b2f6acdbc9af484f5f81e6929c4e685848e0cbc144ad4d6"
+    },
+    {
+      "path": "kubejs/assets/legendarycreatures/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "808a7e2be144968365cee1075593e65bf71a4865c6bd6de3747c060cabd133f5"
+    },
+    {
+      "path": "kubejs/assets/libtooltips/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1d2e121e9d6b8e4aefe23a51a0851d73ba7d208e52661ecde08f739c0f114b68"
+    },
+    {
+      "path": "kubejs/assets/littlejoys/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "947c0f249cd7998833e75cb1c657c5ad54c9f9ba29230c638c510cfb9b9af6bc"
+    },
+    {
+      "path": "kubejs/assets/longwings/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "657aeb315dac74d267b48879517531e5fe44bb832162f2018ffa6d1b113edf1b"
+    },
+    {
+      "path": "kubejs/assets/loot_journal/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1552b3edece5f3a4b673c1798b928abe422d5fdbe3e3d4b94d40f3ddb9007093"
+    },
+    {
+      "path": "kubejs/assets/lootr/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1d01f725afd472dc5abb4c598a95327087bfccfcbda34bf40f2678742785f128"
+    },
+    {
+      "path": "kubejs/assets/meadow/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f7b85614c55d8b1965e6e16edc044baa51b5fd6004157f839316bceea075226a"
+    },
+    {
+      "path": "kubejs/assets/minecraft/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c00cf9cc8dd12204f18fffd2983f8616cd878d962592504e8d0ebc7a17d3930e"
+    },
+    {
+      "path": "kubejs/assets/mining_dimension/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "87998ab9339b66725c37eb15e99881d92cd3a2e499552ac48ebe5ad0d07f9399"
+    },
+    {
+      "path": "kubejs/assets/moblassos/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "05d0c8535e6d01e992fc1328860c4da35df3a2ef21c9a95ac1acf2bead6bb14f"
+    },
+    {
+      "path": "kubejs/assets/moonlight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d575bf8b5c8bb09b38824722ed6e85db44030b50bfbe9a89dff6c85490e7c036"
+    },
+    {
+      "path": "kubejs/assets/moreminecarts/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1c1cd6bf803511a901957cc43e4891afcf350f9ab688e2c6ccd84a6c8e38ea09"
+    },
+    {
+      "path": "kubejs/assets/moreoverlays/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "44997aaa95a140df247830cac9da6a46cbd4b65c7ee1fc39b593b0a002dc505f"
+    },
+    {
+      "path": "kubejs/assets/mysticaloaktree/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "65bcecc2472ff7ce77cdab3d1fb1a69dd72397b55207bec430ee6a95a8ca791a"
+    },
+    {
+      "path": "kubejs/assets/netherdepthsupgrade/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e7249a6a98f33ebb5b1b096c7d79d1a81fdfd9f335153eb9d01fb7b20a86d2a8"
+    },
+    {
+      "path": "kubejs/assets/nethervinery/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "83fb02a079af54379c0332950eb53b3226ec29b1574437a12e62ca395ba4ea20"
+    },
+    {
+      "path": "kubejs/assets/nightlights/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "8ed183851855f1f6958a9d86619c2cfbaf5e8a2fb594ac1033dff2126443eb7f"
+    },
+    {
+      "path": "kubejs/assets/numismatics/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9c26efbc6d13848fa596fc4a3a6abcd2b7ef5b457c639c527aba50987d2f61bc"
+    },
+    {
+      "path": "kubejs/assets/numismatics_utils/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c5285a69bb3785a97583f22ffebf1c76e532ab99e779fc5e593c0c9cb6387309"
+    },
+    {
+      "path": "kubejs/assets/observable/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "18593ba62e5b4a032af3b2840f719712d36df05c77fba7cf78a873e13a625079"
+    },
+    {
+      "path": "kubejs/assets/ok_zoomer/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "713aa3d57878f08f34f5201da4323d87706bd86d83a51275ecebc31001edcfaa"
+    },
+    {
+      "path": "kubejs/assets/online_detector/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e8dd86c600d69efb606b2ffab1e624872f0132d546241dd48d873f54501f82f1"
+    },
+    {
+      "path": "kubejs/assets/oreganized/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4c73782ee32ad05d7cdee2fb966938500cf2c73f6d2f96b7704386aa4acc3ba9"
+    },
+    {
+      "path": "kubejs/assets/pamhc2trees/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f06b9d7e22001fdd38459488afef321465e85d47894c5473537fba477fad8e16"
+    },
+    {
+      "path": "kubejs/assets/passablefoliage/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "48828d5175b4f8945dbd05119422333519d980459dfd6204b8cb47c182f3be02"
+    },
+    {
+      "path": "kubejs/assets/perfectplushies/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4304350b85949b77a62c5b3761fb4a7885b4dd73d893db77ffcd4451e1498309"
+    },
+    {
+      "path": "kubejs/assets/plonk/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0fd670e39d38cdbd84e895852fe3411c2343ce14f06567916c3b65e22ca0834e"
+    },
+    {
+      "path": "kubejs/assets/ponderjs_generated/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1a6d82e85bb631f085dd7c1d264065781fedb478f2d32ff14b9c6cb47aa0f44a"
+    },
+    {
+      "path": "kubejs/assets/portable_blueprints/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e8e5d8f905e322db0281697e133b3270225d4869594e7664dcace98ea06631b6"
+    },
+    {
+      "path": "kubejs/assets/quality_food/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3ada7ab2459b052ec27766303cd70d852cf77bf0357171430c252171efe60d99"
+    },
+    {
+      "path": "kubejs/assets/quark/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a3b52ba2b90ff43dbf03da653258ac4be50c57b74b30c3fea5a76f62b0a133c3"
+    },
+    {
+      "path": "kubejs/assets/questsadditions/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "cf7d3c19409dbe1a544667db0f9e77fd19a31682cff250b5f701133bbb204d68"
+    },
+    {
+      "path": "kubejs/assets/railways/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6394da1837e110445b306d6ad09f9b01628fb55a447cc611c2584ad5083d7e95"
+    },
+    {
+      "path": "kubejs/assets/rainbowoaks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "07f45104e8eead96800df551422cf444018b72ee42c4f2b6b8a7c62e39df6d5c"
+    },
+    {
+      "path": "kubejs/assets/refinedstorage/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b73c0424fbb8b121a14342577f70e5068938f14036cc950255d5a7df342555af"
+    },
+    {
+      "path": "kubejs/assets/refurbished_furniture/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "eea7db2feac249f3aa23815c0e9dee42f93cf0247fa71fab76c22c566410bd04"
+    },
+    {
+      "path": "kubejs/assets/rehooked/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6a268d18d61eb3c5d2039c78ab34e114806993e238d1b8f1b1db0388abeaeea7"
+    },
+    {
+      "path": "kubejs/assets/ribbits/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "72a5f9bae2125de0b341a5cf46890baae27c926c46c207cf2f57cd1b94bb73ea"
+    },
+    {
+      "path": "kubejs/assets/rottencreatures/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "b51813ac22f420411ff4fbafa8182a090601845ca54bc4be5545406e09114788"
+    },
+    {
+      "path": "kubejs/assets/rsinfinitybooster/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4469409158824daf5cf86797c53e986c34618cd8e16f01a758218fe7ba06d388"
+    },
+    {
+      "path": "kubejs/assets/sawmill/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "22e6b8bc06df15a6141bd5f84dbe54f30d89793abea2222d045aff28bec972a4"
+    },
+    {
+      "path": "kubejs/assets/sdrp/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "18c89241ec2073e1b1f291e026901278c368f50d7126ff8969ad9e7cc4f0d972"
+    },
+    {
+      "path": "kubejs/assets/searchables/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e259dd4788723c0dfe18c0bb87c1400d03f16487c2819480f327d04a66177921"
+    },
+    {
+      "path": "kubejs/assets/seasonhud/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c3b159a0bfbbabf465dcced406546c2c33671c091ef588910d48c4437c1404c5"
+    },
+    {
+      "path": "kubejs/assets/sereneseasons/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "60c7f113606124d7f65b7ce4397567188ae955bc5a2e4c15e5a371a9f250229f"
+    },
+    {
+      "path": "kubejs/assets/sewingkit/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "756a8ace54460ff0037205f3560477f19267696e5f389c3294f54deea0b2a96c"
+    },
+    {
+      "path": "kubejs/assets/shippingbin/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "97f58a433358602f13eb5ebb1f21e1b610df5e2d66ce30e17ccd4bb1984b514f"
+    },
+    {
+      "path": "kubejs/assets/simplehats/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c71aacaaf8c90564c8e28dd548d0ff334015f8400ec2b3eaf8c648c4164faf48"
+    },
+    {
+      "path": "kubejs/assets/simplemagnets/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4541d0cf9f57aba8c9e5f96f14b5c4c12ec3aaece9ed1b64ced5a7b16ae44716"
+    },
+    {
+      "path": "kubejs/assets/simplerecall/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "81a26a7f4de09f60f5d8311611017662234380d0ee16b6c04759fa3888b0dab6"
+    },
+    {
+      "path": "kubejs/assets/smallships/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a754ca5e43de17445b4dda2fdee0ce28bb58861779b58aeb53b4205922e23e3e"
+    },
+    {
+      "path": "kubejs/assets/snowpig/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "84a499ec78084564b155b9bee451ae66d2c4e4e7bc148bf27e11f7105f153032"
+    },
+    {
+      "path": "kubejs/assets/snowrealmagic/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f937c078e4196aad296bb8cbfc96753f7972b364f88bdfceb9c77de3aa527421"
+    },
+    {
+      "path": "kubejs/assets/snowyspirit/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "3ae13d7630000f6293e36f3efe31fca0e72e93ab95a347d8bff1613e1ff3d7e5"
+    },
+    {
+      "path": "kubejs/assets/snuffles/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f9844312cf44f758f96a5b1aa4766e928bfc495303d4c2f59a1bba5261e0520a"
+    },
+    {
+      "path": "kubejs/assets/society/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "662b5b8931b429a39b20287e78256a5b182c129d6dfd2a10f10b9334c4991464"
+    },
+    {
+      "path": "kubejs/assets/society_skills/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "851b12ffd2387241f586f81d0beb914eef337d334243cf7d0e74cf1acbdf8327"
+    },
+    {
+      "path": "kubejs/assets/society_tips/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "4b5c882530ac5ffe1ae24c674b01ca9e67731ecaf3c56672eedad579ffdf5c32"
+    },
+    {
+      "path": "kubejs/assets/society_trading/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "1d6d361d88086308996ecaad0324743d8479776812a49dea55613827c49ba77a"
+    },
+    {
+      "path": "kubejs/assets/solonion/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "90061679f9e0a69321ced435e57252f8dbd7be569e40d7a3ecb43d4bbaf5e513"
+    },
+    {
+      "path": "kubejs/assets/sophisticatedbackpacks/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "419e6fd65b071b5117716be96a8c257d23c65f179b86dae41a6d5fa4cb7dcf21"
+    },
+    {
+      "path": "kubejs/assets/sophisticatedstorage/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e2f8300e25963e0c3f0aca5acdba3ce6c96040257b621b9aa8afc35d6304ab47"
+    },
+    {
+      "path": "kubejs/assets/species/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "03722698582a8e28b6be13ed5cf144117efe2017b36bb3286c2bf3cbd50756fd"
+    },
+    {
+      "path": "kubejs/assets/splendid_slimes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d0c557a63f921365533c7963da21747754d02a0eeafceb6e49d4743894fa221a"
+    },
+    {
+      "path": "kubejs/assets/stardew_fishing/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a21ccffad73842c89c6bbe412e88dd8c690c4b06b7508006e655042e29df401e"
+    },
+    {
+      "path": "kubejs/assets/strawstatues/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "529706399e033c74fe9cc40c89f4480d70806e800d9c57f95176cb6af678f4be"
+    },
+    {
+      "path": "kubejs/assets/structurify/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "255fcca99d4df5c9d99342c945cdaa4f913cbdbc847a5cd6abb5cbd24490538e"
+    },
+    {
+      "path": "kubejs/assets/supplementaries/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "43cfb96d282e7d5547dca6fedd3249618757b6dc6a11b63fdaf1b73caf5d280d"
+    },
+    {
+      "path": "kubejs/assets/tanukidecor/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "f554f9baede61fe8a61488d52c08e37c61ffa0e3f122d8dd8f5ec6b6e9478392"
+    },
+    {
+      "path": "kubejs/assets/terrablender/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a5110290311a5256c6f5e34574ea9315fb1762a7d30ef2ddde190479ce16817d"
+    },
+    {
+      "path": "kubejs/assets/toms_storage/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "6e288a0b5ce3aabaa081acb0897ac2e11538ac52420594e25860c176aba0280b"
+    },
+    {
+      "path": "kubejs/assets/trading_floor/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "5e07ee590198862606ed848c434a3ea0bf3fe9112414be2bc89c50faf26d4947"
+    },
+    {
+      "path": "kubejs/assets/tradingpost/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2187889b7dcbc2076effd5300fdc6aa81603fd824a64eec9136a87cdbac7bdbe"
+    },
+    {
+      "path": "kubejs/assets/trashslot/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "37aeaf53ee75e82a5bfb16e48b56255220907d396ca46e8dd3ee8172a6e40f31"
+    },
+    {
+      "path": "kubejs/assets/treechop/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "7c6c0c5e106d46533f2570bdf51fab86191a9da499090f65c2ee6cd7be4b5b42"
+    },
+    {
+      "path": "kubejs/assets/trials/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "0a8b7a59e304a0fc97c7e39fcd34a199e847cb28b5fd105cc83ed0f6f80308bf"
+    },
+    {
+      "path": "kubejs/assets/trofers/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "01b26c3e47f6aed9e0466ef39f24cdd12bd70af58bb0975926949e7d16ed126c"
+    },
+    {
+      "path": "kubejs/assets/twigs/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "7cbb2a2326b9445a960093578d339dec3f530b289a59013cfa633bd58e63836d"
+    },
+    {
+      "path": "kubejs/assets/untitledduckmod/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "7e2fde1e598262ebcd0ca31546242e6277670abe3f666a93d60d6e35b229b691"
+    },
+    {
+      "path": "kubejs/assets/unusualfishmod/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2a4be09faf82c1a2e428373a85bf365ee4024e00d01165400d09fc28548a5161"
+    },
+    {
+      "path": "kubejs/assets/vanillabackport/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "c962e50bc50cfd18585b5265bd90fdf1caa50eb0a2dabf8c1b463285d0d60cdb"
+    },
+    {
+      "path": "kubejs/assets/veggiesdelight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "e72ca41723093210dc6cc49bf602276e9fa8a44777f714d8dcb4c409bf620480"
+    },
+    {
+      "path": "kubejs/assets/verdantvibes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "ddeb81386102e7554cc9119a5b121cc8e22126071cd4a6c08e279a5b594de058"
+    },
+    {
+      "path": "kubejs/assets/via_romana/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "d9e0919bb919420851a2c771dcec6b71e8b8d0c539fac084280daa62263e3b11"
+    },
+    {
+      "path": "kubejs/assets/via_romana/patchouli_books/guide/ko_kr/categories/default.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "a2b6244db71dc7dd88dfea5fd86ed1f6ab9508e608e0a2df2bdc260ab6a17495"
+    },
+    {
+      "path": "kubejs/assets/via_romana/patchouli_books/guide/ko_kr/entries/via_romana.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "ce6c0a7b3cdc73e1767623a316a87498dd14902a42cf11c363565015fd7398b4"
+    },
+    {
+      "path": "kubejs/assets/vinery/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "74b6649de150ad27954568026296eabbdea7325d2e772be77a647a95f87c8dd1"
+    },
+    {
+      "path": "kubejs/assets/vintagedelight/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "69bd27f619854345263ffe478bf1c429148c18e02393ed1cd1a66e9ec7519a90"
+    },
+    {
+      "path": "kubejs/assets/waterframes/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "9bd14578ed3b6ea876eb1e8b3e1d43c7aae89826749de8e92bc0d69b4b3bfcab"
+    },
+    {
+      "path": "kubejs/assets/waystones/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "136ccb935e282524dc1583e1e8611530fd4a90ab8d9cee689aedd5131b8f4930"
+    },
+    {
+      "path": "kubejs/assets/whimsy_deco/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "81a2ace92a9a1ea6fd872c82222238ea7a188c29bec6421fb7130e5406c63e4f"
+    },
+    {
+      "path": "kubejs/assets/wildernature/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "fbc5553f0be018c419a1fb6894b18a783a74c50af656b9409e1299abb2b7e459"
+    },
+    {
+      "path": "kubejs/assets/windswept/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "82ddd94a95716f5014a5c20bbd33410442239678e0f2bf741a37b59149053f76"
+    },
+    {
+      "path": "kubejs/assets/yet_another_config_lib_v3/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "2f8cce32ff128065f6ee26e1997f4ae989c816a64bb4559007616c4fc7f51f73"
+    },
+    {
+      "path": "kubejs/assets/zeta/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "77e84c58d2b5a99483bd5e7032e753ba7656499cc5c2635bb8f8f4db76bd67ad"
+    },
+    {
+      "path": "kubejs/assets/zetter/lang/ko_kr.json",
+      "description": "원본 모드팩 한국어 언어 리소스",
+      "sha256": "7305481671949bf6f190cfb69a528e352dfe33ac83278b0a322231147b3ef36e"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/animals.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4d117165365dd7d1a32eef0ad75867b5e7583fcd180437a9300eb3fe52aeec41"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/crops.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a1583b8563e484beab94aabd5c62524e1dab4f0af494fc6eca0be5d2a8ff9c3f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/pets.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e3c4ab7ba5700aae85d6d80d53a7dbafe49c9e055292482ae96d7abf66132c30"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/slimes.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "eeeca63f587f832620d5ea3af8f5b4a122d0ef879f58376d9db3a598ab1961cd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/tree_crops.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "47256fbebd743305b8d1b06d53c0fd5501764e7828910c5e30ae22f39708df54"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/categories/trees.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a099d4bce57f947f436435c0e7365db34b2b761159a358363d21785bcd41cda3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/bat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "710b31aba8329001eaa841b3d45258669ecbb73642c751dbc161d87ed780038c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/bison.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2461150c2617cb32759472d499566388955d2e39e3c52ab3af0f632942279fe2"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/chapple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "77d381d47ef518295fec9fd30adda1ca6c6b82e8614569f69cab9a1649273cac"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/chicken.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1b5112807e4cbc4d976aad450f03f7449d94efa222b2fc45ce2f3424db9e3202"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/cochineal.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "daaf9546200f75ab34c274161246646f300068c12161ec15ededcbbe0ce7d271"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/cow.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "67c708255d64d031e656fcce432635390874f9a3ce36d94a09165a1dcbf3bdb9"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/cruncher.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f8d8d2dbef9e490b93682c2d8fb5ba6bbca98502d2a82f9ba7f18985f7553616"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/deer.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "863ab343876019f95f87128a9e53927e2fd1f733712b541eaa8207b355543b08"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/duck.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bfe5e942210348a76f4edf53178f05e09ddf0dd7acfe1d209bfab1fd744d81fc"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/flamingo.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ad145634109b01489537ed9bbe194a52a08fe61194821c493ec3e00739fd7226"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/frog.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "58aa25cbac351c1dd035b6f3692e3ea84a1992be3d0a7d12177c55ea39bac8c4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/frostbiter.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "854f0444760bcda79d1d9d598b6ea8ccad05f01a3e8b495343cf41a685b413f4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/galliraptor.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "6ab66aca89c9e5d2ffd9c1b76419f77b02c98c1beb070324b695bc46111ec0a2"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/glow_squid.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b7252a3a12186ede3d215a2057b8583b7256c91990a0b90fdd57d77350db8ca0"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/goat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "464d657b80a9ed416249227428ff725823e231cb165a7e50ac6bb82605fd9e93"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/golden_chapple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "271f75204492b2be3f2d1d3404d9e32c9e9572f3496eb7cff2544cfc9f1e4319"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/goober.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "500de9f780cab672181d20896db0f7c766ce266252c2c295ac0aac2fd1fc47b1"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/goose.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0d4b95a9c73d5a30ff4f4e7acd7d5ddaf0142d6162b853d4fa677673cdaf01c5"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/mammutilation.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4a8964842c88cf4de75862a98714f5a33abaff61b6caa34309133456e0c23137"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/minisheep.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f25e8260ad69a721102a7763644d3c0629750bbfd0c88389bbe55c31cc0669cf"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/moobloom.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "89f8d46ca3f9f200570c5552401ba84d2ef17d31cc18c320f9dc7b56f2a50369"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/mooshroom.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1163f9b42633f9bbf47c8c1835265c16c1d0c2afee6bdf6904df7793723a6f32"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/panda.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e9aec129de02ff42d2dc0a70a254626a7ab9e2eb77d7629b297ee266f9581bd2"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/penguin.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "09a13f960ca641ee6e57eb30511f24141b2dd53ec9842673ab69a20ae94965e0"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/pig.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c4248e4d7431077534454e458d68a311ff5bcecb258f8809e13807f1e9672a3a"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/rabbit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a4ac0433e7e5d6ae382f65a2fcd9035270023d1cede91714a54b96243eee123a"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/raccoon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "17a61b1ee9b0e23967161e8ff8bfc73b1acf007bb6a189d7051e2d14de221f86"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/red_panda.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d6a5ed10fdae968446a3a5cd3a1a1303f10c9b3ce780f2e2e08dc92fa480535f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/sheep.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d70a91f77e29635334902e7afa2d6ab42dfc50572a12e6397103952358fea00b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/shima_enaga.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "8008a744df96e9e20b1a9012d873da6b707ef79381b5a57f39381ee032f88815"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/snail.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e40295ba12e8a5ef78f8cbf4b87b3c1654b7f3fdc1039cdf3a11d8eb2c355404"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/sniffer.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "943815387cdef7878bb10523c2828edfccfc47873a66eeb3696702518b58dbc0"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/snow_pig.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "30e1ecfa3c21216bfc5032b8844a32b3cd28d45919aad75a76863cc7d218a80b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/snuffle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ed3c33f337af421a02491297df9f24e658b11bf2bb3b419064e9f725b26cfbdb"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/squid.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4778ab1f0da2d1180bc0314b6e0bb1089336350881cc53494c1f2710f3940e50"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/squirrel.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4f7714d36ae07fcf1efb09da5b034b8b0857777a42cf5c8890b1183c7e687cdc"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/tri_bull.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ba3815de668c7af7dcd8ca62ceeac117534de8298a5b8e375c543d66c779b126"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/turkey.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e765dc4e6837a6d03a1c37c1ca46ae2b3688edf63234e77afd01ec4bca78171a"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/turtle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9c8f2465e6e7ed4264783fc5f09b687723086b963983686c0e4e0445d7e343f7"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/warped_wooly_cow.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "25a018cc22d2ff228c37b01b4afcc6fd706a60d5d96fb676732dff6545487caa"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/water_buffalo.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "de9c68ce45892495fa0a4f7b908dbda39af3d8eb5701f1d085abd30e6ab2f884"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/wooly_cow.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2708daa57bc685f936e950be7aa4522f2f2fc40ec971eea073a305a17032b584"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/wooly_sheep.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2ce3ae8e57d2d3e1ac05d9c78a8540515c9bceaf32f8bcdb7fab6be75604fb12"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/animals/wraptor.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "fb750f4ec027667edc38beadd6ba3c5e0c598d8843e52c766b48313e71800b23"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/aloe_vera.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "39ca3d41651ff2f9dfa869f536837ebca82b9eaaf41b61e8d3fa09563cf79844"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/ancient_fruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "085117f626bbe6626537c0b0d3c072d6bc9107848db424282f39be4af48e04d7"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/barley.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0341dccfeda072ba2714f970e96cc6a84bc5223dbb79fbe1bc21d0ac548920a7"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/beetroot.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7f8759d4663a2b43cba6a21e280889487312af3eb57eb0fa26f50a02e8e720fe"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/bellpepper.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "406233c55f99ee6b9dad298f50dbe63cc950619679e3d386e5760ca69db9271c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/blueberry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ca5e732b94b73df46dcb0757630d0db59d4069de27d5dbeb74cc1146cb2f7bec"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/broccoli.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f9640540f39fee578b8411558bf9ff64c32aa7c5b7713baf41f6c57564fb2f6c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/cabbage.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5734bad7ac23ca63873604c9c5b3842cbc3f3d6c8d8149795caeca700c8981e3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/carrot.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9077011d4685f8b6b9669ba0be5c5efe16901a8c9d2940854c933e1b216ae89c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/cauliflower.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2ab0628b9f7c95def3ce2fbe379c6bb2dedeacd2d6d7d0f09d10a1f07b740330"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/coffee_beans.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c592cf273e55583c28a7ee35c8fa45e8968837911427890732822d70ce13aebd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/corn.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "55ca99ff7ace8ac0af8e7883dc8279f6329ee5ce94526998880328fdb5fc2c01"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/cotton.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0cf44512c55115644cd76ed8e65b017005fa16e809afd209e52fd298114027b4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/cranberry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "54efa671b2c0d5b3df36659d931c684157beb29dfdfd5d728cfb5faf0135fa89"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/cucumber.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "03cb2ebe51572f85f96ad6e57c1f7fdf9774a1d4d11661c11a0996d2013023c4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/eggplant.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "782872844746aa1eebfee91e600360f0a79b675a99c1af903f45db09c4e6a1da"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/flax.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "eeea7d59b03dafa8cf69da037b78efa780c88a5df1034d5e6f0532480989b290"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/foul_berries.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5fddc90d175ac52a21107f2f8a04c720c24139a033e44375f2f43361f3737923"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/garlic.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "979365b8e8afc0c59976207f7799451bc0c2f0494d26d7d8954b0c01924708de"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/gearo_berry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c4105c0a66587cc8e6ce2bf18946c7604b8ec34d049b5c8217b81acea444267f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/ghost_pepper.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4a0e612b442ee286474498d6769c0e28ac665c56095ad95999604583b541de32"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/ginger.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "700be6c78d638dc36a4a3ea17e98d49bb4a64310750723327fc786616af89cdf"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/grapes.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a8a97652ea01473cf2afbf70649ea53f3ed6a8dacefdb06b1f529d72caad9a86"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/green_tea.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c3f4738567e26fed4513441f692d4474e52a92ddeb5482a82e79d5249016920a"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/hops.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1db9931def1def29b860344f3f1ddb9d06d439cdeaf753ab0ca0dd46c76f9851"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/iconography.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4917e8ce64b9778b36f52e996aceeedb0d891bd8bb05a6c7f4e5e1fce18a6843"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/lettuce.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b4ffa6de697277ec5a74d7d69a7c484f2acc873773bae6c00054263af54b344c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/nether_grapes.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "dd2aac8487a86925837a3558c7b6e8df3f55ee7ad9e445a42fe1c83d5fc88e8c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/oat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "75a7379037aa76464df67ab89bac1c7f15cf848b2674c06f10a125021e00cd69"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/onion.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f01296acdf00c72c75f14ae03efe34efe26e3ce302a6522c8a1fb7319b9ba7da"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/peanut.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4e7cf99558289f087fb96697e041cb5d81ea26ab9ad811a15bbf72c78afa2473"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/pitcher_plant.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0047c9e7b79cef4e6a5a57e07e6bd19ad5fa7c9bfc1d4a9d80c138b1826db79c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/potato.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "82b2b181337c5a5a21907d14035f8390aae375f249f7714672dc2541b1f97f6c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/rice.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "db1c9ef7dec3a1d5cfb16619889f7b929a815fe127ffeeb4b2ec63d78a6539f6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/rooibos.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "417bdb616a63f4c36f70d6687fadc3d348b694d130c808a0b473f1c1428eaaf1"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/sparkpod.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "90e0a559e80c057240665605637b922d29c644e106bc43fbaa1a57d1ab624833"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/strawberry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "163fa1667a171dd9a3f665fcfa3a38c90d7191ec93be282fb998be666fcb6417"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/sweet_berries.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "eb73f28c0be62e3c443a5735c5faf3015e0db1b6cb02165ba6a8ac1446f0d045"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/sweet_potato.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e02688d549e97495be6a817cb39e28b5ad13572dd068eb5f861f1272e4fb866f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/tomato.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "86e17dd0466cb3939c5a5d8d60952726b306161c03e8292c30a064b1518f7530"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/torchflower.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "203df1b93ff76181d6988d5f9dfee8a2fb34048fc55e7ee7c62a05963f63276b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/tubabacco.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "cc784c5baaef5e4ede0c4a8c6724bddcaa8af7ede1b119b93289b14187552723"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/turnip.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "19c101e81e1dd6fd8fcba94562ed28c28ac56a945233144abdb7cf088208c98b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/wheat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9ecc45beea18ba804cb54db5103ac1194a302453da0c396ff002bddb9e264ad3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/wild_berries.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1a8c2ff025833a6a26c3f4d188caabc92b43e41b8bcc88d565c3c34c56aabd49"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/yerba_mate.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "89196213327d3de6a09527ed0ccca10b41f4e18fda2dd303d4b616ab66fed4a5"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/crops/zucchini.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1de58d1aa112504f8d8da1c1ebae1f9348fdcd4f2cc9a2253197bce82b783dda"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/allay.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "030a3fe0e3bb3ff7dcf73c173b619c6fec064291570efc5fd5371267970ba293"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/axolotl.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "aff9c00ea7a4db8e57fab4d79cb7a1066bad27b9dde58dc8743a7db503c21bac"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/cat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b964ddd5f7eeaa518054aa72a71a9cb07dfb82cec173aec1917ade386d480942"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/dog.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bc6cede186ae3dfcaa26fb1c90547c73d2858a2aa56736790df759d8dc02bfec"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/ferret.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "851958ddd134acf3bbb1225908e07183942cac3fab36125bb37b21b615731877"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/foxhound.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a5cb1ec60b4e5f75e15e18ae2f09870a71596c08fd134e5298ee87aae6681405"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/grizzly_bear.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4b70e409f44292b8deb6345169348e9f69d2cbc809bb2c19a4e85c74be76746b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/hamster.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "84a250795362c2f9a03f67f8ba6999febe5464c39a2c618658ba8242fc09288d"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/hedgehog.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "031c4f6b6a74be4df476c2477712ba19c9ae9fe35b1239ebc98f035841fb01b6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/horse.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "361c5a08c97116b0f49ee962b2bfab7471e569e6f3f9469eb23fadf25bf55fd6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/owl.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1667863121812e29c7196bb7f1b33e2b95a545f00a796dd9b9120d0af9324964"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/polar_bear.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c1586c3d06311437a7529eff37b1dd1ac4468cf2079bec3fcb8847326fde825c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/red_wolf.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ac1eb500bafa03fd81d98e919f5b8bcb1fd55b6f254eb6b661a9d4e478ce5c20"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/shiba.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7e8972641c515b842804d5779e182af3ddd3195f01647511124736a1da15b396"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/pets/wolf.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f8fdd9a86415ea649a797f62a758a57009ce5f5600cf2a49091789a1ce6963a7"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/all_seeing.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "be81f3391b03d78d0681279915e4610640302a729576b44b7d9e5eb0bdb04c51"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/bear.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d651cc651aa17e9fe336c869daf4737b9e657f14a13ff0e991f00e9f45a97ef6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/bitwize.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "46bf4fd67d3d0713a20a1a39d3595c98f62efe033c6f7e5e91196db741a9b880"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/blazing.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f71b8c088ff05b5f756159634ed4c2bac339d1a1ed0325a60b3e94a2ebb11360"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/bony.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "39728de56ccce22491c0650f65463c57e81d3a2f047d6ba5bc6033de3d12b06f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/boomcat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "34db7cc3875a5585b384666d1fec1dafd8d997b05473567e56e0d08f31725dff"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/dusty.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "df3f7a3d41f82f29e7702b561f29312dc70adf1c899212793c638518c216d2bc"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/ender.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "70b4bf4fa5c44443450b3ceda24597c4466be1e2f364ec7a866fdc036181c53f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/gold.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "518855c4f7f21832bc2e450af6c4ba7cb732bdf5b4a13941830d6d6aad0a9c91"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/juicy.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c8e6901700391b44ad6dc512e61153fec8a1e3200764c35c0da0aeedff593b97"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/luminous.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5545cc1e7c0bc672bb240c9d8d48b984779b0652b5505f581e5c2e39f5365c25"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/mechanic.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1cc1c29c1a41c2376b41055c642e5b071768110300e4646341b9aac72224870a"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/minty.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "07e7dca7792d3c5f61697b6f65f1a44754e88a5e663c5f7f638207a84d4015c8"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/orby.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ba5b3c47e9d5960f06a68606d29b61f403d355f9db6b6e5aff58b394bce3aef2"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/phantom.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "59a28a6fd1a5ad47400454e45257da9623dafbbc35ed6a4ad56cae7704e4960e"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/prisma.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "6ddbcb43f1cb4cdbbbf74395309ca097296429d237e308b5fd59860d8ab260c1"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/puddle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "18a761bc5e2ff7b0a70561a7f13d83d758bd4a1bd880b7d196111c76c31ea383"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/rotting.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bad1d506ce4eb9c13bbdd002752c6dfebc3744a04e5764c39990e9713e5b6438"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/shulking.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4883a95cba12cfae7f7563a357fb3b6ecc38cd7b2c7df349d17fcebaebbbf9fc"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/slimy.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "28efed67a8f6ad02017a925a11c53075e4ee7c0e94959e3c9db85b185a76e9b9"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/sparkcat.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1edbf0f86e64e195bb52e227bcb89ecf2b2c57f9add2b43f99ee54d907c106d6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/sweet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1a662ba273498c5d3c6eee3f6636ac1e4a84ab2c46177139b9e379f74b7a1b89"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/webby.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "710dc3f58ecc4276eca68590dea2fb3c7bc131db75282fa008a8d18ff4a14eb5"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/slimes/weeping.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "076df273c24cb785064a1ca684c9df24c16304add9bb9ef364bde7bf23515955"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/apple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7798f0b90f443725384468aa472f1d226d4fb68ef25f8050924d3f457ba812bb"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/banana.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b5d5c34078cd696715a49a51dcce0b4d9aedb554f02dc0620d625feec70074ea"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/cherry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e0ef6c270ac078c1f7241289724a4e092c90d4ebbd4d7d066a12fb55180857bf"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/cinnamon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f1c1a6dcfd271f4837a902745934087b2af9bd0e2866553502040dff79e349dd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/dragonfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "fcfbf612b5287683a5d176988242f16852ed3078ecea1bdf93e5fecf0c1416dd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/hazelnut.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "528c52f4e25a8cb1ec3d8cc64c69e24e499e2c4c9c8b1ad29d56ee10359f9be6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/lemon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bbfd47497b5e7a7ea25e0a682e9ee9df28ce5ae0e56d2ea99ec19d1b438c032b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/lychee.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1a444e27b4b0a7bf85bcdcbd0c6e2eac9e168d1ccb32089c76889f7a09b1e18e"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/mango.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bc084a380991042b0f0d970e378a0fe516e86374d714becb74ec48ef5e1d8979"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/orange.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "862e16c2b2f3d8bf5f912881811f680ef771fc356bb9a0fb02c87f9ec353445c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/passionfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f2a3f3e3e4515bb530d499d58c867a41e6f26ab7e58d274666da98473bbadea3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/pawpaw.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2c49b4023a48f33057e7688984dc45d978523b70145ac109df868899341c320b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/peach.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f35729a71a5de0aa2b640ba95d06abf5f7f55233588d2fcc83d721caff1842d4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/plum.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "478ed3a87a73231ae4b5630d33653b1bbb8e8d1f49a7a7a9bd87763994287317"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/tree_crops/starfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bc4eaa3c522b7827b43c8505b03fea1771be0244e96d2568377ac3f49248eea3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/aspen.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2683c9e63777641366666cf4cb4933e83161798ed93e8b9d4ef2d1e8469ecdab"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/dry_laurel.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9fca3b3ed702c34fc8719eae097d7915c539cba81ea41f7c59ad647886f85349"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/green_aspen.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "01e747213c4ef407511d2eae32eb4021ffb48634e397070c82540edfbac258f6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/grimwood.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "93103acde170c9f789fe08e5e6bcf7ad47251debcfb01705039d4227894f2ea9"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/kousa.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4a053d9f32290e372ae6ceb9c8a29e0d7fa47e05974771de3bd467a5e9a51170"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/laurel.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "62dd0c8934edd390083c0a5d4921350761f0bff6d7bbaf6061176c8cd6d11175"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/morado.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "92dffab74189efc4502a6de784fea27526ff1bbc5420ad2079da3a7246f0476c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/rosewood.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2597a606a026673ed491fedef047dab408f468853695475561af8e6e0c82e4f3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/atmospheric/yucca.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "66ce0430e4c5a51fd512136dfc8f58f9a577cfc632a3a56143d01ff30a02e6f4"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/autumnity/maple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "980152b8882fc890d9fd8867267964e0cf9818692cef0ffcb91c4cddf6eed4bf"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/autumnity/orange_maple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "eb620aaca3b9afb1b8cff64538973424e6bb1a243bf98bdaba8e24e549179f46"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/autumnity/red_maple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1922f78fb4ef467bf7ae2e529f36954f2e09e03817bbeee0632a224ba19e8c3e"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/autumnity/yellow_maple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "aa7fb68aaef99aead8efc0209005440aedf8219716369cf78ab4e337d32ac02e"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/letsdo/apple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "30b462c630a721dcc04b8fa66f1b6f7dc4ea21ff9b14a87ac58fa5aaeb8487cb"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/letsdo/darkcherry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2d6b8ce90750e6c33d21fa7ce927eb83f7d5069010683f789047abc82f24c061"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/letsdo/palm.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "58ba588875fd70a2f59c69e63988d24a38f444e6f5274c5ae18d91aa5f202bd3"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/letsdo/pine.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e1570012b7fcc9190fcaef7e829c059e6e1c1d5c33f2096e037cc5139373d6cb"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pale_oak.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5391bb500b5904b796b9d874356e9fb7101c9a46f3dca548ee7a568268b8b216"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/apple.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9c11613b01673ac1efb1199753497fcecfe8b6d3fff78ca49e4f6dbfecbf5bd5"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/banana.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "50a92caf74e472d86a96e6f38c2dbf62067d3f9f503eca1c2355f9f4ab6674f0"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/cherry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2cd2a657db68223347d70c871397960be958a41c38e0362edcefec6f380d951b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/cinnamon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0ba7d6d0856d68e9695bcb5ed880fbce2fd60d6ecf0d02d9410fcb633055f9ad"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/dragonfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "54fefed651449d157cb6515045c0c4fc77e54e34080e4567f6564b7fdbf0d6a6"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/hazelnut.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b748aba419874522882fcf2bc2a00b10241c2f90759d6d627cc46afd17890efd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/lemon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0146d2608e671170fca0c21c0a3f246e86be19caba1fe8cebedf26f7eddf9d63"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/lychee.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "13faa62978e3af09d0026fd28fb66920e05a2ac2fa213cbc554ca4d86bbae681"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/mango.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "06e7481495ee279d8e3ffae54ba6cadbf15f2105c903cc6bd47ac0efb9a5069c"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/orange.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7d1e3bbb24baeafee62f945b9b5d3826ffeecce60d7adce35d29bfaca2889312"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/passionfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d06eba3ae93dcd63465f288412c43a7dc2be6b9e41fbeaebf96c60a037a47766"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/pawpaw.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "077dc2f250336f09034313d4858b1efe17816e9afaeed1a0c14af547546457bc"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/peach.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "60214c219288f29ece237a7da2d0c7ce5442dc29700857cb9a27cd40e6383b4b"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/plum.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7d2ca7fd50888fa452965731767ec4c5f42520d39a32fb3b275289fab3cbfbb1"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/pams/starfruit.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "1979339f72b2bb6eb1e0b2dca86d5984f6b03cb7698e38064906a3221d8dc773"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/ancient.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "94911669af43078769d5dc9f98d1c3246a820bef078466340e44c8bd3f78e010"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/fiery_trumpet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "334096a9e1eeaf2a8ced6ecf116ac7b325f8ff0610bf3284d1a103c1153927fd"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/frosty_trumpet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0ced7d266ade8c9c5c3117de95d150f3fe912094ad61767c91798a23f8b7d43d"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/serene_trumpet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f3dcd39d08011eabd50b4a59deaa8dc22805592b7862fae8a2538c0155ac2e9d"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/sunny_trumpet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "abb659e80c6e10268762016f9713c5c61de5981e2f660bfec8ea79bfe39eee68"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/quark/warm_trumpet.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "6a8406cba2d953de85f90beeb406fb5cfe6b73797fa84649acdbcc8570b6e649"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/acacia.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9d2be721cae8edbdafa8fa5ca472f85507e24dff936a9f28585c3973a3ba1a1f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/birch.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c1129b2ea4b0c4f7bbff2363771142dcaae3083797e314e69c8f106eca0a70b9"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/cherry.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "678124fedb8479379dfae51ff8a8a8a65b559df4237684fe34a392154b47562d"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/dark_oak.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d6f18e54499d7e4a1e0168b9070a2e1e86ac39ba91cc2cfe3c409944f76f26d2"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/jungle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "73bb315df6754f86a2b3052b0218e6ebc4b6b89f75a0cd94df03e19ec526a65f"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/oak.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5ddbefa6327a0db85835612685d39dd3c2e61716159da885160cdd82663332ce"
+    },
+    {
+      "path": "patchouli_books/almanac/ko_kr/entries/trees/vanilla/spruce.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "98a37844183b3e37d8bd8024a66c6eb60218243118e96e818332aa13b696a33a"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/categories/fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d778774b8e5a591e5f156f98aa5540ab2fda9532ff3ac4b3f783e110a385048c"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/aero_mono.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d21b4b9f0df7efb7c6674bf761a32e11d4dfba6eb8c5cc315f2f026729275de0"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/amber_goby.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "65df4a5867dace77e784a13a895c4979d52d7fca71bcc7e0a8493a2b99843a01"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/arapaima.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "07735d0b84113486642d90de0385d36c850e6a8594b172bcc17d89a59f3f9c2d"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/arrau_turtle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "01363241bae234a3c8edf4da016dc0a377c59e1ee6b634430a27b6e833f714df"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/atlantic_cod.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ef1aeffd92bd37662c72faca90da1577ec031f15f1e3962fa495015990c1f499"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/atlantic_halibut.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "37ebaf5b8f31d8f36cca0c6a6ec13983155bc1a3b300457d9103bd24921d1671"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/atlantic_herring.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a55189c7cf4f235717b574dcb0746c549c297d784a2b187955ab248e5106224f"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/bark_angelfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "62606a92cbdf5c0a8b1c349584d9b99ad22c625fca9b5d6a8149021a6b58f088"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/bayad.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "46934da1566770a67029c89bb963508303cf8ab24ed0eddcb248bcd98e298fce"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/beaked_herring.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "19d22717d1f6fa0cb6b11f1a69ce9a7bc496531cf8dea8b030de00d49ed1be39"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/blackfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "45a060d3ee94605352971fa0683d9bc9b1b4050f1bbf49b1884a64b58b4f6c9c"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/blazefish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "16d7a283d638ea9172ff93e3fb7e5c7d15420b4e4d1d54588b6449e556d22361"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/blind_sailfin.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "75402e24c29593baf1b43d1c537d12956f91babdcc6a6b8d861f1fbb98987fa7"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/bluegill.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2262edc9709e32c646e874d283b1d18c0b5487216824803ae3905b9adec28d46"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/bonefish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2a85657ae8aacb741e060d5d8a40fb404dcc3431e0a4626cbce42e31ab2a6601"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/boulti.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0d3e2ee4f673fefd419d9f544a6e90b913df6ae8ae55f3f7bdddf87d52dd3116"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/box_turtle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d2169a4f5caae9700de9e0c52c76f764be4f88ca77ec85750874abda4702ee16"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/brown_shrooma.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "45c82302c8ad87102c71c90d4ed5b1a097aca044fcaf7db5d386c48de6ffd627"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/brown_trout.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9697a679cacf8fd51909afe7767924959a771a6252bc8d8caca35049e5408818"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/capitaine.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "38e7c55de1eb6d58680148658163b07b1f6a1efc8eb8d6b651191a2d10b2f58a"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/carp.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ddb8cc43ba30004049994292ae5977984e7c6fb4e8d9c348bc16720f9bfe349e"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/catfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "fd4e73078f8c3e3208b2e428b0d3d8b743eaed5019dd849c7c937aec75450914"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/circus_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "4a3a1437e0800f820a9febd35a7120fc1310363909b587b330da36ab94418c7d"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/cod.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "36d3112fe26e6ecbda069b85741eefb93a9ef4d75d16b2646a0f8ef03776fc2e"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/copperflame_anthius.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "fd885d9bdac0e5a38bbf0593d67feaaf10cc4b1b2f462d4c41f3b2123963940b"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/demon_herring.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2e2bea7ee4306a5fbe2400479db6c6aac4a9ace0cda576c6525f64594da25fab"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/drooping_gourami.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3e0208f4caf2dbc05c817d5938edd716dc70c3b8c8de6bdeee20219c2cf5aef3"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/duality_damselfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3a45ee4d65f801b32c26e6247cf867ac90afcf8d1a9892ba6152d426841d6e17"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/eyeball_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2c269b3efd0594f0aa8c93056958df73adc1a71d45e27a3f583e4d3848e3b35e"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/eyelash_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "5ce97d1544113eb4059097ffd10f356fc252578c2b3fdfa77dac4203f0e7ea80"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/forkfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "297c480d1971634e666e4b129507ad4172d091bc8fe3c1a0c68e462828d8fa29"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/fortress_grouper.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "ba4f31ec9cb356216805aa3442a6b26b5cd5a001a240368807c629e3f105d863"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/frosty_fin.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "71ac6c05c0c5bf01b2173a154056eb6d48b0d2ea653d03a64c747b68a7639cd9"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/gar.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f893e072312f1f0c60e3b0e28940801100ce991bfa5ea047fdc529fc3edc6f63"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/glowdine.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "d2c747a86d84db90c1e7436c0b86ca68a39c4c6c13d1213c8c7ea04f1a5f635d"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/goldfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "aca3ba501fbb12c2bb08b01ca00f40be9069f39e2d40226bd954d046aeb156e1"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/hatchet_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2ad18525b9f6f64cdc026d552558c37a53c32bb546a4190b7cd733b4924ff758"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/jellyfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "495a95ef1454d3ff968bae95f333869b10d95e42247f165d73ee18728b31653a"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/koi.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c1cf26ee96d07258633afe233e22a1d0e80d15497c5139ae060c30c0397df282"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/lava_pufferfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "b5d7f4bbd4871c75a8f86bc26b71866702fc034e1400f5eb0a99a8228c12ab44"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/leech.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3c5325db26aeece8d9ff8f4e6eb652dc4404c9aad3f32b253da7b44323ea24fd"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/magma_cube_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7ce8365998bc9346744d65d2e172202e1bd4fca0fce4b486e329b06ef490c4bd"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/minnow.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "8f3246026842a51346b4d051e65bce0c4758b7b8ebef7d3de59e0f4de238429a"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/muskellunge.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "7a1b39fc47beeead7aa9fb897894457942266d605f77a97300288753a2b327d2"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/obsidianfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3bca2ac9f0646030b00476b710782f7d5e765901be6f90dacf6fab50f9348c77"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/pacific_halibut.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "6076fc5ebc4c76932a1c219fe647b57f31e9b8d2c23b30925c770afd7b994d9c"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/perch.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "aa71e2972572d9e7346e4d8dfac759fa35fb46e6357e8cf98f653391efcd9daf"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/picklefish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "274881ea9a1a4257450d2f0a91f9df4bd77060a9c36616d8295a9dcb03666dc7"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/pink_salmon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "8b4dd9f539f8181952204daa88bf0d984d047466dcb1a50f8de7399bc2c228e3"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/piranha.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "bdd1c15e1f5b4edbd7e483774fb2a2085eb769ca3f703d296cca1df64808851b"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/pollock.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "517be235960b2a33c7d31d0e1811a6e7006655e9c25f14f9ee642a0ece44ea81"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/pufferfish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "478f6bdb9ce7ee2f3d2efadc181ab2aa2741a742c27ef1eb032514a7b0a0438b"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/rainbow_trout.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "c1b16799d27df7c569c4b5e8481f3277f34dff93d8acf17886dc8f3bb7abf257"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/red_grouper.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "f81ad4e16f5a5583aaae58b2d2753c6842e77f737c9851df4d85735b191d65e5"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/red_shrooma.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "0ebd9edf16c8cc8498bdfba18ca65eb46aed06e77d0679a01309df900f2d77e3"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/sailor_barb.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3b050cb7607fc20946146131ee8ce5a1a640f3d0d3edf504b4ee4c56d14b8dc5"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/salmon.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "54cb4630836968dc684c1968c19ee3d1a41a63bbb77a592c522e201aa9d8cdde"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/searing_cod.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "442aa7f9399a949b99657be81d06330f15a75c3812703a16fc68f987936136cb"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/smallmouth_bass.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "650488e5dcdac83db6b9d38ad2609f3a433f6a3e49d78fa616be8174da45c13c"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/sneep_snorp.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "df8c8f5302be903d22e63f8e1c44ed381ce98c825e8c3949dba46145b9686679"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/soul_sucker.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e92081604bad09407a57624f37efb64cdd03b6bae5f7082c1ef06349c0dd0f5e"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/spindle_fish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "29fc0475f403e28f9abc8e680b3c4d068108113f20c66b04d11c4546fbc94163"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/starshell_turtle.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3a06c957ef710a819ba5cbdc41e58bc0f938b7a3ef90e183689215c0cb0a7519"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/synodontis.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "e7583ab8071709b7ed5d61916fa1b7913ce982abf8a38b2e8494bcd02e324d1c"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/tambaqui.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "3bec3716596eeab21df3cb8fbe889e3bd32560313152d25136b5942052ff5d37"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/triple_twirl_pleco.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "a7414687c1987347ce4b6ca330d7a461fbd8057b7a4a6e08cc12de8fda1f8ce6"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/tropical.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "25246e59372d935f2ff57ab8454f981c2184c7ee8facfe92ab6c2e88d5cf8a72"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/tuna.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "2e99742452ddcb08b9dc010e4763dcae32c36e857c8ec738af4115e1ccae735e"
+    },
+    {
+      "path": "patchouli_books/fish_finder/ko_kr/entries/fish/wither_bonefish.json",
+      "description": "원본 모드팩 한국어 안내서",
+      "sha256": "9190cd007221a077a8f934d26a92d402cf747fd5275457ddb6089c97648edb7b"
+    }
+  ]
+}

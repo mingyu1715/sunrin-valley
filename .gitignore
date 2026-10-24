@@ -1,0 +1,12 @@
+node_modules/
+launcher/out/
+release/
+.local-test/
+.work/
+.playwright-mcp/
+client-pack/cache/
+resourcepacks/dist/
+__pycache__/
+*.pyc
+.DS_Store
+*.log

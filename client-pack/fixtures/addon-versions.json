@@ -1,0 +1,181 @@
+[
+  {
+    "game_versions": [
+      "1.20.1"
+    ],
+    "loaders": [
+      "forge"
+    ],
+    "environment": "client_or_server_prefers_both",
+    "id": "S11m0QIb",
+    "project_id": "9eGKb6K1",
+    "author_id": "mqxuCPbU",
+    "featured": false,
+    "name": "Simple Voice Chat 1.20.1-2.6.22",
+    "version_number": "forge-1.20.1-2.6.22",
+    "changelog": "- Fixed some speakers breaking voice chat audio\n- Fixed race condition when quickly disconnecting and reconnecting\n- Fixed voice chat breaking if Minecrafts audio system is not initialized\n- Fixed potential OpenAL resource leaks\n- Fixed incorrect OpenAL version detection\n",
+    "changelog_url": null,
+    "date_published": "2026-08-08T11:44:59.440628Z",
+    "downloads": 291476,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "daGxMQ3c",
+        "hashes": {
+          "sha512": "23c8b3a593fe506af8d8e0edc0afb45349777d5cdea41ffc3fa99afc2e3b9bc7770bb9951f674017ea5b3c23e111b0c6031ebd61820c9a0b5191e3992d9c8798",
+          "sha1": "ad9179e30cb7b3ffb42b3d9b8e2e9408b473d7fa"
+        },
+        "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/S11m0QIb/voicechat-forge-1.20.1-2.6.22.jar",
+        "filename": "voicechat-forge-1.20.1-2.6.22.jar",
+        "primary": true,
+        "size": 4923439,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "9s6osm5g",
+        "file_name": null,
+        "dependency_type": "optional"
+      },
+      {
+        "version_id": null,
+        "project_id": "qyVF9oeo",
+        "file_name": null,
+        "dependency_type": "optional"
+      }
+    ],
+    "source_slug": "simple-voice-chat"
+  },
+  {
+    "game_versions": [
+      "1.20",
+      "1.20.1"
+    ],
+    "loaders": [
+      "forge"
+    ],
+    "environment": "client_only_server_optional",
+    "id": "2f5mEUPY",
+    "project_id": "pZ2wrerK",
+    "author_id": "TpFRtZg9",
+    "featured": false,
+    "name": "2.2.7-b.build.50",
+    "version_number": "2.2.7-b.build.50+1.20.1-forge",
+    "changelog": "+ compatibility config for Freecam mod  \n + fix issue on proxies",
+    "changelog_url": null,
+    "date_published": "2023-07-08T23:49:35.729264Z",
+    "downloads": 848431,
+    "version_type": "beta",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "pmOJVwy9",
+        "hashes": {
+          "sha1": "fcff067375cfe917cbf235218f49ceb58e598a5c",
+          "sha512": "46ac9c5260232edd24f16d1724fe1acd0690f448927ba888add9d3a7a3a24fc6bec91ff171686ef7feb49f8ded40f9c7a53b25559ea8e9c60133dfdafde89e89"
+        },
+        "url": "https://cdn.modrinth.com/data/pZ2wrerK/versions/2f5mEUPY/emotecraft-for-MC1.20.1-2.2.7-b.build.50-forge.jar",
+        "filename": "emotecraft-for-MC1.20.1-2.2.7-b.build.50-forge.jar",
+        "primary": true,
+        "size": 680255,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "gedNE4y2",
+        "file_name": null,
+        "dependency_type": "required"
+      },
+      {
+        "version_id": null,
+        "project_id": "aRnIEV0F",
+        "file_name": null,
+        "dependency_type": "optional"
+      }
+    ],
+    "source_slug": "emotecraft"
+  },
+  {
+    "game_versions": [
+      "1.20.1"
+    ],
+    "loaders": [
+      "forge"
+    ],
+    "environment": "client_and_server",
+    "id": "gAWvw3aR",
+    "project_id": "mqnazM0E",
+    "author_id": "nBinDQak",
+    "featured": true,
+    "name": "3.1.2+forge-1.20.1",
+    "version_number": "3.1.2+forge-1.20.1",
+    "changelog": "- Speakers no longer darken the blocks around them.\n- The Boombox's previous, next, repeat and shuffle buttons have their own textures, so a resource pack can change them separately from the Golden Jukebox.\n- Fixed players who were out of range when a song started hearing nothing after walking closer, when directional audio was off. This also affected the Boombox and the Minecart with Golden Jukebox.\n- Fixed [Let's Do] Furniture Gramophones staying silent with Furniture 1.1.7 and later.\n- Fixed the end of a song being cut off when a hopper swaps the disc in a Golden Jukebox.\n- Fixed the end of a song being cut off for a player whose loading paused partway through, in the Golden Jukebox and the Boombox. That player hears the next song a few seconds after everyone else.\n- Fixed a Golden Jukebox with Speakers stopping its song when shuffle was turned on or off.\n- Fixed discs made from local audio files sometimes failing to load when played from a disc the player carries or has open in a container.\n- The Boombox no longer leaves about 8 seconds of silence between songs.\n- Fixed the \"could not be opened\" message appearing for every song when an Album's discs cannot be played. The same music source now shows it once, until a song actually starts.\n\nUse the same Music Disc Maker version on the server and all clients.\n\n",
+    "changelog_url": null,
+    "date_published": "2026-10-22T08:28:42.755169Z",
+    "downloads": 468,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "78UUtK5P",
+        "hashes": {
+          "sha512": "b9aaeab83ad4457688ea163cd0c476283e3f5a840736a35f85aca708cb32677b319abb0acee5de06b547c2e269b288e84883a70364169e35d3972f10dd50c0ac",
+          "sha1": "0d71d1bdc68257c94f404873b4b7a471ac45bad1"
+        },
+        "url": "https://cdn.modrinth.com/data/mqnazM0E/versions/gAWvw3aR/music_disc_maker-3.1.2%2Bforge-1.20.1.jar",
+        "filename": "music_disc_maker-3.1.2+forge-1.20.1.jar",
+        "primary": true,
+        "size": 35028250,
+        "file_type": null
+      }
+    ],
+    "dependencies": [],
+    "source_slug": "music-disc-maker"
+  },
+  {
+    "game_versions": [
+      "1.20.1"
+    ],
+    "loaders": [
+      "forge"
+    ],
+    "environment": "client_and_server",
+    "id": "aX4Y7ORE",
+    "project_id": "bAwlLfyK",
+    "author_id": "Zfui5cVU",
+    "featured": true,
+    "name": "Beat Lamp 1.2.2 [Forge 1.20.1]",
+    "version_number": "1.2.2-forge-1.20.1",
+    "changelog": "- 1.21.8 Supported\n- 1.20.1 Supported mod Etched (Bro i dont know how to use that mod)",
+    "changelog_url": null,
+    "date_published": "2026-10-10T02:30:45.231596Z",
+    "downloads": 60,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "za37n9oT",
+        "hashes": {
+          "sha1": "85becdb57a12924c00fbdda0ef6cfb59adc8dbab",
+          "sha512": "5fbd4160cb8bf683ae251d565c39397cb03893060730908e01c7712f044b98219f9961254ed3130f170adeac6f56e19e04de15b8a22a71f15f01ee045441cd3b"
+        },
+        "url": "https://cdn.modrinth.com/data/bAwlLfyK/versions/aX4Y7ORE/beatlamp-forge-1.20.1-1.2.2.jar",
+        "filename": "beatlamp-forge-1.20.1-1.2.2.jar",
+        "primary": true,
+        "size": 547786,
+        "file_type": null
+      }
+    ],
+    "dependencies": [],
+    "source_slug": "beat-lamp"
+  }
+]

@@ -1,0 +1,64 @@
+[
+  {
+    "slug": "simple-voice-chat",
+    "filename": "voicechat-forge-1.20.1-2.6.22.jar",
+    "sha256": "727d31c11905be6af05686c619dd62a1ed4e451c47670cf5e9804c1ac8871386",
+    "korean": [
+      "assets/voicechat/lang/ko_kr.json"
+    ],
+    "modMetadata": "modLoader = \"javafml\"\nloaderVersion = \"*\"\nlicense = \"All rights reserved\"\nissueTrackerURL = \"https://github.com/henkelmax/simple-voice-chat/issues\"\n[[mods]]\nmodId = \"voicechat\"\nversion = \"1.20.1-2.6.22\"\ndisplayName = \"Simple Voice Chat\"\nupdateJSONURL = \"https://update.maxhenkel.de/forge/voicechat\"\ndisplayURL = \"https://modrepo.de/minecraft/voicechat/overview\"\nlogoFile = \"icon.png\"\nauthors = \"Max Henkel\"\ndescription = '''A working voice chat in Minecraft!'''\ndisplayTest = \"NONE\"\n[[mods]]\nmodId = \"voicechat_api\"\nversion = \"2.6.20\"\ndisplayName = \"Simple Voice Chat API\"\ndisplayURL = \"https://voicechat.modrepo.de/\"\nlogoFile = \"icon.png\"\nauthors = \"Max Henkel\"\ndescription = '''The Simple Voice Chat API'''\ndisplayTest = \"NONE\"\n[[dependencies.voicechat]]\nmodId = \"forge\"\nmandatory = true\nversionRange = \"[47.0.1,)\"\nordering = \"NONE\"\nside = \"BOTH\"\n[[dependencies.voicechat]]\nmodId = \"minecraft\"\nmandatory = true\nversionRange = \"[1.20,1.20.1]\"\nordering = \"NONE\"\nside = \"BOTH\"\n[[dependencies.voicechat]]\nmodId = \"cloth_config\"\nmandatory = false\nversionRange = \"[11.0.99,)\"\nordering = \"AFTER\"\nside = \"BOTH\"\n",
+    "embeddedJars": [],
+    "integrationClasses": []
+  },
+  {
+    "slug": "emotecraft",
+    "filename": "emotecraft-for-MC1.20.1-2.2.7-b.build.50-forge.jar",
+    "sha256": "ffaac96e37e6fa950080e2eb4aa361aa8b7bd6c4370862f39893ac2d266d7c14",
+    "korean": [
+      "assets/emotecraft/lang/ko_kr.json"
+    ],
+    "modMetadata": "modLoader=\"javafml\" #junkloader\n\nloaderVersion=\"[41.0,)\" #From mixin.\n\nlicense=\"CC-BY-4.0 License\"\n\nissueTrackerURL=\"https://github.com/KosmX/emotes/issues\" #optional\n\n[[mods]] #mandatory\n# The modid of the mod\nmodId=\"emotecraft\"\n\nversion=\"2.2.7-b.build.50\"\n\ndisplayName=\"Emotecraft\"\n\n#displayURL=\"https://kosmx.gitbook.io/emotecraft/\"\n#Forge menu was always trying to open this.\n\nlogoFile=\"emotecraft_mod_logo.png\" #optional\n\nauthors=\"KosmX\" #optional\n\ndescription=\"Play emotes in Minecraft\\nOpen the menu to setup your fast-choose wheel\\n\\nYou can add custom emotes, and you can play these even if nobody else has them\\n\\nSpecial thanks:\\nKale Ko for creating emotes and help in the UI design\\nOrsond for inspiring me and providing CollarMC\\nArchitectury for the Forge build tools\"\n\n[[dependencies.emotecraft]]\nmodId=\"playeranimator\"\nmandatory=true\nversionRange=\"[0.2.0,)\"\nordering=\"NONE\"\nside=\"BOTH\"",
+    "embeddedJars": [],
+    "integrationClasses": []
+  },
+  {
+    "slug": "music-disc-maker",
+    "filename": "music_disc_maker-3.1.2+forge-1.20.1.jar",
+    "sha256": "64bb36f5a4611208e15c6779e1066e1f35b15ee9e9e6c6d978cf72c7dba1c46d",
+    "korean": [
+      "assets/music_disc_maker/lang/ko_kr.json"
+    ],
+    "modMetadata": "modLoader = \"javafml\" #mandatory\nloaderVersion = \"[47,)\" #mandatory This is typically bumped every Minecraft version by Forge. See https://files.minecraftforge.net/ for a list of versions.\nlicense = \"All Rights Reserved\" # Review your options at https://choosealicense.com/.\nissueTrackerURL=\"https://www.curseforge.com/minecraft/mc-mods/music-disc-maker/comments\" #optional\n[[mods]] #mandatory\nmodId = \"music_disc_maker\" #mandatory\nversion = \"3.1.2\" #mandatory\ndisplayName = \"Music Disc Maker\" #mandatory\n#updateJSONURL=\"https://change.me.example.invalid/updates.json\" #optional (see https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/)\ndisplayURL=\"https://www.curseforge.com/minecraft/mc-mods/music-disc-maker\" #optional (displayed in the mod UI)\nlogoFile = \"music_disc_maker.png\" #optional (needs to be in the root of your mod jar (root of your 'resources' folder))\nauthors = \"KURONAMI\" #optional\ndescription = '''Paste a URL into the Music Disc Maker block and turn a Blank Disc into a custom music disc you can play in any vanilla jukebox. Supports YouTube, Spotify, SoundCloud, Bandcamp, Vimeo, Twitch and direct HTTP audio streams (audio is bundled via LavaPlayer, no extra install). Disclaimer: streaming audio from third-party services is the user's responsibility. Please respect the Terms of Service of each service you use.''' #mandatory (Supports multiline text)\n[[dependencies.music_disc_maker]] #optional\nmodId = \"forge\" #mandatory\nmandatory = true #mandatory\nversionRange = \"[47.2.30,)\" #mandatory\nordering = \"NONE\" # The order that this dependency should load in relation to your mod, required to be either 'BEFORE' or 'AFTER' if the dependency is not mandatory\nside = \"BOTH\" # Side this dependency is applied on - 'BOTH', 'CLIENT' or 'SERVER'\n[[dependencies.music_disc_maker]]\nmodId = \"minecraft\"\nmandatory = true\nversionRange = \"[1.20.1, 1.20.2)\"\nordering = \"NONE\"\nside = \"BOTH\"\n",
+    "embeddedJars": [],
+    "integrationClasses": [
+      "com/kuronami/musicdiscmaker/MusicDiscMaker.class",
+      "com/kuronami/musicdiscmaker/MusicDiscMakerForge.class",
+      "com/kuronami/musicdiscmaker/block/MusicDiscMakerBlock.class",
+      "com/kuronami/musicdiscmaker/block/MusicDiscMakerBlockEntity.class",
+      "com/kuronami/musicdiscmaker/client/MusicDiscMakerForgeClient.class",
+      "com/kuronami/musicdiscmaker/client/MusicDiscMakerScreen$IconButton.class",
+      "com/kuronami/musicdiscmaker/client/MusicDiscMakerScreen.class",
+      "com/kuronami/musicdiscmaker/menu/MusicDiscMakerLayout.class",
+      "com/kuronami/musicdiscmaker/menu/MusicDiscMakerMenu$InputSlot.class",
+      "com/kuronami/musicdiscmaker/menu/MusicDiscMakerMenu$OutputSlot.class",
+      "com/kuronami/musicdiscmaker/menu/MusicDiscMakerMenu.class"
+    ]
+  },
+  {
+    "slug": "beat-lamp",
+    "filename": "beatlamp-forge-1.20.1-1.2.2.jar",
+    "sha256": "1d2ec14285fee25db6e86f784c11d54b3e4eae9be4bddb525479e720638fd84f",
+    "korean": [
+      "assets/beatlamp/lang/ko_kr.json"
+    ],
+    "modMetadata": "modLoader=\"javafml\"\r\nloaderVersion=\"[47,)\"\r\nlicense=\"MIT\"\r\nissueTrackerURL=\"https://github.com/HyIsNoob/modMinecraft/issues\"\r\n\r\n[[mods]]\r\nmodId=\"beatlamp\"\r\nversion=\"1.2.2\"\r\ndisplayName=\"Beat Lamp\"\r\nauthors=\"HyIsNoob\"\r\ndescription='''\r\nAudio-reactive concert lighting, stage effects, RGB Laser Projector, Stage Fog Generator, and redstone signals synced to jukebox music in real time.\r\n'''\r\nlogoFile=\"icon.png\"\r\n\r\n[[dependencies.beatlamp]]\r\nmodId=\"forge\"\r\nmandatory=true\r\nversionRange=\"[47.1.0,)\"\r\nordering=\"NONE\"\r\nside=\"BOTH\"\r\n\r\n[[dependencies.beatlamp]]\r\nmodId=\"minecraft\"\r\nmandatory=true\r\nversionRange=\"[1.20.1,1.20.2)\"\r\nordering=\"NONE\"\r\nside=\"BOTH\"\r\n\r\n[[mixins]]\r\nconfig=\"beatlamp.mixins.json\"\r\n\r\n[[mixins]]\r\nconfig=\"beatlamp.client.mixins.json\"\r\n\r\n",
+    "embeddedJars": [],
+    "integrationClasses": [
+      "com/beatlamp/block/StageJukeboxBlockEntity$MusicDiscMakerBridge.class",
+      "com/beatlamp/client/audio/MusicDiscMakerAudioBridge$ActiveDisc.class",
+      "com/beatlamp/client/audio/MusicDiscMakerAudioBridge.class",
+      "com/beatlamp/forge/mixin/musicdiscmaker/MusicDiscMakerDiscMixin.class",
+      "com/beatlamp/forge/mixin/musicdiscmaker/MusicDiscMakerStreamMixin.class"
+    ]
+  }
+]

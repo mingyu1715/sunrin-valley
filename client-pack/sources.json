@@ -1,0 +1,85 @@
+{
+  "upstream": {
+    "repository": "https://github.com/Chakyl/society-sunlit-valley",
+    "commit": "f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b",
+    "version": "4.1.5A"
+  },
+  "base": {
+    "url": "https://edge.forgecdn.net/files/8980/840/Society-Sunlit-Valley-4.1.5A.zip",
+    "sha256": "6902439ba377c139b712cc42132d73498ff1f5ee77d795d141d255098391d7c9",
+    "fileId": 8980840,
+    "filename": "Society-Sunlit-Valley-4.1.5A.zip"
+  },
+  "fixtures": [
+    {
+      "path": "fixtures/pakku.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "1101a3428b38a9ef0f3b9e0724f2f8ad8889a9b1a81692b23cdb6b3c1b101545"
+      },
+      "url": "https://raw.githubusercontent.com/Chakyl/society-sunlit-valley/f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b/pakku.json"
+    },
+    {
+      "path": "fixtures/pakku-lock.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "99f6968089080b174f66845b453f886e09ac0276a1f88e01f60d9092308bbca6"
+      },
+      "url": "https://raw.githubusercontent.com/Chakyl/society-sunlit-valley/f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b/pakku-lock.json"
+    },
+    {
+      "path": "fixtures/curseforge-manifest.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "e41f3e1081a8cfdd1022f63b58d4f4ec1f6bed8840e040aacddfe121d2195340"
+      },
+      "url": null
+    },
+    {
+      "path": "fixtures/addon-versions.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "5386653389476fcbf4e35a1addcd9fb2ad42e75d643e0a3bc2741943d9a587bc"
+      },
+      "url": null
+    },
+    {
+      "path": "fixtures/korean-inventory.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "bac05f8650938f52fbd789c34e726347d84d6bdcfead9151b2d952de6d5bf145"
+      },
+      "url": null
+    }
+  ],
+  "addons": [
+    {
+      "slug": "simple-voice-chat",
+      "projectId": "9eGKb6K1",
+      "versionId": "S11m0QIb",
+      "version": "forge-1.20.1-2.6.22",
+      "metadataUrl": "https://api.modrinth.com/v2/version/S11m0QIb"
+    },
+    {
+      "slug": "emotecraft",
+      "projectId": "pZ2wrerK",
+      "versionId": "2f5mEUPY",
+      "version": "2.2.7-b.build.50+1.20.1-forge",
+      "metadataUrl": "https://api.modrinth.com/v2/version/2f5mEUPY"
+    },
+    {
+      "slug": "music-disc-maker",
+      "projectId": "mqnazM0E",
+      "versionId": "gAWvw3aR",
+      "version": "3.1.2+forge-1.20.1",
+      "metadataUrl": "https://api.modrinth.com/v2/version/gAWvw3aR"
+    },
+    {
+      "slug": "beat-lamp",
+      "projectId": "bAwlLfyK",
+      "versionId": "aX4Y7ORE",
+      "version": "1.2.2-forge-1.20.1",
+      "metadataUrl": "https://api.modrinth.com/v2/version/aX4Y7ORE"
+    }
+  ]
+}

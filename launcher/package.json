@@ -1,0 +1,81 @@
+{
+  "name": "sunrin-valley-launcher",
+  "version": "0.1.0",
+  "description": "선린밸리 전용 설치 및 실행 도우미",
+  "author": "Sunrin Valley",
+  "private": true,
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "package:mac": "electron-builder --mac zip --arm64 --publish never",
+    "package:win": "electron-builder --win portable --x64 --publish never",
+    "verify:install": "tsx scripts/verify-install.ts"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "electron": "45.0.0",
+    "electron-builder": "^26.0.12",
+    "electron-vite": "^5.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.0",
+    "vitest": "^4.0.0"
+  },
+  "build": {
+    "appId": "kr.sunrinvalley.launcher",
+    "productName": "Sunrin Valley",
+    "directories": {
+      "output": "../release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../client-pack/manifest.json",
+        "to": "pack/manifest.json"
+      },
+      {
+        "from": "../client-pack/prism-runtime.json",
+        "to": "pack/prism-runtime.json"
+      },
+      {
+        "from": "../resourcepacks/dist/Sunrin-Custom.zip",
+        "to": "pack/Sunrin-Custom.zip"
+      },
+      {
+        "from": "../kubejs-custom/startup_scripts/sunrin_items.js",
+        "to": "pack/sunrin_items.js"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.games",
+      "identity": null
+    },
+    "win": {
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  }
+}
