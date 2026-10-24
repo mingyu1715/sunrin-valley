@@ -69,6 +69,8 @@ npm run package:win
 
 macOS arm64에서 전체 팩 설치·해시 검사, Java 17 실행, Electron 창·설정 IPC, 로그인 전용 최초 안내, 창 종료 후 엔진 유지와 준비 단계 복원을 검증했습니다. 0.1.2는 원격 파일 검증·오프라인 캐시·리소스 순서·설정 보존을 포함한 자동 테스트 140개와 TypeScript 검사를 통과했습니다. Windows 배포물 생성과 실제 Windows 실행은 구분합니다. **Microsoft 계정 로그인, 게임 월드 진입, 모드 간 게임 내 동작은 실제 플레이어 계정으로 추가 확인해야 합니다.**
 
+[실제 GitHub 발행 실행](https://github.com/mingyu1715/sunrin-valley/actions/runs/40120654286)이 성공했습니다. 공개 채널과 세 배포 파일을 인증 없이 검증하고, 기존 설치에서 Stay True·BSL 두 파일만 새로 내려받아 업데이트했습니다. 팩 순서와 비활성 셰이더·개인 옵션·월드 보존, 오프라인 재사용, macOS 배포 앱의 추천 메모리·12GB 버튼·설정 저장을 확인했습니다.
+
 ## 자료와 출처
 
 - [현재 구성과 제한](docs/project-overview.md)

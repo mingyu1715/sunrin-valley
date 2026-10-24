@@ -26,6 +26,10 @@ async function closeWindow(app) {
     const errors = []
     page.on('pageerror', error => errors.push(error.message))
     await expect.poll(() => page.evaluate(() => window.sunrin.getState().then(state => state.phase)), { timeout: 60000 }).not.toBe('checking')
+    if (process.argv.includes('--default-memory')) {
+      const initial = await page.evaluate(() => window.sunrin.getState())
+      if (!initial.memoryRecommendation || initial.settings.memoryMb !== initial.memoryRecommendation.recommendedMb) throw Error('Fresh installation did not use hardware memory recommendation')
+    }
     if (process.argv.includes('--background')) {
       const state = await page.evaluate(() => window.sunrin.getState())
       if (state.phase !== 'ready') throw Error(`Expected installed fixture, received ${state.phase}`)

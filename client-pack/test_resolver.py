@@ -60,8 +60,8 @@ class ResolverTests(unittest.TestCase):
                   for f in manifest["files"]
                   if f["source"]["provider"] == "curseforge" and not f["source"].get("slug")}
         self.assertEqual(actual, expected)
-        self.assertEqual(len(manifest["files"]), 373)
-        self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 355)
+        self.assertEqual(len(manifest["files"]), len(self.cf["files"]) + len(self.addons) + len(self.visuals))
+        self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 351 + len(self.addons))
         self.assertEqual(len(manifest["localizations"]), 481)
         self.assertEqual(manifest["forge"], "47.4.0")
         player = next(f for f in manifest["files"] if f["source"].get("projectId") == 658587)
@@ -77,9 +77,8 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee"})
         self.assertEqual(stagebox["size"], 1882504)
         self.assertEqual({f["source"]["slug"] for f in manifest["files"] if f["source"].get("slug")},
-                         {"simple-voice-chat", "emotecraft", "music-disc-maker", "stagebox",
-                          "stay-true", "bsl-shaders"})
-        self.assertEqual(manifest["version"], "0.1.2")
+                         {item["slug"] for item in self.sources["addons"] + self.sources["visuals"]})
+        self.assertEqual(manifest["version"], self.sources["packVersion"])
         self.assertEqual(manifest["sources"]["upstream"]["version"], "4.1.5A")
 
     def test_rejects_addon_provider_substitution(self):
@@ -97,8 +96,8 @@ class ResolverTests(unittest.TestCase):
                          {"algorithm": "sha1", "value": "e62cef3d46234f8e2b04d5d01c870a6f41f9ae79"})
         self.assertEqual(entries["shaderpacks/BSL_v10.1.8.zip"]["hash"],
                          {"algorithm": "sha1", "value": "e89818c8827d0131c102fb480c3c3446624db0df"})
-        self.assertEqual(len(entries), 373)
-        self.assertEqual(sum(path.startswith("mods/") for path in entries), 355)
+        self.assertEqual(len(entries), len(self.cf["files"]) + len(self.addons) + len(self.visuals))
+        self.assertEqual(sum(path.startswith("mods/") for path in entries), 351 + len(self.addons))
         for project in self.lock["projects"]:
             for item in project["files"]:
                 expected = next(entry for entry in entries.values()
