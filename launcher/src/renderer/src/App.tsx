@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
-import type { LauncherState, Settings } from '../../shared'
+import type { LauncherState, MemoryRecommendation, Settings } from '../../shared'
 import Valley from './Valley'
 
 const previewState: LauncherState = {
   phase: 'not-installed', message: '우리의 작은 마을에서, 새로운 하루를 시작해요.', progress: null,
-  settings: { dataPath: '', memoryMb: 6144, minecraftPath: '', importOptions: true, shareShaders: true }
+  settings: { dataPath: '', memoryMb: 12288, minecraftPath: '', importOptions: true, shareShaders: false }
 }
 
 function Icon({ name, size = 20 }: { name: 'settings' | 'play' | 'download' | 'close' | 'folder' | 'arrow' | 'leaf'; size?: number }) {
@@ -28,7 +28,7 @@ export default function App() {
   const [notice, setNotice] = useState('')
   const settingsButton = useRef<HTMLButtonElement>(null)
   const working = ['checking', 'installing', 'launching', 'authenticating', 'preparing', 'running'].includes(state.phase)
-  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', repair: '복구', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
+  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', 'launcher-update': '런처 업데이트', repair: '복구', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
   const launchStep = state.phase === 'authenticating' ? 0 : ['preparing', 'launching'].includes(state.phase) ? 1 : state.phase === 'running' ? 2 : -1
 
   useEffect(() => {
@@ -75,17 +75,18 @@ export default function App() {
       </button>
       <div className="status" role="status" aria-live="polite">
         <p className={notice || state.phase === 'error' ? 'status-error' : ''}>{notice || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
+        {state.updateMessage && <p className="update-note">{state.updateMessage}</p>}
         {launchStep >= 0 && <ol className="launch-steps" aria-label="게임 실행 단계">{['로그인 확인', '게임 준비', '게임 실행'].map((label, index) => <li key={label} className={index === launchStep ? 'current' : index < launchStep ? 'complete' : ''} aria-current={index === launchStep ? 'step' : undefined}><span aria-hidden="true" />{label}</li>)}</ol>}
         {state.progress !== null && working && <div className="progress-track" role="progressbar" aria-label="준비 진행률" aria-valuenow={Math.round(state.progress)} aria-valuemin={0} aria-valuemax={100}><div style={{ width: `${Math.max(0, Math.min(100, state.progress))}%` }} /><span>{Math.round(state.progress)}%</span></div>}
       </div>
     </section>
 
-    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.1</span></span></footer>
-    {settingsOpen && <SettingsDialog initial={state.settings} api={api} working={working || pending} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} />}
+    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.2</span></span></footer>
+    {settingsOpen && <SettingsDialog initial={state.settings} advice={state.memoryRecommendation} api={api} working={working || pending || state.phase === 'launcher-update'} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} />}
   </main>
 }
 
-function SettingsDialog({ initial, api, working, allowPrism, onClose, onNotice }: { initial: Settings; api: typeof window.sunrin; working: boolean; allowPrism: boolean; onClose: () => void; onNotice: (value: string) => void }) {
+function SettingsDialog({ initial, advice, api, working, allowPrism, onClose, onNotice }: { initial: Settings; advice?: MemoryRecommendation; api: typeof window.sunrin; working: boolean; allowPrism: boolean; onClose: () => void; onNotice: (value: string) => void }) {
   const [settings, setSettings] = useState(initial)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -127,7 +128,9 @@ function SettingsDialog({ initial, api, working, allowPrism, onClose, onNotice }
           <p className="field-help">게임과 마을 파일을 보관할 폴더예요.</p>
           <div className="slider-heading"><label className="field-label" htmlFor="memory">게임 메모리</label><output htmlFor="memory">{Math.round(settings.memoryMb / 1024 * 2) / 2} <span>GB</span></output></div>
           <input id="memory" className="memory-slider" type="range" min="2" max="16" step="0.5" value={settings.memoryMb / 1024} onChange={(event) => change('memoryMb', Number(event.target.value) * 1024)} disabled={busy || working} />
-          <div className="range-labels"><span>2 GB</span><span>권장 6–8 GB</span><span>16 GB</span></div>
+          <div className="range-labels"><span>2 GB</span><span>최소 8 GB · 권장 12 GB</span><span>16 GB</span></div>
+          <div className="memory-presets">{[{ label: '최소 8 GB', value: 8192 }, { label: '권장 12 GB', value: 12288 }, ...(advice ? [{ label: `이 PC 추천 ${advice.recommendedMb / 1024} GB`, value: advice.recommendedMb }] : [])].map((preset, index) => <button key={index} className={settings.memoryMb === preset.value ? 'selected' : ''} aria-pressed={settings.memoryMb === preset.value} disabled={busy || working} onClick={() => change('memoryMb', preset.value)}>{preset.label}</button>)}</div>
+          {advice && <p className="field-help">시스템 메모리 {Math.round(advice.totalMb / 1024)} GB · {advice.totalMb >= 24576 ? '권장 12 GB로 시작해요.' : advice.totalMb >= 16384 ? '운영체제 여유를 위해 8 GB를 추천해요.' : '최소 8 GB 할당에 여유가 부족해요. 시스템 메모리 16 GB 이상을 추천해요.'}</p>}
         </section>
         <section className="setting-section"><h3>익숙한 환경 그대로</h3><label className="field-label" htmlFor="minecraft-path">기존 마인크래프트 폴더 <span className="optional">선택</span></label><input id="minecraft-path" value={settings.minecraftPath} onChange={(event) => change('minecraftPath', event.target.value)} placeholder="기존 .minecraft 폴더 경로" disabled={busy || working} />
           <label className="checkbox-row"><input type="checkbox" checked={settings.importOptions} onChange={(event) => change('importOptions', event.target.checked)} disabled={busy || working} /><span>기존 키 설정과 게임 옵션 한 번 가져오기</span></label>

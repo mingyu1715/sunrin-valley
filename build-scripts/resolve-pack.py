@@ -50,7 +50,53 @@ def file_entry(path, url, digest, size, source):
             "size": size, "source": source}
 
 
-def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
+def resolve_visual_files(visuals, sources):
+    """Keep non-mod downloads pinned without applying Forge's JAR requirements."""
+    pins = {item["slug"]: item for item in sources["visuals"]}
+    if len(pins) != len(sources["visuals"]) or len(visuals) != len(pins):
+        raise ValueError("Missing or duplicated visual metadata")
+    folders = {"resourcepack": "resourcepacks", "shader": "shaderpacks"}
+    files, seen = [], set()
+    for visual in visuals:
+        slug = visual["source_slug"]
+        pin = pins.get(slug)
+        if not pin or slug in seen:
+            raise ValueError("Visual version identity mismatch: " + slug)
+        seen.add(slug)
+        provider = visual["provider"]
+        identity_key = "fileId" if provider == "curseforge" else "versionId"
+        if (provider not in ("curseforge", "modrinth") or provider != pin["provider"]
+                or visual["id"] != pin[identity_key] or visual["project_id"] != pin["projectId"]
+                or visual["project_type"] != pin["projectType"]
+                or visual["project_type"] not in folders):
+            raise ValueError("Visual version identity mismatch: " + slug)
+        if "1.20.1" not in visual["game_versions"]:
+            raise ValueError("Visual must support Minecraft 1.20.1: " + slug)
+        if visual["project_type"] == "shader" and not {"iris", "optifine"}.intersection(visual.get("loaders", [])):
+            raise ValueError("Shader must support Iris or OptiFine: " + slug)
+        primary = [item for item in visual["files"] if item["primary"]]
+        if len(primary) != 1:
+            raise ValueError("Visual must have one primary artifact: " + slug)
+        item = primary[0]
+        name = filename(item["filename"])
+        if (not name.endswith(".zip") or name != pin["filename"] or item["url"] != pin["downloadUrl"]
+                or item["size"] != pin["size"] or item["hashes"]["sha1"] != pin["sha1"]
+                or not re.fullmatch(r"[0-9a-f]{64}", pin["sha256"])):
+            raise ValueError("Visual artifact pin mismatch: " + slug)
+        if provider == "curseforge":
+            metadata = visual["curseforge_metadata"]
+            if (metadata["id"] != visual["id"] or metadata["projectId"] != visual["project_id"]
+                    or metadata["fileName"] != name or metadata["fileLength"] != item["size"]
+                    or "1.20.1" not in metadata["gameVersions"]):
+                raise ValueError("CurseForge visual metadata mismatch: " + slug)
+        files.append(file_entry(folders[visual["project_type"]] + "/" + name,
+                                item["url"], item["hashes"]["sha1"], item["size"],
+                                {"provider": provider, "projectId": visual["project_id"],
+                                 identity_key: visual["id"], "slug": slug}))
+    return files
+
+
+def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None, visuals=None):
     """Cross-check actual CurseForge identities before resolving any download URL."""
     if cf["minecraft"]["version"] != "1.20.1" or lock["mc_versions"] != ["1.20.1"]:
         raise ValueError("The base pack must target Minecraft 1.20.1")
@@ -130,6 +176,7 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
                                 {"provider": provider, "projectId": addon["project_id"],
                                  identity_key: addon["id"], "slug": slug}))
 
+    files.extend(resolve_visual_files(visuals or [], sources))
     paths = [f["path"].casefold() for f in files]
     if len(set(paths)) != len(paths):
         raise ValueError("Duplicate install path (case-insensitive)")
@@ -139,7 +186,10 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
                      for f in inventory["files"]]
     if archive is not None:
         verify_archive(archive, cf, sources, inventory)
-    return {"formatVersion": 1, "id": "sunrin-valley", "version": "0.1.1",
+    version = sources["packVersion"]
+    if not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        raise ValueError("Invalid content pack version")
+    return {"formatVersion": 1, "id": "sunrin-valley", "version": version,
             "minecraft": "1.20.1", "forge": "47.4.0", "base": sources["base"],
             "files": sorted(files, key=lambda f: f["path"]),
             "localizations": localizations, "sources": sources}
@@ -205,6 +255,36 @@ def verify_cached_addons(addons, cache):
     return report
 
 
+def verify_cached_visuals(visuals, sources, cache):
+    """Verify downloaded bytes and ZIP structure without claiming GPU compatibility."""
+    entries = resolve_visual_files(visuals, sources)
+    pins = {item["slug"]: item for item in sources["visuals"]}
+    report = []
+    for visual, entry in zip(visuals, entries):
+        pin = pins[visual["source_slug"]]
+        path = cache / pin["filename"]
+        content = path.read_bytes()
+        if (len(content) != entry["size"] or hashlib.sha1(content).hexdigest() != pin["sha1"]
+                or hashlib.sha256(content).hexdigest() != pin["sha256"]):
+            raise ValueError("Visual artifact hash or size mismatch: " + path.name)
+        with zipfile.ZipFile(path) as pack:
+            if pack.testzip():
+                raise ValueError("Visual artifact CRC failure: " + path.name)
+            item = {"slug": visual["source_slug"], "filename": path.name,
+                    "size": len(content), "sha1": pin["sha1"], "sha256": pin["sha256"],
+                    "zipCrcValid": True, "entries": len(pack.namelist())}
+            if visual["project_type"] == "resourcepack":
+                item["packFormat"] = json.loads(pack.read("pack.mcmeta"))["pack"]["pack_format"]
+                if item["packFormat"] != 15:
+                    raise ValueError("Resource pack format must support Minecraft 1.20.1")
+            else:
+                item["shaderProperties"] = "shaders/shaders.properties"
+                if item["shaderProperties"] not in pack.namelist():
+                    raise ValueError("Shader properties missing: " + path.name)
+            report.append(item)
+    return report
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--pack-dir", type=Path, default=ROOT / "client-pack")
@@ -212,6 +292,7 @@ def main():
     parser.add_argument("--download-base", action="store_true", help="Download only the pinned base ZIP if absent")
     parser.add_argument("--verify-archive", action="store_true", help="Verify cached base ZIP hash, CRC, manifest, and Korean files")
     parser.add_argument("--verify-addons", action="store_true", help="Verify four already-cached addon JARs")
+    parser.add_argument("--verify-visuals", action="store_true", help="Verify cached resource pack and shader ZIPs")
     args = parser.parse_args()
     pack = args.pack_dir.resolve()
     sources = read_json(pack / "sources.json")
@@ -222,11 +303,12 @@ def main():
     if args.download_base and not archive.exists():
         download_base(sources["base"], archive)
     addons = read_json(pack / "fixtures/addon-versions.json")
+    visuals = read_json(pack / "fixtures/visual-versions.json")
     manifest = resolve_manifest(read_json(pack / "fixtures/curseforge-manifest.json"),
                                 read_json(pack / "fixtures/pakku.json"),
                                 read_json(pack / "fixtures/pakku-lock.json"),
                                 addons, sources, read_json(pack / "fixtures/korean-inventory.json"),
-                                archive if args.verify_archive or args.download_base else None)
+                                archive if args.verify_archive or args.download_base else None, visuals)
     text = json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
     destination = pack / "manifest.json"
     if args.check:
@@ -238,11 +320,17 @@ def main():
         report = verify_cached_addons(addons, pack / "cache")
         (pack / "fixtures/addon-artifact-verification.json").write_text(
             json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if args.verify_visuals:
+        report = verify_cached_visuals(visuals, sources, pack / "cache")
+        if report != read_json(pack / "fixtures/visual-artifact-verification.json"):
+            raise ValueError("Visual verification fixture does not match actual ZIP contents")
     counts = Counter(f["path"].split("/")[0] for f in manifest["files"])
     print(f"Verified {len(manifest['files'])} locked files {dict(counts)}, "
           f"{len(manifest['localizations'])} original Korean inventory entries.")
     if args.verify_archive or args.download_base:
         print("Actual ZIP SHA256, CRC, manifest IDs, and all Korean content hashes passed.")
+    if args.verify_visuals:
+        print("Visual ZIP sizes, SHA1/SHA256, CRC, and resource/shader structure passed.")
 
 
 if __name__ == "__main__":

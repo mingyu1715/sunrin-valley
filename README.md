@@ -4,7 +4,7 @@
 
 ## 친구가 사용하는 순서
 
-1. 운영체제에 맞는 `release/0.1.1/`의 런처를 실행합니다.
+1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/0.1.2/`입니다.
 2. **게임 설치**를 누릅니다. 원본 4.1.5A, 추가 모드, 한국어 설정, 커스텀 리소스, Java 17과 Prism을 준비합니다.
 3. **게임 시작**을 누릅니다. 필요한 경우 Microsoft 계정 추가 안내와 인증 창에서 로그인을 완료합니다.
 4. 선린밸리 버튼은 **준비하는 중**을 표시하고, 그 아래에 로그인 확인·Minecraft/Forge 준비·실행 단계를 보여줍니다. 첫 실행 시 Minecraft·Forge·라이브러리·기본 게임 자산은 Prism이 추가로 내려받습니다.
@@ -16,6 +16,9 @@
 - Society: Sunlit Valley **4.1.5A**, Minecraft **1.20.1**, Forge **47.4.0**
 - Simple Voice Chat **2.6.22**, Emotecraft **2.2.7-b.build.50**, Music Disc Maker **3.1.2**, StageBox **1.3.0**
 - 원본의 한국어 재사용, 초기 `lang:ko_kr`, `Sunrin-Custom.zip` 활성화
+- Stay True 자동 적용. 우선순위는 Sunlit 전용 덮어쓰기 → 선린 커스텀 → 기존 호환 팩 → Stay True → 기본입니다.
+- Complementary Reimagined와 BSL은 선택 가능한 파일로 준비하며 자동으로 켜지 않습니다.
+- 게임 메모리 최소 8GB·권장 12GB. 시스템 24GB 이상은 12GB, 16GB는 8GB를 기본 추천하며 기존 수동 설정은 보존합니다.
 - KubeJS 아이템 `kubejs:geonpi_ticket`, `kubejs:rename_ticket`, `kubejs:sunrin_meal`
 - **선린 급식**: 설명 **학교에서 먹던 그 맛.**, 허기 **4칸(8포인트)**, 포만감 계수 **1.0**
 
@@ -30,7 +33,7 @@
 - 수정한 모드 설정(`config/`)과 월드·스크린샷·사용자가 추가한 파일은 보존합니다.
 - **복구**는 잠긴 파일을 해시로 확인하고 누락·손상을 다시 내려받습니다. 변경 전 관리 파일은 `.minecraft/.sunrin/backups/`에 보관합니다.
 - Prism 또는 게임이 실행 중이면 설치·복구·설정 변경을 거부합니다.
-- 팩 버전은 런처에 포함된 잠금 manifest로 관리합니다. 새 manifest를 포함한 런처를 배포하면 업데이트 상태를 감지합니다. 별도 온라인 업데이트 서버는 아직 연결하지 않았습니다.
+- 런처 0.1.2부터 GitHub의 최신 목록으로 모드·리소스팩·자체 KubeJS를 원격 업데이트합니다. 앱 기능 변경 때만 새 런처를 받습니다. 기존 0.1.1 사용자는 한 번 새 런처로 바꿔야 합니다. [운영자 배포 방법](docs/remote-updates.md)을 참고하세요.
 
 ## 개발
 
@@ -64,7 +67,7 @@ npm run package:win
 
 ## 검증 범위
 
-macOS arm64에서 전체 팩 설치·해시 검사, Java 17 실행, Electron 창·설정 IPC, 로그인 전용 최초 안내, 창 종료 후 엔진 유지와 준비 단계 복원을 검증했습니다. 실제 업데이트는 StageBox 한 파일만 내려받고 기존 Beat Lamp를 제거했으며 사용자 옵션을 보존했습니다. 자동 테스트 49개, TypeScript 검사와 프로덕션 빌드를 통과했습니다. Windows 배포물 생성과 실제 Windows 실행은 구분합니다. **Microsoft 계정 로그인, 게임 월드 진입, 모드 간 게임 내 동작은 실제 플레이어 계정으로 추가 확인해야 합니다.**
+macOS arm64에서 전체 팩 설치·해시 검사, Java 17 실행, Electron 창·설정 IPC, 로그인 전용 최초 안내, 창 종료 후 엔진 유지와 준비 단계 복원을 검증했습니다. 0.1.2는 원격 파일 검증·오프라인 캐시·리소스 순서·설정 보존을 포함한 자동 테스트 140개와 TypeScript 검사를 통과했습니다. Windows 배포물 생성과 실제 Windows 실행은 구분합니다. **Microsoft 계정 로그인, 게임 월드 진입, 모드 간 게임 내 동작은 실제 플레이어 계정으로 추가 확인해야 합니다.**
 
 ## 자료와 출처
 

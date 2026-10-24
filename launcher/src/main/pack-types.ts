@@ -5,7 +5,7 @@ export interface PackManifest {
   base: { url: string; sha256: string; filename: string; fileId: number }
   files: PackFile[]
 }
-export interface BundlePaths { manifest: string; prism: string; customPack: string; startup: string }
+export interface BundlePaths { manifest: string; prism: string; customPack: string; startup: string; overlay?: string }
 export interface RuntimePaths { java: string; prism: string }
 export interface InstallReceipt {
   formatVersion: 1; packVersion: string; fingerprint: string; managed: Record<string, FileHash>; runtime: RuntimePaths

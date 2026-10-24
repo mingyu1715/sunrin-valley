@@ -1,6 +1,7 @@
 import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
 import { spawn, type ChildProcess } from 'node:child_process'
 import { mkdirSync } from 'node:fs'
+import { totalmem } from 'node:os'
 import { appendFile, mkdir } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -9,12 +10,14 @@ import type { BundlePaths, Progress } from './pack-types'
 import { claimDataDirectory } from './files'
 import { SettingsStore } from './settings'
 import { bundleFingerprint, inspectInstall, installClient, loadManifest, readReceipt } from './installer'
-import { gameRoot, writePrismInstance } from './instance'
+import { configureOptions, gameRoot, writePrismInstance } from './instance'
 import { ensurePrism } from './runtime'
 import { assertInstallIdle, phaseForActivity, readProcessActivity } from './processes'
 import { configurePrismForBackground } from './prism-config'
 import { PrismLogTail, PrismProgressDecoder, prismArguments } from './prism-progress'
 import { chooseLaunchIdentity, clearLaunchSession, readLaunchSession, writeLaunchSession, type LaunchStage } from './launch-session'
+import { resolveRemotePack } from './remote-pack'
+import { recommendMemory } from './memory'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -22,6 +25,9 @@ let busy = false
 let prismProcess: ChildProcess | undefined
 let store: SettingsStore
 let paths: BundlePaths
+let bundledPaths: BundlePaths
+let updateSourcePath: string
+let launcherUpdate: { minLauncherVersion: string; downloadUrl: string } | undefined
 let logPath: string
 let monitor: ReturnType<typeof setInterval> | undefined
 let monitorGeneration = 0
@@ -57,6 +63,11 @@ function update(patch: Partial<LauncherState>) {
   if (window && !window.isDestroyed()) window.webContents.send('sunrin:state-changed', state)
 }
 const progress: Progress = (message, value) => update({ message, progress: value })
+async function checkRemotePack() {
+  const result = await resolveRemotePack(store.root, bundledPaths, updateSourcePath, app.getVersion())
+  paths = result.paths; launcherUpdate = result.updateRequired
+  update({ updateMessage: result.message })
+}
 
 function stopMonitoring() { if (monitor) clearInterval(monitor); monitor = undefined; engineLog = undefined; monitorGeneration++ }
 async function connectEngineLog(data: string) {
@@ -109,7 +120,7 @@ function startMonitoring(data: string) {
 async function refresh() {
   const result = await inspectInstall(state.settings, paths)
   let patch: Partial<LauncherState> = { ...result, progress: null }
-  if (result.phase === 'ready') {
+  if (result.phase === 'ready' || result.phase === 'update') {
     try {
       const activity = await readProcessActivity(state.settings.dataPath)
       if (!launchRequested) {
@@ -123,6 +134,7 @@ async function refresh() {
       if (activity.game || activity.prism || activity.java) { await connectEngineLog(state.settings.dataPath); startMonitoring(state.settings.dataPath) }
     } catch { /* Integrity inspection still works when process inspection is unavailable. */ }
   }
+  if (launcherUpdate && patch.phase !== 'running') patch = { ...patch, phase: 'launcher-update', message: `이 구성을 사용하려면 런처 ${launcherUpdate.minLauncherVersion} 이상이 필요합니다. 버튼을 눌러 새 런처를 받아 주세요.` }
   update(patch)
 }
 function ensureIdle() { if (busy) throw new Error('진행 중인 작업을 마친 뒤 다시 시도해 주세요.') }
@@ -139,6 +151,7 @@ async function task(operation: () => Promise<void>) {
 
 async function install() {
   ensurePrismClosed()
+  if (launcherUpdate) { await refresh(); return }
   update({ phase: 'installing', progress: 0, message: '선린밸리 설치를 준비합니다.' })
   await installClient(state.settings, paths, progress)
   await log('Installation verified and receipt written')
@@ -161,6 +174,7 @@ async function prism(launch: boolean) {
     if (!activity.prism && !activity.java) {
       await assertInstallIdle(data)
       await configurePrismForBackground(data, receipt.runtime.java)
+      await configureOptions(gameRoot(data), state.settings.minecraftPath, state.settings.importOptions, Object.keys(receipt.managed))
       await writePrismInstance(directory, manifest.minecraft, manifest.forge, receipt.runtime.java, state.settings.memoryMb)
     }
     launchRequested = true; sawGame = activity.game
@@ -232,21 +246,29 @@ else {
     const root = process.env.SUNRIN_APP_DATA ? resolve(process.env.SUNRIN_APP_DATA) : app.getPath('userData')
     store = new SettingsStore(root); logPath = join(root, 'logs', 'launcher.log')
     const pack = app.isPackaged ? join(process.resourcesPath, 'pack') : resolve(__dirname, '../../..')
-    paths = app.isPackaged ? {
+    bundledPaths = app.isPackaged ? {
       manifest: join(pack, 'manifest.json'), prism: join(pack, 'prism-runtime.json'), customPack: join(pack, 'Sunrin-Custom.zip'), startup: join(pack, 'sunrin_items.js')
     } : {
       manifest: join(pack, 'client-pack/manifest.json'), prism: join(pack, 'client-pack/prism-runtime.json'), customPack: join(pack, 'resourcepacks/dist/Sunrin-Custom.zip'), startup: join(pack, 'kubejs-custom/startup_scripts/sunrin_items.js')
     }
-    state = { phase: 'checking', message: '설치 상태 확인 중', progress: null, settings: await store.load() }
+    paths = bundledPaths
+    updateSourcePath = app.isPackaged ? join(pack, 'update-source.json') : join(pack, 'client-pack/update-source.json')
+    state = { phase: 'checking', message: '최신 게임 구성 확인 중', progress: null, settings: await store.load(), memoryRecommendation: recommendMemory(Math.floor(totalmem() / 1024 ** 2)) }
     handle('sunrin:state', () => state)
-    handle('sunrin:primary', () => task(async () => { const result = await inspectInstall(state.settings, paths); if (result.phase === 'ready') await prism(true); else await install() }))
-    handle('sunrin:repair', () => task(install))
+    handle('sunrin:primary', () => task(async () => {
+      update({ phase: 'checking', message: '최신 게임 구성 확인 중', progress: null })
+      await checkRemotePack()
+      if (launcherUpdate) { await refresh(); await shell.openExternal(launcherUpdate.downloadUrl); return }
+      const result = await inspectInstall(state.settings, paths)
+      if (result.phase === 'ready') await prism(true); else await install()
+    }))
+    handle('sunrin:repair', () => task(async () => { await checkRemotePack(); await install() }))
     handle('sunrin:open-prism', () => task(() => prism(false)))
     handle('sunrin:choose-directory', async () => { const result = await dialog.showOpenDialog(window!, { properties: ['openDirectory', 'createDirectory'] }); return result.canceled ? null : result.filePaths[0] })
     handle('sunrin:save-settings', (settings: Settings) => task(async () => { ensurePrismClosed(); await assertInstallIdle(state.settings.dataPath); await assertInstallIdle(store.validate(settings).dataPath); await store.save(settings); update({ settings: await store.load(), phase: 'checking' }); await refresh() }))
     handle('sunrin:open-logs', async () => { await mkdir(join(root, 'logs'), { recursive: true }); const error = await shell.openPath(join(root, 'logs')); if (error) throw new Error(error) })
     handle('sunrin:open-instance', async () => { await claimDataDirectory(state.settings.dataPath); const path = gameRoot(state.settings.dataPath); await mkdir(path, { recursive: true }); const error = await shell.openPath(path); if (error) throw new Error(error) })
-    createWindow(); await refresh(); await log('Launcher ready')
+    createWindow(); await checkRemotePack(); await refresh(); await log('Launcher ready')
   }).catch(error => { dialog.showErrorBox('선린밸리 시작 오류', `${error.message}\n설정 파일과 설치 경로를 확인해 주세요.`); app.quit() })
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })
   app.on('window-all-closed', () => { if (!busy) app.quit() })

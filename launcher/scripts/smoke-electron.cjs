@@ -110,6 +110,8 @@ async function closeWindow(app) {
     await page.screenshot({ path: resolve(root, '.work/launcher.png') })
     await page.getByRole('button', { name: '설정 열기' }).click()
     await page.getByRole('dialog').waitFor()
+    await page.getByRole('button', { name: '권장 12 GB', exact: true }).click()
+    if (await page.getByLabel('게임 메모리').inputValue() !== '12') throw Error('Recommended memory preset did not apply')
     await page.getByLabel('게임 메모리').fill('8')
     await page.getByRole('button', { name: '저장하고 닫기' }).click()
     await page.getByRole('dialog').waitFor({ state: 'hidden' })

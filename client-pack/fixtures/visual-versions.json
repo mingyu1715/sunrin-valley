@@ -1,0 +1,173 @@
+[
+  {
+    "source_slug": "stay-true",
+    "provider": "curseforge",
+    "project_type": "resourcepack",
+    "id": 4624707,
+    "project_id": 353554,
+    "name": "Stay True 1.20",
+    "version_number": "1.20",
+    "game_versions": [
+      "1.20.1",
+      "1.20"
+    ],
+    "files": [
+      {
+        "filename": "Stay_True_1.20.zip",
+        "url": "https://edge.forgecdn.net/files/4624/707/Stay_True_1.20.zip",
+        "primary": true,
+        "size": 2139266,
+        "hashes": {
+          "sha1": "e62cef3d46234f8e2b04d5d01c870a6f41f9ae79"
+        }
+      }
+    ],
+    "curseforge_metadata": {
+      "id": 4624707,
+      "dateCreated": "2023-07-04T14:58:24.797Z",
+      "dateModified": "2023-07-04T15:00:37.657Z",
+      "displayName": "Stay True 1.20",
+      "fileLength": 2139266,
+      "fileName": "Stay_True_1.20.zip",
+      "status": 4,
+      "projectId": 353554,
+      "gameVersions": [
+        "1.20.1",
+        "1.20"
+      ],
+      "gameVersionTypeIds": [
+        75125,
+        75125
+      ],
+      "releaseType": 1,
+      "totalDownloads": 23001513,
+      "user": {
+        "username": "haimcyfly",
+        "id": 100678101,
+        "twitchAvatarUrl": "https://static-cdn.jtvnw.net/jtv_user_pictures/b0725c23-9aeb-44a2-97ca-6bab50f68b57-profile_image-150x150.png",
+        "displayName": "haimcyfly"
+      },
+      "additionalFilesCount": 0,
+      "hasServerPack": false,
+      "additionalServerPackFilesCount": 0,
+      "isEarlyAccessContent": false,
+      "isCompatibleWithClient": true
+    }
+  },
+  {
+    "game_versions": [
+      "1.7.10",
+      "1.8",
+      "1.8.1",
+      "1.8.2",
+      "1.8.3",
+      "1.8.4",
+      "1.8.5",
+      "1.8.6",
+      "1.8.7",
+      "1.8.8",
+      "1.8.9",
+      "1.9",
+      "1.9.1",
+      "1.9.2",
+      "1.9.3",
+      "1.9.4",
+      "1.10",
+      "1.10.1",
+      "1.10.2",
+      "1.11",
+      "1.11.1",
+      "1.11.2",
+      "1.12",
+      "1.12.1",
+      "1.12.2",
+      "1.13",
+      "1.13.1",
+      "1.13.2",
+      "1.14",
+      "1.14.1",
+      "1.14.2",
+      "1.14.3",
+      "1.14.4",
+      "1.15",
+      "1.15.1",
+      "1.15.2",
+      "1.16",
+      "1.16.1",
+      "1.16.2",
+      "1.16.3",
+      "1.16.4",
+      "1.16.5",
+      "1.17",
+      "1.17.1",
+      "1.18",
+      "1.18.1",
+      "1.18.2",
+      "1.19",
+      "1.19.1",
+      "1.19.2",
+      "1.19.3",
+      "1.19.4",
+      "1.20",
+      "1.20.1",
+      "1.20.2",
+      "1.20.3",
+      "1.20.4",
+      "1.20.5",
+      "1.20.6",
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4",
+      "1.21.5",
+      "1.21.6",
+      "1.21.7",
+      "1.21.8",
+      "1.21.9",
+      "1.21.10",
+      "1.21.11",
+      "26.1",
+      "26.1.1",
+      "26.1.2",
+      "26.2",
+      "26.3"
+    ],
+    "loaders": [
+      "iris",
+      "optifine"
+    ],
+    "environment": "unknown",
+    "id": "Y68yiql9",
+    "project_id": "Q1vvjJYV",
+    "author_id": "a239L3bu",
+    "featured": false,
+    "name": "BSL v10.1.8",
+    "version_number": "10.1.8",
+    "changelog": "",
+    "changelog_url": null,
+    "date_published": "2026-09-21T12:25:21.321877Z",
+    "downloads": 1571810,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "UhitisIf",
+        "hashes": {
+          "sha512": "94a3c25d6820868db624e11347873e6b572e7cd571967d9ac6f4690ca5d37ca302a7645d85eec800e0654541e3825fba14d37b5a25d3996aaf038178552be26f",
+          "sha1": "e89818c8827d0131c102fb480c3c3446624db0df"
+        },
+        "url": "https://cdn.modrinth.com/data/Q1vvjJYV/versions/Y68yiql9/BSL_v10.1.8.zip",
+        "filename": "BSL_v10.1.8.zip",
+        "primary": true,
+        "size": 1134153,
+        "file_type": null
+      }
+    ],
+    "dependencies": [],
+    "source_slug": "bsl-shaders",
+    "provider": "modrinth",
+    "project_type": "shader"
+  }
+]

@@ -1,0 +1,55 @@
+name: Publish game content
+on:
+  workflow_dispatch:
+    inputs:
+      min_launcher_version:
+        description: Minimum launcher version
+        default: 0.1.2
+        required: true
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - client-pack/**
+      - '!client-pack/channel/**'
+      - kubejs-custom/**
+      - resourcepacks/Sunrin-Custom/**
+      - build-scripts/build-resources.py
+      - build-scripts/build-update.py
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: sunrin-pack-publish
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      MIN_LAUNCHER_VERSION: ${{ inputs.min_launcher_version || '0.1.2' }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Build and validate content
+        run: |
+          python3 build-scripts/build-resources.py
+          python3 build-scripts/resolve-pack.py --check
+          python3 -m unittest discover -s client-pack -p 'test_*.py'
+          python3 build-scripts/build-update.py --repo "$GITHUB_REPOSITORY" --min-launcher-version "$MIN_LAUNCHER_VERSION" --output release/pack
+          echo "PACK_VERSION=$(python3 -c 'import json;print(json.load(open("client-pack/manifest.json"))["version"])')" >> "$GITHUB_ENV"
+      - name: Publish immutable release assets
+        run: |
+          printf '%s\n' 'Game content only. Install or update through the Sunrin launcher. Mod files remain hosted by their official publishers.' > release/pack/notes.md
+          gh release create "pack-$PACK_VERSION" release/pack/manifest.json release/pack/prism-runtime.json release/pack/Sunrin-Overlay.zip release/pack/SHA256SUMS.txt --title "Sunrin game content $PACK_VERSION" --notes-file release/pack/notes.md --latest=false --target "$GITHUB_SHA"
+      - name: Update the channel after all assets are published
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --ff-only origin main
+          mkdir -p client-pack/channel
+          cp release/pack/stable.json client-pack/channel/stable.json
+          git add client-pack/channel/stable.json
+          git commit -m "chore: publish game content $PACK_VERSION"
+          git push origin HEAD:main

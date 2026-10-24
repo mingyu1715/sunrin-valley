@@ -5,7 +5,7 @@
 | 영역 | 현재 상태 |
 |---|---|
 | 기반 | 원본 ZIP SHA256·CRC 확인, 공식 고정 소스와 367개 project/file ID 일치 |
-| 설치 목록 | 351개 원본 모드 + 추가 4개 + 리소스팩 15개 + 셰이더 1개 = 371파일 |
+| 설치 목록 | 351개 원본 모드 + 추가 4개 + 리소스팩 16개 + 셰이더 2개 = 373파일. 원본 overrides의 전용 팩/셰이더도 유지 |
 | 한국어 | 원본 한국어 파일 481개 확인, 추가 4개 모드에도 한국어 내장. StageBox 일부 문구는 영어 대체. 새 전체 번역 프로젝트 없음 |
 | 새 아이템 | KubeJS 등록 3종 + 실제 리소스팩 텍스처/모델/이름/급식 설명 |
 | 전용 화면 | Electron·React·TypeScript. 준비하는 중 버튼 아래 로그인·게임 준비·실행 상태, 고급 문제 해결 |
@@ -27,6 +27,8 @@
 운영진 GUI·OP 전환·관리 인벤토리·보상/퀘스트·NPC·서버 월드 초기화는 구현하지 않습니다. 이용권 사용 효과도 아직 연결하지 않았습니다. 다중 접속에 필요한 서버 측 동일 모드·KubeJS 배치는 운영 준비 시 필요합니다.
 
 현재 구조는 `launcher/`, `client-pack/`, `kubejs-custom/`, `resourcepacks/`, `build-scripts/`, `docs/`입니다. 실행 방법과 실제 제한은 루트 README를 기준으로 확인합니다.
+
+0.1.2부터 GitHub 채널에서 파일 목록·자체 KubeJS/리소스를 검증해 원격 업데이트합니다. Stay True를 자동 적용하고 Complementary Reimagined·BSL은 비활성 선택 파일로 준비합니다. 메모리 최소 8GB·권장 12GB를 표시하고 하드웨어에 맞는 기본값을 추천합니다.
 
 선린밸리 팩 0.1.1의 추가 모드는 Simple Voice Chat, Emotecraft, Music Disc Maker, StageBox 1.3.0입니다. Beat Lamp는 제외하며 기존 관리 설치는 업데이트에서 제거합니다. 원본 Sunlit Valley 4.1.5A는 유지합니다.
 

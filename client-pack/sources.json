@@ -50,6 +50,22 @@
         "value": "bac05f8650938f52fbd789c34e726347d84d6bdcfead9151b2d952de6d5bf145"
       },
       "url": null
+    },
+    {
+      "path": "fixtures/visual-versions.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "2768420d28bb3a37e10557c474a356136800676e6fada870fa0f41f2d4a78bf9"
+      },
+      "url": null
+    },
+    {
+      "path": "fixtures/visual-artifact-verification.json",
+      "sourceHash": {
+        "algorithm": "sha256",
+        "value": "a604b39da09a30e0fcca6c77c11ca792788170c820ab422ba00f95391ae21005"
+      },
+      "url": null
     }
   ],
   "addons": [
@@ -81,6 +97,41 @@
       "fileId": 9294217,
       "version": "1.3.0",
       "metadataUrl": "https://www.curseforge.com/api/v1/mods/1591857/files/9294217"
+    }
+  ],
+  "packVersion": "0.1.2",
+  "visuals": [
+    {
+      "slug": "stay-true",
+      "provider": "curseforge",
+      "projectType": "resourcepack",
+      "projectId": 353554,
+      "fileId": 4624707,
+      "version": "1.20",
+      "metadataUrl": "https://www.curseforge.com/api/v1/mods/353554/files/4624707",
+      "projectUrl": "https://www.curseforge.com/minecraft/texture-packs/stay-true",
+      "license": "All Rights Reserved; author permits modpack use in project FAQ",
+      "filename": "Stay_True_1.20.zip",
+      "downloadUrl": "https://edge.forgecdn.net/files/4624/707/Stay_True_1.20.zip",
+      "size": 2139266,
+      "sha1": "e62cef3d46234f8e2b04d5d01c870a6f41f9ae79",
+      "sha256": "508bc459fe7125378e595681c3f571724648ff9f0be6dd21e31a83f7eeb1f8e0"
+    },
+    {
+      "slug": "bsl-shaders",
+      "provider": "modrinth",
+      "projectType": "shader",
+      "projectId": "Q1vvjJYV",
+      "versionId": "Y68yiql9",
+      "version": "10.1.8",
+      "metadataUrl": "https://api.modrinth.com/v2/version/Y68yiql9",
+      "projectUrl": "https://modrinth.com/shader/bsl-shaders",
+      "license": "All Rights Reserved; downloaded directly from publisher CDN",
+      "filename": "BSL_v10.1.8.zip",
+      "downloadUrl": "https://cdn.modrinth.com/data/Q1vvjJYV/versions/Y68yiql9/BSL_v10.1.8.zip",
+      "size": 1134153,
+      "sha1": "e89818c8827d0131c102fb480c3c3446624db0df",
+      "sha256": "36b0a50ff7918bf10e9422c401d93779f9d0088a26acea975b435243f96930b5"
     }
   ]
 }

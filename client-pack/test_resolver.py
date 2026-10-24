@@ -43,11 +43,13 @@ class ResolverTests(unittest.TestCase):
         self.lock = json.loads((PACK / "fixtures/pakku-lock.json").read_text())
         self.addons = json.loads((PACK / "fixtures/addon-versions.json").read_text())
         self.inventory = json.loads((PACK / "fixtures/korean-inventory.json").read_text())
+        self.visuals = json.loads((PACK / "fixtures/visual-versions.json").read_text())
 
     def resolve(self, **changes):
         self.assertTrue(SCRIPT.exists(), "resolver is not implemented")
         inputs = dict(cf=self.cf, pakku=self.pakku, lock=self.lock,
-                      addons=self.addons, sources=self.sources, inventory=self.inventory)
+                      addons=self.addons, sources=self.sources, inventory=self.inventory,
+                      visuals=self.visuals)
         inputs.update(changes)
         return self.resolver.resolve_manifest(**inputs)
 
@@ -58,7 +60,7 @@ class ResolverTests(unittest.TestCase):
                   for f in manifest["files"]
                   if f["source"]["provider"] == "curseforge" and not f["source"].get("slug")}
         self.assertEqual(actual, expected)
-        self.assertEqual(len(manifest["files"]), 371)
+        self.assertEqual(len(manifest["files"]), 373)
         self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 355)
         self.assertEqual(len(manifest["localizations"]), 481)
         self.assertEqual(manifest["forge"], "47.4.0")
@@ -75,8 +77,9 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee"})
         self.assertEqual(stagebox["size"], 1882504)
         self.assertEqual({f["source"]["slug"] for f in manifest["files"] if f["source"].get("slug")},
-                         {"simple-voice-chat", "emotecraft", "music-disc-maker", "stagebox"})
-        self.assertEqual(manifest["version"], "0.1.1")
+                         {"simple-voice-chat", "emotecraft", "music-disc-maker", "stagebox",
+                          "stay-true", "bsl-shaders"})
+        self.assertEqual(manifest["version"], "0.1.2")
         self.assertEqual(manifest["sources"]["upstream"]["version"], "4.1.5A")
 
     def test_rejects_addon_provider_substitution(self):
@@ -84,6 +87,61 @@ class ResolverTests(unittest.TestCase):
         addons[0]["provider"] = "curseforge"
         with self.assertRaisesRegex(ValueError, "Addon provider mismatch"):
             self.resolve(addons=addons)
+
+    def test_visual_files_are_installed_beside_unchanged_base_pins(self):
+        manifest = self.resolve()
+        entries = {item["path"]: item for item in manifest["files"]}
+        self.assertTrue("resourcepacks/Stay_True_1.20.zip" in entries)
+        self.assertTrue("shaderpacks/BSL_v10.1.8.zip" in entries)
+        self.assertEqual(entries["resourcepacks/Stay_True_1.20.zip"]["hash"],
+                         {"algorithm": "sha1", "value": "e62cef3d46234f8e2b04d5d01c870a6f41f9ae79"})
+        self.assertEqual(entries["shaderpacks/BSL_v10.1.8.zip"]["hash"],
+                         {"algorithm": "sha1", "value": "e89818c8827d0131c102fb480c3c3446624db0df"})
+        self.assertEqual(len(entries), 373)
+        self.assertEqual(sum(path.startswith("mods/") for path in entries), 355)
+        for project in self.lock["projects"]:
+            for item in project["files"]:
+                expected = next(entry for entry in entries.values()
+                                if entry["source"].get("projectId") == int(item["parent_id"])
+                                and entry["source"].get("fileId") == int(item["id"]))
+                self.assertEqual(expected["hash"]["value"], item["hashes"]["sha1"])
+                self.assertEqual(expected["size"], item["size"])
+                self.assertEqual(expected["path"].split("/")[-1], item["file_name"])
+
+    def test_content_version_comes_from_source_pin(self):
+        sources = copy.deepcopy(self.sources)
+        sources["packVersion"] = "0.1.9"
+        self.assertEqual(self.resolve(sources=sources)["version"], "0.1.9")
+
+    def test_visual_metadata_cannot_change_pinned_type_identity_or_compatibility(self):
+        for field, value in [("project_type", "mod"), ("id", 1), ("provider", "modrinth"),
+                             ("game_versions", ["1.21"])]:
+            with self.subTest(field=field):
+                visuals = copy.deepcopy(self.visuals)
+                visuals[0][field] = value
+                with self.assertRaises(ValueError):
+                    self.resolve(visuals=visuals)
+
+    def test_visual_metadata_cannot_change_pinned_artifact_or_hash(self):
+        for field, value in [("filename", "../Stay_True.zip"), ("url", "http://example.com/file.zip"),
+                             ("size", 1), ("hashes", {"sha1": "0" * 40})]:
+            with self.subTest(field=field):
+                visuals = copy.deepcopy(self.visuals)
+                visuals[0]["files"][0][field] = value
+                with self.assertRaises(ValueError):
+                    self.resolve(visuals=visuals)
+
+    def test_visual_metadata_must_include_every_pinned_file_once(self):
+        for visuals in [self.visuals[:1], self.visuals + self.visuals[:1]]:
+            with self.assertRaises(ValueError):
+                self.resolve(visuals=visuals)
+
+    def test_visual_verification_rejects_changed_bytes_before_opening_zip(self):
+        with tempfile.TemporaryDirectory() as directory:
+            cache = Path(directory)
+            (cache / "Stay_True_1.20.zip").write_bytes(b"changed bytes")
+            with self.assertRaisesRegex(ValueError, "hash or size mismatch"):
+                self.resolver.verify_cached_visuals(self.visuals, self.sources, cache)
 
     def test_rejects_a_file_id_absent_from_the_upstream_lock(self):
         cf = copy.deepcopy(self.cf)

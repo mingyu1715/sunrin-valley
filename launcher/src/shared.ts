@@ -1,4 +1,4 @@
-export type Phase = 'checking' | 'not-installed' | 'ready' | 'update' | 'repair' | 'installing' | 'launching' | 'authenticating' | 'preparing' | 'running' | 'error'
+export type Phase = 'checking' | 'not-installed' | 'ready' | 'update' | 'launcher-update' | 'repair' | 'installing' | 'launching' | 'authenticating' | 'preparing' | 'running' | 'error'
 export interface Settings {
   dataPath: string
   memoryMb: number
@@ -6,12 +6,15 @@ export interface Settings {
   importOptions: boolean
   shareShaders: boolean
 }
+export interface MemoryRecommendation { totalMb: number; minimumMb: number; preferredMb: number; recommendedMb: number }
 export interface LauncherState {
   phase: Phase
   message: string
   progress: number | null
   installedVersion?: string
   settings: Settings
+  memoryRecommendation?: MemoryRecommendation
+  updateMessage?: string
 }
 export interface SunrinAPI {
   getState(): Promise<LauncherState>

@@ -3,11 +3,12 @@ import { homedir, totalmem } from 'node:os'
 import { isAbsolute, join, resolve, sep } from 'node:path'
 import { readFile } from 'node:fs/promises'
 import { atomicWrite, exists } from './files'
+import { recommendMemory } from './memory'
 export class SettingsStore {
   constructor(readonly root: string) {}
   defaults(): Settings {
     const minecraft = process.platform === 'darwin' ? join(homedir(), 'Library', 'Application Support', 'minecraft') : join(process.env.APPDATA ?? join(homedir(), 'AppData', 'Roaming'), '.minecraft')
-    return { dataPath: join(this.root, 'game'), memoryMb: Math.max(2048, Math.min(8192, Math.floor(totalmem() / 1024 ** 2 / 2 / 512) * 512)), minecraftPath: minecraft, importOptions: true, shareShaders: false }
+    return { dataPath: join(this.root, 'game'), memoryMb: recommendMemory(Math.floor(totalmem() / 1024 ** 2)).recommendedMb, minecraftPath: minecraft, importOptions: true, shareShaders: false }
   }
   validate(value: Settings): Settings {
     if (!value || typeof value !== 'object' || typeof value.dataPath !== 'string' || !isAbsolute(value.dataPath) || /[\r\n\0]/.test(value.dataPath)) throw new Error('설치 위치는 올바른 절대 경로로 설정해 주세요.')

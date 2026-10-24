@@ -64,6 +64,8 @@ describe('isolated Korean instance', () => {
   it('imports options once, preserves preferences and enables the custom pack last', async () => {
     const root = await temp(), game = join(root, 'instance'), original = join(root, 'original')
     await mkdir(original)
+    await mkdir(join(game, 'resourcepacks'), { recursive: true })
+    await writeFile(join(game, 'resourcepacks/Sunrin-Custom.zip'), 'installed custom pack')
     await writeFile(join(original, 'options.txt'), 'lang:en_us\ngamma:0.7\nresourcePacks:["vanilla","file/base.zip"]\n')
     await configureOptions(game, original, true)
     let options = await readFile(join(game, 'options.txt'), 'utf8')
@@ -78,18 +80,23 @@ describe('isolated Korean instance', () => {
     expect(await readFile(join(original, 'options.txt'), 'utf8')).toBe('gamma:1.0')
   })
 
-  it('keeps the base pack default resource order when options are not imported', async () => {
+  it('enables the installed Sunlit Valley pack above the custom pack when options are not imported', async () => {
     const root = await temp(), game = join(root, 'instance')
     await mkdir(join(game, 'configureddefaults'), { recursive: true })
+    await mkdir(join(game, 'resourcepacks'), { recursive: true })
+    await writeFile(join(game, 'resourcepacks/sunlit_overrides.zip'), 'installed Sunlit Valley pack')
+    await writeFile(join(game, 'resourcepacks/Sunrin-Custom.zip'), 'installed custom pack')
     await writeFile(join(game, 'configureddefaults/options.txt'), 'lang:en_us\nresourcePacks:["vanilla","file/sunlit_overrides.zip"]\n')
     await configureOptions(game, join(root, 'missing'), false)
-    expect(await readFile(join(game, 'options.txt'), 'utf8')).toContain('resourcePacks:["vanilla","file/sunlit_overrides.zip","file/Sunrin-Custom.zip"]')
+    expect(await readFile(join(game, 'options.txt'), 'utf8')).toContain('resourcePacks:["vanilla","file/Sunrin-Custom.zip","file/sunlit_overrides.zip"]')
     expect(await readFile(join(game, 'configureddefaults/options.txt'), 'utf8')).toContain('lang:ko_kr')
   })
 
   it('merges required base packs into imported options and corrects the upstream filename', async () => {
     const root = await temp(), game = join(root, 'instance'), original = join(root, 'original')
     await mkdir(join(game, 'configureddefaults'), { recursive: true }); await mkdir(original)
+    await mkdir(join(game, 'resourcepacks'), { recursive: true })
+    await writeFile(join(game, 'resourcepacks/CreateSophBackpacks.zip'), 'installed compatibility pack')
     await writeFile(join(game, 'configureddefaults/options.txt'), 'resourcePacks:["file/CreateSophisticatedBackpacks.zip"]\n')
     await writeFile(join(original, 'options.txt'), 'resourcePacks:["vanilla","file/user.zip"]\ngamma:0.3\n')
     await configureOptions(game, original, true)

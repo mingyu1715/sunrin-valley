@@ -6,9 +6,9 @@
 |---|---|
 | 기반 | Society: Sunlit Valley 4.1.5A / Minecraft 1.20.1 / Forge 47.4.0 |
 | 원본 | 모드 351개, 리소스팩 15개, 셰이더 1개 + ZIP overrides |
-| 추가 | 아래 Forge 모드 4개 |
+| 추가 | 아래 Forge 모드 4개 + Stay True 리소스팩 + BSL 셰이더 |
 | 커스텀 | 원본 KubeJS에서 아이템 3종 추가 + Sunrin-Custom.zip |
-| 합계 | 다운로드 파일 371개. 원본 overrides와 자체 파일은 별도 |
+| 합계 | 다운로드 파일 373개. 원본 overrides와 자체 파일은 별도 |
 
 | 추가 모드 | 고정 버전 | 설치 대상 |
 |---|---|---|
@@ -20,6 +20,10 @@
 추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. StageBox는 현재 Forge 47.4.0과 Java 17을 지원하며 별도 필수 라이브러리가 없습니다. 한국어 316개 키를 내장하지만 영어에만 있는 147개 문구는 영어로 표시될 수 있습니다. 자체 `.ogg` 음악 재생 방식을 쓰며 Music Disc Maker 연동과 게임 안의 소리·조명은 아직 검증하지 않았습니다.
 
 선린밸리 팩 0.1.1에서 Beat Lamp를 StageBox로 교체했습니다. 기존 영수증으로 관리되는 Beat Lamp 파일은 업데이트에서 정리하고, 원본 351개 모드와 나머지 추가 모드 3개는 유지합니다.
+
+콘텐츠 팩 0.1.2에는 [Stay True 1.20](https://www.curseforge.com/minecraft/texture-packs/stay-true/files/4624707)의 `Stay_True_1.20.zip`과 [BSL 10.1.8](https://modrinth.com/shader/bsl-shaders/version/Y68yiql9)의 `BSL_v10.1.8.zip`을 추가했습니다. 두 파일의 Minecraft 1.20.1 배포 메타데이터와 실제 ZIP 해시·크기·CRC를 검증했습니다. 원본 Complementary Reimagined r5.6.1 일반판과 Clrwl 변형은 그대로 사용하며 셰이더는 자동으로 활성화하지 않습니다. 파일은 공식 배포자의 CDN에서 직접 설치합니다.
+
+리소스팩은 높은 우선순위부터 Sunlit overrides → Sunrin-Custom → 원본/사용자 호환 팩 → Stay True → 바닐라 순으로 적용합니다. Stay True의 OptiFine 전용 부가 효과와 각 셰이더의 실제 GPU 렌더링은 아직 검증하지 않았습니다. 상세 출처·검증 범위는 `client-pack/localization.md`에 기록했습니다.
 
 WATUT/CoroUtil·Simple Hats·Zetter·Immersive Paintings·Exposure·Etched·FTB Quests/Chunks·KubeJS·LootJS·Create: Numismatics·Chunky·spark는 원본 lock에 포함되어 있어 그대로 사용합니다. 전체 파일과 정확한 버전은 manifest를 봅니다.
 

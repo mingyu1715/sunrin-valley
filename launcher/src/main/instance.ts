@@ -1,6 +1,6 @@
 import { mkdir, readFile, readdir, symlink } from 'node:fs/promises'
 import { join } from 'node:path'
-import { atomicWrite, exists } from './files'
+import { assertNoSymlinks, atomicWrite, exists } from './files'
 
 export const INSTANCE_ID = 'SunrinValley'
 export const instanceRoot = (dataPath: string) => join(dataPath, 'prism-data', 'instances', INSTANCE_ID)
@@ -8,37 +8,90 @@ export const gameRoot = (dataPath: string) => join(instanceRoot(dataPath), '.min
 
 async function textOrEmpty(path: string) { return await exists(path) ? readFile(path, 'utf8') : '' }
 
-function koreanOptions(text: string, defaults: string): string {
+function optionLines(text: string): Map<string, string> {
   const lines = new Map<string, string>()
   for (const line of text.split(/\r?\n/)) {
     const colon = line.indexOf(':')
     if (colon > 0) lines.set(line.slice(0, colon), line.slice(colon + 1))
   }
-  lines.set('lang', 'ko_kr')
-  const parsePacks = (value: string | undefined): string[] => {
-    try { const packs = JSON.parse(value ?? '[]'); return Array.isArray(packs) ? packs.filter(p => typeof p === 'string') : [] }
-    catch { return [] }
-  }
-  const packs = [...parsePacks(defaults.match(/^resourcePacks:(.*)$/m)?.[1]), ...parsePacks(lines.get('resourcePacks'))]
-    .map(p => p === 'file/CreateSophisticatedBackpacks.zip' ? 'file/CreateSophBackpacks.zip' : p)
-    .filter(p => p !== 'vanilla' && p !== 'file/Sunrin-Custom.zip')
-  lines.set('resourcePacks', JSON.stringify(['vanilla', ...new Set(packs), 'file/Sunrin-Custom.zip']))
+  return lines
+}
+
+const packList = (value: unknown): string[] => Array.isArray(value) ? value.filter((pack): pack is string => typeof pack === 'string') : []
+const packAlias = (pack: string): string => pack === 'file/CreateSophisticatedBackpacks.zip' ? 'file/CreateSophBackpacks.zip' : pack
+const stayTrue = 'file/Stay_True_1.20.zip', customPack = 'file/Sunrin-Custom.zip', sunlitPack = 'file/sunlit_overrides.zip'
+const priorityPacks = [stayTrue, customPack, sunlitPack]
+
+function selectedPacks(text: string): string[] {
+  try { return packList(JSON.parse(optionLines(text).get('resourcePacks') ?? '[]')).map(packAlias) }
+  catch { return [] }
+}
+
+function resourceOrder(packs: string[]): string[] {
+  const unique = new Set(packs.map(packAlias))
+  // Minecraft stores selected packs from lowest priority to highest priority.
+  return ['vanilla', ...(unique.has(stayTrue) ? [stayTrue] : []), ...[...unique].filter(pack => pack !== 'vanilla' && !priorityPacks.includes(pack)), ...(unique.has(customPack) ? [customPack] : []), ...(unique.has(sunlitPack) ? [sunlitPack] : [])]
+}
+
+function configuredOptions(text: string, packs: string[], korean: boolean): string {
+  const lines = optionLines(text)
+  if (korean) lines.set('lang', 'ko_kr')
+  lines.set('resourcePacks', JSON.stringify(packs))
   return [...lines].map(([key, value]) => `${key}:${value}`).join('\n') + '\n'
 }
 
-export async function configureOptions(game: string, original: string, importOptions: boolean): Promise<void> {
+async function jsonOrUndefined(path: string): Promise<any> {
+  try { return JSON.parse(await textOrEmpty(path)) }
+  catch { return undefined }
+}
+
+export async function configureOptions(game: string, original: string, importOptions: boolean, managedPacks?: readonly string[]): Promise<void> {
   const marker = join(game, '.sunrin', 'options-initialized.json')
   const optionsPath = join(game, 'options.txt')
   const defaultsPath = join(game, 'configureddefaults', 'options.txt')
+  const overridePath = join(game, 'config', 'resourcepackoverrides.json')
+  const receiptPath = join(game, '.sunrin', 'receipt.json')
+  const packDirectory = join(game, 'resourcepacks')
+  for (const path of [marker, optionsPath, defaultsPath, overridePath, receiptPath, packDirectory]) await assertNoSymlinks(game, path)
   const defaults = await textOrEmpty(defaultsPath)
-  if (defaults) await atomicWrite(defaultsPath, koreanOptions(defaults, defaults))
-  if (await exists(marker) && await exists(optionsPath)) {
-    try { if (JSON.parse(await readFile(marker, 'utf8')).optionsSchema === 1) return } catch { /* migrate from current options */ }
-  }
+  const config = await jsonOrUndefined(overridePath)
+  const overrides = config?.schema_version === 2 && config.pack_overrides && typeof config.pack_overrides === 'object' && !Array.isArray(config.pack_overrides) ? config.pack_overrides : undefined
+  const defaultsPacks = selectedPacks(defaults)
+  const groupPacks = packList(overrides?.['1']).map(packAlias)
+  const receipt = await jsonOrUndefined(receiptPath)
+  const managedIds = (paths: readonly string[]) => paths
+    .filter(path => /^resourcepacks\/[^/]+\.zip$/.test(path))
+    .map(path => `file/${path.slice('resourcepacks/'.length)}`).map(packAlias)
+  const previous = managedIds(Object.keys(receipt?.managed ?? {}))
+  const managed = managedPacks === undefined ? previous : managedIds(managedPacks)
+  const retired = new Set(managedPacks === undefined ? [] : previous.filter(pack => !managed.includes(pack)))
+  const known = new Set([...defaultsPacks, ...groupPacks, ...managed, ...previous, ...priorityPacks])
+  const installed = new Set(await exists(packDirectory)
+    ? (await readdir(packDirectory, { withFileTypes: true })).filter(entry => entry.isFile()).map(entry => `file/${entry.name}`)
+    : [])
+  const enabled = resourceOrder([
+    ...packList(config?.default_packs).map(packAlias).filter(pack => known.has(pack)),
+    ...defaultsPacks, ...groupPacks, ...managed, ...priorityPacks
+  ].filter(pack => !retired.has(pack) && (!pack.startsWith('file/') || installed.has(pack))))
+  const enabledSet = new Set(enabled)
   let text = await textOrEmpty(optionsPath)
   if (!text && importOptions) text = await textOrEmpty(join(original, 'options.txt'))
-  await atomicWrite(optionsPath, koreanOptions(text || defaults, defaults))
-  await atomicWrite(marker, JSON.stringify({ optionsSchema: 1, importedFrom: importOptions ? original : null, initializedAt: new Date().toISOString() }))
+  const selected = resourceOrder([...enabled, ...selectedPacks(text).filter(pack => !known.has(pack) || enabledSet.has(pack))])
+  const initialized = (await jsonOrUndefined(marker))?.optionsSchema === 1
+  const updatedOptions = configuredOptions(text || defaults, selected, !initialized)
+  if (updatedOptions !== await textOrEmpty(optionsPath)) await atomicWrite(optionsPath, updatedOptions)
+  if (defaults) {
+    const updatedDefaults = configuredOptions(defaults, enabled, true)
+    if (updatedDefaults !== defaults) await atomicWrite(defaultsPath, updatedDefaults)
+  }
+  if (config?.schema_version === 2) {
+    config.default_packs = selected
+    // Keep custom groups and their settings; group 1 is the base pack's required selection.
+    if (Array.isArray(overrides?.['1'])) overrides['1'] = enabled.filter(pack => pack !== 'vanilla')
+    const updatedConfig = JSON.stringify(config, null, 2) + '\n'
+    if (updatedConfig !== await textOrEmpty(overridePath)) await atomicWrite(overridePath, updatedConfig)
+  }
+  if (!initialized) await atomicWrite(marker, JSON.stringify({ optionsSchema: 1, importedFrom: importOptions ? original : null, initializedAt: new Date().toISOString() }))
 }
 
 export async function writePrismInstance(root: string, minecraft: string, forge: string, javaPath: string, memoryMb: number): Promise<void> {

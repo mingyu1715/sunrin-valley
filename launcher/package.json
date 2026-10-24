@@ -1,6 +1,6 @@
 {
   "name": "sunrin-valley-launcher",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "선린밸리 전용 설치 및 실행 도우미",
   "author": "Sunrin Valley",
   "private": true,
@@ -38,7 +38,7 @@
     "appId": "kr.sunrinvalley.launcher",
     "productName": "Sunrin Valley",
     "directories": {
-      "output": "../release/0.1.1"
+      "output": "../release/0.1.2"
     },
     "files": [
       "out/**/*",
@@ -60,6 +60,10 @@
       {
         "from": "../kubejs-custom/startup_scripts/sunrin_items.js",
         "to": "pack/sunrin_items.js"
+      },
+      {
+        "from": "../client-pack/update-source.json",
+        "to": "pack/update-source.json"
       }
     ],
     "mac": {
