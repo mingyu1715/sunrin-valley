@@ -1,8 +1,10 @@
 {
   "name": "sunrin-valley",
   "private": true,
-  "version": "0.1.0",
-  "workspaces": ["launcher"],
+  "version": "0.1.1",
+  "workspaces": [
+    "launcher"
+  ],
   "scripts": {
     "dev": "npm --workspace launcher run dev",
     "build": "python3 build-scripts/build-resources.py && npm --workspace launcher run build",

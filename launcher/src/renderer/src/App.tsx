@@ -27,8 +27,9 @@ export default function App() {
   const [pending, setPending] = useState(false)
   const [notice, setNotice] = useState('')
   const settingsButton = useRef<HTMLButtonElement>(null)
-  const working = ['checking', 'installing', 'launching'].includes(state.phase)
-  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', repair: '복구', installing: '마을을 준비하는 중', launching: '게임을 여는 중', error: '복구' }[state.phase]
+  const working = ['checking', 'installing', 'launching', 'authenticating', 'preparing', 'running'].includes(state.phase)
+  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', repair: '복구', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
+  const launchStep = state.phase === 'authenticating' ? 0 : ['preparing', 'launching'].includes(state.phase) ? 1 : state.phase === 'running' ? 2 : -1
 
   useEffect(() => {
     if (!api) return
@@ -68,22 +69,23 @@ export default function App() {
     <section className="action-area" aria-label="설치 및 게임 실행">
       <div className="action-caption"><span className="tiny-spark" aria-hidden="true">✦</span>{state.phase === 'ready' ? '어서 와요. 마을이 기다리고 있어요.' : '작은 모험의 시작, 여기에서.'}</div>
       <button className={`primary-action ${working || pending ? 'busy' : ''}`} disabled={!api || working || pending} onClick={primaryAction}>
-        {working || pending ? <span className="spinner" /> : <Icon name={state.phase === 'ready' ? 'play' : 'download'} size={22} />}
+        {(working || pending) && state.phase !== 'running' ? <span className="spinner" /> : <Icon name={state.phase === 'ready' || state.phase === 'running' ? 'play' : 'download'} size={22} />}
         <span>{actionLabel}</span>
         {!working && !pending && <span className="button-arrow"><Icon name="arrow" size={19} /></span>}
       </button>
       <div className="status" role="status" aria-live="polite">
         <p className={notice || state.phase === 'error' ? 'status-error' : ''}>{notice || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
+        {launchStep >= 0 && <ol className="launch-steps" aria-label="게임 실행 단계">{['로그인 확인', '게임 준비', '게임 실행'].map((label, index) => <li key={label} className={index === launchStep ? 'current' : index < launchStep ? 'complete' : ''} aria-current={index === launchStep ? 'step' : undefined}><span aria-hidden="true" />{label}</li>)}</ol>}
         {state.progress !== null && working && <div className="progress-track" role="progressbar" aria-label="준비 진행률" aria-valuenow={Math.round(state.progress)} aria-valuemin={0} aria-valuemax={100}><div style={{ width: `${Math.max(0, Math.min(100, state.progress))}%` }} /><span>{Math.round(state.progress)}%</span></div>}
       </div>
     </section>
 
-    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.0</span></span></footer>
-    {settingsOpen && <SettingsDialog initial={state.settings} api={api} working={working || pending} onClose={closeSettings} onNotice={setNotice} />}
+    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.1</span></span></footer>
+    {settingsOpen && <SettingsDialog initial={state.settings} api={api} working={working || pending} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} />}
   </main>
 }
 
-function SettingsDialog({ initial, api, working, onClose, onNotice }: { initial: Settings; api: typeof window.sunrin; working: boolean; onClose: () => void; onNotice: (value: string) => void }) {
+function SettingsDialog({ initial, api, working, allowPrism, onClose, onNotice }: { initial: Settings; api: typeof window.sunrin; working: boolean; allowPrism: boolean; onClose: () => void; onNotice: (value: string) => void }) {
   const [settings, setSettings] = useState(initial)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -96,7 +98,7 @@ function SettingsDialog({ initial, api, working, onClose, onNotice }: { initial:
     const keydown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') { event.preventDefault(); onClose() }
       if (event.key !== 'Tab') return
-      const items = dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), [tabindex="0"]')
+      const items = dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), summary, [tabindex="0"]')
       if (!items?.length) return
       const first = items[0], last = items[items.length - 1]
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
@@ -131,8 +133,8 @@ function SettingsDialog({ initial, api, working, onClose, onNotice }: { initial:
           <label className="checkbox-row"><input type="checkbox" checked={settings.importOptions} onChange={(event) => change('importOptions', event.target.checked)} disabled={busy || working} /><span>기존 키 설정과 게임 옵션 한 번 가져오기</span></label>
           <label className="checkbox-row"><input type="checkbox" checked={settings.shareShaders} onChange={(event) => change('shareShaders', event.target.checked)} disabled={busy || working} /><span>기존 셰이더 팩 함께 사용하기</span></label>
         </section>
-        <section className="account-row"><div><h3>마인크래프트 계정</h3><p>Prism에서 Microsoft 계정으로 로그인해요.</p></div><button className="secondary-button" disabled={!api || busy || working} onClick={() => void perform(api ? () => api.openPrism() : undefined)}>Prism에서 로그인<Icon name="arrow" size={15} /></button></section>
-        <div className="utility-row"><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openLogs() : undefined)}>로그 보기</button><span>·</span><button disabled={!api || busy || working} onClick={() => void perform(api ? () => api.repair() : undefined, '설치 파일을 확인하고 있어요.')}>설치 복구</button><span>·</span><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openInstance() : undefined)}>인스턴스 폴더</button></div>
+        <section className="account-row"><div><h3>마인크래프트 계정</h3><p>게임 시작을 누르면 필요할 때 Microsoft 로그인 창이 열려요.</p></div></section>
+        <details className="troubleshooting"><summary>문제 해결</summary><div className="troubleshooting-content"><p>로그인이나 실행에 필요한 인증·오류 창은 표시될 수 있어요.</p><button className="secondary-button" disabled={!api || busy || !allowPrism} onClick={() => void perform(api ? () => api.openPrism() : undefined)}>Prism 직접 열기<Icon name="arrow" size={15} /></button><div className="utility-row"><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openLogs() : undefined)}>로그 보기</button><span>·</span><button disabled={!api || busy || working} onClick={() => void perform(api ? () => api.repair() : undefined, '설치 파일을 확인하고 있어요.')}>설치 복구</button><span>·</span><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openInstance() : undefined)}>인스턴스 폴더</button></div></div></details>
         {error && <p className="dialog-error" role="alert">{error}</p>}
         {!api && <p className="preview-note">화면 미리보기 · 설정 저장은 데스크톱 앱에서</p>}
       </div>

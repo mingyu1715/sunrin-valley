@@ -6,9 +6,20 @@ import { createHash } from 'node:crypto'
 import AdmZip from 'adm-zip'
 import { claimDataDirectory, assertNoSymlinks } from '../src/main/files'
 import { ensurePrism } from '../src/main/runtime'
-import { commandUsesData } from '../src/main/processes'
+import { commandUsesData, activityFromCommands, phaseForActivity } from '../src/main/processes'
 import { symlink } from 'node:fs/promises'
 const dirs: string[] = []
+it('keeps an idle account window from trapping the launcher in preparation after a restart', () => {
+  expect(phaseForActivity({ prism: true, java: false, game: false }, false)).toBeUndefined()
+  expect(phaseForActivity({ prism: true, java: false, game: false }, true)).toBe('preparing')
+  expect(phaseForActivity({ prism: true, java: true, game: true }, false)).toBe('running')
+})
+it('distinguishes Forge preparation from the actual Minecraft process', () => {
+  expect(activityFromCommands(['/game/runtime/java17/bin/java -jar forge-installer.jar'], '/game')).toEqual({ prism: false, java: true, game: false })
+  expect(activityFromCommands(['/game/runtime/java17/bin/java cpw.mods.bootstraplauncher.BootstrapLauncher --launchTarget forgeclient'], '/game')).toEqual({ prism: false, java: true, game: true })
+  expect(activityFromCommands(['/other/runtime/java17/bin/java cpw.mods.bootstraplauncher.BootstrapLauncher'], '/game')).toEqual({ prism: false, java: false, game: false })
+  expect(activityFromCommands(['/game/runtime/java17/bin/java -cp /game/prism-data/jars/NewLaunch.jar org.prismlauncher.EntryPoint'], '/game')).toEqual({ prism: false, java: true, game: true })
+})
 afterEach(async () => { await Promise.all(dirs.splice(0).map(d => rm(d, { recursive: true, force: true }))) })
 it('detects an existing Prism or Java process for this data root after the launcher restarts', () => {
   expect(commandUsesData('"C:\\Sunrin Valley\\runtime\\Prism-11.1.1\\prismlauncher.exe" -d "C:\\Sunrin Valley\\prism-data"', 'C:\\Sunrin Valley')).toBe(true)

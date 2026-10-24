@@ -45,4 +45,14 @@ it('installs the real overlay, detects damage and repairs while preserving playe
   expect(await readFile(join(game, 'config/user-config.toml'), 'utf8')).toBe('volume=0.2')
   await writeFile(paths.startup, 'updated items')
   expect((await inspectInstall(settings, paths)).phase).toBe('update')
+  // A release can replace a managed mod without removing player-added files.
+  await writeFile(join(game, 'mods/player-extra.jar'), 'player addition')
+  manifest.version = '0.1.1'; manifest.files[0].path = 'mods/replacement.jar'
+  await writeFile(paths.manifest, JSON.stringify(manifest))
+  await installClient(settings, paths, () => {}, dependencies)
+  await expect(readFile(join(game, 'mods/test.jar'))).rejects.toMatchObject({ code: 'ENOENT' })
+  expect(await readFile(join(game, 'mods/replacement.jar'), 'utf8')).toBe('the mod jar')
+  expect(await readFile(join(game, 'mods/player-extra.jar'), 'utf8')).toBe('player addition')
+  expect(await readFile(join(game, 'saves/my-world/level.dat'), 'utf8')).toBe('player world')
+  expect((await inspectInstall(settings, paths)).phase).toBe('ready')
 })

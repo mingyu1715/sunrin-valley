@@ -1,16 +1,20 @@
 import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
 import { spawn, type ChildProcess } from 'node:child_process'
-import { appendFile, mkdir, readFile } from 'node:fs/promises'
+import { mkdirSync } from 'node:fs'
+import { appendFile, mkdir } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import type { LauncherState, Settings } from '../shared'
 import type { BundlePaths, Progress } from './pack-types'
-import { atomicWrite, claimDataDirectory, exists } from './files'
+import { claimDataDirectory } from './files'
 import { SettingsStore } from './settings'
 import { bundleFingerprint, inspectInstall, installClient, loadManifest, readReceipt } from './installer'
 import { gameRoot, writePrismInstance } from './instance'
 import { ensurePrism } from './runtime'
-import { assertInstallIdle } from './processes'
+import { assertInstallIdle, phaseForActivity, readProcessActivity } from './processes'
+import { configurePrismForBackground } from './prism-config'
+import { PrismLogTail, PrismProgressDecoder, prismArguments } from './prism-progress'
+import { chooseLaunchIdentity, clearLaunchSession, readLaunchSession, writeLaunchSession, type LaunchStage } from './launch-session'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -19,6 +23,29 @@ let prismProcess: ChildProcess | undefined
 let store: SettingsStore
 let paths: BundlePaths
 let logPath: string
+let monitor: ReturnType<typeof setInterval> | undefined
+let monitorGeneration = 0
+let launchRequested = false
+let sawGame = false
+let engineLog: PrismLogTail | undefined
+let launchIdentity: string | undefined
+let launchPid: number | undefined
+let persistedStage: LaunchStage | undefined
+let persistedKey: string | undefined
+let sessionWrites = Promise.resolve()
+let pendingSessionWrites = 0
+
+function persistLaunchStage(stage: LaunchStage): Promise<void> {
+  if (!launchRequested || !launchIdentity) return sessionWrites
+  const data = state.settings.dataPath, identity = launchIdentity
+  const key = `${identity}\0${stage}`
+  if (persistedKey === key) return sessionWrites
+  persistedKey = key; persistedStage = stage; pendingSessionWrites++
+  sessionWrites = sessionWrites.then(() => writeLaunchSession(data, identity, stage))
+    .catch(() => { if (persistedKey === key) persistedKey = undefined })
+    .finally(() => { pendingSessionWrites-- })
+  return sessionWrites
+}
 
 async function log(message: string) {
   if (!logPath) return
@@ -31,7 +58,73 @@ function update(patch: Partial<LauncherState>) {
 }
 const progress: Progress = (message, value) => update({ message, progress: value })
 
-async function refresh() { update({ ...await inspectInstall(state.settings, paths), progress: null }) }
+function stopMonitoring() { if (monitor) clearInterval(monitor); monitor = undefined; engineLog = undefined; monitorGeneration++ }
+async function connectEngineLog(data: string) {
+  if (engineLog) return
+  engineLog = new PrismLogTail(data, new PrismProgressDecoder(stage => {
+    if (!launchRequested || sawGame) return
+    update({ phase: stage, progress: null, message: stage === 'authenticating' ? 'Microsoft 로그인 확인 중입니다. 열린 인증 창에서 계속해 주세요.' : 'Minecraft·Forge 실행 파일과 라이브러리를 준비하고 있습니다.' })
+    void persistLaunchStage(stage)
+  }), true)
+  await engineLog.poll().catch(() => {})
+}
+function startMonitoring(data: string) {
+  if (monitor) return
+  const generation = ++monitorGeneration
+  let scanning = false
+  const scan = async () => {
+    if (scanning || busy) return
+    scanning = true
+    try {
+      await engineLog?.poll().catch(() => {})
+      const activity = await readProcessActivity(data)
+      if (generation !== monitorGeneration) return
+      if (launchRequested && !launchIdentity) {
+        launchIdentity = chooseLaunchIdentity(activity.prismIdentities ?? [], undefined, launchPid)
+        if (launchIdentity) void persistLaunchStage(state.phase === 'running' ? 'running' : state.phase === 'preparing' ? 'preparing' : 'authenticating')
+      }
+      if (activity.game) {
+        sawGame = true
+        update({ phase: 'running', progress: null, message: 'Minecraft가 실행 중입니다. 즐거운 하루 보내세요.' })
+        void persistLaunchStage('running')
+      } else if (activity.java && !sawGame && launchRequested) {
+        update({ phase: 'preparing', progress: null, message: 'Minecraft·Forge 실행 구성을 준비하고 있습니다.' })
+        void persistLaunchStage('preparing')
+      } else if (!activity.prism && !activity.java) {
+        const finishedGame = sawGame
+        stopMonitoring(); launchRequested = false
+        await sessionWrites; await clearLaunchSession(data)
+        launchIdentity = undefined; launchPid = undefined; persistedStage = undefined; persistedKey = undefined
+        await refresh()
+        if (finishedGame) update({ message: '게임이 종료되었습니다. 다음에 또 만나요.' })
+      } else if (sawGame && state.phase === 'running') {
+        update({ phase: 'preparing', progress: null, message: '게임 종료를 마무리하는 중입니다.' })
+      }
+    } catch { /* Retain the last known stage if the OS cannot answer this poll. */ }
+    finally { scanning = false }
+  }
+  monitor = setInterval(() => { void scan() }, process.platform === 'win32' ? 4000 : 1500)
+  void scan()
+}
+async function refresh() {
+  const result = await inspectInstall(state.settings, paths)
+  let patch: Partial<LauncherState> = { ...result, progress: null }
+  if (result.phase === 'ready') {
+    try {
+      const activity = await readProcessActivity(state.settings.dataPath)
+      if (!launchRequested) {
+        const session = await readLaunchSession(state.settings.dataPath, activity.prismIdentities ?? [])
+        if (session) { launchRequested = true; launchIdentity = session.identity; persistedStage = session.stage; persistedKey = `${session.identity}\0${session.stage}` }
+      }
+      const phase = phaseForActivity(activity, launchRequested)
+      if (phase === 'running') { sawGame = true; patch = { ...patch, phase, message: 'Minecraft가 실행 중입니다.' } }
+      else if (phase === 'preparing') patch = { ...patch, phase: persistedStage === 'authenticating' ? 'authenticating' : phase, message: persistedStage === 'authenticating' ? 'Microsoft 로그인 확인을 이어갑니다. 열린 인증 창에서 계속해 주세요.' : 'Minecraft·Forge 준비를 이어갑니다. 이미 받은 파일을 사용합니다.' }
+      else if (activity.prism) patch = { ...patch, message: '계정 창이 열려 있습니다. 게임 시작을 눌러 계속할 수 있습니다.' }
+      if (activity.game || activity.prism || activity.java) { await connectEngineLog(state.settings.dataPath); startMonitoring(state.settings.dataPath) }
+    } catch { /* Integrity inspection still works when process inspection is unavailable. */ }
+  }
+  update(patch)
+}
 function ensureIdle() { if (busy) throw new Error('진행 중인 작업을 마친 뒤 다시 시도해 주세요.') }
 function ensurePrismClosed() { if (prismProcess?.exitCode === null) throw new Error('Prism과 게임을 닫은 뒤 설치 또는 설정 변경을 진행해 주세요.') }
 async function task(operation: () => Promise<void>) {
@@ -41,7 +134,7 @@ async function task(operation: () => Promise<void>) {
     await log(error.stack ?? error.message)
     update({ phase: 'error', message: error.message ?? '작업에 실패했습니다. 복구를 눌러 다시 시도하세요.', progress: null })
     throw error
-  } finally { busy = false }
+  } finally { busy = false; if (BrowserWindow.getAllWindows().length === 0) app.quit() }
 }
 
 async function install() {
@@ -50,7 +143,7 @@ async function install() {
   await installClient(state.settings, paths, progress)
   await log('Installation verified and receipt written')
   await refresh()
-  update({ message: '준비 완료! 처음이라면 설정에서 Prism 계정을 연결해 주세요.' })
+  update({ message: '준비 완료! 게임 시작을 누르면 필요한 로그인을 안내합니다.' })
 }
 
 async function prism(launch: boolean) {
@@ -58,29 +151,50 @@ async function prism(launch: boolean) {
   const binary = await ensurePrism(data, paths.prism, progress)
   const directory = join(data, 'prism-data')
   await mkdir(directory, { recursive: true })
-  if (!await exists(join(directory, 'prismlauncher.cfg'))) {
-    await atomicWrite(join(directory, 'prismlauncher.cfg'), '[General]\nLanguage=ko\n')
-  }
+  let existingIdentity: string | undefined
   if (launch) {
     const receipt = await readReceipt(data), manifest = await loadManifest(paths.manifest)
     if (!receipt || receipt.fingerprint !== await bundleFingerprint(paths)) throw new Error('먼저 설치 또는 업데이트를 완료해 주세요.')
     // An existing Prism owns its live profile; avoid rewriting it during IPC forwarding.
-    if (!prismProcess || prismProcess.exitCode !== null) {
+    const activity = await readProcessActivity(data)
+    existingIdentity = activity.prismIdentities?.[0]
+    if (!activity.prism && !activity.java) {
       await assertInstallIdle(data)
+      await configurePrismForBackground(data, receipt.runtime.java)
       await writePrismInstance(directory, manifest.minecraft, manifest.forge, receipt.runtime.java, state.settings.memoryMb)
     }
-    update({ phase: 'launching', progress: null, message: 'Prism에서 로그인과 게임 실행을 계속해 주세요.' })
+    launchRequested = true; sawGame = activity.game
+    update({ phase: activity.game ? 'running' : 'authenticating', progress: null, message: activity.game ? 'Minecraft가 실행 중입니다.' : 'Microsoft 계정을 확인합니다. 필요한 경우 로그인 창에서 계속해 주세요.' })
   }
-  const child = spawn(binary, ['--dir', directory, ...(launch ? ['--launch', 'SunrinValley'] : ['--show-window'])], { stdio: 'ignore', windowsHide: false })
-  await new Promise<void>((ok, fail) => { child.once('spawn', ok); child.once('error', fail) })
-  if (!prismProcess || prismProcess.exitCode !== null) prismProcess = child
-  child.on('error', error => { void log(`Prism: ${error.message}`); update({ phase: 'error', message: 'Prism 실행에 실패했습니다. 복구를 시도해 주세요.', progress: null }) })
-  child.on('exit', code => {
+  await connectEngineLog(data)
+  // The engine and its downloads survive closing the frontend. Its own UTF-8 log
+  // supplies whitelisted stages without an stdout pipe tied to this process.
+  let earlyFailure = false
+  const child = spawn(binary, prismArguments(data, !launch), { detached: true, stdio: 'ignore', windowsHide: true })
+  child.on('error', error => { earlyFailure = true; void log(`Prism: ${error.message}`); update({ phase: 'error', message: 'Prism 실행에 실패했습니다. 복구를 시도해 주세요.', progress: null }) })
+  child.on('exit', (code, signal) => {
     void log(`Prism exited with ${code}`)
-    if (child === prismProcess) { prismProcess = undefined; if (!busy) void refresh() }
-    if (code && launch) update({ phase: 'error', message: `Prism이 종료되었습니다(${code}). 설정에서 Prism을 열어 계정과 실행 로그를 확인해 주세요.`, progress: null })
+    if (child === prismProcess) prismProcess = undefined
+    if ((code || signal) && launch) {
+      earlyFailure = true
+      stopMonitoring(); launchRequested = false
+      launchIdentity = undefined; launchPid = undefined; persistedStage = undefined; persistedKey = undefined
+      update({ phase: 'error', message: `실행 환경이 종료되었습니다(${code ?? signal}). 설정의 문제 해결에서 자세한 내용을 확인해 주세요.`, progress: null })
+    }
   })
-  if (!launch) update({ progress: null, message: 'Prism 오른쪽 위 계정 메뉴에서 Microsoft 계정을 추가해 주세요.' })
+  await new Promise<void>((ok, fail) => { child.once('spawn', ok); child.once('error', fail) })
+  child.unref()
+  if (!prismProcess || prismProcess.exitCode !== null) prismProcess = child
+  if (launch) {
+    launchPid = child.pid
+    const activity = await readProcessActivity(data)
+    if (earlyFailure) return
+    launchIdentity = chooseLaunchIdentity(activity.prismIdentities ?? [], existingIdentity, child.pid)
+    await persistLaunchStage(activity.game ? 'running' : 'authenticating')
+  }
+  if (earlyFailure) return
+  startMonitoring(data)
+  if (!launch) update({ progress: null, message: '문제 해결용 Prism 창을 열었습니다. 계정 메뉴와 실행 로그를 확인할 수 있습니다.' })
 }
 
 function handle(channel: string, callback: (...args: any[]) => any) {
@@ -106,9 +220,14 @@ function createWindow() {
   else void window.loadFile(join(__dirname, '../renderer/index.html'))
 }
 
+if (process.env.SUNRIN_APP_DATA) {
+  const testRoot = resolve(process.env.SUNRIN_APP_DATA)
+  mkdirSync(testRoot, { recursive: true })
+  app.setPath('userData', testRoot)
+}
 if (!app.requestSingleInstanceLock()) app.quit()
 else {
-  app.on('second-instance', () => { if (window) { if (window.isMinimized()) window.restore(); window.focus() } })
+  app.on('second-instance', () => { if (window && !window.isDestroyed()) { if (window.isMinimized()) window.restore(); window.focus() } else if (state) createWindow() })
   app.whenReady().then(async () => {
     const root = process.env.SUNRIN_APP_DATA ? resolve(process.env.SUNRIN_APP_DATA) : app.getPath('userData')
     store = new SettingsStore(root); logPath = join(root, 'logs', 'launcher.log')
@@ -131,4 +250,8 @@ else {
   }).catch(error => { dialog.showErrorBox('선린밸리 시작 오류', `${error.message}\n설정 파일과 설치 경로를 확인해 주세요.`); app.quit() })
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })
   app.on('window-all-closed', () => { if (!busy) app.quit() })
+  app.on('before-quit', event => {
+    stopMonitoring()
+    if (pendingSessionWrites) { event.preventDefault(); void sessionWrites.finally(() => app.quit()) }
+  })
 }

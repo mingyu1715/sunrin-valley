@@ -15,9 +15,11 @@
 | Simple Voice Chat | 2.6.22 | 클라이언트·서버 |
 | Emotecraft | 2.2.7-b.build.50 (Beta) | 클라이언트·서버 |
 | Music Disc Maker | 3.1.2 | 클라이언트·서버, 같은 버전 사용 |
-| Beat Lamp | 1.2.2 | 클라이언트·서버 |
+| StageBox | 1.3.0 | 클라이언트·서버, CurseForge file 9294217 |
 
-추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. Music Disc Maker와 Beat Lamp의 관련 클래스도 정적으로 확인했으며 실제 게임 내 연동은 아직 검증하지 않았습니다.
+추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. StageBox는 현재 Forge 47.4.0과 Java 17을 지원하며 별도 필수 라이브러리가 없습니다. 한국어 316개 키를 내장하지만 영어에만 있는 147개 문구는 영어로 표시될 수 있습니다. 자체 `.ogg` 음악 재생 방식을 쓰며 Music Disc Maker 연동과 게임 안의 소리·조명은 아직 검증하지 않았습니다.
+
+선린밸리 팩 0.1.1에서 Beat Lamp를 StageBox로 교체했습니다. 기존 영수증으로 관리되는 Beat Lamp 파일은 업데이트에서 정리하고, 원본 351개 모드와 나머지 추가 모드 3개는 유지합니다.
 
 WATUT/CoroUtil·Simple Hats·Zetter·Immersive Paintings·Exposure·Etched·FTB Quests/Chunks·KubeJS·LootJS·Create: Numismatics·Chunky·spark는 원본 lock에 포함되어 있어 그대로 사용합니다. 전체 파일과 정확한 버전은 manifest를 봅니다.
 

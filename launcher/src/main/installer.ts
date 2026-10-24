@@ -89,7 +89,7 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
       await mkdir(dirname(save), { recursive: true }); await cp(target, save)
     }
   }
-  progress('원본 모드팩 준비 중', 0)
+  progress('원본 모드팩 파일 확인 중', 0)
   const archive = safeTarget(cache, manifest.base.filename)
   await assertNoSymlinks(settings.dataPath, archive)
   await downloadVerified(manifest.base.url, archive, { algorithm: 'sha256', value: manifest.base.sha256 }, { fetcher: dependencies.fetcher })
@@ -124,7 +124,7 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
         await downloadVerified(file.url, safeTarget(game, file.path), file.hash, { fetcher: dependencies.fetcher })
         managed[file.path] = file.hash
         completed++
-        progress(`마을 준비 중 · ${completed}/${manifest.files.length}`, 5 + completed / manifest.files.length * 75)
+        progress(`모드팩 파일 확인·설치 · ${completed}/${manifest.files.length}`, 5 + completed / manifest.files.length * 75)
       } catch (error: any) { failures.push(`${file.path}: ${error.message}`) }
     }
   }))
@@ -152,5 +152,5 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
   const receipt: InstallReceipt = { formatVersion: 1, packVersion: manifest.version, fingerprint: await bundleFingerprint(paths), managed, runtime }
   await atomicWrite(receiptPath(settings.dataPath), JSON.stringify(receipt, null, 2))
   await rm(pendingPath(settings.dataPath))
-  progress('설치 완료. 설정에서 Prism 계정을 연결하면 플레이할 수 있습니다.', 100)
+  progress('설치 완료. 게임 시작을 누르면 필요한 로그인을 안내합니다.', 100)
 }

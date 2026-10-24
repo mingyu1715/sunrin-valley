@@ -141,6 +141,8 @@
     "source_slug": "music-disc-maker"
   },
   {
+    "provider": "curseforge",
+    "source_slug": "stagebox",
     "game_versions": [
       "1.20.1"
     ],
@@ -148,34 +150,58 @@
       "forge"
     ],
     "environment": "client_and_server",
-    "id": "aX4Y7ORE",
-    "project_id": "bAwlLfyK",
-    "author_id": "Zfui5cVU",
-    "featured": true,
-    "name": "Beat Lamp 1.2.2 [Forge 1.20.1]",
-    "version_number": "1.2.2-forge-1.20.1",
-    "changelog": "- 1.21.8 Supported\n- 1.20.1 Supported mod Etched (Bro i dont know how to use that mod)",
-    "changelog_url": null,
-    "date_published": "2026-10-10T02:30:45.231596Z",
-    "downloads": 60,
+    "id": 9294217,
+    "project_id": 1591857,
+    "name": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+    "version_number": "1.3.0",
+    "date_published": "2026-10-23T03:19:46.273Z",
     "version_type": "release",
-    "status": "listed",
-    "requested_status": null,
     "files": [
       {
-        "id": "za37n9oT",
         "hashes": {
-          "sha1": "85becdb57a12924c00fbdda0ef6cfb59adc8dbab",
-          "sha512": "5fbd4160cb8bf683ae251d565c39397cb03893060730908e01c7712f044b98219f9961254ed3130f170adeac6f56e19e04de15b8a22a71f15f01ee045441cd3b"
+          "sha1": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee",
+          "sha256": "5eed729a183183007c37ec3c59b9675243e3d6b32a909a08f544508fced3b512",
+          "sha512": "006190fc5d122675d2a3b664726942fba53d320d74a9d143dab14b0969a90370607ff59f7d479ed257af3c0489276349fcc58b67fd9d6258326e7adc9a563ced"
         },
-        "url": "https://cdn.modrinth.com/data/bAwlLfyK/versions/aX4Y7ORE/beatlamp-forge-1.20.1-1.2.2.jar",
-        "filename": "beatlamp-forge-1.20.1-1.2.2.jar",
+        "url": "https://edge.forgecdn.net/files/9294/217/StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+        "filename": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
         "primary": true,
-        "size": 547786,
-        "file_type": null
+        "size": 1882504
       }
     ],
     "dependencies": [],
-    "source_slug": "beat-lamp"
+    "curseforge_metadata": {
+      "id": 9294217,
+      "dateCreated": "2026-10-23T03:19:46.273Z",
+      "dateModified": "2026-10-23T03:22:04.18Z",
+      "displayName": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+      "fileLength": 1882504,
+      "fileName": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+      "status": 4,
+      "projectId": 1591857,
+      "gameVersions": [
+        "Client",
+        "1.20.1",
+        "Forge",
+        "Server"
+      ],
+      "gameVersionTypeIds": [
+        75125,
+        68441
+      ],
+      "releaseType": 1,
+      "totalDownloads": 55,
+      "user": {
+        "username": "user_mlts8b27k3itkvf7",
+        "id": 141929927,
+        "twitchAvatarUrl": "https://media.forgecdn.net/avatars/1886/253/639180458077550893.png",
+        "displayName": "TTPing"
+      },
+      "additionalFilesCount": 0,
+      "hasServerPack": false,
+      "additionalServerPackFilesCount": 0,
+      "isEarlyAccessContent": false,
+      "isCompatibleWithClient": true
+    }
   }
 ]

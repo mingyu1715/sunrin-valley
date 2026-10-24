@@ -1,4 +1,4 @@
-export type Phase = 'checking' | 'not-installed' | 'ready' | 'update' | 'repair' | 'installing' | 'launching' | 'error'
+export type Phase = 'checking' | 'not-installed' | 'ready' | 'update' | 'repair' | 'installing' | 'launching' | 'authenticating' | 'preparing' | 'running' | 'error'
 export interface Settings {
   dataPath: string
   memoryMb: number

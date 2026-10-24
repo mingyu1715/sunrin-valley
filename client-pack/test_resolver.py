@@ -55,7 +55,8 @@ class ResolverTests(unittest.TestCase):
         manifest = self.resolve()
         expected = {(f["projectID"], f["fileID"]) for f in self.cf["files"]}
         actual = {(f["source"]["projectId"], f["source"]["fileId"])
-                  for f in manifest["files"] if f["source"]["provider"] == "curseforge"}
+                  for f in manifest["files"]
+                  if f["source"]["provider"] == "curseforge" and not f["source"].get("slug")}
         self.assertEqual(actual, expected)
         self.assertEqual(len(manifest["files"]), 371)
         self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 355)
@@ -63,6 +64,26 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(manifest["forge"], "47.4.0")
         player = next(f for f in manifest["files"] if f["source"].get("projectId") == 658587)
         self.assertEqual(player["source"]["fileId"], 4587214)
+
+    def test_replacement_installs_verified_stagebox_instead_of_beat_lamp(self):
+        manifest = self.resolve()
+        self.assertFalse(any("beatlamp" in f["path"].lower() for f in manifest["files"]))
+        stagebox = next(f for f in manifest["files"] if f["source"].get("slug") == "stagebox")
+        self.assertEqual(stagebox["path"], "mods/StageBox-Mod-1.3.0-Forge-1.20.1.jar")
+        self.assertEqual(stagebox["source"], {"provider": "curseforge", "projectId": 1591857,
+                                            "fileId": 9294217, "slug": "stagebox"})
+        self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee"})
+        self.assertEqual(stagebox["size"], 1882504)
+        self.assertEqual({f["source"]["slug"] for f in manifest["files"] if f["source"].get("slug")},
+                         {"simple-voice-chat", "emotecraft", "music-disc-maker", "stagebox"})
+        self.assertEqual(manifest["version"], "0.1.1")
+        self.assertEqual(manifest["sources"]["upstream"]["version"], "4.1.5A")
+
+    def test_rejects_addon_provider_substitution(self):
+        addons = copy.deepcopy(self.addons)
+        addons[0]["provider"] = "curseforge"
+        with self.assertRaisesRegex(ValueError, "Addon provider mismatch"):
+            self.resolve(addons=addons)
 
     def test_rejects_a_file_id_absent_from_the_upstream_lock(self):
         cf = copy.deepcopy(self.cf)

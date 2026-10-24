@@ -102,7 +102,13 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
     for addon in addons:
         slug = addon["source_slug"]
         pin = pinned_addons.get(slug)
-        if not pin or slug in seen_addons or addon["id"] != pin["versionId"] or addon["project_id"] != pin["projectId"]:
+        if not pin or slug in seen_addons:
+            raise ValueError("Addon version identity mismatch: " + slug)
+        provider = pin.get("provider", "modrinth")
+        if addon.get("provider", "modrinth") != provider:
+            raise ValueError("Addon provider mismatch: " + slug)
+        identity_key = "fileId" if provider == "curseforge" else "versionId"
+        if provider not in ("modrinth", "curseforge") or addon["id"] != pin[identity_key] or addon["project_id"] != pin["projectId"]:
             raise ValueError("Addon version identity mismatch: " + slug)
         seen_addons.add(slug)
         if "forge" not in addon["loaders"] or "1.20.1" not in addon["game_versions"]:
@@ -114,9 +120,15 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
         name = filename(item["filename"])
         if not name.endswith(".jar"):
             raise ValueError("Addon file is not a JAR: " + name)
+        if provider == "curseforge":
+            metadata = addon["curseforge_metadata"]
+            if (metadata["id"] != addon["id"] or metadata["projectId"] != addon["project_id"]
+                    or metadata["fileName"] != name or metadata["fileLength"] != item["size"]
+                    or "Forge" not in metadata["gameVersions"] or "1.20.1" not in metadata["gameVersions"]):
+                raise ValueError("CurseForge addon metadata mismatch: " + slug)
         files.append(file_entry("mods/" + name, item["url"], item["hashes"]["sha1"], item["size"],
-                                {"provider": "modrinth", "projectId": addon["project_id"],
-                                 "versionId": addon["id"], "slug": slug}))
+                                {"provider": provider, "projectId": addon["project_id"],
+                                 identity_key: addon["id"], "slug": slug}))
 
     paths = [f["path"].casefold() for f in files]
     if len(set(paths)) != len(paths):
@@ -127,7 +139,7 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None):
                      for f in inventory["files"]]
     if archive is not None:
         verify_archive(archive, cf, sources, inventory)
-    return {"formatVersion": 1, "id": "sunrin-valley", "version": "0.1.0",
+    return {"formatVersion": 1, "id": "sunrin-valley", "version": "0.1.1",
             "minecraft": "1.20.1", "forge": "47.4.0", "base": sources["base"],
             "files": sorted(files, key=lambda f: f["path"]),
             "localizations": localizations, "sources": sources}

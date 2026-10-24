@@ -53,7 +53,7 @@ export async function writePrismInstance(root: string, minecraft: string, forge:
   const quote = (path: string) => path.replaceAll('\\', '/')
   await atomicWrite(join(instance, 'instance.cfg'), [
     '[General]', 'ConfigVersion=1.2', 'InstanceType=OneSix', 'name=선린밸리',
-    'OverrideJavaLocation=true', `JavaPath=${quote(javaPath)}`, 'OverrideJavaArgs=false',
+    'OverrideJavaLocation=true', 'AutomaticJava=false', `JavaPath=${quote(javaPath)}`, 'OverrideJavaArgs=false',
     'OverrideMemory=true', 'MinMemAlloc=1024', `MaxMemAlloc=${memoryMb}`, 'notes=Sunrin Valley / Society 4.1.5A', ''
   ].join('\n'))
 }
