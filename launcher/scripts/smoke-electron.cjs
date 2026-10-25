@@ -17,7 +17,7 @@ async function closeWindow(app) {
   const profile = process.env.SUNRIN_SMOKE_PROFILE || resolve(root, '.local-test/electron')
   const version = require('../package.json').version
   const launchOptions = {
-    ...(packaged ? { executablePath: resolve(root, `release/${version}/mac-arm64/Sunrin Valley.app/Contents/MacOS/Sunrin Valley`), args: [] } : { args: [resolve(__dirname, '../out/main/index.js')] }),
+    ...(packaged ? { executablePath: process.env.SUNRIN_SMOKE_EXECUTABLE || resolve(root, `release/${version}/mac-arm64/Sunrin Valley.app/Contents/MacOS/Sunrin Valley`), args: [] } : { args: [resolve(__dirname, '../out/main/index.js')] }),
     env: { ...process.env, SUNRIN_APP_DATA: profile }
   }
   let app = await electron.launch(launchOptions)

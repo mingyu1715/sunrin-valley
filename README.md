@@ -4,9 +4,9 @@
 
 ## 친구가 사용하는 순서
 
-> **첫 실행 보안 경고 안내:** 1.0.0은 Windows 코드 서명과 macOS 서명·공증을 적용하지 않았습니다. 처음 설치하거나 실행할 때 운영체제의 보안 경고가 표시될 수 있습니다. 공식 GitHub 릴리스에서 받은 파일인지 확인해 주세요.
+> **첫 실행 보안 경고 안내:** Windows 코드 서명과 macOS Developer ID 서명·공증은 적용하지 않았습니다. Mac DMG의 앱에는 번들 검증용 무료 로컬 서명을 적용했습니다. 처음 설치하거나 실행할 때 운영체제의 보안 경고가 표시될 수 있습니다. 공식 GitHub 릴리스에서 받은 파일인지 확인해 주세요.
 
-**[Windows 설치 가이드 — 보안 경고 화면 포함](docs/windows-install.md)**
+**[Windows 설치 가이드 — 보안 경고 화면 포함](docs/windows-install.md) · [Mac DMG 설치 가이드](docs/mac-install.md)**
 
 1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.0.0/`입니다.
 2. **게임 설치**를 누릅니다. 원본 4.1.5A, 추가 모드, 한국어 설정, 커스텀 리소스, Java 17과 Prism을 준비합니다.
@@ -57,7 +57,7 @@ npm run package:mac
 npm run package:win
 ```
 
-`package:mac`은 Apple Silicon용 ZIP, `package:win`은 Windows x64 설치형 EXE를 만듭니다. 개발 빌드는 서명·공증하지 않았습니다. 개발자는 빌드에 Python을 사용하지만 배포 런처 사용자에게는 Node/Python 설치가 필요하지 않습니다.
+`package:mac`은 Apple Silicon용 DMG, `package:win`은 Windows x64 설치형 EXE를 만듭니다. Mac은 `identity: "-"`와 명시적인 Electron 권한으로 무료 로컬 서명을 적용하고, 앱의 엄격한 번들 서명·버전·아키텍처와 DMG 무결성 검사를 통과해야 패키징에 성공합니다. Developer ID 서명·Apple 공증은 수행하지 않습니다. 개발자는 빌드에 Python을 사용하지만 배포 런처 사용자에게는 Node/Python 설치가 필요하지 않습니다.
 
 원본 목록 재현: `python3 build-scripts/resolve-pack.py --check`. 리소스팩 빌드: `python3 build-scripts/build-resources.py`. 전체 다운로드 검증: `npm run verify:install` (프로젝트의 `.local-test/`에 실제 파일을 설치하고 디스크 공간을 사용합니다).
 
@@ -99,4 +99,4 @@ Prism은 수정하지 않은 공식 프로그램을 다운로드하여 별도로
 - Windows는 제어판의 프로그램 제거와 설정의 설치된 앱에 등록됩니다. 제거 확인 후 전용 모드·Prism 로그인·Java·캐시·설정·월드와 런처를 정리합니다. 이전 포터블 EXE는 직접 지울 수 있으며, 데이터는 새 설치형 런처의 제거 프로그램으로 정리합니다. 런처 업데이트 설치에서는 게임 데이터를 삭제하지 않습니다.
 - Mac은 설치한 앱의 **Sunrin Valley → 선린밸리 제거…** 메뉴에서 전용 데이터를 삭제하고 앱을 휴지통으로 옮깁니다. 앱만 휴지통에 넣으면 별도 데이터는 남습니다. 두 플랫폼 모두 월드는 먼저 백업해야 하며 기존 Minecraft 폴더는 유지합니다.
 - 1.0.0 자동 검사 260개와 TypeScript·플랫폼 빌드, 실제 Electron UI/IPC 및 격리된 배포 앱 제거 도우미를 검증했습니다.
-- Windows 실제 PC 설치·제거 및 Microsoft 로그인 후 플레이 검증은 사용자 요청에 따라 후속 패치 점검으로 남겨두었습니다. 앱 서명·공증과 실제 서버 연결은 이번 발행에 포함되지 않습니다.
+- Windows 실제 PC 설치·제거 및 Microsoft 로그인 후 플레이 검증은 사용자 요청에 따라 후속 패치 점검으로 남겨두었습니다. 신뢰된 개발자 인증서를 통한 서명·Apple 공증과 실제 서버 연결은 이번 발행에 포함되지 않습니다.

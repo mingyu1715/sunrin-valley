@@ -1,7 +1,7 @@
 {
   "name": "sunrin-valley-launcher",
   "version": "1.0.0",
-  "description": "선린밸리 전용 설치 및 실행 도우미",
+  "description": "\uc120\ub9b0\ubc38\ub9ac \uc804\uc6a9 \uc124\uce58 \ubc0f \uc2e4\ud589 \ub3c4\uc6b0\ubbf8",
   "author": "Sunrin Valley",
   "private": true,
   "main": "out/main/index.js",
@@ -10,7 +10,7 @@
     "build": "electron-vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "package:mac": "electron-builder --mac zip --arm64 --publish never",
+    "package:mac": "electron-builder --mac dmg --arm64 --publish never && node scripts/verify-mac-distribution.cjs",
     "package:win": "electron-builder --win nsis --x64 --publish never",
     "verify:install": "tsx scripts/verify-install.ts"
   },
@@ -70,7 +70,13 @@
     ],
     "mac": {
       "category": "public.app-category.games",
-      "identity": null
+      "identity": "-",
+      "type": "distribution",
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "notarize": false,
+      "artifactName": "Sunrin-Valley-${version}-mac-arm64.${ext}"
     },
     "win": {
       "signAndEditExecutable": false,
@@ -93,6 +99,30 @@
       "deleteAppDataOnUninstall": false,
       "uninstallDisplayName": "Sunrin Valley",
       "artifactName": "Sunrin-Valley-Setup-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "Sunrin Valley ${version}",
+      "format": "UDZO",
+      "sign": false,
+      "backgroundColor": "#f4f2e6",
+      "iconSize": 104,
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 130,
+          "y": 220,
+          "type": "file"
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     }
   }
 }
