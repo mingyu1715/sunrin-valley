@@ -21,7 +21,7 @@ Mac용 ZIP이나 `Source code`가 아닌 Windows 설치 파일을 선택해 주�
 
 ![Windows SmartScreen 경고 예시: 왼쪽에서 추가 정보, 오른쪽에서 실행을 누르는 순서](assets/windows-smartscreen.png)
 
-> 위 이미지는 제공받은 **보안 경고 화면 예시**입니다. 이미지의 `목사명령.exe`는 선린밸리 파일명이 아닙니다. 실제로 실행할 파일은 `Sunrin-Valley-Setup-1.0.0-x64.exe`입니다.
+> 위 이미지는 앱 이름을 가린 **보안 경고 화면 예시**입니다. 실제 화면에서 실행할 파일이 `Sunrin-Valley-Setup-1.0.0-x64.exe`인지 확인해 주세요.
 
 Windows 버전이나 PC 정책에 따라 화면이 다를 수 있습니다. **실행** 버튼이 없거나 다른 차단 안내가 나오면, 보안 기능을 끄는 대신 해당 화면을 캡처해 전달해 주세요.
 
