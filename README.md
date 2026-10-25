@@ -8,7 +8,7 @@
 
 **[Windows 설치 가이드 — 보안 경고 화면 포함](docs/windows-install.md) · [Mac DMG 설치 가이드](docs/mac-install.md)**
 
-1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.0.0/`입니다.
+1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.1.1/`입니다.
 2. **게임 설치**를 누릅니다. 원본 4.1.5A, 추가 모드, 한국어 설정, 커스텀 리소스, Java 17과 Prism을 준비합니다.
 3. **게임 실행**을 누릅니다. 필요한 경우 Microsoft 계정 추가 안내와 인증 창에서 로그인을 완료합니다.
 4. 선린밸리 버튼은 **준비하는 중**을 표시하고, 그 아래에 로그인 확인·Minecraft/Forge 준비·실행 단계를 보여줍니다. 첫 실행 시 Minecraft·Forge·라이브러리·기본 게임 자산은 Prism이 추가로 내려받습니다.
@@ -38,7 +38,9 @@
 - **복구**는 잠긴 파일을 해시로 확인하고 누락·손상을 다시 내려받습니다. 변경 전 관리 파일은 `.minecraft/.sunrin/backups/`에 보관합니다.
 - Prism 또는 게임이 실행 중이면 설치·복구·설정 변경을 거부합니다.
 - 런처 0.1.2부터 GitHub의 최신 목록으로 모드·리소스팩·자체 KubeJS를 원격 업데이트합니다. 앱 기능 변경 때만 새 런처를 받습니다. 기존 0.1.1 사용자는 한 번 새 런처로 바꿔야 합니다. [운영자 배포 방법](docs/remote-updates.md)을 참고하세요.
-- 0.1.3부터 발행된 최신 버전과 서버 운영 버전을 분리합니다. 클라이언트는 운영 버전만 선택하며 점검 상태·접힌 변경 내역을 기존 상태 영역에 표시합니다. 설치 실패 시 저널로 기존 정상 파일을 복원합니다.
+- 0.1.3부터 발행된 최신 버전과 서버 운영 버전을 분리합니다. 클라이언트는 운영 버전만 선택하며 점검 상태를 기존 상태 영역에 표시합니다. 설치 실패 시 저널로 기존 정상 파일을 복원합니다.
+
+1.1.0부터 런처 자체도 **설정 → 런처 업데이트**에서 GitHub 최신 릴리스를 확인하고 교체할 수 있습니다. 게임·계정·설정·월드는 다시 설치하지 않습니다. 1.1.1은 변경 내역을 팝업으로 표시하고 저장·복사 완료 알림은 약 2초 후 사라집니다. [런처 업데이트 내역](launcher/CHANGELOG.md)을 참고하세요.
 
 ## 개발
 
@@ -58,6 +60,8 @@ npm run package:win
 ```
 
 `package:mac`은 Apple Silicon용 DMG, `package:win`은 Windows x64 설치형 EXE를 만듭니다. Mac은 `identity: "-"`와 명시적인 Electron 권한으로 무료 로컬 서명을 적용하고, 앱의 엄격한 번들 서명·버전·아키텍처와 DMG 무결성 검사를 통과해야 패키징에 성공합니다. Developer ID 서명·Apple 공증은 수행하지 않습니다. 개발자는 빌드에 Python을 사용하지만 배포 런처 사용자에게는 Node/Python 설치가 필요하지 않습니다.
+
+런처 릴리스는 양쪽 플랫폼 패키징 후 `node build-scripts/build-launcher-update.cjs --version 1.1.1 --directory release/1.1.1 --changelog launcher/CHANGELOG.md`로 업데이트 ZIP·버전 목록·체크섬을 생성합니다. GitHub의 `launcher-버전` 최신 릴리스에 설치 파일과 생성물을 함께 올립니다. 게임 운영 버전 채널은 별도로 유지합니다.
 
 원본 목록 재현: `python3 build-scripts/resolve-pack.py --check`. 리소스팩 빌드: `python3 build-scripts/build-resources.py`. 전체 다운로드 검증: `npm run verify:install` (프로젝트의 `.local-test/`에 실제 파일을 설치하고 디스크 공간을 사용합니다).
 
@@ -100,3 +104,5 @@ Prism은 수정하지 않은 공식 프로그램을 다운로드하여 별도로
 - Mac은 설치한 앱의 **Sunrin Valley → 선린밸리 제거…** 메뉴에서 전용 데이터를 삭제하고 앱을 휴지통으로 옮깁니다. 앱만 휴지통에 넣으면 별도 데이터는 남습니다. 두 플랫폼 모두 월드는 먼저 백업해야 하며 기존 Minecraft 폴더는 유지합니다.
 - 1.0.0 자동 검사 260개와 TypeScript·플랫폼 빌드, 실제 Electron UI/IPC 및 격리된 배포 앱 제거 도우미를 검증했습니다.
 - Windows 실제 PC 설치·제거 및 Microsoft 로그인 후 플레이 검증은 사용자 요청에 따라 후속 패치 점검으로 남겨두었습니다. 신뢰된 개발자 인증서를 통한 서명·Apple 공증과 실제 서버 연결은 이번 발행에 포함되지 않습니다.
+
+1.1.1은 런처 테스트 256개와 실제 Electron 팝업·알림·버튼 회귀 검증을 통과했습니다. Mac에서는 격리된 실제 앱으로 1.1.0→1.1.1 교체·시작 확인·이전 앱 정리와 실패 시 1.1.0 복원을 검증하고 가짜 계정·설정·월드 파일의 바이트 보존을 확인합니다. Windows 업데이트 도우미는 [Windows PowerShell 실행 검증](https://github.com/mingyu1715/sunrin-valley/actions/runs/40202478591)에서 교체·복구를 통과했으며, 설치 화면과 실제 플레이는 Windows 사용자 확인이 필요합니다.

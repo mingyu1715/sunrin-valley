@@ -218,3 +218,28 @@ it('preserves signed internal framework symlinks verbatim when staging a Mac bun
   expect(await readFile(join(framework, 'Binary'), 'utf8')).toBe('framework')
   expect(f.calls.at(-1)?.[1][0]).toBe('detach')
 })
+it('protects Mac game data inside the bundle, an alias into it, or an ancestor of it', async () => {
+  const f = await macFixture(), aliased = join(f.base, 'data-alias')
+  await mkdir(join(f.appPath, 'worlds')); await symlink(f.appPath, aliased)
+  for (const protectedDataPath of [join(f.appPath, 'worlds/new-world'), join(aliased, 'worlds/new-world'), f.base, f.appPath.toUpperCase()]) {
+    await expect(prepareLauncherUpdate({ ...f, protectedDataPath } as Parameters<typeof prepareLauncherUpdate>[0]).then(() => 'unexpected success')).rejects.toThrow(/게임 데이터|protected.*data/i)
+  }
+  expect(f.calls).toEqual([])
+  expect(await readFile(f.executablePath, 'utf8')).toBe('old binary')
+})
+it('allows Mac game data outside the bundle, including a missing path through a safe alias', async () => {
+  const f = await macFixture(), outside = join(f.base, 'outside-data'), alias = join(f.base, 'outside-alias')
+  await mkdir(outside); await symlink(outside, alias)
+  const prepared = await prepareLauncherUpdate({ ...f, protectedDataPath: join(alias, 'new-world') } as Parameters<typeof prepareLauncherUpdate>[0])
+  const tx = JSON.parse(await readFile(join(prepared.transactionPath, 'transaction.json'), 'utf8'))
+  expect(tx.protectedDataPath).toBe(join(alias, 'new-world'))
+})
+it('rechecks protected Mac data aliases in the external helper before any swap', async () => {
+  const f = await fixture(), id = 'e427f120-d060-429a-a156-13a1aaf95cf2', appPath = join(f.base, 'Sunrin.app')
+  const candidate = join(f.base, `.sunrin-update-${id}.app`), backup = join(f.base, `.sunrin-backup-${id}.app`), alias = join(f.base, 'data-alias')
+  await mkdir(appPath); await mkdir(candidate); await writeFile(join(appPath, 'version'), 'old'); await symlink(appPath, alias)
+  const tx = { formatVersion: 1, platform: 'darwin', parentPid: process.ppid, id, nonce: id, currentVersion: '1.1.0', version: '1.1.1', root: f.root, transactionPath: join(f.root, 'launcher-updates/transactions', id), appPath, executablePath: join(appPath, 'Contents/MacOS/Sunrin Valley'), candidate, backup, assetPath: f.assetPath, assetSha256: f.assetSha256, assetSize: f.assetSize, protectedDataPath: join(alias, 'worlds') }
+  await mkdir(tx.transactionPath, { recursive: true })
+  await expect(helper.applyMacTransaction(tx, { waitForParent: async () => {}, validateCandidate: async () => {}, start: async () => 123, waitForHealth: async () => true })).rejects.toThrow(/게임 데이터|protected.*data/i)
+  expect(await readFile(join(appPath, 'version'), 'utf8')).toBe('old'); await access(candidate)
+})

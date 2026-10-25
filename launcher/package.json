@@ -1,7 +1,7 @@
 {
   "name": "sunrin-valley-launcher",
-  "version": "1.1.0",
-  "description": "\uc120\ub9b0\ubc38\ub9ac \uc804\uc6a9 \uc124\uce58 \ubc0f \uc2e4\ud589 \ub3c4\uc6b0\ubbf8",
+  "version": "1.1.1",
+  "description": "선린밸리 전용 설치 및 실행 도우미",
   "author": "Sunrin Valley",
   "private": true,
   "main": "out/main/index.js",
@@ -38,7 +38,7 @@
     "appId": "kr.sunrinvalley.launcher",
     "productName": "Sunrin Valley",
     "directories": {
-      "output": "../release/1.1.0"
+      "output": "../release/1.1.1"
     },
     "files": [
       "out/**/*",
@@ -78,6 +78,7 @@
     ],
     "mac": {
       "category": "public.app-category.games",
+      "icon": "build/app-icon.icns",
       "identity": "-",
       "type": "distribution",
       "hardenedRuntime": true,
@@ -87,7 +88,8 @@
       "artifactName": "Sunrin-Valley-${version}-mac-arm64.${ext}"
     },
     "win": {
-      "signAndEditExecutable": false,
+      "signExecutable": false,
+      "icon": "build/app-icon.ico",
       "target": [
         {
           "target": "nsis",
@@ -106,7 +108,9 @@
       "include": "build/installer.nsh",
       "deleteAppDataOnUninstall": false,
       "uninstallDisplayName": "Sunrin Valley",
-      "artifactName": "Sunrin-Valley-Setup-${version}-${arch}.${ext}"
+      "artifactName": "Sunrin-Valley-Setup-${version}-${arch}.${ext}",
+      "installerIcon": "build/app-icon.ico",
+      "uninstallerIcon": "build/app-icon.ico"
     },
     "dmg": {
       "title": "Sunrin Valley ${version}",

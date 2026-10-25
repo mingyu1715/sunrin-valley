@@ -2,11 +2,15 @@ import { spawn, execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { createHash, randomUUID } from 'node:crypto'
 import { createReadStream } from 'node:fs'
-import { access, chmod, copyFile, cp, lstat, mkdir, readFile, readdir, realpath, rename, rm, writeFile } from 'node:fs/promises'
-import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
+import * as nodeFs from 'node:fs/promises'
+import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import AdmZip from 'adm-zip'
 import type { LauncherUpdateInfo } from '../shared'
 
+// Electron's ASAR wrapper treats app.asar as a virtual directory, including missing copy targets.
+// Bundle staging must preserve the real archive bytes without changing the parent app's ASAR mode.
+const { access, chmod, copyFile, cp, lstat, mkdir, readFile, readdir, readlink, realpath, rename, rm, writeFile } = process.versions.electron
+  ? (require('original-fs') as typeof import('node:fs')).promises : nodeFs
 const runFile = promisify(execFile)
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const MAX_EXPANDED = 1024 ** 3
@@ -22,13 +26,14 @@ export interface PreparedLauncherUpdate {
 interface PrepareOptions {
   assetPath: string; info: LauncherUpdateInfo; root: string; appPath: string; executablePath: string; currentVersion: string
   /** OS boundary injection for staging tests; production uses the current host. */
+  protectedDataPath?: string
   platform?: NodeJS.Platform
   command?: Command
 }
 interface Transaction {
   formatVersion: 1; id: string; nonce: string; platform: 'darwin' | 'win32'; version: string; currentVersion: string
   root: string; transactionPath: string; appPath: string; executablePath: string; candidate: string; backup: string
-  assetPath: string; assetSha256: string; assetSize: number; oldFiles?: string[]; newFiles?: string[]
+  protectedDataPath?: string; assetPath: string; assetSha256: string; assetSize: number; oldFiles?: string[]; newFiles?: string[]
 }
 function inside(parent: string, child: string) { const rel = relative(parent, child); return rel === '' || (!rel.startsWith(`..${sep}`) && rel !== '..' && !isAbsolute(rel)) }
 async function unlinked(path: string) {
@@ -37,6 +42,22 @@ async function unlinked(path: string) {
     try { if ((await lstat(cursor)).isSymbolicLink()) throw new Error(`Linked update path: ${cursor}`) } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error }
     const parent = dirname(cursor); if (parent === cursor) break; cursor = parent
   }
+}
+// Resolve aliases even when the final game directory has not been created yet.
+async function canonicalExistingPrefix(value: string, links = 0): Promise<string> {
+  if (links > 40) throw new Error('Too many protected data path links')
+  const absolute = resolve(value)
+  try { return await realpath(absolute) } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error }
+  try {
+    if ((await lstat(absolute)).isSymbolicLink()) return canonicalExistingPrefix(resolve(dirname(absolute), await readlink(absolute)), links + 1)
+  } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error }
+  const parent = dirname(absolute)
+  return parent === absolute ? absolute : join(await canonicalExistingPrefix(parent, links), basename(absolute))
+}
+async function protectMacData(appPath: string, protectedDataPath: string) {
+  if (!protectedDataPath) throw new Error('게임 데이터 경로를 확인해 주세요. (invalid protected data path)')
+  const [app, data] = await Promise.all([canonicalExistingPrefix(appPath), canonicalExistingPrefix(protectedDataPath)])
+  if (inside(app.toLowerCase(), data.toLowerCase()) || inside(data.toLowerCase(), app.toLowerCase())) throw new Error('게임 데이터가 앱 폴더와 겹쳐 자동 업데이트할 수 없습니다. 게임 데이터 경로를 앱 밖으로 옮겨 주세요. (protected data overlaps application)')
 }
 function fileName(value: unknown): string {
   if (typeof value !== 'string' || !value || value.length > 240 || value.includes('\\') || isAbsolute(value) || value.split('/').some(part => !part || part === '.' || part === '..' || /[\x00-\x1f<>:"|?*]/.test(part) || /[. ]$/.test(part) || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(part))) throw new Error('Unsafe update inventory path')
@@ -123,12 +144,13 @@ export async function prepareLauncherUpdate(options: PrepareOptions): Promise<Pr
   const next = options.info.version.split('.').map(Number), current = options.currentVersion.split('.').map(Number)
   const difference = next.findIndex((part, index) => part !== current[index])
   if (!stable.test(options.info.version) || !stable.test(options.currentVersion) || [...next, ...current].some(part => !Number.isSafeInteger(part)) || difference < 0 || next[difference] <= current[difference]) throw new Error('Update version must be newer than installed version')
+  if (platform === 'darwin' && options.protectedDataPath !== undefined) await protectMacData(appPath, options.protectedDataPath)
   const assetPath = resolve(options.assetPath)
   if (dirname(assetPath) !== join(root, 'launcher-updates/downloads')) throw new Error('Update asset must be inside its dedicated downloads directory')
   await Promise.all([unlinked(appPath), unlinked(root), unlinked(executablePath)]); await verifyAsset(options.assetPath, options.info)
   const id = randomUUID(), transactionPath = join(root, 'launcher-updates/transactions', id)
   await unlinked(transactionPath); await mkdir(transactionPath, { recursive: true, mode: 0o700 })
-  const tx: Transaction = { formatVersion: 1, platform, id, nonce: id, version: options.info.version, currentVersion: options.currentVersion, assetPath, assetSha256: options.info.asset.sha256.toLowerCase(), assetSize: options.info.asset.size, root, transactionPath, appPath, executablePath, candidate: platform === 'darwin' ? join(dirname(appPath), `.sunrin-update-${id}.app`) : join(transactionPath, 'candidate'), backup: platform === 'darwin' ? join(dirname(appPath), `.sunrin-backup-${id}.app`) : join(transactionPath, 'backup') }
+  const tx: Transaction = { formatVersion: 1, platform, id, nonce: id, version: options.info.version, currentVersion: options.currentVersion, assetPath, assetSha256: options.info.asset.sha256.toLowerCase(), assetSize: options.info.asset.size, ...(platform === 'darwin' && options.protectedDataPath !== undefined ? { protectedDataPath: resolve(options.protectedDataPath) } : {}), root, transactionPath, appPath, executablePath, candidate: platform === 'darwin' ? join(dirname(appPath), `.sunrin-update-${id}.app`) : join(transactionPath, 'candidate'), backup: platform === 'darwin' ? join(dirname(appPath), `.sunrin-backup-${id}.app`) : join(transactionPath, 'backup') }
   const command = options.command ?? (async (file, args) => String((await runFile(file, args, { maxBuffer: 4 * 1024 * 1024 })).stdout))
   let stagedMac = false
   try {

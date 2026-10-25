@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { DiagnosticReport, LauncherState, MemoryRecommendation, Settings, StorageInfo } from '../../shared'
 import Valley from './Valley'
 import { version as buildVersion } from '../../../package.json'
+import ChangesDialog from './ChangesDialog'
+import TransientToast, { type ToastNotice } from './TransientToast'
 
 const previewState: LauncherState = {
   phase: 'not-installed', message: '우리의 작은 마을에서, 새로운 하루를 시작해요.', progress: null,
@@ -27,7 +29,13 @@ export default function App() {
   const [state, setState] = useState<LauncherState>(api ? { ...previewState, phase: 'checking', message: '마을로 가는 길을 준비하고 있어요.' } : previewState)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [pending, setPending] = useState(false)
-  const [notice, setNotice] = useState('')
+  const [actionError, setActionError] = useState('')
+  const [toast, setToast] = useState<ToastNotice | null>(null)
+  const [changesOpen, setChangesOpen] = useState(false)
+  const toastId = useRef(0)
+  const changesButton = useRef<HTMLButtonElement>(null)
+  const showNotice = useCallback((message: string) => setToast({ id: ++toastId.current, message }), [])
+  const expireNotice = useCallback((id: number) => setToast(old => old?.id === id ? null : old), [])
   const [errorOpen, setErrorOpen] = useState(false)
   const settingsButton = useRef<HTMLButtonElement>(null)
   const selfUpdating = ['downloading', 'ready', 'applying'].includes(state.launcherUpdate?.status ?? '')
@@ -36,8 +44,11 @@ export default function App() {
   const actionLabel = selfUpdating ? '런처 업데이트 중' : { checking: pending ? '업데이트 확인 중…' : '준비하는 중', 'not-installed': '게임 설치', ready: '게임 실행', update: '업데이트가 있습니다', 'launcher-update': '런처 업데이트', repair: '복구', maintenance: '서버 점검 중', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
   const launchStep = state.phase === 'authenticating' ? 0 : ['preparing', 'launching'].includes(state.phase) ? 1 : state.phase === 'running' ? 2 : -1
   const startsAt = state.serverStatus?.startsAt ? new Date(state.serverStatus.startsAt) : undefined
+  const hasChanges = !!state.changes?.length || !!state.launcherUpdate?.changes?.length
+  const closeChanges = useCallback(() => { setChangesOpen(false); requestAnimationFrame(() => (changesButton.current ?? settingsButton.current)?.focus()) }, [])
+  useEffect(() => { if (!hasChanges) setChangesOpen(false) }, [hasChanges])
   useEffect(() => {
-    if (state.diagnostic) { setSettingsOpen(false); setErrorOpen(true) }
+    if (state.diagnostic) { setSettingsOpen(false); setChangesOpen(false); setErrorOpen(true) }
   }, [state.diagnostic?.id])
 
   useEffect(() => {
@@ -52,16 +63,16 @@ export default function App() {
 
   async function primaryAction() {
     if (!api || pending || working || maintenance) return
-    setPending(true); setNotice('')
+    setPending(true); setActionError('')
     try { await api.primaryAction() }
-    catch (error) { setNotice(error instanceof Error ? error.message : '작업을 마치지 못했어요. 잠시 후 다시 시도해 주세요.') }
+    catch (error) { setActionError(error instanceof Error ? error.message : '작업을 마치지 못했어요. 잠시 후 다시 시도해 주세요.') }
     finally { setPending(false) }
   }
   async function applyLauncherUpdate() {
     if (!api || pending || working) return
-    setPending(true); setNotice('')
+    setPending(true); setActionError('')
     try { await api.applyLauncherUpdate() }
-    catch (error) { setNotice(error instanceof Error ? error.message : '런처 업데이트를 마치지 못했어요.') }
+    catch (error) { setActionError(error instanceof Error ? error.message : '런처 업데이트를 마치지 못했어요.') }
     finally { setPending(false) }
   }
 
@@ -90,13 +101,13 @@ export default function App() {
         {!working && !pending && <span className="button-arrow"><Icon name="arrow" size={19} /></span>}
       </button>
       <div className="status" role="status" aria-live="polite">
-        <p className={notice || state.phase === 'error' ? 'status-error' : ''}>{notice || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
+        <p className={actionError || state.phase === 'error' ? 'status-error' : ''}>{actionError || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
         {state.diagnostic && state.phase === 'error' && <button className="diagnostic-link" onClick={() => setErrorOpen(true)}>오류 상세 · 공유</button>}
         {state.updateMessage && <p className="update-note">{state.updateMessage}</p>}
         {state.launcherUpdate && ['available', 'downloading', 'applying', 'error'].includes(state.launcherUpdate.status) && <div className="launcher-update-banner"><p>{state.launcherUpdate.message}{state.launcherUpdate.progress !== undefined && ` · ${Math.round(state.launcherUpdate.progress)}%`}</p>{state.launcherUpdate.status === 'available' && <button className="secondary-button" disabled={working || pending} onClick={() => void applyLauncherUpdate()}>런처 업데이트</button>}</div>}
-        {(state.serverStatus || !!state.changes?.length) && <div className="server-updates">
+        {(state.serverStatus || hasChanges) && <div className="server-updates">
           {state.serverStatus && <p className="server-status">{state.serverStatus.message}{state.serverStatus.activeVersion && <> · 운영 {state.serverStatus.activeVersion}</>}{state.serverStatus.targetVersion && <> · 예정 {state.serverStatus.targetVersion}</>}{startsAt && !Number.isNaN(startsAt.getTime()) && <> · <time dateTime={state.serverStatus.startsAt}>{startsAt.toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</time></>}</p>}
-          {!!state.changes?.length && <details className="update-changes"><summary>업데이트 변경 내역</summary><ul>{state.changes.map((change, index) => <li key={index}>{change}</li>)}</ul></details>}
+          {hasChanges && <button className="update-changes changes-toggle" ref={changesButton} aria-haspopup="dialog" aria-expanded={changesOpen} onClick={() => setChangesOpen(true)}>업데이트 변경 내역</button>}
         </div>}
         {launchStep >= 0 && <ol className="launch-steps" aria-label="게임 실행 단계">{['로그인 확인', '게임 준비', '게임 실행'].map((label, index) => <li key={label} className={index === launchStep ? 'current' : index < launchStep ? 'complete' : ''} aria-current={index === launchStep ? 'step' : undefined}><span aria-hidden="true" />{label}</li>)}</ol>}
         {state.progress !== null && working && <div className="progress-track" role="progressbar" aria-label="준비 진행률" aria-valuenow={Math.round(state.progress)} aria-valuemin={0} aria-valuemax={100}><div style={{ width: `${Math.max(0, Math.min(100, state.progress))}%` }} /><span>{Math.round(state.progress)}%</span></div>}
@@ -104,8 +115,10 @@ export default function App() {
     </section>
 
     <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v{state.launcherVersion ?? buildVersion}</span></span></footer>
-    {settingsOpen && <SettingsDialog initial={state.settings} state={state} advice={state.memoryRecommendation} api={api} working={working || pending || state.phase === 'launcher-update'} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} onErrorDetails={() => { setSettingsOpen(false); setErrorOpen(true) }} />}
-    {errorOpen && state.diagnostic && <DiagnosticDialog report={state.diagnostic} api={api} onClose={() => setErrorOpen(false)} />}
+    {settingsOpen && <SettingsDialog initial={state.settings} state={state} advice={state.memoryRecommendation} api={api} working={working || pending || state.phase === 'launcher-update'} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={showNotice} onErrorDetails={() => { setSettingsOpen(false); setErrorOpen(true) }} />}
+    {changesOpen && hasChanges && <ChangesDialog launcher={{ version: state.launcherUpdate?.version, changes: state.launcherUpdate?.changes ?? [] }} pack={{ version: state.serverStatus?.activeVersion ?? state.availableVersion, changes: state.changes ?? [] }} onClose={closeChanges} />}
+    {errorOpen && state.diagnostic && <DiagnosticDialog report={state.diagnostic} api={api} onClose={() => setErrorOpen(false)} onNotice={showNotice} />}
+    {toast && <TransientToast key={toast.id} notice={toast} onExpired={expireNotice} />}
   </main>
 }
 
@@ -173,7 +186,7 @@ function SettingsDialog({ initial, state, advice, api, working, allowPrism, onCl
         <section className="account-row"><div><h3>마인크래프트 계정</h3><p>게임 시작을 누르면 필요할 때 Microsoft 로그인 창이 열려요.</p></div></section>
         <section className="setting-section version-info"><h3>설치 버전</h3><dl><div><dt>런처</dt><dd>{state.launcherVersion ?? buildVersion}</dd></div><div><dt>설치된 모드팩</dt><dd>{state.installedVersion ?? '미설치'}</dd></div><div><dt>서버 운영 버전</dt><dd>{state.serverStatus?.activeVersion ?? '확인 전'}</dd></div><div><dt>적용 가능한 구성</dt><dd>{state.availableVersion ?? '확인 전'}</dd></div></dl></section>
         <section className="setting-section"><h3>런처 업데이트</h3><p className="field-help">{state.launcherUpdate?.message ?? 'GitHub의 최신 런처를 확인합니다. 게임 데이터는 유지됩니다.'}</p><div className="support-actions"><button className="secondary-button" disabled={!api || busy || working || state.launcherUpdate?.status === 'checking'} onClick={() => void perform(api ? () => api.checkLauncherUpdate() : undefined)}>런처 업데이트 확인</button>{state.launcherUpdate?.status === 'available' && <button className="save-button" disabled={!api || busy || working} onClick={() => void perform(api ? () => api.applyLauncherUpdate() : undefined)}>런처 {state.launcherUpdate.version} 업데이트</button>}</div></section>
-        <details className="troubleshooting"><summary>문제 해결</summary><div className="troubleshooting-content"><p>로그인이나 실행에 필요한 인증·오류 창은 표시될 수 있어요.</p><button className="secondary-button" disabled={!api || busy || !allowPrism} onClick={() => void perform(api ? () => api.openPrism() : undefined)}>Prism 직접 열기<Icon name="arrow" size={15} /></button><div className="utility-row"><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openLogs() : undefined)}>로그 보기</button><span>·</span><button disabled={!api || busy || working} onClick={() => void perform(api ? () => api.repair() : undefined, '설치 파일을 확인하고 있어요.')}>설치 복구</button><span>·</span><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openInstance() : undefined)}>인스턴스 폴더</button></div></div></details>
+        <details className="troubleshooting"><summary>문제 해결</summary><div className="troubleshooting-content"><p>로그인이나 실행에 필요한 인증·오류 창은 표시될 수 있어요.</p><button className="secondary-button" disabled={!api || busy || !allowPrism} onClick={() => void perform(api ? () => api.openPrism() : undefined)}>Prism 직접 열기<Icon name="arrow" size={15} /></button><div className="utility-row"><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openLogs() : undefined)}>로그 보기</button><span>·</span><button disabled={!api || busy || working} onClick={() => void perform(api ? () => api.repair() : undefined)}>설치 복구</button><span>·</span><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openInstance() : undefined)}>인스턴스 폴더</button></div></div></details>
         <div className="support-actions"><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(api ? () => api.copyDiagnostics() : undefined, '오류 정보를 복사했어요.')}>오류 정보 복사</button><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(api ? async () => { if (await api.saveDiagnostics()) onNotice('진단 파일을 저장했어요.') } : undefined)}>진단 파일 저장</button>{state.diagnostic && <button className="text-button" onClick={onErrorDetails}>오류 상세</button>}</div>
         {error && <p className="dialog-error" role="alert">{error}</p>}
         {!api && <p className="preview-note">화면 미리보기 · 설정 저장은 데스크톱 앱에서</p>}
@@ -183,8 +196,8 @@ function SettingsDialog({ initial, state, advice, api, working, allowPrism, onCl
   </div>
 }
 
-function DiagnosticDialog({ report, api, onClose }: { report: DiagnosticReport; api: typeof window.sunrin; onClose: () => void }) {
-  const [notice, setNotice] = useState(''), [busy, setBusy] = useState(false)
+function DiagnosticDialog({ report, api, onClose, onNotice }: { report: DiagnosticReport; api: typeof window.sunrin; onClose: () => void; onNotice: (message: string) => void }) {
+  const [error, setError] = useState(''), [busy, setBusy] = useState(false)
   const panel = useRef<HTMLDivElement>(null)
   useEffect(() => {
     panel.current?.querySelector<HTMLButtonElement>('button')?.focus()
@@ -202,16 +215,16 @@ function DiagnosticDialog({ report, api, onClose }: { report: DiagnosticReport; 
   }, [report.id])
   async function perform(save: boolean) {
     if (!api || busy) return
-    setBusy(true); setNotice('')
+    setBusy(true); setError('')
     try {
-      if (save) { if (await api.saveDiagnostics()) setNotice('진단 파일을 저장했어요. 파일을 첨부해서 공유해 주세요.') }
-      else { await api.copyDiagnostics(); setNotice('오류 정보를 복사했어요.') }
-    } catch { setNotice('처리하지 못했어요. 저장 위치나 클립보드를 확인한 뒤 다시 시도해 주세요.') }
+      if (save) { if (await api.saveDiagnostics()) onNotice('진단 파일을 저장했어요. 파일을 첨부해서 공유해 주세요.') }
+      else { await api.copyDiagnostics(); onNotice('오류 정보를 복사했어요.') }
+    } catch { setError('처리하지 못했어요. 저장 위치나 클립보드를 확인한 뒤 다시 시도해 주세요.') }
     finally { setBusy(false) }
   }
   return <div className="modal-backdrop diagnostic-backdrop"><div className="settings-dialog diagnostic-dialog" ref={panel} role="dialog" aria-modal="true" aria-labelledby="diagnostic-heading">
     <div className="dialog-heading"><div><span className="dialog-eyebrow">LET’S FIND THE WAY</span><h2 id="diagnostic-heading">작업을 마치지 못했어요</h2></div><button className="icon-button" onClick={onClose} aria-label="오류 안내 닫기"><Icon name="close" /></button></div>
-    <div className="dialog-body"><p className="diagnostic-summary">{report.summary}</p><p className="field-help">오류 정보를 복사하거나 진단 파일을 저장해서 전달해 주세요. 인증 정보와 개인 경로는 가려서 표시합니다.</p><details className="diagnostic-details"><summary>상세 정보</summary><pre>{report.details}</pre></details><p className="diagnostic-notice" role="status">{notice}</p></div>
+    <div className="dialog-body"><p className="diagnostic-summary">{report.summary}</p><p className="field-help">오류 정보를 복사하거나 진단 파일을 저장해서 전달해 주세요. 인증 정보와 개인 경로는 가려서 표시합니다.</p><details className="diagnostic-details"><summary>상세 정보</summary><pre>{report.details}</pre></details>{error && <p className="dialog-error" role="alert">{error}</p>}</div>
     <div className="dialog-footer"><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(false)}>오류 정보 복사</button><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(true)}>진단 파일 저장</button><button className="save-button" onClick={onClose}>닫기</button></div>
   </div></div>
 }

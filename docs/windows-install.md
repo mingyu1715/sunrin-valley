@@ -1,10 +1,10 @@
 # 선린밸리 Windows 설치 가이드
 
-Windows x64용 선린밸리 런처 1.0.0 기준입니다.
+Windows x64용 선린밸리 런처 1.1.1 기준입니다.
 
 ## 1. 설치 파일 받기
 
-[공식 1.0.0 다운로드 페이지](https://github.com/mingyu1715/sunrin-valley/releases/tag/launcher-1.0.0)를 열고, **Assets**에서 **`Sunrin-Valley-Setup-1.0.0-x64.exe`**를 받습니다.
+[공식 1.1.1 다운로드 페이지](https://github.com/mingyu1715/sunrin-valley/releases/tag/launcher-1.1.1)를 열고, **Assets**에서 **`Sunrin-Valley-Setup-1.1.1-x64.exe`**를 받습니다.
 
 Mac용 ZIP이나 `Source code`가 아닌 Windows 설치 파일을 선택해 주세요.
 
@@ -21,7 +21,7 @@ Mac용 ZIP이나 `Source code`가 아닌 Windows 설치 파일을 선택해 주�
 
 ![Windows SmartScreen 경고 예시: 왼쪽에서 추가 정보, 오른쪽에서 실행을 누르는 순서](assets/windows-smartscreen.png)
 
-> 위 이미지는 앱 이름을 가린 **보안 경고 화면 예시**입니다. 실제 화면에서 실행할 파일이 `Sunrin-Valley-Setup-1.0.0-x64.exe`인지 확인해 주세요.
+> 위 이미지는 앱 이름을 가린 **보안 경고 화면 예시**입니다. 실제 화면에서 실행할 파일이 `Sunrin-Valley-Setup-1.1.1-x64.exe`인지 확인해 주세요.
 
 Windows 버전이나 PC 정책에 따라 화면이 다를 수 있습니다. **실행** 버튼이 없거나 다른 차단 안내가 나오면, 보안 기능을 끄는 대신 해당 화면을 캡처해 전달해 주세요.
 
@@ -52,3 +52,5 @@ Windows 버전이나 PC 정책에 따라 화면이 다를 수 있습니다. **�
 - 설치 복구가 필요하면 게임과 Prism을 닫고 **설정 → 문제 해결 → 설치 복구**를 누릅니다.
 
 삭제하려면 **제어판 → 프로그램 제거 → Sunrin Valley → 제거** 또는 Windows 설정의 **설치된 앱**을 이용합니다. 전용 모드·로그인 정보·월드도 함께 삭제되므로 **월드는 먼저 백업**해 주세요. 기존 Minecraft 폴더는 유지됩니다.
+
+런처 자체 업데이트는 **설정 → 런처 업데이트**에서 확인하고 적용합니다. 런처가 자동으로 다시 시작되며 기존 게임 파일·계정·설정·월드는 유지됩니다. 1.0.0에는 이 기능이 없어 새 설치 파일로 한 번 교체해야 합니다.

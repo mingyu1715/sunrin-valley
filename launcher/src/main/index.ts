@@ -119,14 +119,15 @@ async function pollOperation() {
 async function checkAppUpdate() {
   if (busy || applyingSelfUpdate || !app.isPackaged) return
   if (!appUpdateCheck) appUpdateCheck = (async () => {
-    update({ launcherUpdate: { status: 'checking', message: '런처 업데이트를 확인하고 있어요.' } })
+    const previous = state.launcherUpdate
+    update({ launcherUpdate: { ...previous, status: 'checking', message: '런처 업데이트를 확인하고 있어요.' } })
     try {
       appUpdate = await checkLauncherUpdate(app.getVersion(), `${process.platform}-${process.arch}`, { includeCurrent: true })
       if (applyingSelfUpdate) return
       update({ launcherUpdate: appUpdate ? { status: appUpdate.version === app.getVersion() ? 'idle' : 'available', version: appUpdate.version, changes: appUpdate.changes, message: appUpdate.version === app.getVersion() ? '최신 런처를 사용하고 있어요.' : `런처 ${appUpdate.version} 업데이트가 있어요.` } : { status: 'idle', message: '최신 런처를 사용하고 있어요.' } })
     } catch (error) {
       appUpdate = undefined
-      if (!applyingSelfUpdate) update({ launcherUpdate: { status: 'error', message: '런처 업데이트를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.' } })
+      if (!applyingSelfUpdate) update({ launcherUpdate: { ...previous, status: 'error', message: '런처 업데이트를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.' } })
       await log(`Launcher update check: ${error instanceof Error ? error.message : 'failed'}`).catch(() => {})
     } finally { lastAppUpdateCheck = Date.now() }
   })().finally(() => { appUpdateCheck = undefined })
@@ -153,7 +154,7 @@ async function performAppUpdate() {
     update({ launcherUpdate: { status: 'applying', version: info.version, changes: info.changes, message: '런처 업데이트를 준비하고 있어요. 잠시 후 다시 시작합니다.' } })
     const exe = app.getPath('exe')
     const appPath = process.platform === 'darwin' ? dirname(dirname(dirname(exe))) : dirname(exe)
-    const prepared = await prepareLauncherUpdate({ assetPath, info, root: store.root, appPath, executablePath: exe, currentVersion: app.getVersion() })
+    const prepared = await prepareLauncherUpdate({ assetPath, info, root: store.root, appPath, executablePath: exe, currentVersion: app.getVersion(), protectedDataPath: state.settings.dataPath })
     await launchLauncherUpdate(prepared, process.pid)
     closeAllowed = true
     app.quit()

@@ -1,10 +1,10 @@
 # 선린밸리 Mac 설치 가이드
 
-Apple Silicon(M1·M2·M3·M4 등)용 런처 1.0.0 기준입니다.
+Apple Silicon(M1·M2·M3·M4 등)용 런처 1.1.1 기준입니다.
 
 ## 1. DMG로 설치하기
 
-1. [공식 1.0.0 다운로드 페이지](https://github.com/mingyu1715/sunrin-valley/releases/tag/launcher-1.0.0)의 **Assets**에서 **`Sunrin-Valley-1.0.0-mac-arm64.dmg`**를 받습니다.
+1. [공식 1.1.1 다운로드 페이지](https://github.com/mingyu1715/sunrin-valley/releases/tag/launcher-1.1.1)의 **Assets**에서 **`Sunrin-Valley-1.1.1-mac-arm64.dmg`**를 받습니다.
 2. DMG를 두 번 클릭해 엽니다.
 3. 열린 창의 **Sunrin Valley 앱을 오른쪽 Applications(응용 프로그램) 폴더로 드래그**합니다.
 4. 복사가 끝나면 Finder에서 선린밸리 디스크를 추출합니다.
@@ -37,3 +37,5 @@ Mac 배포물에는 앱 번들 검증용 **무료 로컬 서명(ad-hoc)**을 적
 ## 1.0.0 Mac 배포 수정 내용
 
 기존 ZIP은 압축 파일과 체크섬은 정상이었지만, 앱·보조 프로그램·프레임워크의 번들 서명 검증에서 오류가 확인됐습니다. 새 DMG는 앱 전체를 다시 묶어 로컬 서명하고 엄격한 번들 검증을 통과한 앱을 포함합니다. 이 검증은 Apple의 개발자 인증이나 공증을 의미하지 않습니다.
+
+런처 자체 업데이트는 **설정 → 런처 업데이트**에서 확인하고 적용합니다. 런처가 자동으로 다시 시작되며 기존 게임 파일·계정·설정·월드는 유지됩니다. 1.0.0에는 이 기능이 없어 새 설치 파일로 한 번 교체해야 합니다.

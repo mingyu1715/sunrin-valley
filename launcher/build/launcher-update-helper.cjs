@@ -1,5 +1,7 @@
 'use strict'
 // This fixed helper ships with the launcher. Update payloads never supply executable scripts.
+// ELECTRON_RUN_AS_NODE still wraps fs for ASAR. Swapping/cleaning bundles requires real files.
+process.noAsar = true
 const fs = require('node:fs/promises')
 const path = require('node:path')
 const { createHash } = require('node:crypto')
@@ -17,12 +19,26 @@ async function unlinked(target) {
     const parent = path.dirname(cursor); if (cursor === parent) break; cursor = parent
   }
 }
+async function canonicalExistingPrefix(value, links = 0) {
+  if (links > 40) throw new Error('Too many protected data path links')
+  const absolute = path.resolve(value)
+  try { return await fs.realpath(absolute) } catch (error) { if (error.code !== 'ENOENT') throw error }
+  try { if ((await fs.lstat(absolute)).isSymbolicLink()) return canonicalExistingPrefix(path.resolve(path.dirname(absolute), await fs.readlink(absolute)), links + 1) } catch (error) { if (error.code !== 'ENOENT') throw error }
+  const parent = path.dirname(absolute)
+  return parent === absolute ? absolute : path.join(await canonicalExistingPrefix(parent, links), path.basename(absolute))
+}
+async function protectMacData(appPath, protectedDataPath) {
+  if (typeof protectedDataPath !== 'string' || !protectedDataPath || !path.isAbsolute(protectedDataPath)) throw new Error('Invalid protected data path')
+  const [app, data] = await Promise.all([canonicalExistingPrefix(appPath), canonicalExistingPrefix(protectedDataPath)])
+  if (inside(app.toLowerCase(), data.toLowerCase()) || inside(data.toLowerCase(), app.toLowerCase())) throw new Error('Protected game data overlaps the application bundle')
+}
 async function exists(target) { try { await fs.lstat(target); return true } catch (error) { if (error.code === 'ENOENT') return false; throw error } }
 async function validateTransaction(tx) {
   if (!tx || tx.formatVersion !== 1 || !uuid.test(tx.id) || tx.nonce !== tx.id || !/^\d+\.\d+\.\d+$/.test(tx.version) || !/^\d+\.\d+\.\d+$/.test(tx.currentVersion)) throw new Error('Invalid transaction identity')
   for (const key of ['root', 'transactionPath', 'appPath', 'candidate', 'backup', 'executablePath', 'assetPath']) if (typeof tx[key] !== 'string' || path.resolve(tx[key]) !== tx[key]) throw new Error('Noncanonical transaction path')
   if (tx.transactionPath !== path.join(tx.root, 'launcher-updates/transactions', tx.id) || inside(tx.appPath, tx.root) || inside(tx.root, tx.appPath) || !inside(tx.appPath, tx.executablePath)) throw new Error('Unsafe transaction/application relationship')
   if (tx.platform !== 'darwin' || !tx.appPath.endsWith('.app') || tx.candidate !== path.join(path.dirname(tx.appPath), `.sunrin-update-${tx.id}.app`) || tx.backup !== path.join(path.dirname(tx.appPath), `.sunrin-backup-${tx.id}.app`) || !inside(path.join(tx.appPath, 'Contents/MacOS'), tx.executablePath)) throw new Error('Unsafe Mac update paths')
+  if (tx.protectedDataPath !== undefined) await protectMacData(tx.appPath, tx.protectedDataPath)
   if (path.dirname(tx.assetPath) !== path.join(tx.root, 'launcher-updates/downloads') || !/^[0-9a-f]{64}$/.test(tx.assetSha256) || !Number.isSafeInteger(tx.assetSize) || tx.assetSize < 1) throw new Error('Unsafe update download asset')
   await unlinked(tx.assetPath); if (!(await fs.lstat(tx.assetPath)).isFile()) throw new Error('Update download is not a regular file')
   for (const key of ['transactionPath', 'appPath', 'candidate', 'backup', 'executablePath', 'assetPath']) await unlinked(tx[key])
