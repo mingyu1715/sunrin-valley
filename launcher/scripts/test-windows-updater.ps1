@@ -42,7 +42,11 @@ using System.Threading;
 public static class __CLASS__ {
   private static string Escape(string value) { return value.Replace("\\", "\\\\").Replace("\"", "\\\""); }
   public static void Main(string[] args) {
-    if (args.Length != 2 || args[0] != "--launcher-update-token") return;
+    if (args.Length != 2 || args[0] != "--launcher-update-token") {
+      File.WriteAllText(Path.Combine(@"__TRANSACTION_PATH__", "old-restart.pid"), Process.GetCurrentProcess().Id.ToString());
+      Thread.Sleep(500);
+      return;
+    }
     string body = "{\"nonce\":\"" + Escape(args[1]) + "\",\"version\":\"__VERSION__\",\"executablePath\":\"" + Escape(Process.GetCurrentProcess().MainModule.FileName) + "\",\"pid\":" + Process.GetCurrentProcess().Id + "}";
     File.WriteAllText(Path.Combine(@"__TRANSACTION_PATH__", "healthy.json"), body);
     Thread.Sleep(1500);
@@ -117,6 +121,7 @@ function Run-Case([string]$label, [string]$healthVersion, [bool]$expectSuccess) 
       Assert ((Get-Content -LiteralPath (Join-Path $app 'obsolete.txt') -Raw) -eq 'old managed') "$label obsolete file was not restored"
       Assert ((Get-Content -LiteralPath (Join-Path $app 'new.txt') -Raw) -eq 'old managed') "$label changed managed file was not restored"
       Assert (Test-Path -LiteralPath $assetPath -PathType Leaf) "$label removed archive after rollback"
+      Assert (Wait-File (Join-Path $transaction 'old-restart.pid') 5) "$label did not restart the old executable"
     }
     Assert ((Get-Content -LiteralPath (Join-Path $app 'unknown-game\world.dat') -Raw) -eq 'player world') "$label changed unknown game data"
     Assert ((Get-Content -LiteralPath (Join-Path $root 'accounts.json') -Raw) -eq 'player account') "$label changed account data"
@@ -132,15 +137,32 @@ function Run-Case([string]$label, [string]$healthVersion, [bool]$expectSuccess) 
         if ($null -ne $fake) { $fake.WaitForExit(5000) | Out-Null }
       } catch { }
     }
+    $restartPath = Join-Path $transaction 'old-restart.pid'
+    if (Test-Path -LiteralPath $restartPath -PathType Leaf) {
+      try {
+        $restartPid = [int](Get-Content -LiteralPath $restartPath -Raw)
+        $restarted = Get-Process -Id $restartPid -ErrorAction SilentlyContinue
+        if ($null -ne $restarted) { $restarted.WaitForExit(5000) | Out-Null }
+      } catch { }
+    }
     if ($null -ne $worker) {
       Set-Content -LiteralPath (Join-Path $logs "$label.stdout.txt") -Value $worker.StandardOutput.ReadToEnd()
       Set-Content -LiteralPath (Join-Path $logs "$label.stderr.txt") -Value $worker.StandardError.ReadToEnd()
     }
-    foreach ($name in @('transaction.json', 'helper-ready.json', 'result.json', 'healthy.json')) {
+    foreach ($name in @('transaction.json', 'helper-ready.json', 'result.json', 'healthy.json', 'old-restart.pid')) {
       $source = Join-Path $transaction $name
       if (Test-Path -LiteralPath $source -PathType Leaf) { Copy-Item -LiteralPath $source -Destination (Join-Path $logs "$label.$name") -Force }
     }
-    if (Test-Path -LiteralPath $fixture) { Remove-Item -LiteralPath $fixture -Recurse -Force }
+    if (Test-Path -LiteralPath $fixture) {
+      $deadline = [DateTime]::UtcNow.AddSeconds(10)
+      do {
+        try { Remove-Item -LiteralPath $fixture -Recurse -Force -ErrorAction Stop; break }
+        catch {
+          if ([DateTime]::UtcNow -ge $deadline) { throw }
+          Start-Sleep -Milliseconds 200
+        }
+      } while (Test-Path -LiteralPath $fixture)
+    }
   }
 }
 
