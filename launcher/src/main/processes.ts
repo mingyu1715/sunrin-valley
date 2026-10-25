@@ -23,8 +23,9 @@ export function activityFromProcessOutput(output: string, data: string, platform
   // Only nonsecret process identity leaves this boundary; never return command lines.
   return { ...activity, prismIdentities: [...new Set(identities)].sort() }
 }
-export function phaseForActivity(activity: ProcessActivity, launchRequested: boolean): 'running' | 'preparing' | undefined {
+export function phaseForActivity(activity: ProcessActivity, launchRequested: boolean, gameHasRun = false): 'running' | 'preparing' | undefined {
   if (activity.game) return 'running'
+  if (gameHasRun && !activity.java) return undefined
   if (activity.java || (activity.prism && launchRequested)) return 'preparing'
   return undefined
 }

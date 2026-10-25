@@ -76,13 +76,17 @@ async function arrowRemainsAnchored(page, width, height) {
       getState: () => Promise.resolve(state), primaryAction: () => Promise.resolve(),
       saveSettings: forbidden, chooseDirectory: forbidden, openPrism: forbidden,
       repair: forbidden, openLogs: forbidden, openInstance: forbidden,
+      getStorageInfo: () => Promise.resolve({installedBytes: 3221225472, freeBytes: 107374182400, requiredBytes: 17179869184, downloadBytes: 4294967296, estimatedInstalledBytes: 10737418240, sufficient: true}),
+      copyDiagnostics: () => ipcRenderer.invoke('fixture:copy'), saveDiagnostics: () => ipcRenderer.invoke('fixture:save'),
       onState: listener => { listeners.add(listener); return () => listeners.delete(listener) }
     })
   `)
   await writeFile(entry, `
-    const { app, BrowserWindow } = require('electron')
+    const { app, BrowserWindow, ipcMain, clipboard } = require('electron')
     app.setPath('userData', process.env.SUNRIN_APP_DATA)
     app.whenReady().then(() => {
+      ipcMain.handle('fixture:copy', () => clipboard.writeText('Sanitized diagnostic fixture'));
+      ipcMain.handle('fixture:save', () => require('node:fs').writeFileSync(${JSON.stringify(join(fixtureRoot, 'diagnostic.txt'))}, 'Sanitized diagnostic fixture') || true);
       const window = new BrowserWindow({ width: 1040, height: 740, minWidth: 768, minHeight: 600,
         webPreferences: { preload: ${JSON.stringify(preload)}, contextIsolation: true, nodeIntegration: false, sandbox: true } })
       window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
@@ -102,7 +106,7 @@ async function arrowRemainsAnchored(page, width, height) {
       await mkdir(folder, { recursive: true })
       await page.screenshot({ path: join(folder, `${name}.png`) })
     }
-    await expect(page.getByRole('button', { name: '게임 시작', exact: true })).toBeEnabled()
+    await expect(page.getByRole('button', { name: '게임 실행', exact: true })).toBeEnabled()
     await capture('ready')
     if (!process.argv.includes('--status-only')) {
       for (const [width, height] of [[1040, 708], [1040, 568], [768, 708], [768, 568]]) {
@@ -118,7 +122,7 @@ async function arrowRemainsAnchored(page, width, height) {
       await setState({ ...ready, serverStatus: { state: 'online', activeVersion: '0.1.2', message: '서버 운영 중' } })
       await expect(page.locator('.server-status')).toContainText('서버 운영 중')
       await expect(page.locator('.server-status')).toContainText('0.1.2')
-      await expect(page.getByRole('button', { name: '게임 시작', exact: true })).toBeEnabled()
+      await expect(page.getByRole('button', { name: '게임 실행', exact: true })).toBeEnabled()
       await setState({ ...ready, phase: 'maintenance', serverStatus: { state: 'maintenance', activeVersion: '0.1.2', targetVersion: '0.1.3', message: '안전한 업데이트를 위해 서버를 점검하고 있어요.' } })
       await expect(page.getByRole('button', { name: '서버 점검 중', exact: true })).toBeDisabled()
       await expect(page.locator('.server-status')).toContainText('서버를 점검')
@@ -128,7 +132,7 @@ async function arrowRemainsAnchored(page, width, height) {
       await expect(page.getByRole('dialog')).toBeVisible()
       await page.keyboard.press('Escape')
       await setState({ ...ready, serverStatus: { state: 'scheduled', activeVersion: '0.1.2', targetVersion: '0.1.3', startsAt: '2026-10-27T09:00:00+09:00', message: '서버 업데이트 예정' }, changes: ['새로운 마을 아이템을 추가했어요.', '접속 안정성을 개선했어요.'] })
-      await expect(page.getByRole('button', { name: '게임 시작', exact: true })).toBeEnabled()
+      await expect(page.getByRole('button', { name: '게임 실행', exact: true })).toBeEnabled()
       await expect(page.locator('.server-status')).toContainText('서버 업데이트 예정')
       await expect(page.locator('.server-status')).toContainText('0.1.3')
       await expect(page.locator('.server-status time')).toHaveAttribute('datetime', '2026-10-27T09:00:00+09:00')
@@ -152,6 +156,25 @@ async function arrowRemainsAnchored(page, width, height) {
       await setState({ ...ready, message: '업데이트가 준비되었어요. 게임을 시작하면 최신 마을 파일을 확인해요.', updateMessage: '새 버전을 설치하기 전에 현재 구성을 안전하게 확인하고 있어요.', serverStatus: { state: 'online', activeVersion: '0.1.2', message: '서버 운영 중' }, changes: ['새로운 마을 아이템을 추가했어요.'] })
       const crowdedStatus = await page.evaluate(() => ({ statusBottom: document.querySelector('.status').getBoundingClientRect().bottom, footerTop: document.querySelector('.footer').getBoundingClientRect().top }))
       expect(crowdedStatus.statusBottom, 'server and update messages must remain above the compact footer').toBeLessThanOrEqual(crowdedStatus.footerTop)
+      await setState({ ...ready, launcherVersion: '1.0.0', availableVersion: '0.1.3', serverStatus: {state: 'online', activeVersion: '0.1.3', message: '서버 운영 중'} })
+      await page.getByRole('button', {name: '설정 열기'}).click()
+      await expect(page.locator('.version-info')).toContainText('1.0.0')
+      await expect(page.locator('.version-info')).toContainText('0.1.3')
+      await expect(page.locator('.storage-info')).toContainText('3.0 GB')
+      await page.keyboard.press('Escape')
+      await setState({ ...ready, phase: 'update' })
+      await expect(page.getByRole('button', {name: '업데이트가 있습니다', exact: true})).toBeEnabled()
+      await setState({ ...ready, phase: 'error', diagnostic: { id: 'fixture-error', createdAt: '2026-10-25T00:00:00Z', summary: '다운로드를 완료하지 못했어요.', details: 'Sanitized diagnostic fixture' } })
+      await expect(page.getByRole('dialog', {name: '작업을 마치지 못했어요'})).toBeVisible()
+      await page.getByText('상세 정보', {exact: true}).click()
+      await expect(page.locator('.diagnostic-details pre')).toHaveText('Sanitized diagnostic fixture')
+      await page.getByRole('button', {name: '오류 정보 복사', exact: true}).click()
+      expect(await app.evaluate(({clipboard}) => clipboard.readText())).toBe('Sanitized diagnostic fixture')
+      await page.getByRole('button', {name: '진단 파일 저장', exact: true}).click()
+      expect(await require('node:fs/promises').readFile(join(fixtureRoot, 'diagnostic.txt'), 'utf8')).toBe('Sanitized diagnostic fixture')
+      await capture('diagnostics')
+      await page.keyboard.press('Escape')
+      await expect(page.getByRole('dialog')).toHaveCount(0)
       await setState(ready)
       await expect(changes).toHaveCount(0)
       await expect(page.locator('.server-status')).toHaveCount(0)

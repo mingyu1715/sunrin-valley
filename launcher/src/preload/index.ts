@@ -10,6 +10,9 @@ const api: SunrinAPI = {
   repair: () => ipcRenderer.invoke('sunrin:repair'),
   openLogs: () => ipcRenderer.invoke('sunrin:open-logs'),
   openInstance: () => ipcRenderer.invoke('sunrin:open-instance'),
+  getStorageInfo: () => ipcRenderer.invoke('sunrin:storage'),
+  copyDiagnostics: () => ipcRenderer.invoke('sunrin:copy-diagnostics'),
+  saveDiagnostics: () => ipcRenderer.invoke('sunrin:save-diagnostics'),
   onState: callback => {
     const handler = (_event: unknown, state: LauncherState) => callback(state)
     ipcRenderer.on('sunrin:state-changed', handler)

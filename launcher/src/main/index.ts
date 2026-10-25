@@ -1,13 +1,13 @@
-import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, clipboard, dialog, ipcMain, Menu, shell } from 'electron'
 import { spawn, type ChildProcess } from 'node:child_process'
-import { mkdirSync } from 'node:fs'
+import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync } from 'node:fs'
 import { totalmem } from 'node:os'
-import { appendFile, mkdir } from 'node:fs/promises'
-import { join, resolve } from 'node:path'
+import { appendFile, mkdir, readFile } from 'node:fs/promises'
+import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import type { LauncherState, Settings } from '../shared'
+import type { LauncherState, Settings, StorageInfo } from '../shared'
 import type { BundlePaths, Progress } from './pack-types'
-import { claimDataDirectory } from './files'
+import { assertNoSymlinks, atomicWrite, claimDataDirectory, exists } from './files'
 import { SettingsStore } from './settings'
 import { bundleFingerprint, inspectInstall, installClient, loadManifest, readReceipt } from './installer'
 import { configureOptions, gameRoot, writePrismInstance } from './instance'
@@ -19,6 +19,12 @@ import { chooseLaunchIdentity, clearLaunchSession, readLaunchSession, writeLaunc
 import { resolveRemotePack } from './remote-pack'
 import { recommendMemory } from './memory'
 import { startStatusPolling } from './status-poll'
+import { PrimaryActionController } from './primary-action'
+import { getStorageInfo } from './storage'
+import { createDiagnostic, sanitizeDiagnosticText } from './diagnostics'
+import { saveDiagnosticReport } from './diagnostics-export'
+import { removeLauncherState, removeSunrinData, validateLauncherStateRemoval } from './uninstall'
+import { readCurrentCrash } from './crash-report'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -44,6 +50,12 @@ let persistedStage: LaunchStage | undefined
 let persistedKey: string | undefined
 let sessionWrites = Promise.resolve()
 let pendingSessionWrites = 0
+const primaryController = new PrimaryActionController()
+let closeAllowed = false
+let closePrompt = false
+const uninstallMode = process.argv.includes('--uninstall-data')
+let launchStartedAt = Date.now()
+let lastStorage: StorageInfo | undefined
 
 function persistLaunchStage(stage: LaunchStage): Promise<void> {
   if (!launchRequested || !launchIdentity) return sessionWrites
@@ -60,8 +72,18 @@ function persistLaunchStage(stage: LaunchStage): Promise<void> {
 async function log(message: string) {
   if (!logPath) return
   await mkdir(join(store.root, 'logs'), { recursive: true })
-  await appendFile(logPath, `${new Date().toISOString()} ${message}\n`).catch(() => {})
+  await appendFile(logPath, `${new Date().toISOString()} ${sanitizeDiagnosticText(message, [store.root, state?.settings.dataPath].filter(Boolean))}\n`).catch(() => {})
 }
+function diagnostic(error: unknown) {
+  return createDiagnostic(error, { launcherVersion: app.getVersion(), installedVersion: state.installedVersion, operatingVersion: state.serverStatus?.activeVersion, phase: state.phase, message: state.message, dataPath: state.settings.dataPath, appRoot: store.root, memoryMb: state.settings.memoryMb, freeBytes: lastStorage?.freeBytes ?? undefined })
+}
+async function reportError(error: unknown) {
+  const report = diagnostic(error)
+  update({ phase: 'error', message: report.summary, progress: null, diagnostic: report })
+  await log(report.details).catch(() => {})
+  await atomicWrite(join(store.root, 'logs', 'latest-diagnostic.json'), JSON.stringify(report)).catch(() => {})
+}
+const formatBytes = (value: number) => value >= 1024 ** 3 ? `${(value / 1024 ** 3).toFixed(1)} GB` : `${Math.ceil(value / 1024 ** 2)} MB`
 function update(patch: Partial<LauncherState>) {
   state = { ...state, ...patch }
   if (window && !window.isDestroyed()) window.webContents.send('sunrin:state-changed', state)
@@ -71,7 +93,7 @@ async function checkRemotePack() {
   if (!remoteCheck) remoteCheck = (async () => {
     const result = await resolveRemotePack(store.root, bundledPaths, updateSourcePath, app.getVersion())
     paths = result.paths; launcherUpdate = result.updateRequired; operatingBlocked = result.blocked
-    update({ updateMessage: result.message, serverStatus: result.serverStatus, changes: result.changes })
+    update({ updateMessage: result.message, serverStatus: result.serverStatus, changes: result.changes, availableVersion: (await loadManifest(paths.manifest)).version })
   })().finally(() => { remoteCheck = undefined })
   await remoteCheck
 }
@@ -116,13 +138,15 @@ function startMonitoring(data: string) {
       } else if (activity.java && !sawGame && launchRequested) {
         update({ phase: 'preparing', progress: null, message: 'Minecraft·Forge 실행 구성을 준비하고 있습니다.' })
         void persistLaunchStage('preparing')
-      } else if (!activity.prism && !activity.java) {
+      } else if ((sawGame && phaseForActivity(activity, launchRequested, sawGame) === undefined) || (!activity.prism && !activity.java)) {
         const finishedGame = sawGame
-        stopMonitoring(); launchRequested = false
+        stopMonitoring(); launchRequested = false; sawGame = false
         await sessionWrites; await clearLaunchSession(data)
         launchIdentity = undefined; launchPid = undefined; persistedStage = undefined; persistedKey = undefined
         await refresh()
-        if (finishedGame) update({ message: '게임이 종료되었습니다. 다음에 또 만나요.' })
+        const crash = await readCurrentCrash(data, launchStartedAt).catch(() => undefined)
+        if (crash) { stopMonitoring(); await reportError(crash) }
+        else if (finishedGame) update({ message: '게임이 종료되었습니다. 다음에 또 만나요.' })
       } else if (sawGame && state.phase === 'running') {
         update({ phase: 'preparing', progress: null, message: '게임 종료를 마무리하는 중입니다.' })
       }
@@ -134,7 +158,10 @@ function startMonitoring(data: string) {
 }
 async function refresh() {
   const result = await inspectInstall(state.settings, paths)
+  const manifest = await loadManifest(paths.manifest)
+  update({ availableVersion: manifest.version })
   let patch: Partial<LauncherState> = { ...result, progress: null }
+  if (result.phase === 'update' && !primaryController.hasOffer()) patch = { ...patch, phase: 'ready', message: '게임 시작을 누르면 운영 버전을 확인합니다.' }
   if (result.phase === 'ready' || result.phase === 'update') {
     try {
       const activity = await readProcessActivity(state.settings.dataPath)
@@ -160,20 +187,30 @@ async function task(operation: () => Promise<void>) {
   ensureIdle(); busy = true
   try { await operation() }
   catch (error: any) {
-    await log(error.stack ?? error.message)
-    update({ phase: 'error', message: error.message ?? '작업에 실패했습니다. 복구를 눌러 다시 시도하세요.', progress: null })
+    await reportError(error)
     throw error
   } finally { busy = false; if (BrowserWindow.getAllWindows().length === 0) app.quit() }
 }
 
 async function install() {
   ensurePrismClosed()
-  if (launcherUpdate || operatingBlocked || maintenance()) { await refresh(); return }
+  if (launcherUpdate || operatingBlocked || maintenance()) { await refresh(); return false }
+  update({ phase: 'checking', message: '설치 용량과 디스크 여유 공간을 계산하고 있어요.', progress: null })
+  const storage = await getStorageInfo(state.settings.dataPath, paths)
+  lastStorage = storage
+  if (storage.sufficient === false) throw Object.assign(new Error(`디스크 공간이 부족합니다. 추가 여유 공간 약 ${formatBytes(storage.requiredBytes)}이 필요하고 현재 ${formatBytes(storage.freeBytes!)}이 남아 있어요. 설정에서 설치 위치를 바꾸거나 공간을 확보해 주세요.`), { code: 'ENOSPC' })
+  const choice = await dialog.showMessageBox(window!, {
+    type: 'info', title: '선린밸리 설치 용량', message: state.installedVersion ? '업데이트에 필요한 공간을 확인했어요.' : '선린밸리를 설치할까요?',
+    detail: `예상 다운로드: ${formatBytes(storage.downloadBytes)}\n예상 설치 구성: ${formatBytes(storage.estimatedInstalledBytes)}\n필요한 추가 여유 공간: 약 ${formatBytes(storage.requiredBytes)}\n현재 여유 공간: ${storage.freeBytes === null ? '확인하지 못함' : formatBytes(storage.freeBytes)}\n\n압축 해제·실행 환경·복구 파일과 여유 공간을 포함한 예상치예요. 월드 사용량에 따라 늘어날 수 있어요.`,
+    buttons: ['설치 진행', '취소'], defaultId: 0, cancelId: 1, noLink: true
+  })
+  if (choice.response !== 0) { await refresh(); return false }
   update({ phase: 'installing', progress: 0, message: '선린밸리 설치를 준비합니다.' })
   await installClient(state.settings, paths, progress)
   await log('Installation verified and receipt written')
   await refresh()
   update({ message: '준비 완료! 게임 시작을 누르면 필요한 로그인을 안내합니다.' })
+  return true
 }
 
 async function prism(launch: boolean) {
@@ -194,7 +231,7 @@ async function prism(launch: boolean) {
       await configureOptions(gameRoot(data), state.settings.minecraftPath, state.settings.importOptions, Object.keys(receipt.managed))
       await writePrismInstance(directory, manifest.minecraft, manifest.forge, receipt.runtime.java, state.settings.memoryMb)
     }
-    launchRequested = true; sawGame = activity.game
+    launchRequested = true; sawGame = activity.game; launchStartedAt = Date.now()
     update({ phase: activity.game ? 'running' : 'authenticating', progress: null, message: activity.game ? 'Minecraft가 실행 중입니다.' : 'Microsoft 계정을 확인합니다. 필요한 경우 로그인 창에서 계속해 주세요.' })
   }
   await connectEngineLog(data)
@@ -202,7 +239,7 @@ async function prism(launch: boolean) {
   // supplies whitelisted stages without an stdout pipe tied to this process.
   let earlyFailure = false
   const child = spawn(binary, prismArguments(data, !launch), { detached: true, stdio: 'ignore', windowsHide: true })
-  child.on('error', error => { earlyFailure = true; void log(`Prism: ${error.message}`); update({ phase: 'error', message: 'Prism 실행에 실패했습니다. 복구를 시도해 주세요.', progress: null }) })
+  child.on('error', error => { earlyFailure = true; void reportError(error) })
   child.on('exit', (code, signal) => {
     void log(`Prism exited with ${code}`)
     if (child === prismProcess) prismProcess = undefined
@@ -210,7 +247,7 @@ async function prism(launch: boolean) {
       earlyFailure = true
       stopMonitoring(); launchRequested = false
       launchIdentity = undefined; launchPid = undefined; persistedStage = undefined; persistedKey = undefined
-      update({ phase: 'error', message: `실행 환경이 종료되었습니다(${code ?? signal}). 설정의 문제 해결에서 자세한 내용을 확인해 주세요.`, progress: null })
+      void readCurrentCrash(data, launchStartedAt).catch(() => undefined).then(crash => reportError(crash ?? new Error(`실행 환경이 종료되었습니다(${code ?? signal}). Prism 직접 열기에서 게임 오류를 확인할 수 있어요.`)))
     }
   })
   await new Promise<void>((ok, fail) => { child.once('spawn', ok); child.once('error', fail) })
@@ -229,39 +266,106 @@ async function prism(launch: boolean) {
 }
 
 function handle(channel: string, callback: (...args: any[]) => any) {
-  ipcMain.handle(channel, (event, ...args) => {
+  ipcMain.handle(channel, async (event, ...args) => {
     if (!window || event.sender !== window.webContents || event.senderFrame !== window.webContents.mainFrame) throw new Error('허용되지 않은 요청입니다.')
-    return callback(...args)
+    try { return await callback(...args) }
+    catch (error) { throw new Error(sanitizeDiagnosticText(error instanceof Error ? error.message : String(error), [store.root, state.settings.dataPath])) }
   })
 }
 
 function createWindow() {
+  closeAllowed = false
   window = new BrowserWindow({
     width: 1040, height: 740, minWidth: 768, minHeight: 600,
     title: '선린밸리 · Sunrin Valley', backgroundColor: '#f3eedc', autoHideMenuBar: true,
     webPreferences: { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
+  })
+  window.on('close', event => {
+    if (closeAllowed || !state || (!busy && !['checking', 'installing', 'launching', 'authenticating', 'preparing'].includes(state.phase))) return
+    event.preventDefault()
+    if (closePrompt) return
+    closePrompt = true
+    void dialog.showMessageBox(window!, {
+      type: 'question', title: '선린밸리 준비 중', message: '창을 닫아도 준비는 계속돼요.',
+      detail: '설치·업데이트 또는 게임 준비는 백그라운드에서 계속됩니다. 다시 실행하면 진행 상태를 확인할 수 있어요. 로그인 창이 열려 있다면 그 창에서 계속해 주세요.',
+      buttons: ['계속 보기', '창만 닫기'], defaultId: 0, cancelId: 0, noLink: true
+    }).then(result => { if (result.response === 1 && window && !window.isDestroyed()) { closeAllowed = true; window.close() } }).catch(() => {}).finally(() => { closePrompt = false })
   })
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
   window.webContents.on('will-navigate', (event, url) => {
     const permitted = process.env.ELECTRON_RENDERER_URL ?? pathToFileURL(join(__dirname, '../renderer/index.html')).href
     if (url !== permitted) event.preventDefault()
   })
-  window.webContents.on('render-process-gone', (_event, details) => { void log(`Renderer gone: ${details.reason}`) })
+  window.webContents.on('render-process-gone', (_event, details) => { void reportError(new Error(`화면이 종료되었습니다: ${details.reason}`)) })
   if (process.env.ELECTRON_RENDERER_URL) void window.loadURL(process.env.ELECTRON_RENDERER_URL)
   else void window.loadFile(join(__dirname, '../renderer/index.html'))
 }
 
+async function ensureLauncherMarker(root: string) {
+  const marker = join(root, '.sunrin-launcher.json')
+  await assertNoSymlinks(root, marker)
+  if (await exists(marker)) {
+    const value = JSON.parse(await readFile(marker, 'utf8'))
+    if (value.id !== 'sunrin-valley-launcher' || value.formatVersion !== 1) throw new Error('런처 데이터의 관리 정보가 올바르지 않습니다.')
+  } else await atomicWrite(marker, JSON.stringify({ id: 'sunrin-valley-launcher', formatVersion: 1 }))
+}
+async function uninstallData(root: string) {
+  const settings = await new SettingsStore(root).load()
+  await assertInstallIdle(settings.dataPath)
+  // app.getPath('userData') is owned by this installed app; initialize the same
+  // marker on a first uninstall or an upgrade from a pre-marker launcher.
+  await ensureLauncherMarker(root)
+  await validateLauncherStateRemoval(root, settings.minecraftPath)
+  await removeSunrinData(settings.dataPath, settings.minecraftPath, root)
+  await removeLauncherState(root, settings.minecraftPath)
+}
+async function uninstallMac() {
+  if (!app.isPackaged) { dialog.showErrorBox('선린밸리 제거', '설치한 배포 앱에서 제거를 실행해 주세요.'); return }
+  try {
+    ensureIdle(); ensurePrismClosed(); await assertInstallIdle(state.settings.dataPath)
+    const result = await dialog.showMessageBox(window!, { type: 'warning', title: '선린밸리 제거', message: '선린밸리 앱과 전용 데이터를 제거할까요?', detail: '전용 모드·리소스팩·Java·Prism·로그인 정보·캐시·설정·저장한 월드가 삭제됩니다. 월드는 먼저 백업해 주세요. 기존 Minecraft 폴더는 유지됩니다.', buttons: ['취소', '전체 제거'], defaultId: 0, cancelId: 0, noLink: true })
+    if (result.response !== 1) return
+    await task(async () => {
+      const bundle = dirname(dirname(dirname(app.getPath('exe'))))
+      if (!bundle.endsWith('.app')) throw new Error('설치된 앱 경로를 확인하지 못했습니다.')
+      await uninstallData(store.root)
+      await shell.trashItem(bundle)
+      closeAllowed = true; app.quit()
+    })
+  } catch (error) { await reportError(error) }
+}
+
 if (process.env.SUNRIN_APP_DATA) {
   const testRoot = resolve(process.env.SUNRIN_APP_DATA)
+  // Packaged test profiles must already be ours or empty. An arbitrary populated
+  // override must never become eligible for recursive uninstall by being opened.
+  if (app.isPackaged && existsSync(testRoot)) {
+    if (lstatSync(testRoot).isSymbolicLink()) app.exit(1)
+    const marker = join(testRoot, '.sunrin-launcher.json')
+    if (readdirSync(testRoot).length) {
+      let owned = false
+      try { const owner = JSON.parse(readFileSync(marker, 'utf8')); owned = !lstatSync(marker).isSymbolicLink() && owner.id === 'sunrin-valley-launcher' && owner.formatVersion === 1 } catch { /* Refuse unowned populated overrides. */ }
+      if (!owned) app.exit(1)
+    }
+  }
   mkdirSync(testRoot, { recursive: true })
   app.setPath('userData', testRoot)
 }
-if (!app.requestSingleInstanceLock()) app.quit()
+if (uninstallMode) {
+  if (!app.requestSingleInstanceLock()) app.exit(1)
+  else void app.whenReady().then(async () => {
+    if (!app.isPackaged) throw new Error('배포 앱에서 제거를 실행해 주세요.')
+    await uninstallData(app.getPath('userData'))
+    app.exit(0)
+  }).catch(() => app.exit(1))
+}
+else if (!app.requestSingleInstanceLock()) app.quit()
 else {
   app.on('second-instance', () => { if (window && !window.isDestroyed()) { if (window.isMinimized()) window.restore(); window.focus() } else if (state) createWindow() })
   app.whenReady().then(async () => {
     const root = process.env.SUNRIN_APP_DATA ? resolve(process.env.SUNRIN_APP_DATA) : app.getPath('userData')
     store = new SettingsStore(root); logPath = join(root, 'logs', 'launcher.log')
+    await ensureLauncherMarker(root)
     const pack = app.isPackaged ? join(process.resourcesPath, 'pack') : resolve(__dirname, '../../..')
     bundledPaths = app.isPackaged ? {
       manifest: join(pack, 'manifest.json'), prism: join(pack, 'prism-runtime.json'), customPack: join(pack, 'Sunrin-Custom.zip'), startup: join(pack, 'sunrin_items.js')
@@ -270,30 +374,61 @@ else {
     }
     paths = bundledPaths
     updateSourcePath = app.isPackaged ? join(pack, 'update-source.json') : join(pack, 'client-pack/update-source.json')
-    state = { phase: 'checking', message: '최신 게임 구성 확인 중', progress: null, settings: await store.load(), memoryRecommendation: recommendMemory(Math.floor(totalmem() / 1024 ** 2)) }
+    state = { phase: 'checking', message: '최신 게임 구성 확인 중', progress: null, settings: await store.load(), launcherVersion: app.getVersion(), memoryRecommendation: recommendMemory(Math.floor(totalmem() / 1024 ** 2)) }
+    try {
+      const text = await readFile(join(root, 'logs', 'latest-diagnostic.json'), 'utf8')
+      if (text.length <= 128 * 1024) {
+        const previous = JSON.parse(text)
+        if (['id', 'createdAt', 'summary', 'details'].every(key => typeof previous[key] === 'string')) state.diagnostic = previous
+      }
+    } catch { /* A missing or damaged previous report does not prevent startup. */ }
     handle('sunrin:state', () => state)
     handle('sunrin:primary', () => task(async () => {
       update({ phase: 'checking', message: '최신 게임 구성 확인 중', progress: null })
       await checkRemotePack()
       if (launcherUpdate) { await refresh(); await shell.openExternal(launcherUpdate.downloadUrl); return }
       if (operatingBlocked || maintenance()) { await refresh(); return }
-      const result = await inspectInstall(state.settings, paths)
-      if (result.phase === 'ready') await prism(true); else await install()
+      await primaryController.run({
+        check: async () => {
+          const result = await inspectInstall(state.settings, paths)
+          return { phase: result.phase === 'ready' || result.phase === 'update' || result.phase === 'repair' || result.phase === 'not-installed' ? result.phase : 'blocked', key: await bundleFingerprint(paths) }
+        },
+        offer: () => update({ phase: 'update', progress: null, message: `운영 버전 ${state.availableVersion ?? ''} 업데이트가 있어요. 버튼을 눌러 적용하고 실행하세요.` }),
+        install,
+        launch: async () => {
+          await checkRemotePack()
+          if (launcherUpdate || operatingBlocked || maintenance()) { await refresh(); return }
+          if ((await inspectInstall(state.settings, paths)).phase !== 'ready') { await refresh(); return }
+          await prism(true)
+        }
+      })
     }))
     handle('sunrin:repair', () => task(async () => { await checkRemotePack(); await install() }))
     handle('sunrin:open-prism', () => task(() => prism(false)))
     handle('sunrin:choose-directory', async () => { const result = await dialog.showOpenDialog(window!, { properties: ['openDirectory', 'createDirectory'] }); return result.canceled ? null : result.filePaths[0] })
-    handle('sunrin:save-settings', (settings: Settings) => task(async () => { ensurePrismClosed(); await assertInstallIdle(state.settings.dataPath); await assertInstallIdle(store.validate(settings).dataPath); await store.save(settings); update({ settings: await store.load(), phase: 'checking' }); await refresh() }))
+    handle('sunrin:save-settings', (settings: Settings) => task(async () => { ensurePrismClosed(); await assertInstallIdle(state.settings.dataPath); await assertInstallIdle(store.validate(settings).dataPath); await store.save(settings); primaryController.clear(); lastStorage = undefined; update({ settings: await store.load(), phase: 'checking' }); await refresh() }))
     handle('sunrin:open-logs', async () => { await mkdir(join(root, 'logs'), { recursive: true }); const error = await shell.openPath(join(root, 'logs')); if (error) throw new Error(error) })
     handle('sunrin:open-instance', async () => { await claimDataDirectory(state.settings.dataPath); const path = gameRoot(state.settings.dataPath); await mkdir(path, { recursive: true }); const error = await shell.openPath(path); if (error) throw new Error(error) })
+    handle('sunrin:storage', async () => { const storage = await getStorageInfo(state.settings.dataPath, paths); lastStorage = storage; return storage })
+    handle('sunrin:copy-diagnostics', () => { clipboard.writeText((state.diagnostic ?? diagnostic(new Error('사용자가 요청한 현재 상태 정보'))).details) })
+    handle('sunrin:save-diagnostics', async () => {
+      const report = state.diagnostic ?? diagnostic(new Error('사용자가 요청한 현재 상태 정보'))
+      const result = await dialog.showSaveDialog(window!, { title: '선린밸리 진단 파일 저장', defaultPath: join(app.getPath('documents'), `sunrin-diagnostics-${report.createdAt.replace(/[:.]/g, '-')}.txt`), filters: [{ name: '텍스트 파일', extensions: ['txt'] }] })
+      if (result.canceled || !result.filePath) return false
+      await saveDiagnosticReport(result.filePath, report.details)
+      return true
+    })
+    if (process.platform === 'darwin') Menu.setApplicationMenu(Menu.buildFromTemplate([
+      { label: app.name, submenu: [{ role: 'about' }, { type: 'separator' }, { label: '선린밸리 제거…', click: () => { void uninstallMac() } }, { type: 'separator' }, { role: 'hide' }, { role: 'hideOthers' }, { role: 'unhide' }, { type: 'separator' }, { role: 'quit' }] },
+      { role: 'editMenu' }, { role: 'windowMenu' }
+    ]))
     createWindow(); await checkRemotePack(); await refresh(); await log('Launcher ready')
     stopStatusPolling = startStatusPolling(pollOperation, () => !busy && !['checking', 'installing', 'authenticating', 'preparing', 'launching', 'running'].includes(state.phase))
-  }).catch(error => { dialog.showErrorBox('선린밸리 시작 오류', `${error.message}\n설정 파일과 설치 경로를 확인해 주세요.`); app.quit() })
+  }).catch(async error => { if (state) await reportError(error); dialog.showErrorBox('선린밸리 시작 오류', `${sanitizeDiagnosticText(String(error.message))}\n설정 파일과 설치 경로를 확인해 주세요.`); closeAllowed = true; app.quit() })
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })
   app.on('window-all-closed', () => { if (!busy) app.quit() })
   app.on('before-quit', event => {
-    stopStatusPolling?.()
-    stopMonitoring()
     if (pendingSessionWrites) { event.preventDefault(); void sessionWrites.finally(() => app.quit()) }
   })
+  app.on('will-quit', () => { stopStatusPolling?.(); stopMonitoring() })
 }

@@ -1,6 +1,6 @@
 # 원격 게임 구성 업데이트
 
-모드팩 버전과 런처 버전은 별개입니다. 0.1.3 런처는 고정 GitHub 주소의 `client-pack/channel/operating.json`에서 실제 운영 버전과 점검 상태를 확인합니다. 기존 0.1.2 런처의 `stable.json` 주소도 운영 버전을 가리키도록 유지합니다. 모드·리소스팩·KubeJS 변경마다 새 런처를 받을 필요는 없습니다.
+모드팩 버전과 런처 버전은 별개입니다. 1.0.0 런처는 고정 GitHub 주소의 `client-pack/channel/operating.json`에서 실제 운영 버전과 점검 상태를 확인합니다. 기존 0.1.2 런처의 `stable.json` 주소도 운영 버전을 가리키도록 유지합니다. 모드·리소스팩·KubeJS 변경마다 새 런처를 받을 필요는 없습니다.
 
 채널 파일은 버전별 manifest·Prism 배포 사양·자체 overlay ZIP의 주소와 SHA256을 담습니다. 모드와 Stay True·BSL 등 타사 파일은 manifest에 기록된 공식 배포처에서 받습니다. 자체 overlay는 `kubejs-custom/`의 startup/server/client scripts·assets·data와 `Sunrin-Custom.zip`을 담습니다. 테스트·README·숨김 파일은 업로드하지 않습니다.
 

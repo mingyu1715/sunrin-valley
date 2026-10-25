@@ -7,6 +7,12 @@ import AdmZip from 'adm-zip'
 import { claimDataDirectory, assertNoSymlinks } from '../src/main/files'
 import { ensurePrism } from '../src/main/runtime'
 import { commandUsesData, activityFromCommands, phaseForActivity } from '../src/main/processes'
+
+it('finishes an observed game even while Prism keeps its error console open', () => {
+  expect(phaseForActivity({ prism: true, java: false, game: false }, true, true)).toBeUndefined()
+  expect(phaseForActivity({ prism: true, java: true, game: false }, true, true)).toBe('preparing')
+  expect(phaseForActivity({ prism: true, java: true, game: true }, true, true)).toBe('running')
+})
 import { symlink } from 'node:fs/promises'
 const dirs: string[] = []
 it('keeps an idle account window from trapping the launcher in preparation after a restart', () => {

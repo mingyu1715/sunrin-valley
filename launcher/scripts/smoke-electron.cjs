@@ -36,7 +36,7 @@ async function closeWindow(app) {
       const receiptPath = resolve(state.settings.dataPath, 'prism-data/instances/SunrinValley/.minecraft/.sunrin/receipt.json')
       const before = await readFile(receiptPath)
       if (process.argv.includes('--restart')) await page.evaluate(() => window.sunrin.primaryAction())
-      else await page.getByRole('button', { name: '게임 시작', exact: true }).click()
+      else await page.getByRole('button', { name: '게임 실행', exact: true }).click()
       await expect.poll(() => page.evaluate(() => window.sunrin.getState().then(state => state.phase)), { timeout: 30000 }).toBe('authenticating')
       const label = page.getByRole('button', { name: '준비하는 중', exact: true })
       if (!await label.isDisabled()) throw Error('Launch button did not disable during authentication')
@@ -78,7 +78,7 @@ async function closeWindow(app) {
       return
     }
     if (process.argv.includes('--failed-engine')) {
-      await page.getByRole('button', { name: '게임 시작', exact: true }).click()
+      await page.getByRole('button', { name: '게임 실행', exact: true }).click()
       await expect.poll(() => page.evaluate(() => window.sunrin.getState().then(state => state.phase)), { timeout: 30000 }).toBe('error')
       await new Promise(resolve => setTimeout(resolve, 3500))
       if ((await page.evaluate(() => window.sunrin.getState())).phase !== 'error') throw Error('Fast engine failure was erased by background monitoring')
@@ -110,7 +110,7 @@ async function closeWindow(app) {
       console.log('PASS: restarting the launcher with an idle account window remains usable')
       return
     }
-    await page.getByRole('button', { name: /^(게임 설치|게임 시작|업데이트|복구)$/ }).waitFor()
+    await page.getByRole('button', { name: /^(게임 설치|게임 실행|업데이트가 있습니다|복구)$/ }).waitFor()
     await page.screenshot({ path: resolve(root, '.work/launcher.png') })
     await page.getByRole('button', { name: '설정 열기' }).click()
     await page.getByRole('dialog').waitFor()

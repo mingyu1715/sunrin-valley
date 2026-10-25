@@ -7,6 +7,15 @@ export interface Settings {
   shareShaders: boolean
 }
 export interface MemoryRecommendation { totalMb: number; minimumMb: number; preferredMb: number; recommendedMb: number }
+export interface StorageInfo {
+  installedBytes: number
+  freeBytes: number | null
+  requiredBytes: number
+  downloadBytes: number
+  estimatedInstalledBytes: number
+  sufficient: boolean | null
+}
+export interface DiagnosticReport { id: string; createdAt: string; summary: string; details: string }
 export interface ServerStatus {
   state: 'unconfigured' | 'online' | 'scheduled' | 'maintenance' | 'failed' | 'unknown'
   activeVersion: string
@@ -24,6 +33,9 @@ export interface LauncherState {
   updateMessage?: string
   serverStatus?: ServerStatus
   changes?: string[]
+  launcherVersion?: string
+  availableVersion?: string
+  diagnostic?: DiagnosticReport
 }
 export interface SunrinAPI {
   getState(): Promise<LauncherState>
@@ -34,6 +46,9 @@ export interface SunrinAPI {
   repair(): Promise<void>
   openLogs(): Promise<void>
   openInstance(): Promise<void>
+  getStorageInfo(): Promise<StorageInfo>
+  copyDiagnostics(): Promise<void>
+  saveDiagnostics(): Promise<boolean>
   onState(callback: (state: LauncherState) => void): () => void
 }
 declare global { interface Window { sunrin?: SunrinAPI } }

@@ -1,6 +1,6 @@
 {
   "name": "sunrin-valley-launcher",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "선린밸리 전용 설치 및 실행 도우미",
   "author": "Sunrin Valley",
   "private": true,
@@ -11,7 +11,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "package:mac": "electron-builder --mac zip --arm64 --publish never",
-    "package:win": "electron-builder --win portable --x64 --publish never",
+    "package:win": "electron-builder --win nsis --x64 --publish never",
     "verify:install": "tsx scripts/verify-install.ts"
   },
   "dependencies": {
@@ -38,12 +38,14 @@
     "appId": "kr.sunrinvalley.launcher",
     "productName": "Sunrin Valley",
     "directories": {
-      "output": "../release/0.1.3"
+      "output": "../release/1.0.0"
     },
     "files": [
       "out/**/*",
+      "!out/sunrin-installed-files.nsh",
       "package.json"
     ],
+    "afterPack": "build/after-pack.cjs",
     "extraResources": [
       {
         "from": "../client-pack/manifest.json",
@@ -74,12 +76,23 @@
       "signAndEditExecutable": false,
       "target": [
         {
-          "target": "portable",
+          "target": "nsis",
           "arch": [
             "x64"
           ]
         }
       ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "packElevateHelper": false,
+      "allowToChangeInstallationDirectory": true,
+      "include": "build/installer.nsh",
+      "deleteAppDataOnUninstall": false,
+      "uninstallDisplayName": "Sunrin Valley",
+      "artifactName": "Sunrin-Valley-Setup-${version}-${arch}.${ext}"
     }
   }
 }
