@@ -18,6 +18,7 @@ import { PrismLogTail, PrismProgressDecoder, prismArguments } from './prism-prog
 import { chooseLaunchIdentity, clearLaunchSession, readLaunchSession, writeLaunchSession, type LaunchStage } from './launch-session'
 import { resolveRemotePack } from './remote-pack'
 import { recommendMemory } from './memory'
+import { startStatusPolling } from './status-poll'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -28,6 +29,9 @@ let paths: BundlePaths
 let bundledPaths: BundlePaths
 let updateSourcePath: string
 let launcherUpdate: { minLauncherVersion: string; downloadUrl: string } | undefined
+let operatingBlocked: string | undefined
+let remoteCheck: Promise<void> | undefined
+let stopStatusPolling: (() => void) | undefined
 let logPath: string
 let monitor: ReturnType<typeof setInterval> | undefined
 let monitorGeneration = 0
@@ -64,9 +68,20 @@ function update(patch: Partial<LauncherState>) {
 }
 const progress: Progress = (message, value) => update({ message, progress: value })
 async function checkRemotePack() {
-  const result = await resolveRemotePack(store.root, bundledPaths, updateSourcePath, app.getVersion())
-  paths = result.paths; launcherUpdate = result.updateRequired
-  update({ updateMessage: result.message })
+  if (!remoteCheck) remoteCheck = (async () => {
+    const result = await resolveRemotePack(store.root, bundledPaths, updateSourcePath, app.getVersion())
+    paths = result.paths; launcherUpdate = result.updateRequired; operatingBlocked = result.blocked
+    update({ updateMessage: result.message, serverStatus: result.serverStatus, changes: result.changes })
+  })().finally(() => { remoteCheck = undefined })
+  await remoteCheck
+}
+function maintenance() { return state.serverStatus?.state === 'maintenance' || state.serverStatus?.state === 'failed' }
+async function pollOperation() {
+  const wasGated = !!launcherUpdate || !!operatingBlocked || maintenance()
+  const fingerprint = await bundleFingerprint(paths)
+  await checkRemotePack()
+  if (busy) return
+  if (wasGated || launcherUpdate || operatingBlocked || maintenance() || fingerprint !== await bundleFingerprint(paths)) await refresh()
 }
 
 function stopMonitoring() { if (monitor) clearInterval(monitor); monitor = undefined; engineLog = undefined; monitorGeneration++ }
@@ -135,6 +150,8 @@ async function refresh() {
     } catch { /* Integrity inspection still works when process inspection is unavailable. */ }
   }
   if (launcherUpdate && patch.phase !== 'running') patch = { ...patch, phase: 'launcher-update', message: `이 구성을 사용하려면 런처 ${launcherUpdate.minLauncherVersion} 이상이 필요합니다. 버튼을 눌러 새 런처를 받아 주세요.` }
+  else if (operatingBlocked && patch.phase !== 'running') patch = { ...patch, phase: 'error', message: operatingBlocked }
+  else if (maintenance() && patch.phase !== 'running') patch = { ...patch, phase: 'maintenance', message: state.serverStatus!.message || '서버 점검이 끝난 뒤 다시 시작해 주세요.' }
   update(patch)
 }
 function ensureIdle() { if (busy) throw new Error('진행 중인 작업을 마친 뒤 다시 시도해 주세요.') }
@@ -151,7 +168,7 @@ async function task(operation: () => Promise<void>) {
 
 async function install() {
   ensurePrismClosed()
-  if (launcherUpdate) { await refresh(); return }
+  if (launcherUpdate || operatingBlocked || maintenance()) { await refresh(); return }
   update({ phase: 'installing', progress: 0, message: '선린밸리 설치를 준비합니다.' })
   await installClient(state.settings, paths, progress)
   await log('Installation verified and receipt written')
@@ -259,6 +276,7 @@ else {
       update({ phase: 'checking', message: '최신 게임 구성 확인 중', progress: null })
       await checkRemotePack()
       if (launcherUpdate) { await refresh(); await shell.openExternal(launcherUpdate.downloadUrl); return }
+      if (operatingBlocked || maintenance()) { await refresh(); return }
       const result = await inspectInstall(state.settings, paths)
       if (result.phase === 'ready') await prism(true); else await install()
     }))
@@ -269,10 +287,12 @@ else {
     handle('sunrin:open-logs', async () => { await mkdir(join(root, 'logs'), { recursive: true }); const error = await shell.openPath(join(root, 'logs')); if (error) throw new Error(error) })
     handle('sunrin:open-instance', async () => { await claimDataDirectory(state.settings.dataPath); const path = gameRoot(state.settings.dataPath); await mkdir(path, { recursive: true }); const error = await shell.openPath(path); if (error) throw new Error(error) })
     createWindow(); await checkRemotePack(); await refresh(); await log('Launcher ready')
+    stopStatusPolling = startStatusPolling(pollOperation, () => !busy && !['checking', 'installing', 'authenticating', 'preparing', 'launching', 'running'].includes(state.phase))
   }).catch(error => { dialog.showErrorBox('선린밸리 시작 오류', `${error.message}\n설정 파일과 설치 경로를 확인해 주세요.`); app.quit() })
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })
   app.on('window-all-closed', () => { if (!busy) app.quit() })
   app.on('before-quit', event => {
+    stopStatusPolling?.()
     stopMonitoring()
     if (pendingSessionWrites) { event.preventDefault(); void sessionWrites.finally(() => app.quit()) }
   })

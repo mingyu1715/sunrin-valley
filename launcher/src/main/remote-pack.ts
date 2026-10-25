@@ -4,15 +4,18 @@ import { join, resolve } from 'node:path'
 import { assertNoSymlinks, atomicWrite, downloadVerified, matchesHash, safeTarget } from './files'
 import { loadManifest, validateOverlay } from './installer'
 import type { BundlePaths } from './pack-types'
+import type { ServerStatus } from '../shared'
 
-export interface UpdateSource { formatVersion: 1; channelUrl: string | null; launcherDownloadUrl: string | null }
+export interface UpdateSource { formatVersion: 1; channelUrl: string | null; launcherDownloadUrl: string | null; operatingUrl?: string }
 interface Asset { url: string; sha256: string }
 interface Channel {
   formatVersion: 1; id: 'sunrin-valley'; version: string; minLauncherVersion: string
   bundle: { manifest: Asset; prism: Asset; overlay: Asset }
+  changes?: string[]
 }
+interface Operation { formatVersion: 1; id: 'sunrin-valley-operations'; activeVersion: string; release: Channel; status: Omit<ServerStatus, 'activeVersion'>; updatedAt: string }
 interface CachePointer { formatVersion: 1; channelUrl: string; release: string; channel: Channel }
-interface Resolution { paths: BundlePaths; message?: string; updateRequired?: { minLauncherVersion: string; downloadUrl: string } }
+interface Resolution { paths: BundlePaths; message?: string; updateRequired?: { minLauncherVersion: string; downloadUrl: string }; serverStatus?: ServerStatus; changes?: string[]; blocked?: string }
 const descriptorLimit = 1024 * 1024
 const assetNames = ['manifest', 'prism', 'overlay'] as const
 const filenames = { manifest: 'manifest.json', prism: 'prism-runtime.json', overlay: 'overlay.zip' }
@@ -38,7 +41,9 @@ function https(value: unknown): string {
 }
 function source(value: unknown): UpdateSource {
   if (!object(value) || value.formatVersion !== 1 || !(value.channelUrl === null || typeof value.channelUrl === 'string') || !(value.launcherDownloadUrl === null || typeof value.launcherDownloadUrl === 'string')) throw new Error('업데이트 설정이 올바르지 않습니다.')
-  if (value.channelUrl !== null) { https(value.channelUrl); https(value.launcherDownloadUrl) }
+  if (value.channelUrl !== null || value.operatingUrl !== undefined) https(value.launcherDownloadUrl)
+  if (value.channelUrl !== null) https(value.channelUrl)
+  if (value.operatingUrl !== undefined) https(value.operatingUrl)
   return value as UpdateSource
 }
 function channel(value: unknown): Channel {
@@ -50,7 +55,18 @@ function channel(value: unknown): Channel {
     if (!object(asset) || typeof asset.sha256 !== 'string' || !sha256.test(asset.sha256)) throw new Error('업데이트 파일 검증 정보가 올바르지 않습니다.')
     bundle[name] = { url: https(asset.url), sha256: asset.sha256.toLowerCase() }
   }
-  return { formatVersion: 1, id: 'sunrin-valley', version: value.version, minLauncherVersion: value.minLauncherVersion, bundle }
+  if (value.changes !== undefined && (!Array.isArray(value.changes) || value.changes.length > 20 || value.changes.some(item => typeof item !== 'string' || !item.trim() || item.length > 500))) throw new Error('변경 내역이 올바르지 않습니다.')
+  return { formatVersion: 1, id: 'sunrin-valley', version: value.version, minLauncherVersion: value.minLauncherVersion, bundle, ...(value.changes ? { changes: value.changes } : {}) }
+}
+function operation(value: unknown): Operation {
+  if (!object(value) || value.formatVersion !== 1 || value.id !== 'sunrin-valley-operations' || !object(value.status)) throw new Error('서버 운영 정보가 올바르지 않습니다.')
+  version(value.activeVersion)
+  const release = channel(value.release), status = value.status
+  if (release.version !== value.activeVersion || !['unconfigured', 'online', 'scheduled', 'maintenance', 'failed', 'unknown'].includes(status.state) || typeof status.message !== 'string' || status.message.length > 500) throw new Error('서버 운영 버전 또는 상태가 올바르지 않습니다.')
+  if (status.targetVersion !== undefined) version(status.targetVersion)
+  for (const date of [value.updatedAt, status.startsAt].filter(item => item !== undefined)) if (typeof date !== 'string' || !/(Z|[+-]\d\d:\d\d)$/.test(date) || !Number.isFinite(Date.parse(date))) throw new Error('점검 시각에는 시간대가 필요합니다.')
+  if (typeof value.updatedAt !== 'string') throw new Error('운영 정보 갱신 시각이 없습니다.')
+  return { formatVersion: 1, id: 'sunrin-valley-operations', activeVersion: value.activeVersion, release, status: { state: status.state, message: status.message, ...(status.targetVersion ? { targetVersion: status.targetVersion } : {}), ...(status.startsAt ? { startsAt: status.startsAt } : {}) }, updatedAt: value.updatedAt }
 }
 function releaseId(value: Channel): string {
   return createHash('sha256').update(JSON.stringify(value)).digest('hex')
@@ -115,16 +131,19 @@ export async function resolveRemotePack(root: string, bundled: BundlePaths, sour
   let configured: UpdateSource
   try { configured = source(JSON.parse(await readFile(sourcePath, 'utf8'))); version(launcherVersion) }
   catch { return { paths: bundled, message: '업데이트 설정을 읽지 못해 기본 구성을 사용합니다.' } }
-  if (!configured.channelUrl) return { paths: bundled }
+  const metadataUrl = configured.operatingUrl ?? configured.channelUrl
+  if (!metadataUrl) return { paths: bundled }
   root = resolve(root)
-  const updates = join(root, 'updates'), pointerPath = join(updates, 'current.json'), requiredPath = join(updates, 'required.json')
+  const updates = join(root, 'updates'), pointerPath = join(updates, 'current.json'), requiredPath = join(updates, 'required.json'), operationPath = join(updates, 'operation.json')
   let cached: { paths: BundlePaths; channel: Channel } | undefined
   let required: string | undefined
+  let currentOperation: Operation | undefined
+  const sameSource = (url: unknown) => url === metadataUrl || !!configured.operatingUrl && url === configured.channelUrl
   try {
     await assertNoSymlinks(root, pointerPath)
     const pointer: CachePointer = JSON.parse(await readFile(pointerPath, 'utf8'))
     const value = channel(pointer.channel)
-    if (pointer.formatVersion !== 1 || pointer.channelUrl !== configured.channelUrl || typeof pointer.release !== 'string' || !sha256.test(pointer.release) || pointer.release !== releaseId(value)) throw new Error('잘못된 캐시입니다.')
+    if (pointer.formatVersion !== 1 || !sameSource(pointer.channelUrl) || typeof pointer.release !== 'string' || !sha256.test(pointer.release) || pointer.release !== releaseId(value)) throw new Error('잘못된 캐시입니다.')
     const paths = bundlePaths(bundled, join(updates, 'releases', pointer.release))
     await verifyBundle(root, paths, value)
     cached = { paths, channel: value }
@@ -133,16 +152,35 @@ export async function resolveRemotePack(root: string, bundled: BundlePaths, sour
   try {
     await assertNoSymlinks(root, requiredPath)
     const marker = JSON.parse(await readFile(requiredPath, 'utf8'))
-    if (marker.formatVersion === 1 && marker.channelUrl === configured.channelUrl && isOlder(launcherVersion, marker.minLauncherVersion) && (!required || isOlder(required, marker.minLauncherVersion))) required = marker.minLauncherVersion
+    if (marker.formatVersion === 1 && sameSource(marker.channelUrl) && isOlder(launcherVersion, marker.minLauncherVersion) && (!required || isOlder(required, marker.minLauncherVersion))) required = marker.minLauncherVersion
   } catch { /* A missing or damaged marker provides no update instruction. */ }
-  const fallback = (message: string): Resolution => ({ paths: cached?.paths ?? bundled, message, ...(required ? { updateRequired: { minLauncherVersion: required, downloadUrl: configured.launcherDownloadUrl! } } : {}) })
+  if (configured.operatingUrl) try {
+    await assertNoSymlinks(root, operationPath)
+    const marker = JSON.parse(await readFile(operationPath, 'utf8'))
+    if (marker.url === metadataUrl) currentOperation = operation(marker.snapshot)
+  } catch { /* Last known operation is used only after validation. */ }
+  const operationalInfo = () => currentOperation ? { serverStatus: { ...currentOperation.status, activeVersion: currentOperation.activeVersion }, changes: currentOperation.release.changes } : {}
+  const fallback = (message: string): Resolution => {
+    if (currentOperation && isOlder(launcherVersion, currentOperation.release.minLauncherVersion)) required = currentOperation.release.minLauncherVersion
+    const expected = currentOperation?.release
+    const blocked = expected && (!cached || expected.version !== cached.channel.version || assetNames.some(name => expected.bundle[name].sha256 !== cached!.channel.bundle[name].sha256))
+    return { paths: cached?.paths ?? bundled, message, ...operationalInfo(), ...(blocked ? { blocked: `운영 버전 ${expected.version} 파일을 확인하지 못했습니다. 기존 파일은 보존했으며 다시 시도해 주세요.` } : {}), ...(required ? { updateRequired: { minLauncherVersion: required, downloadUrl: configured.launcherDownloadUrl! } } : {}) }
+  }
   try {
     const fetcher = options.fetcher ?? fetch
-    const value = channel(JSON.parse((await descriptorBytes(await fetchHttps(configured.channelUrl, fetcher))).toString('utf8')))
+    const requestUrl = new URL(metadataUrl)
+    if (configured.operatingUrl) requestUrl.searchParams.set('_sunrin', String(Date.now()))
+    const metadata = JSON.parse((await descriptorBytes(await fetchHttps(requestUrl.href, fetcher))).toString('utf8'))
+    let value: Channel
+    if (configured.operatingUrl) {
+      currentOperation = operation(metadata); value = currentOperation.release
+      await assertNoSymlinks(root, operationPath)
+      await atomicWrite(operationPath, JSON.stringify({ url: metadataUrl, snapshot: currentOperation }))
+    } else value = channel(metadata)
     if (isOlder(launcherVersion, value.minLauncherVersion)) {
       required = value.minLauncherVersion
       await assertNoSymlinks(root, requiredPath)
-      await atomicWrite(requiredPath, JSON.stringify({ formatVersion: 1, channelUrl: configured.channelUrl, minLauncherVersion: required }))
+      await atomicWrite(requiredPath, JSON.stringify({ formatVersion: 1, channelUrl: metadataUrl, minLauncherVersion: required }))
       return fallback('새 모드팩을 사용하려면 런처 업데이트가 필요합니다.')
     }
     const release = releaseId(value), directory = join(updates, 'releases', release), paths = bundlePaths(bundled, directory)
@@ -159,10 +197,10 @@ export async function resolveRemotePack(root: string, bundled: BundlePaths, sour
     }
     await verifyBundle(root, paths, value)
     await assertNoSymlinks(root, pointerPath)
-    await atomicWrite(pointerPath, JSON.stringify({ formatVersion: 1, channelUrl: configured.channelUrl, release, channel: value } satisfies CachePointer))
+    await atomicWrite(pointerPath, JSON.stringify({ formatVersion: 1, channelUrl: metadataUrl, release, channel: value } satisfies CachePointer))
     await assertNoSymlinks(root, requiredPath)
     await rm(requiredPath, { force: true })
-    return { paths }
+    return { paths, ...operationalInfo(), ...(value.changes ? { changes: value.changes } : {}) }
   } catch {
     return fallback(cached ? '업데이트를 확인하지 못해 마지막으로 검증한 구성을 사용합니다.' : '업데이트를 확인하지 못해 기본 구성을 사용합니다.')
   }

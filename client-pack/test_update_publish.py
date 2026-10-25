@@ -60,6 +60,11 @@ class UpdatePublishTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             MODULE.build_update(self.root, 'owner/repo', '0.1.2')
 
+    def test_includes_only_the_selected_release_changes(self):
+        (self.root / 'client-pack/changes.json').write_text(json.dumps({'1.2.3': ['현재 버전 변경'], '1.2.4': ['아직 발행 전']}))
+        output = MODULE.build_update(self.root, 'owner/repo', '0.1.2')
+        self.assertEqual(json.loads((output / 'stable.json').read_text()).get('changes'), ['현재 버전 변경'])
+
 
 if __name__ == '__main__':
     unittest.main()

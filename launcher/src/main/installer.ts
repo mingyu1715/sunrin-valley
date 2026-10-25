@@ -6,9 +6,12 @@ import { cp, mkdir, mkdtemp, readFile, rm, readdir, stat } from 'node:fs/promise
 import { dirname, join } from 'node:path'
 import AdmZip from 'adm-zip'
 import { assertNoSymlinks, atomicWrite, claimDataDirectory, downloadVerified, exists, extractZip, hashFile, matchesHash, safeTarget } from './files'
-import { configureOptions, gameRoot, shareShaderFiles, writePrismInstance } from './instance'
+import { configureOptions, gameRoot, instanceRoot, shareShaderFiles, writePrismInstance } from './instance'
 import { ensureRuntimes } from './runtime'
 import { assertInstallIdle } from './processes'
+import { hasInstallTransaction, InstallTransaction, recoverInstallTransaction } from './install-transaction'
+
+export { recoverInstallTransaction } from './install-transaction'
 
 const receiptPath = (data: string) => join(gameRoot(data), '.sunrin', 'receipt.json')
 const pendingPath = (data: string) => join(gameRoot(data), '.sunrin', 'installing.json')
@@ -94,7 +97,7 @@ export async function inspectInstall(settings: Settings, paths: BundlePaths): Pr
   try { await assertNoSymlinks(settings.dataPath, gameRoot(settings.dataPath)) }
   catch { return { phase: 'repair', message: '설치 경로에 연결 폴더가 있습니다. 원래 폴더로 복원해 주세요.' } }
   const receipt = await readReceipt(settings.dataPath)
-  if (await exists(pendingPath(settings.dataPath))) return { phase: 'repair', message: '이전 설치가 중단되었습니다. 복구를 눌러 이어서 설치하세요.' }
+  if (await hasInstallTransaction(settings.dataPath) || await exists(pendingPath(settings.dataPath))) return { phase: 'repair', message: '이전 설치가 중단되었습니다. 복구를 눌러 이어서 설치하세요.' }
   if (!receipt) return { phase: 'not-installed', message: '우리 마을로 떠날 준비를 해볼까요?' }
   const version = { installedVersion: receipt.packVersion }
   if (receipt.fingerprint !== await bundleFingerprint(paths)) return { phase: 'update', ...version, message: '새 선린밸리 구성이 준비되었습니다.' }
@@ -165,26 +168,33 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
   runtimeInstaller?: (data: string, manifest: string, progress: Progress) => Promise<RuntimePaths>
   assertIdle?: (data: string) => Promise<void>
 } = {}): Promise<void> {
+  await (dependencies.assertIdle ?? assertInstallIdle)(settings.dataPath)
+  await recoverInstallTransaction(settings.dataPath)
   const manifest = await loadManifest(paths.manifest)
   const game = gameRoot(settings.dataPath), cache = join(settings.dataPath, 'cache')
-  await (dependencies.assertIdle ?? assertInstallIdle)(settings.dataPath)
   await claimDataDirectory(settings.dataPath)
   await assertNoSymlinks(settings.dataPath, game)
   const overlay = paths.overlay === undefined ? undefined : await prepareOverlay(paths.overlay, settings.dataPath)
+  let transaction: InstallTransaction | undefined
   try {
     for (const relative of overlay?.files ?? []) await assertNoSymlinks(settings.dataPath, safeTarget(game, relative))
     await mkdir(game, { recursive: true })
     await assertNoSymlinks(game, pendingPath(settings.dataPath))
+    transaction = await InstallTransaction.begin(settings.dataPath)
+    await transaction.snapshot(pendingPath(settings.dataPath))
     await atomicWrite(pendingPath(settings.dataPath), JSON.stringify({ version: manifest.version, startedAt: new Date().toISOString() }))
     const previous = await readReceipt(settings.dataPath)
     const backup = join(game, '.sunrin', 'backups', new Date().toISOString().replaceAll(':', '-'))
     async function backupChanged(relative: string, expected: FileHash) {
       const target = safeTarget(game, relative)
       await assertNoSymlinks(settings.dataPath, target)
-      if (await exists(target) && !await matchesHash(target, expected)) {
+      if (await matchesHash(target, expected)) return false
+      await transaction!.snapshot(target)
+      if (await exists(target)) {
         const save = safeTarget(backup, relative)
         await mkdir(dirname(save), { recursive: true }); await cp(target, save)
       }
+      return true
     }
     progress('원본 모드팩 파일 확인 중', 0)
     const archive = safeTarget(cache, manifest.base.filename)
@@ -207,8 +217,7 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
           continue
         }
       }
-      await backupChanged(relative, hash)
-      await mkdir(dirname(target), { recursive: true }); await cp(source, target)
+      if (await backupChanged(relative, hash)) await atomicWrite(target, await readFile(source))
       managed[relative] = hash
     }
     let completed = 0, cursor = 0
@@ -231,14 +240,22 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
       : [[paths.customPack, 'resourcepacks/Sunrin-Custom.zip'], [paths.startup, 'kubejs/startup_scripts/sunrin_items.js']]
     for (const [source, relative] of customFiles) {
       const hash: FileHash = { algorithm: 'sha256', value: await hashFile(source) }
-      await backupChanged(relative, hash)
-      await atomicWrite(safeTarget(game, relative), await readFile(source))
+      if (await backupChanged(relative, hash)) await atomicWrite(safeTarget(game, relative), await readFile(source))
       managed[relative] = hash
     }
+    for (const relative of ['options.txt', 'configureddefaults/options.txt', 'config/resourcepackoverrides.json', '.sunrin/options-initialized.json']) await transaction.snapshot(safeTarget(game, relative))
     await configureOptions(game, settings.minecraftPath, settings.importOptions, Object.keys(managed))
     if (managed['configureddefaults/options.txt']) managed['configureddefaults/options.txt'] = { algorithm: 'sha256', value: await hashFile(join(game, 'configureddefaults/options.txt')) }
-    if (settings.shareShaders) for (const warning of await shareShaderFiles(settings.minecraftPath, game)) progress(warning, 82)
+    if (settings.shareShaders) {
+      const shaders = join(settings.minecraftPath, 'shaderpacks')
+      if (await exists(shaders)) for (const file of await readdir(shaders, { withFileTypes: true })) {
+        const target = join(game, 'shaderpacks', file.name)
+        if (!file.name.startsWith('.') && file.isFile() && file.name.endsWith('.zip') && !await exists(target)) await transaction.snapshot(target)
+      }
+      for (const warning of await shareShaderFiles(settings.minecraftPath, game)) progress(warning, 82)
+    }
     const runtime = await (dependencies.runtimeInstaller ?? ensureRuntimes)(settings.dataPath, paths.prism, progress)
+    for (const relative of ['mmc-pack.json', 'instance.cfg']) await transaction.snapshot(join(instanceRoot(settings.dataPath), relative))
     await writePrismInstance(join(settings.dataPath, 'prism-data'), manifest.minecraft, manifest.forge, runtime.java, settings.memoryMb)
     // Remove only files which the previous receipt owned and this release no longer owns.
     const replacements = new Map(Object.keys(managed).map(relative => [relative.normalize('NFC').toLowerCase(), relative]))
@@ -253,13 +270,23 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
           // The old spelling can refer to the freshly installed file on case-insensitive disks.
           if (current.dev === next.dev && current.ino === next.ino) continue
         }
+        await transaction.snapshot(target)
         await backupChanged(relative, hash); await rm(target)
       }
     }
     const receipt: InstallReceipt = { formatVersion: 1, packVersion: manifest.version, fingerprint: await bundleFingerprint(paths), managed, runtime }
+    await transaction.snapshot(receiptPath(settings.dataPath))
     await atomicWrite(receiptPath(settings.dataPath), JSON.stringify(receipt, null, 2))
     await rm(pendingPath(settings.dataPath))
+    await transaction.commit()
+    transaction = undefined
     progress('설치 완료. 게임 시작을 누르면 필요한 로그인을 안내합니다.', 100)
+  } catch (error) {
+    if (transaction) {
+      try { await transaction.rollback() }
+      catch (rollbackError) { throw new AggregateError([error, rollbackError], '설치가 중단되었고 이전 파일 복구를 마치지 못했습니다. 게임을 종료한 상태에서 복구를 다시 실행해 주세요.') }
+    }
+    throw error
   } finally {
     if (overlay) await rm(overlay.root, { recursive: true, force: true })
   }

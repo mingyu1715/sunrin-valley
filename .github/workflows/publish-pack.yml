@@ -43,13 +43,12 @@ jobs:
         run: |
           printf '%s\n' 'Game content only. Install or update through the Sunrin launcher. Mod files remain hosted by their official publishers.' > release/pack/notes.md
           gh release create "pack-$PACK_VERSION" release/pack/manifest.json release/pack/prism-runtime.json release/pack/Sunrin-Overlay.zip release/pack/SHA256SUMS.txt --title "Sunrin game content $PACK_VERSION" --notes-file release/pack/notes.md --latest=false --target "$GITHUB_SHA"
-      - name: Update the channel after all assets are published
+      - name: Record the published release without promoting the operating server
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git pull --ff-only origin main
-          mkdir -p client-pack/channel
-          cp release/pack/stable.json client-pack/channel/stable.json
-          git add client-pack/channel/stable.json
+          python3 build-scripts/set-operation.py --root . --record-publication release/pack/stable.json
+          git add client-pack/channel/published.json "client-pack/channel/releases/$PACK_VERSION.json"
           git commit -m "chore: publish game content $PACK_VERSION"
           git push origin HEAD:main

@@ -1,0 +1,10 @@
+{
+  "formatVersion": 1,
+  "version": "0.2.0",
+  "archive": {
+    "path": "prepared-server.zip",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "clientRelease": "client-release.json",
+  "managedPaths": ["server.jar", "mods", "libraries"]
+}

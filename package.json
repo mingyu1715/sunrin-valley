@@ -1,14 +1,14 @@
 {
   "name": "sunrin-valley",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "workspaces": [
     "launcher"
   ],
   "scripts": {
     "dev": "npm --workspace launcher run dev",
     "build": "python3 build-scripts/build-resources.py && npm --workspace launcher run build",
-    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py'",
+    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py' && python3 -m unittest discover -s server-ops/tests -p \"test_*.py\"",
     "typecheck": "npm --workspace launcher run typecheck",
     "package:mac": "npm run build && npm --workspace launcher run package:mac",
     "package:win": "npm run build && npm --workspace launcher run package:win",

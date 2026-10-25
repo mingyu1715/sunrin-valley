@@ -28,8 +28,10 @@ export default function App() {
   const [notice, setNotice] = useState('')
   const settingsButton = useRef<HTMLButtonElement>(null)
   const working = ['checking', 'installing', 'launching', 'authenticating', 'preparing', 'running'].includes(state.phase)
-  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', 'launcher-update': '런처 업데이트', repair: '복구', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
+  const maintenance = state.phase === 'maintenance'
+  const actionLabel = { checking: '준비하는 중', 'not-installed': '게임 설치', ready: '게임 시작', update: '업데이트', 'launcher-update': '런처 업데이트', repair: '복구', maintenance: '서버 점검 중', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
   const launchStep = state.phase === 'authenticating' ? 0 : ['preparing', 'launching'].includes(state.phase) ? 1 : state.phase === 'running' ? 2 : -1
+  const startsAt = state.serverStatus?.startsAt ? new Date(state.serverStatus.startsAt) : undefined
 
   useEffect(() => {
     if (!api) return
@@ -42,7 +44,7 @@ export default function App() {
   }, [api])
 
   async function primaryAction() {
-    if (!api || pending || working) return
+    if (!api || pending || working || maintenance) return
     setPending(true); setNotice('')
     try { await api.primaryAction() }
     catch (error) { setNotice(error instanceof Error ? error.message : '작업을 마치지 못했어요. 잠시 후 다시 시도해 주세요.') }
@@ -68,7 +70,7 @@ export default function App() {
 
     <section className="action-area" aria-label="설치 및 게임 실행">
       <div className="action-caption"><span className="tiny-spark" aria-hidden="true">✦</span>{state.phase === 'ready' ? '어서 와요. 마을이 기다리고 있어요.' : '작은 모험의 시작, 여기에서.'}</div>
-      <button className={`primary-action ${working || pending ? 'busy' : ''}`} disabled={!api || working || pending} onClick={primaryAction}>
+      <button className={`primary-action ${working || pending ? 'busy' : ''}`} disabled={!api || working || pending || maintenance} onClick={primaryAction}>
         {(working || pending) && state.phase !== 'running' ? <span className="spinner" /> : <Icon name={state.phase === 'ready' || state.phase === 'running' ? 'play' : 'download'} size={22} />}
         <span>{actionLabel}</span>
         {!working && !pending && <span className="button-arrow"><Icon name="arrow" size={19} /></span>}
@@ -76,12 +78,16 @@ export default function App() {
       <div className="status" role="status" aria-live="polite">
         <p className={notice || state.phase === 'error' ? 'status-error' : ''}>{notice || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
         {state.updateMessage && <p className="update-note">{state.updateMessage}</p>}
+        {(state.serverStatus || !!state.changes?.length) && <div className="server-updates">
+          {state.serverStatus && <p className="server-status">{state.serverStatus.message}{state.serverStatus.activeVersion && <> · 운영 {state.serverStatus.activeVersion}</>}{state.serverStatus.targetVersion && <> · 예정 {state.serverStatus.targetVersion}</>}{startsAt && !Number.isNaN(startsAt.getTime()) && <> · <time dateTime={state.serverStatus.startsAt}>{startsAt.toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</time></>}</p>}
+          {!!state.changes?.length && <details className="update-changes"><summary>업데이트 변경 내역</summary><ul>{state.changes.map((change, index) => <li key={index}>{change}</li>)}</ul></details>}
+        </div>}
         {launchStep >= 0 && <ol className="launch-steps" aria-label="게임 실행 단계">{['로그인 확인', '게임 준비', '게임 실행'].map((label, index) => <li key={label} className={index === launchStep ? 'current' : index < launchStep ? 'complete' : ''} aria-current={index === launchStep ? 'step' : undefined}><span aria-hidden="true" />{label}</li>)}</ol>}
         {state.progress !== null && working && <div className="progress-track" role="progressbar" aria-label="준비 진행률" aria-valuenow={Math.round(state.progress)} aria-valuemin={0} aria-valuemax={100}><div style={{ width: `${Math.max(0, Math.min(100, state.progress))}%` }} /><span>{Math.round(state.progress)}%</span></div>}
       </div>
     </section>
 
-    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.2</span></span></footer>
+    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v0.1.3</span></span></footer>
     {settingsOpen && <SettingsDialog initial={state.settings} advice={state.memoryRecommendation} api={api} working={working || pending || state.phase === 'launcher-update'} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} />}
   </main>
 }

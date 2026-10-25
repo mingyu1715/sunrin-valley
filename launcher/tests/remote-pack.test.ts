@@ -50,6 +50,59 @@ async function fixture() {
 }
 const offline: typeof fetch = async () => { throw new Error('offline') }
 
+async function operationalFixture(state: 'online' | 'maintenance' = 'online') {
+  const f = await fixture(), operatingUrl = 'https://raw.githubusercontent.com/sunrin-valley/pack/main/operating.json'
+  Object.assign(f.source, { operatingUrl })
+  await writeFile(f.sourcePath, JSON.stringify(f.source))
+  const operation = { formatVersion: 1, id: 'sunrin-valley-operations', activeVersion: f.channel.version, release: { ...f.channel, changes: ['운영 테스트 변경'] }, status: { state, message: state === 'maintenance' ? '서버 점검 중' : '운영 중' }, updatedAt: '2026-10-25T03:00:00+09:00' }
+  const requests: string[] = []
+  const fetcher: typeof fetch = async input => {
+    const url = new URL(String(input)); requests.push(url.origin + url.pathname)
+    if (url.origin + url.pathname === operatingUrl) return new Response(JSON.stringify(operation))
+    if (String(input) === channelUrl) throw Error('The latest published catalog is not the operating version')
+    return f.fetcher(input)
+  }
+  return { ...f, operation, requests, fetcher, operatingUrl }
+}
+
+it('selects the explicit operating release without following the latest published channel', async () => {
+  const f = await operationalFixture()
+  const result = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: f.fetcher })
+  expect(result.paths.manifest).not.toBe(f.bundled.manifest)
+  expect(JSON.parse(await readFile(result.paths.manifest, 'utf8')).version).toBe('0.2.0')
+  expect(result.serverStatus).toEqual({ state: 'online', activeVersion: '0.2.0', message: '운영 중' })
+  expect(result.changes).toEqual(['운영 테스트 변경'])
+  expect(f.requests).not.toContain(channelUrl)
+})
+
+it('keeps a verified maintenance state and active release when the status server becomes unavailable', async () => {
+  const f = await operationalFixture('maintenance')
+  const first = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: f.fetcher })
+  const cached = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: offline })
+  expect(cached.paths).toEqual(first.paths)
+  expect(cached.serverStatus?.state).toBe('maintenance')
+})
+
+it('preserves the good files but blocks launching an old client after an operating update cannot be downloaded', async () => {
+  const f = await operationalFixture()
+  const first = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: f.fetcher })
+  const pointer = await readFile(join(f.root, 'updates/current.json'), 'utf8')
+  f.channel.version = f.manifest.version = '0.2.1'; f.refresh()
+  f.operation.activeVersion = '0.2.1'; f.operation.release = { ...f.channel, changes: ['새 운영 버전'] }
+  const fetcher: typeof fetch = async input => String(input) === f.channel.bundle.overlay.url ? new Response('bad overlay') : f.fetcher(input)
+  const result = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher })
+  expect(result.paths).toEqual(first.paths); expect(result.blocked).toBeTruthy()
+  expect(await readFile(join(f.root, 'updates/current.json'), 'utf8')).toBe(pointer)
+  const cached = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: offline })
+  expect(cached.blocked).toBeTruthy(); expect(cached.paths).toEqual(first.paths)
+})
+
+it('rejects an operating snapshot whose selected version disagrees with its release descriptor', async () => {
+  const f = await operationalFixture(); f.operation.activeVersion = '0.9.0'
+  const result = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.2', { fetcher: f.fetcher })
+  expect(result.paths).toEqual(f.bundled); expect(result.message).toBeTruthy()
+})
+
 it.each(['forbidden', 'case collision'] as const)('keeps the installable cache when a new overlay has a %s', async kind => {
   const f = await fixture()
   const first = await resolveRemotePack(f.root, f.bundled, f.sourcePath, '0.1.1', { fetcher: f.fetcher })

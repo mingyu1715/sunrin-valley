@@ -1,0 +1,6 @@
+{
+  "formatVersion": 1,
+  "targetVersion": "0.2.0",
+  "applyAt": "2030-01-01T04:00:00+09:00",
+  "announcementsSeconds": [300, 60, 10]
+}

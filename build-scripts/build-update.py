@@ -53,6 +53,12 @@ def build_update(root: Path, repository: str, min_launcher_version: str, output:
                        'sha256': sha256((output / name).read_bytes()).hexdigest()}
     channel = {'formatVersion': 1, 'id': 'sunrin-valley', 'version': version,
                'minLauncherVersion': min_launcher_version, 'bundle': bundle}
+    changes_path = root / 'client-pack/changes.json'
+    if changes_path.exists():
+        changes = json.loads(changes_path.read_text()).get(version, [])
+        if not isinstance(changes, list) or len(changes) > 20 or any(not isinstance(item, str) or not item.strip() or len(item) > 500 for item in changes):
+            raise ValueError('Invalid release changes')
+        channel['changes'] = changes
     (output / 'stable.json').write_text(json.dumps(channel, ensure_ascii=False, indent=2) + '\n')
     (output / 'SHA256SUMS.txt').write_text(''.join(f'{sha256((output / name).read_bytes()).hexdigest()}  {name}\n'
                                                 for name in ('manifest.json', 'prism-runtime.json', 'Sunrin-Overlay.zip', 'stable.json')))

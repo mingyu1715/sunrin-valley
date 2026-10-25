@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "enabled": false,
+  "serverDirectory": "local-server",
+  "stateDirectory": "local-state",
+  "activeVersion": "0.1.2",
+  "releaseManifestTemplate": "releases/{version}/server-release.json",
+  "managedPaths": ["server.jar", "mods", "libraries"],
+  "protectedPaths": ["world", "world_nether", "world_the_end", "config", "accounts"],
+  "commandTimeoutSeconds": 120,
+  "health": {
+    "timeoutSeconds": 120,
+    "retrySeconds": 5,
+    "commandTimeoutSeconds": 10
+  },
+  "hooks": {
+    "announce": [],
+    "save": [],
+    "resumeSaves": [],
+    "stop": [],
+    "start": [],
+    "health": [],
+    "publishStatus": []
+  }
+}
