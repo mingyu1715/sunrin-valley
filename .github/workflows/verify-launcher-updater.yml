@@ -1,0 +1,20 @@
+name: Verify launcher updater on Windows
+on:
+  workflow_dispatch:
+jobs:
+  verify-windows-updater:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify native PowerShell updater
+        shell: cmd
+        run: powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File launcher\scripts\test-windows-updater.ps1
+      - name: Upload verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-launcher-updater-verification
+          path: ${{ runner.temp }}\sunrin-updater-verification-logs\
+          if-no-files-found: ignore

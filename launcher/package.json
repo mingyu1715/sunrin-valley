@@ -1,6 +1,6 @@
 {
   "name": "sunrin-valley-launcher",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "\uc120\ub9b0\ubc38\ub9ac \uc804\uc6a9 \uc124\uce58 \ubc0f \uc2e4\ud589 \ub3c4\uc6b0\ubbf8",
   "author": "Sunrin Valley",
   "private": true,
@@ -38,7 +38,7 @@
     "appId": "kr.sunrinvalley.launcher",
     "productName": "Sunrin Valley",
     "directories": {
-      "output": "../release/1.0.0"
+      "output": "../release/1.1.0"
     },
     "files": [
       "out/**/*",
@@ -66,6 +66,14 @@
       {
         "from": "../client-pack/update-source.json",
         "to": "pack/update-source.json"
+      },
+      {
+        "from": "build/launcher-update-helper.cjs",
+        "to": "launcher-update-helper.cjs"
+      },
+      {
+        "from": "build/launcher-update-helper.ps1",
+        "to": "launcher-update-helper.ps1"
       }
     ],
     "mac": {

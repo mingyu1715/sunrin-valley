@@ -16,6 +16,18 @@ export interface StorageInfo {
   sufficient: boolean | null
 }
 export interface DiagnosticReport { id: string; createdAt: string; summary: string; details: string }
+export interface LauncherUpdateInfo {
+  version: string
+  changes: string[]
+  asset: { url: string; sha256: string; size: number; kind: 'dmg' | 'zip' }
+}
+export interface LauncherUpdateState {
+  status: 'idle' | 'checking' | 'available' | 'downloading' | 'ready' | 'applying' | 'error'
+  version?: string
+  changes?: string[]
+  message?: string
+  progress?: number
+}
 export interface ServerStatus {
   state: 'unconfigured' | 'online' | 'scheduled' | 'maintenance' | 'failed' | 'unknown'
   activeVersion: string
@@ -36,6 +48,7 @@ export interface LauncherState {
   launcherVersion?: string
   availableVersion?: string
   diagnostic?: DiagnosticReport
+  launcherUpdate?: LauncherUpdateState
 }
 export interface SunrinAPI {
   getState(): Promise<LauncherState>
@@ -49,6 +62,8 @@ export interface SunrinAPI {
   getStorageInfo(): Promise<StorageInfo>
   copyDiagnostics(): Promise<void>
   saveDiagnostics(): Promise<boolean>
+  checkLauncherUpdate(): Promise<void>
+  applyLauncherUpdate(): Promise<void>
   onState(callback: (state: LauncherState) => void): () => void
 }
 declare global { interface Window { sunrin?: SunrinAPI } }

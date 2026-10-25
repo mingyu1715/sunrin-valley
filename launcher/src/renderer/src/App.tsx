@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import type { DiagnosticReport, LauncherState, MemoryRecommendation, Settings, StorageInfo } from '../../shared'
 import Valley from './Valley'
+import { version as buildVersion } from '../../../package.json'
 
 const previewState: LauncherState = {
   phase: 'not-installed', message: '우리의 작은 마을에서, 새로운 하루를 시작해요.', progress: null,
+  launcherVersion: buildVersion,
   settings: { dataPath: '', memoryMb: 12288, minecraftPath: '', importOptions: true, shareShaders: false }
 }
 
@@ -28,9 +30,10 @@ export default function App() {
   const [notice, setNotice] = useState('')
   const [errorOpen, setErrorOpen] = useState(false)
   const settingsButton = useRef<HTMLButtonElement>(null)
-  const working = ['checking', 'installing', 'launching', 'authenticating', 'preparing', 'running'].includes(state.phase)
+  const selfUpdating = ['downloading', 'ready', 'applying'].includes(state.launcherUpdate?.status ?? '')
+  const working = selfUpdating || ['checking', 'installing', 'launching', 'authenticating', 'preparing', 'running'].includes(state.phase)
   const maintenance = state.phase === 'maintenance'
-  const actionLabel = { checking: pending ? '업데이트 확인 중…' : '준비하는 중', 'not-installed': '게임 설치', ready: '게임 실행', update: '업데이트가 있습니다', 'launcher-update': '런처 업데이트', repair: '복구', maintenance: '서버 점검 중', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
+  const actionLabel = selfUpdating ? '런처 업데이트 중' : { checking: pending ? '업데이트 확인 중…' : '준비하는 중', 'not-installed': '게임 설치', ready: '게임 실행', update: '업데이트가 있습니다', 'launcher-update': '런처 업데이트', repair: '복구', maintenance: '서버 점검 중', installing: '준비하는 중', launching: '준비하는 중', authenticating: '준비하는 중', preparing: '준비하는 중', running: '게임 실행 중', error: '복구' }[state.phase]
   const launchStep = state.phase === 'authenticating' ? 0 : ['preparing', 'launching'].includes(state.phase) ? 1 : state.phase === 'running' ? 2 : -1
   const startsAt = state.serverStatus?.startsAt ? new Date(state.serverStatus.startsAt) : undefined
   useEffect(() => {
@@ -52,6 +55,13 @@ export default function App() {
     setPending(true); setNotice('')
     try { await api.primaryAction() }
     catch (error) { setNotice(error instanceof Error ? error.message : '작업을 마치지 못했어요. 잠시 후 다시 시도해 주세요.') }
+    finally { setPending(false) }
+  }
+  async function applyLauncherUpdate() {
+    if (!api || pending || working) return
+    setPending(true); setNotice('')
+    try { await api.applyLauncherUpdate() }
+    catch (error) { setNotice(error instanceof Error ? error.message : '런처 업데이트를 마치지 못했어요.') }
     finally { setPending(false) }
   }
 
@@ -83,6 +93,7 @@ export default function App() {
         <p className={notice || state.phase === 'error' ? 'status-error' : ''}>{notice || (api ? state.message : '화면 미리보기 · 설치와 실행은 데스크톱 앱에서')}</p>
         {state.diagnostic && state.phase === 'error' && <button className="diagnostic-link" onClick={() => setErrorOpen(true)}>오류 상세 · 공유</button>}
         {state.updateMessage && <p className="update-note">{state.updateMessage}</p>}
+        {state.launcherUpdate && ['available', 'downloading', 'applying', 'error'].includes(state.launcherUpdate.status) && <div className="launcher-update-banner"><p>{state.launcherUpdate.message}{state.launcherUpdate.progress !== undefined && ` · ${Math.round(state.launcherUpdate.progress)}%`}</p>{state.launcherUpdate.status === 'available' && <button className="secondary-button" disabled={working || pending} onClick={() => void applyLauncherUpdate()}>런처 업데이트</button>}</div>}
         {(state.serverStatus || !!state.changes?.length) && <div className="server-updates">
           {state.serverStatus && <p className="server-status">{state.serverStatus.message}{state.serverStatus.activeVersion && <> · 운영 {state.serverStatus.activeVersion}</>}{state.serverStatus.targetVersion && <> · 예정 {state.serverStatus.targetVersion}</>}{startsAt && !Number.isNaN(startsAt.getTime()) && <> · <time dateTime={state.serverStatus.startsAt}>{startsAt.toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</time></>}</p>}
           {!!state.changes?.length && <details className="update-changes"><summary>업데이트 변경 내역</summary><ul>{state.changes.map((change, index) => <li key={index}>{change}</li>)}</ul></details>}
@@ -92,7 +103,7 @@ export default function App() {
       </div>
     </section>
 
-    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v{state.launcherVersion ?? '1.0.0'}</span></span></footer>
+    <footer className="footer"><span className="footer-note"><span className="status-dot" />{state.installedVersion ? `마을 버전 ${state.installedVersion}` : '새로운 이야기를 만날 준비'}</span><span>선린밸리 런처 <span className="footer-version">v{state.launcherVersion ?? buildVersion}</span></span></footer>
     {settingsOpen && <SettingsDialog initial={state.settings} state={state} advice={state.memoryRecommendation} api={api} working={working || pending || state.phase === 'launcher-update'} allowPrism={!['checking', 'installing'].includes(state.phase) && !pending} onClose={closeSettings} onNotice={setNotice} onErrorDetails={() => { setSettingsOpen(false); setErrorOpen(true) }} />}
     {errorOpen && state.diagnostic && <DiagnosticDialog report={state.diagnostic} api={api} onClose={() => setErrorOpen(false)} />}
   </main>
@@ -160,7 +171,8 @@ function SettingsDialog({ initial, state, advice, api, working, allowPrism, onCl
           <label className="checkbox-row"><input type="checkbox" checked={settings.shareShaders} onChange={(event) => change('shareShaders', event.target.checked)} disabled={busy || working} /><span>기존 셰이더 팩 함께 사용하기</span></label>
         </section>
         <section className="account-row"><div><h3>마인크래프트 계정</h3><p>게임 시작을 누르면 필요할 때 Microsoft 로그인 창이 열려요.</p></div></section>
-        <section className="setting-section version-info"><h3>설치 버전</h3><dl><div><dt>런처</dt><dd>{state.launcherVersion ?? '1.0.0'}</dd></div><div><dt>설치된 모드팩</dt><dd>{state.installedVersion ?? '미설치'}</dd></div><div><dt>서버 운영 버전</dt><dd>{state.serverStatus?.activeVersion ?? '확인 전'}</dd></div><div><dt>적용 가능한 구성</dt><dd>{state.availableVersion ?? '확인 전'}</dd></div></dl></section>
+        <section className="setting-section version-info"><h3>설치 버전</h3><dl><div><dt>런처</dt><dd>{state.launcherVersion ?? buildVersion}</dd></div><div><dt>설치된 모드팩</dt><dd>{state.installedVersion ?? '미설치'}</dd></div><div><dt>서버 운영 버전</dt><dd>{state.serverStatus?.activeVersion ?? '확인 전'}</dd></div><div><dt>적용 가능한 구성</dt><dd>{state.availableVersion ?? '확인 전'}</dd></div></dl></section>
+        <section className="setting-section"><h3>런처 업데이트</h3><p className="field-help">{state.launcherUpdate?.message ?? 'GitHub의 최신 런처를 확인합니다. 게임 데이터는 유지됩니다.'}</p><div className="support-actions"><button className="secondary-button" disabled={!api || busy || working || state.launcherUpdate?.status === 'checking'} onClick={() => void perform(api ? () => api.checkLauncherUpdate() : undefined)}>런처 업데이트 확인</button>{state.launcherUpdate?.status === 'available' && <button className="save-button" disabled={!api || busy || working} onClick={() => void perform(api ? () => api.applyLauncherUpdate() : undefined)}>런처 {state.launcherUpdate.version} 업데이트</button>}</div></section>
         <details className="troubleshooting"><summary>문제 해결</summary><div className="troubleshooting-content"><p>로그인이나 실행에 필요한 인증·오류 창은 표시될 수 있어요.</p><button className="secondary-button" disabled={!api || busy || !allowPrism} onClick={() => void perform(api ? () => api.openPrism() : undefined)}>Prism 직접 열기<Icon name="arrow" size={15} /></button><div className="utility-row"><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openLogs() : undefined)}>로그 보기</button><span>·</span><button disabled={!api || busy || working} onClick={() => void perform(api ? () => api.repair() : undefined, '설치 파일을 확인하고 있어요.')}>설치 복구</button><span>·</span><button disabled={!api || busy} onClick={() => void perform(api ? () => api.openInstance() : undefined)}>인스턴스 폴더</button></div></div></details>
         <div className="support-actions"><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(api ? () => api.copyDiagnostics() : undefined, '오류 정보를 복사했어요.')}>오류 정보 복사</button><button className="secondary-button" disabled={!api || busy} onClick={() => void perform(api ? async () => { if (await api.saveDiagnostics()) onNotice('진단 파일을 저장했어요.') } : undefined)}>진단 파일 저장</button>{state.diagnostic && <button className="text-button" onClick={onErrorDetails}>오류 상세</button>}</div>
         {error && <p className="dialog-error" role="alert">{error}</p>}

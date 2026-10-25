@@ -58,4 +58,11 @@ it('writes a generated inventory only for Windows packaging into excluded build 
   await expect(lstat(join(root, 'out/sunrin-installed-files.nsh'))).rejects.toMatchObject({ code: 'ENOENT' })
   await afterPack({ ...context, electronPlatformName: 'win32' })
   expect((await lstat(join(root, 'out/sunrin-installed-files.nsh'))).isFile()).toBe(true)
+  const managed = JSON.parse(await readFile(join(payload, 'resources/launcher-files.json'), 'utf8'))
+  expect(managed).toEqual({ formatVersion: 1, files: [
+    'Sunrin Valley.exe', 'locales/ko.pak', 'resources/app.asar',
+    'resources/launcher-files.json', 'resources/pack/manifest.json'
+  ] })
+  const nsis = await readFile(join(root, 'out/sunrin-installed-files.nsh'), 'utf8')
+  expect(nsis).toContain('resources\\launcher-files.json')
 })

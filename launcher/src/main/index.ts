@@ -5,7 +5,7 @@ import { totalmem } from 'node:os'
 import { appendFile, mkdir, readFile } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import type { LauncherState, Settings, StorageInfo } from '../shared'
+import type { LauncherState, LauncherUpdateInfo, Settings, StorageInfo } from '../shared'
 import type { BundlePaths, Progress } from './pack-types'
 import { assertNoSymlinks, atomicWrite, claimDataDirectory, exists } from './files'
 import { SettingsStore } from './settings'
@@ -25,6 +25,8 @@ import { createDiagnostic, sanitizeDiagnosticText } from './diagnostics'
 import { saveDiagnosticReport } from './diagnostics-export'
 import { removeLauncherState, removeSunrinData, validateLauncherStateRemoval } from './uninstall'
 import { readCurrentCrash } from './crash-report'
+import { checkLauncherUpdate, downloadLauncherUpdate } from './launcher-update'
+import { acknowledgeLauncherUpdate, launchLauncherUpdate, prepareLauncherUpdate } from './launcher-update-install'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -56,6 +58,13 @@ let closePrompt = false
 const uninstallMode = process.argv.includes('--uninstall-data')
 let launchStartedAt = Date.now()
 let lastStorage: StorageInfo | undefined
+let appUpdate: LauncherUpdateInfo | undefined
+let appUpdateCheck: Promise<void> | undefined
+let lastAppUpdateCheck = 0
+let launcherReady = false
+let rendererConnected = false
+let updateAcknowledged = false
+let applyingSelfUpdate = false
 
 function persistLaunchStage(stage: LaunchStage): Promise<void> {
   if (!launchRequested || !launchIdentity) return sessionWrites
@@ -104,6 +113,55 @@ async function pollOperation() {
   await checkRemotePack()
   if (busy) return
   if (wasGated || launcherUpdate || operatingBlocked || maintenance() || fingerprint !== await bundleFingerprint(paths)) await refresh()
+  if (Date.now() - lastAppUpdateCheck > 10 * 60 * 1000) await checkAppUpdate()
+}
+
+async function checkAppUpdate() {
+  if (busy || applyingSelfUpdate || !app.isPackaged) return
+  if (!appUpdateCheck) appUpdateCheck = (async () => {
+    update({ launcherUpdate: { status: 'checking', message: '런처 업데이트를 확인하고 있어요.' } })
+    try {
+      appUpdate = await checkLauncherUpdate(app.getVersion(), `${process.platform}-${process.arch}`, { includeCurrent: true })
+      if (applyingSelfUpdate) return
+      update({ launcherUpdate: appUpdate ? { status: appUpdate.version === app.getVersion() ? 'idle' : 'available', version: appUpdate.version, changes: appUpdate.changes, message: appUpdate.version === app.getVersion() ? '최신 런처를 사용하고 있어요.' : `런처 ${appUpdate.version} 업데이트가 있어요.` } : { status: 'idle', message: '최신 런처를 사용하고 있어요.' } })
+    } catch (error) {
+      appUpdate = undefined
+      if (!applyingSelfUpdate) update({ launcherUpdate: { status: 'error', message: '런처 업데이트를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.' } })
+      await log(`Launcher update check: ${error instanceof Error ? error.message : 'failed'}`).catch(() => {})
+    } finally { lastAppUpdateCheck = Date.now() }
+  })().finally(() => { appUpdateCheck = undefined })
+  await appUpdateCheck
+}
+async function acknowledgeAppUpdate() {
+  if (!launcherReady || !rendererConnected || updateAcknowledged) return
+  await acknowledgeLauncherUpdate(store.root, app.getVersion(), app.getPath('exe'), process.argv)
+  updateAcknowledged = true
+}
+async function performAppUpdate() {
+  if (!app.isPackaged) throw new Error('설치한 배포 앱에서 런처 업데이트를 사용해 주세요.')
+  ensurePrismClosed(); await assertInstallIdle(state.settings.dataPath)
+  // Recheck the release at click time; metadata never supplies executable scripts.
+  const info = await checkLauncherUpdate(app.getVersion(), `${process.platform}-${process.arch}`)
+  if (!info) { update({ launcherUpdate: { status: 'idle', message: '최신 런처를 사용하고 있어요.' } }); return }
+  const choice = await dialog.showMessageBox(window!, { type: 'question', title: '런처 업데이트', message: `런처 ${info.version}로 업데이트할까요?`, detail: '런처 파일만 교체하고 자동으로 다시 시작합니다. 모드·로그인·설정·월드는 그대로 유지합니다.\n\n'+info.changes.map(change => `• ${change}`).join('\n'), buttons: ['업데이트', '취소'], defaultId: 0, cancelId: 1, noLink: true })
+  if (choice.response !== 0) return
+  applyingSelfUpdate = true
+  appUpdate = info
+  update({ launcherUpdate: { status: 'downloading', version: info.version, changes: info.changes, message: '새 런처를 다운로드하고 있어요.', progress: 0 } })
+  try {
+    const assetPath = await downloadLauncherUpdate(info, store.root, (message, value) => update({ launcherUpdate: { status: 'downloading', version: info.version, changes: info.changes, message, progress: value ?? undefined } }))
+    update({ launcherUpdate: { status: 'applying', version: info.version, changes: info.changes, message: '런처 업데이트를 준비하고 있어요. 잠시 후 다시 시작합니다.' } })
+    const exe = app.getPath('exe')
+    const appPath = process.platform === 'darwin' ? dirname(dirname(dirname(exe))) : dirname(exe)
+    const prepared = await prepareLauncherUpdate({ assetPath, info, root: store.root, appPath, executablePath: exe, currentVersion: app.getVersion() })
+    await launchLauncherUpdate(prepared, process.pid)
+    closeAllowed = true
+    app.quit()
+  } catch (error) {
+    applyingSelfUpdate = false
+    update({ launcherUpdate: { status: 'error', version: info.version, changes: info.changes, message: '런처 업데이트에 실패했어요. 기존 앱과 게임 데이터는 유지됩니다.' } })
+    throw error
+  }
 }
 
 function stopMonitoring() { if (monitor) clearInterval(monitor); monitor = undefined; engineLog = undefined; monitorGeneration++ }
@@ -382,11 +440,11 @@ else {
         if (['id', 'createdAt', 'summary', 'details'].every(key => typeof previous[key] === 'string')) state.diagnostic = previous
       }
     } catch { /* A missing or damaged previous report does not prevent startup. */ }
-    handle('sunrin:state', () => state)
+    handle('sunrin:state', () => { rendererConnected = true; void acknowledgeAppUpdate().catch(error => { void log(`Update acknowledgment: ${error instanceof Error ? error.message : 'failed'}`) }); return state })
     handle('sunrin:primary', () => task(async () => {
       update({ phase: 'checking', message: '최신 게임 구성 확인 중', progress: null })
       await checkRemotePack()
-      if (launcherUpdate) { await refresh(); await shell.openExternal(launcherUpdate.downloadUrl); return }
+      if (launcherUpdate) { await refresh(); await performAppUpdate(); return }
       if (operatingBlocked || maintenance()) { await refresh(); return }
       await primaryController.run({
         check: async () => {
@@ -410,6 +468,8 @@ else {
     handle('sunrin:open-logs', async () => { await mkdir(join(root, 'logs'), { recursive: true }); const error = await shell.openPath(join(root, 'logs')); if (error) throw new Error(error) })
     handle('sunrin:open-instance', async () => { await claimDataDirectory(state.settings.dataPath); const path = gameRoot(state.settings.dataPath); await mkdir(path, { recursive: true }); const error = await shell.openPath(path); if (error) throw new Error(error) })
     handle('sunrin:storage', async () => { const storage = await getStorageInfo(state.settings.dataPath, paths); lastStorage = storage; return storage })
+    handle('sunrin:launcher-update-check', () => checkAppUpdate())
+    handle('sunrin:launcher-update-apply', () => task(performAppUpdate))
     handle('sunrin:copy-diagnostics', () => { clipboard.writeText((state.diagnostic ?? diagnostic(new Error('사용자가 요청한 현재 상태 정보'))).details) })
     handle('sunrin:save-diagnostics', async () => {
       const report = state.diagnostic ?? diagnostic(new Error('사용자가 요청한 현재 상태 정보'))
@@ -422,7 +482,12 @@ else {
       { label: app.name, submenu: [{ role: 'about' }, { type: 'separator' }, { label: '선린밸리 제거…', click: () => { void uninstallMac() } }, { type: 'separator' }, { role: 'hide' }, { role: 'hideOthers' }, { role: 'unhide' }, { type: 'separator' }, { role: 'quit' }] },
       { role: 'editMenu' }, { role: 'windowMenu' }
     ]))
-    createWindow(); await checkRemotePack(); await refresh(); await log('Launcher ready')
+    // App health is local renderer readiness, independent of a slow game CDN.
+    launcherReady = true
+    createWindow()
+    void checkAppUpdate()
+    await checkRemotePack(); await refresh(); await log('Launcher ready')
+    await acknowledgeAppUpdate()
     stopStatusPolling = startStatusPolling(pollOperation, () => !busy && !['checking', 'installing', 'authenticating', 'preparing', 'launching', 'running'].includes(state.phase))
   }).catch(async error => { if (state) await reportError(error); dialog.showErrorBox('선린밸리 시작 오류', `${sanitizeDiagnosticText(String(error.message))}\n설정 파일과 설치 경로를 확인해 주세요.`); closeAllowed = true; app.quit() })
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })

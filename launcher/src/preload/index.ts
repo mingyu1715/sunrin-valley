@@ -13,6 +13,8 @@ const api: SunrinAPI = {
   getStorageInfo: () => ipcRenderer.invoke('sunrin:storage'),
   copyDiagnostics: () => ipcRenderer.invoke('sunrin:copy-diagnostics'),
   saveDiagnostics: () => ipcRenderer.invoke('sunrin:save-diagnostics'),
+  checkLauncherUpdate: () => ipcRenderer.invoke('sunrin:launcher-update-check'),
+  applyLauncherUpdate: () => ipcRenderer.invoke('sunrin:launcher-update-apply'),
   onState: callback => {
     const handler = (_event: unknown, state: LauncherState) => callback(state)
     ipcRenderer.on('sunrin:state-changed', handler)
