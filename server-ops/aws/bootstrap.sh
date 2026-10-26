@@ -39,7 +39,7 @@ done
 id sunrin >/dev/null 2>&1 || fail missing-service-user
 
 payload_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
-for payload_file in host.py pack-lock.json sunrin_items.js; do
+for payload_file in host.py pack-lock.json sunrin_items.js server-icon.png; do
   [[ -f "$payload_dir/$payload_file" && ! -L "$payload_dir/$payload_file" ]] || fail missing-bootstrap-payload
 done
 
@@ -57,6 +57,8 @@ python3 /usr/local/lib/sunrin/host.py install \
 chown -R sunrin:sunrin /srv/sunrin/minecraft
 chmod 0750 /srv/sunrin/minecraft
 chmod 0600 /srv/sunrin/minecraft/server.properties
+# Branding is own content; the original server pack lock remains unchanged.
+install -o sunrin -g sunrin -m 0644 "$payload_dir/server-icon.png" /srv/sunrin/minecraft/server-icon.png
 
 # Minecraft's RCON listener otherwise follows server-ip (the public game bind).
 # A dedicated firewall table makes it accessible only through host loopback.

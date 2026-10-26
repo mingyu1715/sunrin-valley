@@ -6,9 +6,9 @@
 |---|---|
 | 기반 | Society: Sunlit Valley 4.1.5A / Minecraft 1.20.1 / Forge 47.4.0 |
 | 원본 | 모드 351개, 리소스팩 15개, 셰이더 1개 + ZIP overrides |
-| 추가 | 아래 Forge 모드 4개 + Stay True 리소스팩 + BSL 셰이더 |
+| 추가 | 아래 Forge 모드 5개 + Stay True 리소스팩 + BSL 셰이더 |
 | 커스텀 | 원본 KubeJS에서 아이템 3종 추가 + Sunrin-Custom.zip |
-| 합계 | 다운로드 파일 373개. 원본 overrides와 자체 파일은 별도 |
+| 합계 | 다운로드 파일 374개. 원본 overrides와 자체 파일은 별도 |
 
 | 추가 모드 | 고정 버전 | 설치 대상 |
 |---|---|---|
@@ -16,6 +16,7 @@
 | Emotecraft | 2.2.7-b.build.50 (Beta) | 클라이언트·서버 |
 | Music Disc Maker | 3.1.2 | 클라이언트·서버, 같은 버전 사용 |
 | StageBox | 1.3.0 | 클라이언트·서버, CurseForge file 9294217 |
+| Korean Chat Patch | 1.9.6 | 클라이언트 전용, Windows x64·Mac Apple Silicon |
 
 추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. StageBox는 현재 Forge 47.4.0과 Java 17을 지원하며 별도 필수 라이브러리가 없습니다. 한국어 316개 키를 내장하지만 영어에만 있는 147개 문구는 영어로 표시될 수 있습니다. 자체 `.ogg` 음악 재생 방식을 쓰며 Music Disc Maker 연동과 게임 안의 소리·조명은 아직 검증하지 않았습니다.
 
@@ -32,3 +33,5 @@ WATUT/CoroUtil·Simple Hats·Zetter·Immersive Paintings·Exposure·Etched·FTB 
 WorldEdit·Sunrin Core·EssentialsX·Essential Mod·FTB Essentials는 이번 클라이언트에 새로 추가하지 않습니다. 관리자·보상·퀘스트·월드 작업도 현재 범위에 포함하지 않습니다.
 
 출처: [공식 클라이언트](https://www.curseforge.com/minecraft/modpacks/society-sunlit-valley/files/8980840), [고정 원본 소스](https://github.com/Chakyl/society-sunlit-valley/tree/f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b). 추가 모드의 공식 프로젝트·버전·파일 출처는 `client-pack/sources.json`과 manifest에 포함합니다.
+
+콘텐츠 팩 0.1.3의 [Korean Chat Patch 1.9.6](https://modrinth.com/mod/qyulnpBL/version/6R6bSXKY)은 Windows x64 DLL과 macOS x64/arm64 통합 라이브러리를 포함합니다. 실제 파일 SHA1·SHA256과 Forge/MC 대상, 클라이언트 전용 메타데이터를 검증했습니다. 필수 추가 라이브러리는 없으며 서버 모드 315개는 유지합니다. 인게임 한글 조합·FTB 퀘스트 입력창 동작은 실제 플레이어 확인이 필요합니다.

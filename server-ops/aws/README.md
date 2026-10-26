@@ -44,3 +44,7 @@ python3 server-ops/aws/budgets.py --email YOUR_EMAIL --reference-krw-per-usd 132
 python3 -m unittest discover -s server-ops/aws -p 'test_*.py'
 bash -n server-ops/aws/bootstrap.sh
 ```
+
+## 서버 목록 아이콘
+
+`server-icon.png`는 앱 로고를 변환한 64×64 PNG입니다. 새 설치는 첫 시작 전에 적용하며, 기존 서버는 `python3 server-ops/aws/infrastructure.py queue-branding`으로 적용합니다. 이 명령은 EC2를 시작하지 않습니다. 중지 상태이면 다음 연결 때 실행되도록 최대 30일 대기하며, 이미 실행 중이면 저장·종료 확인 후 Minecraft만 재시작할 수 있습니다. 기존 60분 타이머는 연장하지 않습니다.

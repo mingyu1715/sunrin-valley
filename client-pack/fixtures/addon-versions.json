@@ -203,5 +203,51 @@
       "isEarlyAccessContent": false,
       "isCompatibleWithClient": true
     }
+  },
+  {
+    "game_versions": [
+      "1.20",
+      "1.20.1"
+    ],
+    "loaders": [
+      "forge"
+    ],
+    "environment": "client_only",
+    "id": "6R6bSXKY",
+    "project_id": "qyulnpBL",
+    "author_id": "SXfJxSan",
+    "featured": false,
+    "name": "Korean Chat Patch 1.9.6 for Forge 1.20.1",
+    "version_number": "mc1.20.1-1.9.6-forge",
+    "changelog": "- ARM 디바이스 지원",
+    "changelog_url": null,
+    "date_published": "2026-06-09T11:06:26.515507Z",
+    "downloads": 5734,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "fqw7XLC9",
+        "hashes": {
+          "sha512": "3a267b44c645b952ec1fc08bce730f2ccd4e0888f9f4734b8282dec37ef299e60dcf6603b423f43e8eec77834c04ed2faa6bf93909c7256d6f4e2a1100af0c9f",
+          "sha1": "4aae050dc612667bec806650b92e50efbf464229"
+        },
+        "url": "https://cdn.modrinth.com/data/qyulnpBL/versions/6R6bSXKY/koreanpatch-forge-1.9.6%2Bmc1.20.1.jar",
+        "filename": "koreanpatch-forge-1.9.6+mc1.20.1.jar",
+        "primary": true,
+        "size": 378658,
+        "file_type": null
+      }
+    ],
+    "dependencies": [
+      {
+        "version_id": null,
+        "project_id": "1eAoo2KR",
+        "file_name": null,
+        "dependency_type": "optional"
+      }
+    ],
+    "source_slug": "korean-chat-patch"
   }
 ]

@@ -8,7 +8,7 @@
 
 **[Windows 설치 가이드 — 보안 경고 화면 포함](docs/windows-install.md) · [Mac DMG 설치 가이드](docs/mac-install.md)**
 
-1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.1.1/`입니다.
+1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.1.2/`입니다.
 2. **게임 설치**를 누릅니다. 원본 4.1.5A, 추가 모드, 한국어 설정, 커스텀 리소스, Java 17과 Prism을 준비합니다.
 3. **게임 실행**을 누릅니다. 필요한 경우 Microsoft 계정 추가 안내와 인증 창에서 로그인을 완료합니다.
 4. 선린밸리 버튼은 **준비하는 중**을 표시하고, 그 아래에 로그인 확인·Minecraft/Forge 준비·실행 단계를 보여줍니다. 첫 실행 시 Minecraft·Forge·라이브러리·기본 게임 자산은 Prism이 추가로 내려받습니다.
@@ -19,6 +19,8 @@
 
 - Society: Sunlit Valley **4.1.5A**, Minecraft **1.20.1**, Forge **47.4.0**
 - Simple Voice Chat **2.6.22**, Emotecraft **2.2.7-b.build.50**, Music Disc Maker **3.1.2**, StageBox **1.3.0**
+- 클라이언트 전용 **Korean Chat Patch 1.9.6**: Windows·Mac 한글 조합 입력 지원
+- 런처 1.1.2부터 `mc.mingyu1715.dev`를 전용 멀티플레이 목록에 자동 등록하며, 기존 서버 항목을 보존하고 첫 원본을 `servers.dat.sunrin-backup`에 보관합니다.
 - 원본의 한국어 재사용, 초기 `lang:ko_kr`, `Sunrin-Custom.zip` 활성화
 - Stay True 자동 적용. 우선순위는 Sunlit 전용 덮어쓰기 → 선린 커스텀 → 기존 호환 팩 → Stay True → 기본입니다.
 - Complementary Reimagined와 BSL은 선택 가능한 파일로 준비하며 자동으로 켜지 않습니다.
@@ -61,7 +63,7 @@ npm run package:win
 
 `package:mac`은 Apple Silicon용 DMG, `package:win`은 Windows x64 설치형 EXE를 만듭니다. Mac은 `identity: "-"`와 명시적인 Electron 권한으로 무료 로컬 서명을 적용하고, 앱의 엄격한 번들 서명·버전·아키텍처와 DMG 무결성 검사를 통과해야 패키징에 성공합니다. Developer ID 서명·Apple 공증은 수행하지 않습니다. 개발자는 빌드에 Python을 사용하지만 배포 런처 사용자에게는 Node/Python 설치가 필요하지 않습니다.
 
-런처 릴리스는 양쪽 플랫폼 패키징 후 `node build-scripts/build-launcher-update.cjs --version 1.1.1 --directory release/1.1.1 --changelog launcher/CHANGELOG.md`로 업데이트 ZIP·버전 목록·체크섬을 생성합니다. GitHub의 `launcher-버전` 최신 릴리스에 설치 파일과 생성물을 함께 올립니다. 게임 운영 버전 채널은 별도로 유지합니다.
+런처 릴리스는 양쪽 플랫폼 패키징 후 `node build-scripts/build-launcher-update.cjs --version 1.1.2 --directory release/1.1.2 --changelog launcher/CHANGELOG.md`로 업데이트 ZIP·버전 목록·체크섬을 생성합니다. GitHub의 `launcher-버전` 최신 릴리스에 설치 파일과 생성물을 함께 올립니다. 게임 운영 버전 채널은 별도로 유지합니다.
 
 원본 목록 재현: `python3 build-scripts/resolve-pack.py --check`. 리소스팩 빌드: `python3 build-scripts/build-resources.py`. 전체 다운로드 검증: `npm run verify:install` (프로젝트의 `.local-test/`에 실제 파일을 설치하고 디스크 공간을 사용합니다).
 

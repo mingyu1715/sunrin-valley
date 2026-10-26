@@ -11,6 +11,14 @@ jobs:
       - name: Verify native PowerShell updater
         shell: cmd
         run: powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File launcher\scripts\test-windows-updater.ps1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Install launcher test dependencies
+        run: npm ci --ignore-scripts
+      - name: Verify Minecraft server list on Windows
+        run: npm --workspace launcher test -- tests/server-list.test.ts
       - name: Upload verification logs
         if: always()
         uses: actions/upload-artifact@v4

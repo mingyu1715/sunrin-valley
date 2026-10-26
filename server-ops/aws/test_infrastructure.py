@@ -133,6 +133,43 @@ class InfrastructureTests(unittest.TestCase):
         calls = self.run_initial_guard(started=True, host=True, clean=False)
         self.assertFalse(any(call[0] == '/usr/sbin/shutdown' for call in calls))
 
+    def test_branding_queue_does_not_start_a_stopped_instance(self):
+        calls = []
+        base, _ = self.fake_api({})
+
+        def api(args):
+            calls.append(args)
+            if args[:2] == ['ssm', 'list-commands']:
+                return {'Commands': []}
+            if args[:2] == ['ssm', 'send-command']:
+                self.assertEqual(args[args.index('--timeout-seconds') + 1], '2592000')
+                params = json.loads(args[args.index('--parameters') + 1])
+                self.assertEqual(params['executionTimeout'], ['2400'])
+                self.assertIn('branding.py --icon', params['commands'][0])
+                return {'Command': {'CommandId': 'branding-test', 'ExpiresAfter': 'future'}}
+            return base(args)
+
+        result = infra.queue_branding(api, 'i-test')
+        self.assertFalse(result['instanceStarted'])
+        self.assertFalse(any(args[:2] in (['ec2', 'start-instances'], ['ec2', 'run-instances']) for args in calls))
+
+    def test_identical_pending_branding_is_reused(self):
+        sent = []
+        base, _ = self.fake_api({})
+
+        def api(args):
+            if args[:2] == ['ssm', 'list-commands']:
+                return {'Commands': sent}
+            if args[:2] == ['ssm', 'send-command']:
+                sent.append({'Comment': args[args.index('--comment') + 1], 'Status': 'Pending', 'CommandId': 'one'})
+                return {'Command': {'CommandId': 'one'}}
+            return base(args)
+
+        infra.queue_branding(api, 'i-test')
+        result = infra.queue_branding(api, 'i-test')
+        self.assertEqual(result['status'], 'already-queued')
+        self.assertEqual(len(sent), 1)
+
 
 if __name__ == '__main__':
     unittest.main()

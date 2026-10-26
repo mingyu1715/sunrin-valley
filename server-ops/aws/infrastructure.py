@@ -246,7 +246,7 @@ def bootstrap_instance(api, instance, command):
 
 
 def bootstrap_payload():
-    entries = {name: HERE / name for name in ('bootstrap.sh', 'host.py', 'pack-lock.json')}
+    entries = {name: HERE / name for name in ('bootstrap.sh', 'host.py', 'pack-lock.json', 'server-icon.png')}
     entries['sunrin_items.js'] = REPO / 'kubejs-custom/startup_scripts/sunrin_items.js'
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
@@ -255,6 +255,45 @@ def bootstrap_payload():
                 raise RuntimeError(f'Missing regular bootstrap source: {name}')
             archive.add(path, arcname=name, recursive=False)
     return base64.b64encode(buffer.getvalue()).decode('ascii')
+
+
+def queue_branding(api, instance):
+    """Queue a bounded one-off change for the next agent connection, without starting EC2."""
+    import hashlib
+    owned_instance(api, instance)
+    paths = [HERE / 'branding.py', HERE / 'server-icon.png']
+    if any(not path.is_file() or path.is_symlink() for path in paths):
+        raise RuntimeError('Branding sources must be regular files')
+    digest = hashlib.sha256(b''.join(path.read_bytes() for path in paths)).hexdigest()
+    comment = 'Sunrin server icon ' + digest[:24]
+    existing = api(['ssm', 'list-commands', '--instance-id', instance]).get('Commands', [])
+    for row in existing:
+        if row.get('Comment') == comment and row.get('Status') in ('Pending', 'InProgress', 'Delayed'):
+            return {'status': 'already-queued', 'commandId': row['CommandId'], 'expiresAfter': row.get('ExpiresAfter'), 'instanceStarted': False}
+    buffer = io.BytesIO()
+    with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
+        for path in paths:
+            archive.add(path, arcname=path.name, recursive=False)
+    payload = base64.b64encode(buffer.getvalue()).decode('ascii')
+    if len(payload) > 45000:
+        raise RuntimeError('Branding payload exceeds the bounded SSM size')
+    command = f'''set -eu
+install -d -m 0700 /opt/sunrin/branding
+python3 - <<'SUNRIN_BRANDING'
+import base64,hashlib,io,pathlib,tarfile
+data=base64.b64decode('{payload}',validate=True)
+with tarfile.open(fileobj=io.BytesIO(data),mode='r:gz') as archive:
+ assert set(archive.getnames()) == {{'branding.py','server-icon.png'}}
+ assert all(member.isfile() and '/' not in member.name for member in archive.getmembers())
+ archive.extractall('/opt/sunrin/branding',filter='data')
+assert hashlib.sha256(b''.join((pathlib.Path('/opt/sunrin/branding')/name).read_bytes() for name in ('branding.py','server-icon.png'))).hexdigest() == '{digest}'
+SUNRIN_BRANDING
+python3 /opt/sunrin/branding/branding.py --icon /opt/sunrin/branding/server-icon.png
+'''
+    result = api(['ssm', 'send-command', '--document-name', 'AWS-RunShellScript', '--instance-ids', instance,
+                  '--comment', comment, '--timeout-seconds', '2592000',
+                  '--parameters', json.dumps({'commands': [command], 'executionTimeout': ['2400']})])['Command']
+    return {'status': 'queued', 'commandId': result['CommandId'], 'expiresAfter': result.get('ExpiresAfter'), 'instanceStarted': False}
 
 
 def bootstrap_command(names, minutes):
@@ -275,7 +314,7 @@ python3 - <<'SUNRIN_UNPACK'
 import base64,io,tarfile
 data=base64.b64decode(open('/opt/sunrin/bootstrap/payload.b64','rb').read().strip(),validate=True)
 with tarfile.open(fileobj=io.BytesIO(data),mode='r:gz') as a:
- assert set(a.getnames()) == {{'bootstrap.sh','host.py','pack-lock.json','sunrin_items.js'}}
+ assert set(a.getnames()) == {{'bootstrap.sh','host.py','pack-lock.json','sunrin_items.js','server-icon.png'}}
  assert all(m.isfile() and '/' not in m.name for m in a.getmembers())
  a.extractall('/opt/sunrin/bootstrap',filter='data')
 SUNRIN_UNPACK
@@ -285,7 +324,7 @@ bash /opt/sunrin/bootstrap/bootstrap.sh {shlex.join(options)}
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['plan', 'deploy', 'status', 'start', 'stop'])
+    parser.add_argument('action', choices=['plan', 'deploy', 'status', 'start', 'stop', 'queue-branding'])
     parser.add_argument('--profile', default='sunrin-valley')
     parser.add_argument('--confirm-cost', action='store_true')
     parser.add_argument('--accept-eula', action='store_true')
@@ -331,7 +370,9 @@ def main(argv=None):
     else:
         instance = instance_id(api)
         current = owned_instance(api, instance)
-        if args.action == 'stop':
+        if args.action == 'queue-branding':
+            print(json.dumps(queue_branding(api, instance)))
+        elif args.action == 'stop':
             print(json.dumps(stop_server(api, instance)))
         elif args.action == 'start':
             api(['ec2', 'start-instances', '--instance-ids', instance])

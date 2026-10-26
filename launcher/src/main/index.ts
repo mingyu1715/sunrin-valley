@@ -27,6 +27,7 @@ import { removeLauncherState, removeSunrinData, validateLauncherStateRemoval } f
 import { readCurrentCrash } from './crash-report'
 import { checkLauncherUpdate, downloadLauncherUpdate } from './launcher-update'
 import { acknowledgeLauncherUpdate, launchLauncherUpdate, prepareLauncherUpdate } from './launcher-update-install'
+import { configureSunrinServer } from './server-list'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -233,12 +234,21 @@ async function refresh() {
       else if (phase === 'preparing') patch = { ...patch, phase: persistedStage === 'authenticating' ? 'authenticating' : phase, message: persistedStage === 'authenticating' ? 'Microsoft 로그인 확인을 이어갑니다. 열린 인증 창에서 계속해 주세요.' : 'Minecraft·Forge 준비를 이어갑니다. 이미 받은 파일을 사용합니다.' }
       else if (activity.prism) patch = { ...patch, message: '계정 창이 열려 있습니다. 게임 시작을 눌러 계속할 수 있습니다.' }
       if (activity.game || activity.prism || activity.java) { await connectEngineLog(state.settings.dataPath); startMonitoring(state.settings.dataPath) }
+      else await prepareServerList(state.settings.dataPath)
     } catch { /* Integrity inspection still works when process inspection is unavailable. */ }
   }
   if (launcherUpdate && patch.phase !== 'running') patch = { ...patch, phase: 'launcher-update', message: `이 구성을 사용하려면 런처 ${launcherUpdate.minLauncherVersion} 이상이 필요합니다. 버튼을 눌러 새 런처를 받아 주세요.` }
   else if (operatingBlocked && patch.phase !== 'running') patch = { ...patch, phase: 'error', message: operatingBlocked }
   else if (maintenance() && patch.phase !== 'running') patch = { ...patch, phase: 'maintenance', message: state.serverStatus!.message || '서버 점검이 끝난 뒤 다시 시작해 주세요.' }
   update(patch)
+}
+async function prepareServerList(data: string) {
+  try {
+    await assertInstallIdle(data)
+    await configureSunrinServer(gameRoot(data))
+  } catch (error) {
+    await log(`Server list kept unchanged: ${error instanceof Error ? error.message : 'registration failed'}`).catch(() => {})
+  }
 }
 function ensureIdle() { if (busy) throw new Error('진행 중인 작업을 마친 뒤 다시 시도해 주세요.') }
 function ensurePrismClosed() { if (prismProcess?.exitCode === null) throw new Error('Prism과 게임을 닫은 뒤 설치 또는 설정 변경을 진행해 주세요.') }
@@ -288,6 +298,7 @@ async function prism(launch: boolean) {
       await assertInstallIdle(data)
       await configurePrismForBackground(data, receipt.runtime.java)
       await configureOptions(gameRoot(data), state.settings.minecraftPath, state.settings.importOptions, Object.keys(receipt.managed))
+      await prepareServerList(data)
       await writePrismInstance(directory, manifest.minecraft, manifest.forge, receipt.runtime.java, state.settings.memoryMb)
     }
     launchRequested = true; sawGame = activity.game; launchStartedAt = Date.now()
