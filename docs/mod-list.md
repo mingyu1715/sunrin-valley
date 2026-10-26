@@ -35,3 +35,5 @@ WorldEdit·Sunrin Core·EssentialsX·Essential Mod·FTB Essentials는 이번 클
 출처: [공식 클라이언트](https://www.curseforge.com/minecraft/modpacks/society-sunlit-valley/files/8980840), [고정 원본 소스](https://github.com/Chakyl/society-sunlit-valley/tree/f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b). 추가 모드의 공식 프로젝트·버전·파일 출처는 `client-pack/sources.json`과 manifest에 포함합니다.
 
 콘텐츠 팩 0.1.3의 [Korean Chat Patch 1.9.6](https://modrinth.com/mod/qyulnpBL/version/6R6bSXKY)은 Windows x64 DLL과 macOS x64/arm64 통합 라이브러리를 포함합니다. 실제 파일 SHA1·SHA256과 Forge/MC 대상, 클라이언트 전용 메타데이터를 검증했습니다. 필수 추가 라이브러리는 없으며 서버 모드 315개는 유지합니다. 인게임 한글 조합·FTB 퀘스트 입력창 동작은 실제 플레이어 확인이 필요합니다.
+
+Korean Chat Patch는 원본 파일의 해시를 검증한 뒤 설치 시 클라이언트 전용 메타데이터(`clientSideOnly`, `displayTest`)만 보정합니다. Forge 서버 목록의 잘못된 불일치 표시를 막기 위한 조치이며 클래스·네이티브 라이브러리·번역·LGPL 라이선스 내용은 변경하지 않습니다. manifest는 공식 원본 다운로드 해시를 유지하고 설치 영수증은 보정된 실제 파일의 해시를 기록합니다. 보정 코드는 `launcher/src/main/korean-input.ts`에서 확인할 수 있습니다.

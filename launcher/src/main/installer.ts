@@ -10,6 +10,7 @@ import { configureOptions, gameRoot, instanceRoot, shareShaderFiles, writePrismI
 import { ensureRuntimes } from './runtime'
 import { assertInstallIdle } from './processes'
 import { hasInstallTransaction, InstallTransaction, recoverInstallTransaction } from './install-transaction'
+import { KOREAN_INPUT_PATH, prepareKoreanInputMetadata } from './korean-input'
 
 export { recoverInstallTransaction } from './install-transaction'
 
@@ -228,7 +229,11 @@ export async function installClient(settings: Settings, paths: BundlePaths, prog
         try {
           await backupChanged(file.path, file.hash)
           await downloadVerified(file.url, safeTarget(game, file.path), file.hash, { fetcher: dependencies.fetcher })
-          managed[file.path] = file.hash
+          if (file.path === KOREAN_INPUT_PATH) {
+            // Also snapshot a preexisting pristine JAR that backupChanged did not need to replace.
+            await transaction!.snapshot(safeTarget(game, file.path))
+            managed[file.path] = await prepareKoreanInputMetadata(safeTarget(game, file.path))
+          } else managed[file.path] = file.hash
           completed++
           progress(`모드팩 파일 확인·설치 · ${completed}/${manifest.files.length}`, 5 + completed / manifest.files.length * 75)
         } catch (error: any) { failures.push(`${file.path}: ${error.message}`) }
