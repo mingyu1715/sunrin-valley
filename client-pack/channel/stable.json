@@ -1,24 +1,24 @@
 {
   "formatVersion": 1,
   "id": "sunrin-valley",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "minLauncherVersion": "1.1.2",
   "bundle": {
     "manifest": {
-      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/manifest.json",
-      "sha256": "9ba6ce7bc0b39b94c482cbdf867374f34f835103f80dcc66f1d939bca26e5d9c"
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.4/manifest.json",
+      "sha256": "cc6164a59ea769cd1b18cca36be7ae420f360fbfdd5dbbc58c42d2076179312e"
     },
     "prism": {
-      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/prism-runtime.json",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.4/prism-runtime.json",
       "sha256": "f4fb765db40c48183ca005901d5d14bf0f1b070deee3d51749bb91dd3271c53e"
     },
     "overlay": {
-      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/Sunrin-Overlay.zip",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.4/Sunrin-Overlay.zip",
       "sha256": "efea9108d66934efcc996b1571a4a52eee822d29e7dafbe56d8606563d65ee95"
     }
   },
   "changes": [
-    "Korean Chat Patch 1.9.6을 추가해 Windows와 Mac의 한글 입력을 지원합니다.",
-    "한글 입력 모드는 클라이언트에만 설치하며 서버 모드 구성은 유지합니다."
+    "Forge 47.4.0에서 시작 중 충돌하던 StageBox 1.3.0을 호환 검증한 1.1.2로 교체합니다.",
+    "Minecraft·Forge와 나머지 모드, 기존 월드·설정·계정 파일을 유지합니다."
   ]
 }
