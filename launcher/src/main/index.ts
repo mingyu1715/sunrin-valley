@@ -55,7 +55,6 @@ let sessionWrites = Promise.resolve()
 let pendingSessionWrites = 0
 const primaryController = new PrimaryActionController()
 let closeAllowed = false
-let closePrompt = false
 const uninstallMode = process.argv.includes('--uninstall-data')
 let launchStartedAt = Date.now()
 let lastStorage: StorageInfo | undefined
@@ -350,17 +349,6 @@ function createWindow() {
     title: '선린밸리 · Sunrin Valley', backgroundColor: '#f3eedc', autoHideMenuBar: true,
     webPreferences: { preload: join(__dirname, '../preload/index.js'), contextIsolation: true, nodeIntegration: false, sandbox: true }
   })
-  window.on('close', event => {
-    if (closeAllowed || !state || (!busy && !['checking', 'installing', 'launching', 'authenticating', 'preparing'].includes(state.phase))) return
-    event.preventDefault()
-    if (closePrompt) return
-    closePrompt = true
-    void dialog.showMessageBox(window!, {
-      type: 'question', title: '선린밸리 준비 중', message: '창을 닫아도 준비는 계속돼요.',
-      detail: '설치·업데이트 또는 게임 준비는 백그라운드에서 계속됩니다. 다시 실행하면 진행 상태를 확인할 수 있어요. 로그인 창이 열려 있다면 그 창에서 계속해 주세요.',
-      buttons: ['계속 보기', '창만 닫기'], defaultId: 0, cancelId: 0, noLink: true
-    }).then(result => { if (result.response === 1 && window && !window.isDestroyed()) { closeAllowed = true; window.close() } }).catch(() => {}).finally(() => { closePrompt = false })
-  })
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }))
   window.webContents.on('will-navigate', (event, url) => {
     const permitted = process.env.ELECTRON_RENDERER_URL ?? pathToFileURL(join(__dirname, '../renderer/index.html')).href
@@ -505,6 +493,13 @@ else {
   app.on('activate', () => { if (BrowserWindow.getAllWindows().length === 0 && state) createWindow() })
   app.on('window-all-closed', () => { if (!busy) app.quit() })
   app.on('before-quit', event => {
+    // Hide immediately while an active task finishes. The updater and confirmed
+    // uninstall must still be able to exit this process intentionally.
+    if (busy && !closeAllowed) {
+      event.preventDefault()
+      if (window && !window.isDestroyed()) window.close()
+      return
+    }
     if (pendingSessionWrites) { event.preventDefault(); void sessionWrites.finally(() => app.quit()) }
   })
   app.on('will-quit', () => { stopStatusPolling?.(); stopMonitoring() })

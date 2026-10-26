@@ -63,7 +63,7 @@ npm run package:win
 
 `package:mac`은 Apple Silicon용 DMG, `package:win`은 Windows x64 설치형 EXE를 만듭니다. Mac은 `identity: "-"`와 명시적인 Electron 권한으로 무료 로컬 서명을 적용하고, 앱의 엄격한 번들 서명·버전·아키텍처와 DMG 무결성 검사를 통과해야 패키징에 성공합니다. Developer ID 서명·Apple 공증은 수행하지 않습니다. 개발자는 빌드에 Python을 사용하지만 배포 런처 사용자에게는 Node/Python 설치가 필요하지 않습니다.
 
-런처 릴리스는 양쪽 플랫폼 패키징 후 `node build-scripts/build-launcher-update.cjs --version 1.1.2 --directory release/1.1.2 --changelog launcher/CHANGELOG.md`로 업데이트 ZIP·버전 목록·체크섬을 생성합니다. GitHub의 `launcher-버전` 최신 릴리스에 설치 파일과 생성물을 함께 올립니다. 게임 운영 버전 채널은 별도로 유지합니다.
+런처 릴리스는 양쪽 플랫폼 패키징 후 `node build-scripts/build-launcher-update.cjs --version 1.1.3 --directory release/1.1.3 --changelog launcher/CHANGELOG.md`로 업데이트 ZIP·버전 목록·체크섬을 생성합니다. GitHub의 `launcher-버전` 최신 릴리스에 설치 파일과 생성물을 함께 올립니다. 게임 운영 버전 채널은 별도로 유지합니다.
 
 원본 목록 재현: `python3 build-scripts/resolve-pack.py --check`. 리소스팩 빌드: `python3 build-scripts/build-resources.py`. 전체 다운로드 검증: `npm run verify:install` (프로젝트의 `.local-test/`에 실제 파일을 설치하고 디스크 공간을 사용합니다).
 
