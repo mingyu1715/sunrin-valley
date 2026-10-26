@@ -8,7 +8,7 @@
 
 **[Windows 설치 가이드 — 보안 경고 화면 포함](docs/windows-install.md) · [Mac DMG 설치 가이드](docs/mac-install.md)**
 
-1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.1.2/`입니다.
+1. [최신 런처 릴리스](https://github.com/mingyu1715/sunrin-valley/releases/latest)에서 운영체제에 맞는 앱을 실행합니다. 로컬 빌드는 `release/1.1.3/`입니다.
 2. **게임 설치**를 누릅니다. 원본 4.1.5A, 추가 모드, 한국어 설정, 커스텀 리소스, Java 17과 Prism을 준비합니다.
 3. **게임 실행**을 누릅니다. 필요한 경우 Microsoft 계정 추가 안내와 인증 창에서 로그인을 완료합니다.
 4. 선린밸리 버튼은 **준비하는 중**을 표시하고, 그 아래에 로그인 확인·Minecraft/Forge 준비·실행 단계를 보여줍니다. 첫 실행 시 Minecraft·Forge·라이브러리·기본 게임 자산은 Prism이 추가로 내려받습니다.
@@ -18,7 +18,7 @@
 ## 포함 구성
 
 - Society: Sunlit Valley **4.1.5A**, Minecraft **1.20.1**, Forge **47.4.0**
-- Simple Voice Chat **2.6.22**, Emotecraft **2.2.7-b.build.50**, Music Disc Maker **3.1.2**, StageBox **1.3.0**
+- Simple Voice Chat **2.6.22**, Emotecraft **2.2.7-b.build.50**, Music Disc Maker **3.1.2**, StageBox **1.1.2**
 - 클라이언트 전용 **Korean Chat Patch 1.9.6**: Windows·Mac 한글 조합 입력 지원
 - 런처 1.1.2부터 `mc.mingyu1715.dev`를 전용 멀티플레이 목록에 자동 등록하며, 기존 서버 항목을 보존하고 첫 원본을 `servers.dat.sunrin-backup`에 보관합니다.
 - 원본의 한국어 재사용, 초기 `lang:ko_kr`, `Sunrin-Custom.zip` 활성화

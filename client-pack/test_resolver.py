@@ -67,15 +67,16 @@ class ResolverTests(unittest.TestCase):
         player = next(f for f in manifest["files"] if f["source"].get("projectId") == 658587)
         self.assertEqual(player["source"]["fileId"], 4587214)
 
-    def test_replacement_installs_verified_stagebox_instead_of_beat_lamp(self):
+    def test_stagebox_pin_avoids_the_missing_forge_4740_renderer_api(self):
         manifest = self.resolve()
         self.assertFalse(any("beatlamp" in f["path"].lower() for f in manifest["files"]))
         stagebox = next(f for f in manifest["files"] if f["source"].get("slug") == "stagebox")
-        self.assertEqual(stagebox["path"], "mods/StageBox-Mod-1.3.0-Forge-1.20.1.jar")
+        self.assertEqual(stagebox["path"], "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar")
         self.assertEqual(stagebox["source"], {"provider": "curseforge", "projectId": 1591857,
-                                            "fileId": 9294217, "slug": "stagebox"})
-        self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee"})
-        self.assertEqual(stagebox["size"], 1882504)
+                                            "fileId": 8918785, "slug": "stagebox"})
+        self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "d015cd4bad85a30e5405f5db5450e30ceebf08b8"})
+        self.assertEqual(stagebox["size"], 1054415)
+        self.assertEqual(manifest["forge"], "47.4.0")
         self.assertEqual({f["source"]["slug"] for f in manifest["files"] if f["source"].get("slug")},
                          {item["slug"] for item in self.sources["addons"] + self.sources["visuals"]})
         self.assertEqual(manifest["version"], self.sources["packVersion"])

@@ -150,33 +150,33 @@
       "forge"
     ],
     "environment": "client_and_server",
-    "id": 9294217,
+    "id": 8918785,
     "project_id": 1591857,
-    "name": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
-    "version_number": "1.3.0",
-    "date_published": "2026-10-23T03:19:46.273Z",
+    "name": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+    "version_number": "1.1.2",
+    "date_published": "2026-09-19T08:29:51.237Z",
     "version_type": "release",
     "files": [
       {
         "hashes": {
-          "sha1": "fb77218e63ddb7a99bd8c01e65b45529c9df5cee",
-          "sha256": "5eed729a183183007c37ec3c59b9675243e3d6b32a909a08f544508fced3b512",
-          "sha512": "006190fc5d122675d2a3b664726942fba53d320d74a9d143dab14b0969a90370607ff59f7d479ed257af3c0489276349fcc58b67fd9d6258326e7adc9a563ced"
+          "sha1": "d015cd4bad85a30e5405f5db5450e30ceebf08b8",
+          "sha256": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325",
+          "sha512": "9ac2cb693e146d69bdf74fe561f3eda3a987f163100043b3fa69d3963ebc504e860ab2f224a9113b9523192d6c74ebcf76ce33b7863514d8189d92db30f13789"
         },
-        "url": "https://edge.forgecdn.net/files/9294/217/StageBox-Mod-1.3.0-Forge-1.20.1.jar",
-        "filename": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+        "url": "https://edge.forgecdn.net/files/8918/785/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+        "filename": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
         "primary": true,
-        "size": 1882504
+        "size": 1054415
       }
     ],
     "dependencies": [],
     "curseforge_metadata": {
-      "id": 9294217,
-      "dateCreated": "2026-10-23T03:19:46.273Z",
-      "dateModified": "2026-10-23T03:22:04.18Z",
-      "displayName": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
-      "fileLength": 1882504,
-      "fileName": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
+      "id": 8918785,
+      "dateCreated": "2026-09-19T08:29:51.237Z",
+      "dateModified": "2026-09-19T08:48:57.807Z",
+      "displayName": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+      "fileLength": 1054415,
+      "fileName": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
       "status": 4,
       "projectId": 1591857,
       "gameVersions": [
@@ -190,7 +190,7 @@
         68441
       ],
       "releaseType": 1,
-      "totalDownloads": 55,
+      "totalDownloads": 268,
       "user": {
         "username": "user_mlts8b27k3itkvf7",
         "id": 141929927,

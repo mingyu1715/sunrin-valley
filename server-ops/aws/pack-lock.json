@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
-  "id": "sunrin-valley-server-0.1.2",
-  "clientPackVersion": "0.1.2",
+  "id": "sunrin-valley-server-0.1.4",
+  "clientPackVersion": "0.1.4",
   "minecraft": "1.20.1",
   "forge": "47.4.0",
   "javaMajor": 17,
@@ -63,13 +63,13 @@
     },
     {
       "slug": "stagebox",
-      "version": "1.3.0",
-      "filename": "StageBox-Mod-1.3.0-Forge-1.20.1.jar",
-      "url": "https://edge.forgecdn.net/files/9294/217/StageBox-Mod-1.3.0-Forge-1.20.1.jar",
-      "size": 1882504,
+      "version": "1.1.2",
+      "filename": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+      "url": "https://edge.forgecdn.net/files/8918/785/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+      "size": 1054415,
       "hash": {
         "algorithm": "sha256",
-        "digest": "5eed729a183183007c37ec3c59b9675243e3d6b32a909a08f544508fced3b512"
+        "digest": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325"
       }
     }
   ],

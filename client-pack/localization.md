@@ -1,8 +1,8 @@
 # 원본 한국어와 초기 설정
 
-공식 `Society-Sunlit-Valley-4.1.5A.zip`의 SHA256은 `6902439ba377c139b712cc42132d73498ff1f5ee77d795d141d255098391d7c9`이다. ZIP CRC 검사와 고정 소스 커밋 `f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b`의 project/file ID 367개 대조를 통과했다. `manifest.json`에는 원본 351개 모드, 리소스팩 15개, 셰이더 1개, 추가 모드 4개, Stay True 리소스팩과 BSL 셰이더를 잠갔다. 다운로드 파일은 총 373개다. 콘텐츠 버전은 `sources.json.packVersion`에서 정하며 현재 0.1.2다.
+공식 `Society-Sunlit-Valley-4.1.5A.zip`의 SHA256은 `6902439ba377c139b712cc42132d73498ff1f5ee77d795d141d255098391d7c9`이다. ZIP CRC 검사와 고정 소스 커밋 `f00b8473bbf16ac0d0d3f3afbc01be0519f9dd9b`의 project/file ID 367개 대조를 통과했다. `manifest.json`에는 원본 351개 모드, 리소스팩 15개, 셰이더 1개, 추가 모드 5개, Stay True 리소스팩과 BSL 셰이더를 잠갔다. 다운로드 파일은 총 374개다. 콘텐츠 버전은 `sources.json.packVersion`에서 정하며 현재 0.1.4다.
 
-원본 `overrides/` 안에 한국어 파일 481개가 실제로 있다: `kubejs/` 213개, `patchouli_books/` 267개, `config/fancymenu/assets/changelog_ko_kr.markdown` 1개. 모든 실제 경로는 `manifest.json.localizations`에 기록한다. 이번 범위는 이 기존 파일을 재사용하며 별도 전체 번역팩은 만들지 않는다. 완역 여부는 산정하지 않았다. 추가 모드 네 개도 각각 `assets/<modid>/lang/ko_kr.json`을 내장한다. StageBox 1.3.0은 한국어 316개 키를 내장하며, 영어 463개 중 한국어에 없는 147개 키는 영어로 표시될 수 있다. 신규 전체 번역은 진행하지 않는다.
+원본 `overrides/` 안에 한국어 파일 481개가 실제로 있다: `kubejs/` 213개, `patchouli_books/` 267개, `config/fancymenu/assets/changelog_ko_kr.markdown` 1개. 모든 실제 경로는 `manifest.json.localizations`에 기록한다. 이번 범위는 이 기존 파일을 재사용하며 별도 전체 번역팩은 만들지 않는다. 완역 여부는 산정하지 않았다. 추가 모드 네 개도 각각 `assets/<modid>/lang/ko_kr.json`을 내장한다. StageBox 1.1.2는 한국어와 영어 각각 316개 키를 내장한다. 신규 전체 번역은 진행하지 않는다.
 
 원본 `configureddefaults/README.md`에 따르면 기본 파일은 대상이 없을 때만 게임 폴더로 복사된다. 설치 순서는 원본 ZIP의 `overrides/` 추출 → 잠긴 파일 다운로드 → 기본/실제 옵션의 한국어 및 리소스팩 순서 적용이다. 기존 사용자 옵션에서 다른 게임 설정은 유지한다.
 
@@ -39,11 +39,11 @@ Stay True 저자는 공식 FAQ에서 모드팩 사용을 허용한다. BSL은 Al
 | Simple Voice Chat | 2.6.22 | Forge 1.20.1 JAR, SHA1/크기/CRC, 한국어 |
 | Emotecraft | 2.2.7-b.build.50 | Forge 1.20.1 JAR, SHA1/크기/CRC, 한국어 |
 | Music Disc Maker | 3.1.2 | Forge 1.20.1 JAR, SHA1/크기/CRC, 한국어 |
-| StageBox | 1.3.0 | Forge 1.20.1 JAR, SHA1/크기/CRC, 한국어 일부 |
+| StageBox | 1.1.2 | Forge 1.20.1 JAR, SHA1/SHA256/크기/CRC, 한국어 316키 |
 
 Emotecraft JAR은 PlayerAnimator를 내장하지 않는다. 실제 `META-INF/mods.toml`에서 `playeranimator >=0.2.0`을 요구하며, 원본 팩의 `player-animation-lib-forge-1.0.2-rc1+1.20.jar`(CurseForge project 658587/file 4587214)가 충족한다.
 
-[StageBox 공식 배포](https://www.curseforge.com/minecraft/mc-mods/stagebox/files/9294217)는 CurseForge project 1591857/file 9294217이다. 실제 JAR의 `mods.toml`은 Forge `[47,)`, Minecraft `[1.20.1,1.21)`만 필수로 요구한다. 현재 Forge 47.4.0으로 충족하며 추가 라이브러리는 필요하지 않다. 클래스 버전은 Java 17이다. StageBox는 자체 `.ogg` 음악·플레이리스트를 사용하며 Music Disc Maker와의 연동은 확인하지 않았다. [Music Disc Maker 공식 설명](https://modrinth.com/mod/music-disc-maker)에 따라 서버와 클라이언트 버전을 맞춰야 한다. 게임 안의 소리·조명과 Windows/macOS 오디오 장치 동작은 별도 실행 검증이 필요하다.
+[StageBox 1.1.2 공식 배포](https://www.curseforge.com/minecraft/mc-mods/stagebox/files/8918785)는 CurseForge project 1591857/file 8918785이다. 이전 1.3.0의 `mods.toml` 버전 조건은 Forge 47.4.0을 허용했지만 실제 클래스가 존재하지 않는 Forge API를 호출해 충돌했다. 버전 조건 충족은 실행 호환 검증과 다르다. 0.1.4는 해당 호출이 없는 1.1.2로 교체하고 Forge 47.4.0을 유지한다. 상세 근거와 검증 범위는 [호환성 기록](../docs/stagebox-compatibility.md)에 기록한다. 클래스 버전은 Java 17이다. StageBox는 자체 `.ogg` 음악·플레이리스트를 사용하며 Music Disc Maker와의 연동은 확인하지 않았다. [Music Disc Maker 공식 설명](https://modrinth.com/mod/music-disc-maker)에 따라 서버와 클라이언트 버전을 맞춰야 한다. 게임 안의 소리·조명과 Windows/macOS 오디오 장치 동작은 별도 실행 검증이 필요하다.
 
 선린밸리 팩 0.1.1에서 StageBox가 Beat Lamp를 대체한다. 업데이트 시 이전 설치 영수증이 관리하던 Beat Lamp JAR은 제거하며, 사용자가 수정한 파일이면 먼저 백업한다. 원본 Sunlit Valley 버전은 4.1.5A를 유지한다.
 

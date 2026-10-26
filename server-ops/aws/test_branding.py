@@ -89,7 +89,7 @@ class BrandingTests(unittest.TestCase):
         self.server = self.root / 'minecraft'
         self.server.mkdir()
         (self.server / '.sunrin-server-complete.json').write_text(json.dumps({
-            'packId': 'sunrin-valley-server-0.1.2', 'modCount': 315}))
+            'packId': 'sunrin-valley-server-0.1.4', 'modCount': 315}))
         self.icon = self.root / 'input.png'
         self.icon.write_bytes(ICON_PATH.read_bytes())
         self.receipt = self.root / 'state' / 'server-branding.json'

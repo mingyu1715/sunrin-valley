@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-26T12:09:59.068303+00:00",
+  "platform": "darwin-arm64",
+  "minecraft": "1.20.1",
+  "forge": "47.4.0",
+  "java": "17.0.21",
+  "unchangedOtherMods": 355,
+  "tests": [
+    {
+      "stagebox": null,
+      "modCount": 355,
+      "unchangedOtherModHashes": true,
+      "screen": "net.minecraft.client.gui.screens.TitleScreen",
+      "stableSeconds": 10,
+      "cleanExitCode": 0,
+      "logSha256": "7324aaa59e2bee2faf442fc2e9024de3f1633e422fbadde5ecbccbe4e4a1785e"
+    },
+    {
+      "stagebox": "1.1.2",
+      "modCount": 356,
+      "unchangedOtherModHashes": true,
+      "screen": "net.minecraft.client.gui.screens.TitleScreen",
+      "stableSeconds": 10,
+      "cleanExitCode": 0,
+      "logSha256": "ba28fcb3589947a72dbca874ffe925bcc4ba9b30b8701d4ff76243bb5b52f458"
+    }
+  ],
+  "candidate": {
+    "officialFileId": 8918785,
+    "sha1": "d015cd4bad85a30e5405f5db5450e30ceebf08b8",
+    "sha256": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325",
+    "size": 1054415
+  },
+  "limits": [
+    "Isolated offline identity; no account file or token read/copied.",
+    "Existing worlds were not opened or modified.",
+    "Windows runtime and multiplayer/server downgrade not exercised by these client tests."
+  ]
+}

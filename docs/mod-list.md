@@ -15,10 +15,10 @@
 | Simple Voice Chat | 2.6.22 | 클라이언트·서버 |
 | Emotecraft | 2.2.7-b.build.50 (Beta) | 클라이언트·서버 |
 | Music Disc Maker | 3.1.2 | 클라이언트·서버, 같은 버전 사용 |
-| StageBox | 1.3.0 | 클라이언트·서버, CurseForge file 9294217 |
+| StageBox | 1.1.2 | 클라이언트·서버, CurseForge file 8918785, 양쪽 버전 일치 필요 |
 | Korean Chat Patch | 1.9.6 | 클라이언트 전용, Windows x64·Mac Apple Silicon |
 
-추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. StageBox는 현재 Forge 47.4.0과 Java 17을 지원하며 별도 필수 라이브러리가 없습니다. 한국어 316개 키를 내장하지만 영어에만 있는 147개 문구는 영어로 표시될 수 있습니다. 자체 `.ogg` 음악 재생 방식을 쓰며 Music Disc Maker 연동과 게임 안의 소리·조명은 아직 검증하지 않았습니다.
+추가 4종의 실제 JAR 해시·CRC·Forge/MC 대상·한국어 파일을 확인했습니다. Emotecraft는 원본에 이미 들어 있는 PlayerAnimator 1.0.2-rc1로 의존성을 충족합니다. 중복 추가하지 않습니다. StageBox 1.3.0은 메타데이터의 버전 범위와 달리 Forge 47.4.0에 없는 렌더러 API를 호출해 시작 중 충돌했습니다. 0.1.4 구성에서는 1.1.2로 교체하며 Forge 47.4.0은 유지합니다. 1.1.2는 별도 필수 라이브러리 없이 Java 17을 사용하고 한국어·영어 각각 316개 키를 내장합니다. 자체 `.ogg` 음악 재생 방식을 쓰며 Music Disc Maker 연동과 게임 안의 소리·조명은 아직 검증하지 않았습니다.
 
 선린밸리 팩 0.1.1에서 Beat Lamp를 StageBox로 교체했습니다. 기존 영수증으로 관리되는 Beat Lamp 파일은 업데이트에서 정리하고, 원본 351개 모드와 나머지 추가 모드 3개는 유지합니다.
 
@@ -37,3 +37,5 @@ WorldEdit·Sunrin Core·EssentialsX·Essential Mod·FTB Essentials는 이번 클
 콘텐츠 팩 0.1.3의 [Korean Chat Patch 1.9.6](https://modrinth.com/mod/qyulnpBL/version/6R6bSXKY)은 Windows x64 DLL과 macOS x64/arm64 통합 라이브러리를 포함합니다. 실제 파일 SHA1·SHA256과 Forge/MC 대상, 클라이언트 전용 메타데이터를 검증했습니다. 필수 추가 라이브러리는 없으며 서버 모드 315개는 유지합니다. 인게임 한글 조합·FTB 퀘스트 입력창 동작은 실제 플레이어 확인이 필요합니다.
 
 Korean Chat Patch는 원본 파일의 해시를 검증한 뒤 설치 시 클라이언트 전용 메타데이터(`clientSideOnly`, `displayTest`)만 보정합니다. Forge 서버 목록의 잘못된 불일치 표시를 막기 위한 조치이며 클래스·네이티브 라이브러리·번역·LGPL 라이선스 내용은 변경하지 않습니다. manifest는 공식 원본 다운로드 해시를 유지하고 설치 영수증은 보정된 실제 파일의 해시를 기록합니다. 보정 코드는 `launcher/src/main/korean-input.ts`에서 확인할 수 있습니다.
+
+StageBox 교체 근거와 실행 검증·기존 월드 보존 범위는 [호환성 기록](stagebox-compatibility.md)을 참고하세요.
