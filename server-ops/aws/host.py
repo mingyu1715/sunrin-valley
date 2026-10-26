@@ -287,10 +287,16 @@ class Controller:
                 raise HostError('process-changed')
             if current_token is None:
                 if (current.get('Result') != 'success'
-                        or current.get('ActiveState') not in ('inactive', 'deactivating')):
+                        or current.get('ActiveState') not in ('active', 'inactive', 'deactivating')):
                     raise HostError('server-exit-failed')
-                return self._proof(request_id, pid, token, 'rcon-save-flush-stop-process-exited')
-            if current_token != token:
+                if (current['pid'] == 0
+                        and current.get('ActiveState') in ('inactive', 'deactivating')):
+                    return self._proof(request_id, pid, token, 'rcon-save-flush-stop-process-exited')
+                # /proc and systemd are independent snapshots. Java may already
+                # be gone/zombie while systemd still reports its old active
+                # MainPID. Wait for systemd to settle within the same deadline;
+                # a stale active snapshot never authorizes an EC2 stop.
+            elif current_token != token:
                 raise HostError('process-changed')
             if time.monotonic() >= deadline:
                 raise HostError('stop-timeout')

@@ -16,6 +16,7 @@ class InfrastructureTests(unittest.TestCase):
         self.assertEqual(instance['InstanceInitiatedShutdownBehavior'], 'stop')
         volume = instance['BlockDeviceMappings'][0]['Ebs']
         self.assertEqual((volume['VolumeType'], volume['VolumeSize'], volume['Encrypted']), ('gp3', 100, True))
+        self.assertNotIn('Throughput', volume)  # EC2 Instance Ebs differs from LaunchTemplate Ebs.
         ingress = resources['GameSecurityGroup']['Properties']['SecurityGroupIngress']
         self.assertEqual({(rule['IpProtocol'], rule['FromPort'], rule['ToPort']) for rule in ingress}, {('tcp', 25565, 25565), ('udp', 24454, 24454)})
         self.assertFalse(instance['NetworkInterfaces'][0]['AssociatePublicIpAddress'])

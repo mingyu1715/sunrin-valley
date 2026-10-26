@@ -123,7 +123,7 @@ touch /var/lib/sunrin/base-ready
                 'InstanceInitiatedShutdownBehavior': 'stop',
                 'MetadataOptions': {'HttpTokens': 'required', 'HttpEndpoint': 'enabled', 'HttpPutResponseHopLimit': 1},
                 'BlockDeviceMappings': [{'DeviceName': '/dev/sda1', 'Ebs': {
-                    'VolumeType': 'gp3', 'VolumeSize': 100, 'Iops': 3000, 'Throughput': 125,
+                    'VolumeType': 'gp3', 'VolumeSize': 100, 'Iops': 3000,
                     'Encrypted': True, 'DeleteOnTermination': True}}],
                 'NetworkInterfaces': [{'DeviceIndex': '0', 'SubnetId': subnet, 'AssociatePublicIpAddress': False,
                                        'GroupSet': [{'Ref': 'GameSecurityGroup'}]}],

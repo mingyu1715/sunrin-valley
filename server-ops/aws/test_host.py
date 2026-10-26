@@ -211,6 +211,44 @@ class HostTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 'stop-timeout')
         self.assertFalse((self.root / 'state' / 'last-stop.json').exists())
 
+    def test_normal_process_exit_waits_for_systemd_to_settle_before_clean_proof(self):
+        # /proc can report Java gone before systemd reaps it and updates its
+        # separately queried MainPID/ActiveState. This occurred on the real host.
+        state = {'value': True}
+        after_exit = {'queries': 0}
+        with RconServer(on_stop=lambda: state.update(value=False), stop_disconnect=True) as peer:
+            controller = self.controller(peer, alive=state)
+            normal_status = controller.status_reader
+            def delayed_systemd():
+                value = normal_status()
+                if not state['value']:
+                    after_exit['queries'] += 1
+                    value.update(ExecMainCode='1', ExecMainStatus='0')
+                    if after_exit['queries'] <= 2:
+                        value.update(ActiveState='active', SubState='running', MainPID='321')
+                    else:
+                        value.update(ActiveState='deactivating', SubState='stop', MainPID='0')
+                return value
+            controller.status_reader = delayed_systemd
+            result = controller.stop(str(uuid.uuid4()), timeout=1)
+        self.assertTrue(result['cleanStop'])
+        self.assertEqual(result['proof'], 'rcon-save-flush-stop-process-exited')
+        self.assertEqual(after_exit['queries'], 3, 'Wait through both stale systemd snapshots')
+        self.assertEqual(peer.commands, ['save-all flush', 'stop'])
+
+    def test_gone_process_with_permanently_stale_active_unit_never_gets_clean_proof(self):
+        state = {'value': True}
+        with RconServer(on_stop=lambda: state.update(value=False), stop_disconnect=True) as peer:
+            controller = self.controller(peer, alive=state)
+            controller.status_reader = lambda: {
+                'LoadState': 'loaded', 'ActiveState': 'active', 'SubState': 'running',
+                'MainPID': '321', 'Result': 'success', 'ExecMainCode': '1', 'ExecMainStatus': '0',
+                'FragmentPath': '/etc/systemd/system/sunrin-minecraft.service'}
+            with self.assertRaises(host.HostError) as caught:
+                controller.stop(str(uuid.uuid4()), timeout=0.08)
+        self.assertEqual(caught.exception.code, 'stop-timeout')
+        self.assertFalse((self.root / 'state' / 'last-stop.json').exists())
+
     def test_replaced_pid_is_not_mistaken_for_a_clean_stop(self):
         with RconServer() as peer:
             with self.assertRaises(host.HostError) as caught:
