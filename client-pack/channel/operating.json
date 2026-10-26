@@ -1,35 +1,34 @@
 {
   "formatVersion": 1,
   "id": "sunrin-valley-operations",
-  "activeVersion": "0.1.2",
+  "activeVersion": "0.1.3",
   "release": {
     "formatVersion": 1,
     "id": "sunrin-valley",
-    "version": "0.1.2",
-    "minLauncherVersion": "0.1.2",
+    "version": "0.1.3",
+    "minLauncherVersion": "1.1.2",
     "bundle": {
       "manifest": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.2/manifest.json",
-        "sha256": "554e48bdf36d7b787b9d4ccfa6493053a050a0624312ca16456c11ff92b67351"
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/manifest.json",
+        "sha256": "9ba6ce7bc0b39b94c482cbdf867374f34f835103f80dcc66f1d939bca26e5d9c"
       },
       "prism": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.2/prism-runtime.json",
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/prism-runtime.json",
         "sha256": "f4fb765db40c48183ca005901d5d14bf0f1b070deee3d51749bb91dd3271c53e"
       },
       "overlay": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.2/Sunrin-Overlay.zip",
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.1.3/Sunrin-Overlay.zip",
         "sha256": "efea9108d66934efcc996b1571a4a52eee822d29e7dafbe56d8606563d65ee95"
       }
     },
     "changes": [
-      "Stay True 리소스팩과 BSL 셰이더 선택 파일을 추가했습니다.",
-      "Sunlit 전용·선린 커스텀·기존 호환 팩·Stay True 순서를 자동 적용합니다.",
-      "기존 설정과 월드를 보존하며 GitHub에서 게임 구성을 업데이트합니다."
+      "Korean Chat Patch 1.9.6을 추가해 Windows와 Mac의 한글 입력을 지원합니다.",
+      "한글 입력 모드는 클라이언트에만 설치하며 서버 모드 구성은 유지합니다."
     ]
   },
   "status": {
-    "state": "unconfigured",
-    "message": "서버 구축 전 · 클라이언트 구성 준비 완료"
+    "state": "unknown",
+    "message": "서버 주소: mc.mingyu1715.dev · 운영 시간에 접속해 주세요."
   },
-  "updatedAt": "2026-10-25T11:16:49.648248+00:00"
+  "updatedAt": "2026-10-26T11:28:48.814062+00:00"
 }

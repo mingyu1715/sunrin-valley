@@ -28,7 +28,7 @@
 - KubeJS 아이템 `kubejs:geonpi_ticket`, `kubejs:rename_ticket`, `kubejs:sunrin_meal`
 - **선린 급식**: 설명 **학교에서 먹던 그 맛.**, 허기 **4칸(8포인트)**, 포만감 계수 **1.0**
 
-이용권은 등록·이름·텍스처까지 구현했습니다. 이용권 사용 효과는 별도 서버 기능으로 아직 연결하지 않았습니다. 서버에 접속할 때는 같은 추가 모드와 `kubejs-custom/startup_scripts/sunrin_items.js`를 서버에도 적용해야 합니다.
+이용권은 등록·이름·텍스처까지 구현했습니다. 이용권 사용 효과는 별도 서버 기능으로 아직 연결하지 않았습니다. 서버에는 서버용 추가 모드 4종과 `kubejs-custom/startup_scripts/sunrin_items.js`를 적용합니다. 한글 입력 모드 Korean Chat Patch는 클라이언트에만 설치합니다.
 
 ## 설치와 설정 보존
 
