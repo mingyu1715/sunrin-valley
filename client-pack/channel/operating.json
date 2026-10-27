@@ -1,38 +1,37 @@
 {
   "formatVersion": 1,
   "id": "sunrin-valley-operations",
-  "activeVersion": "0.2.0",
+  "activeVersion": "0.2.1",
   "release": {
     "formatVersion": 1,
     "id": "sunrin-valley",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "minLauncherVersion": "1.1.3",
     "bundle": {
       "manifest": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/manifest.json",
-        "sha256": "c637043f037c91fc56748ff6db5d2acdcb06170a5c5335dbe4e086267487e1c5"
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/manifest.json",
+        "sha256": "bd125b9549118d43f910b7b4c14a98d04a396fdf22812bd5a9b85af0783f8e4c"
       },
       "prism": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/prism-runtime.json",
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/prism-runtime.json",
         "sha256": "f4fb765db40c48183ca005901d5d14bf0f1b070deee3d51749bb91dd3271c53e"
       },
       "overlay": {
-        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/Sunrin-Overlay.zip",
-        "sha256": "1384212d70b117f9e440e59b7ad0e9bbf301a6bbbaf4cd288a545bea2dc187cc"
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/Sunrin-Overlay.zip",
+        "sha256": "e34bc2916f732b0944d9d3180ae1ca2da6fba7160e5512fd6dc24e6131629024"
       }
     },
     "changes": [
-      "Sunrin Core와 커스텀 상자·칭호·이름 색상 티켓의 후보 콘텐츠를 추가합니다.",
-      "StageBox를 Beat Lamp 1.2.2로 교체한 테스트 후보이며 실제 게임 검증 후 운영에 반영합니다.",
-      "관리자 UUID 기본값과 기존 서버 파일 보존·백업 마이그레이션 도구를 준비합니다.",
-      "시즌 모자 주머니 4종을 각각 1%(합계 4%)로 조정하고 일반 주머니를 38.99%로 조정합니다."
+      "랜덤박스·가구랜덤박스 사용과 첫 접속·접속 시간 보상의 지급 오류를 수정합니다.",
+      "원본 채팅 형식에 칭호와 닉네임 색상을 연결하고 기존 염료·팀 표시를 유지합니다.",
+      "Sunrin Core 0.1.1을 적용합니다. 상자 확률·가구 목록·월드·설정·계정은 유지합니다."
     ]
   },
   "status": {
-    "state": "maintenance",
-    "message": "Applying server update to 0.2.1.",
+    "state": "online",
+    "message": "Server update to 0.2.1 is healthy.",
     "targetVersion": "0.2.1",
     "startsAt": "2026-10-27T05:14:35.224397+00:00"
   },
-  "updatedAt": "2026-10-27T05:14:36.669308+00:00"
+  "updatedAt": "2026-10-27T05:16:46.122967+00:00"
 }
