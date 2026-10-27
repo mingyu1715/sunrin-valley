@@ -30,9 +30,8 @@
   },
   "status": {
     "state": "online",
-    "message": "Server update to 0.2.0 is healthy.",
-    "targetVersion": "0.2.0",
-    "startsAt": "2026-10-27T03:57:17.773120+00:00"
+    "message": "선린밸리 0.2.0 적용 완료 · 테스트 서버는 13:12 자동 종료 예정입니다.",
+    "targetVersion": "0.2.0"
   },
-  "updatedAt": "2026-10-27T03:59:23.183014+00:00"
+  "updatedAt": "2026-10-27T04:02:59.640418+00:00"
 }
