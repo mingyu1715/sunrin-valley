@@ -107,7 +107,7 @@
       "metadataUrl": "https://api.modrinth.com/v2/version/6R6bSXKY"
     }
   ],
-  "packVersion": "0.2.0",
+  "packVersion": "0.2.1",
   "visuals": [
     {
       "slug": "stay-true",
@@ -146,13 +146,13 @@
   "ownedFiles": [
     {
       "slug": "sunrin-core",
-      "version": "0.1.0",
-      "filename": "sunrin-core-0.1.0.jar",
-      "path": "mods/sunrin-core-0.1.0.jar",
-      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
-      "size": 80138,
-      "sha256": "8ef7e7ebd06e4b74855948e09c093e92b39d8d7caf834c85e5a10173617c94ef",
-      "localPath": "sunrin-core/build/libs/sunrin-core-0.1.0.jar"
+      "version": "0.1.1",
+      "filename": "sunrin-core-0.1.1.jar",
+      "path": "mods/sunrin-core-0.1.1.jar",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/sunrin-core-0.1.1.jar",
+      "size": 80748,
+      "sha256": "a11cc9006ab509ef9b2c059bd2ba3c09b879659e1ebe70d6cf25615236befcb2",
+      "localPath": "sunrin-core/build/libs/sunrin-core-0.1.1.jar"
     }
   ]
 }

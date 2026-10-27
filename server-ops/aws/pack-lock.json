@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
-  "id": "sunrin-valley-server-0.2.0",
-  "clientPackVersion": "0.2.0",
+  "id": "sunrin-valley-server-0.2.1",
+  "clientPackVersion": "0.2.1",
   "minecraft": "1.20.1",
   "forge": "47.4.0",
   "javaMajor": 17,
@@ -76,24 +76,24 @@
   "ownedFiles": [
     {
       "slug": "sunrin-core",
-      "version": "0.1.0",
-      "filename": "sunrin-core-0.1.0.jar",
-      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
-      "size": 80138,
+      "version": "0.1.1",
+      "filename": "sunrin-core-0.1.1.jar",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/sunrin-core-0.1.1.jar",
+      "size": 80748,
       "hash": {
         "algorithm": "sha256",
-        "digest": "8ef7e7ebd06e4b74855948e09c093e92b39d8d7caf834c85e5a10173617c94ef"
+        "digest": "a11cc9006ab509ef9b2c059bd2ba3c09b879659e1ebe70d6cf25615236befcb2"
       }
     }
   ],
   "ownedOverlay": {
     "filename": "Sunrin-Server-Overlay.zip",
     "delivery": "download",
-    "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/Sunrin-Server-Overlay.zip",
-    "size": 23403,
+    "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.1/Sunrin-Server-Overlay.zip",
+    "size": 24525,
     "hash": {
       "algorithm": "sha256",
-      "digest": "aeb076204ee499e1305ff8644600029d9473b4a9c2c7254411a0a2484451856b"
+      "digest": "3ec2aa2f4003995772b1daf80064344c81defbc7b009f81fc3461ea2d652aca5"
     },
     "files": [
       {
@@ -133,9 +133,15 @@
         "mode": "replace"
       },
       {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "size": 1940,
+        "sha256": "c4d99c7b1a8ed7bde777719485ce19b5c14a5c156eb7e3a1f44038f948d4d70d",
+        "mode": "replace"
+      },
+      {
         "path": "kubejs/server_scripts/sunrin_policy.js",
-        "size": 17320,
-        "sha256": "f87fa0f11f2fcdcdad5a322e1974d05f9d900bd8559a754d05c7074077e627f7",
+        "size": 17492,
+        "sha256": "a4e4dd3afb2c9525ac2a5ecf9d1c5878d945943b33abaffcd528dcdf90e775a9",
         "mode": "replace"
       },
       {
@@ -149,6 +155,14 @@
         "size": 836,
         "sha256": "24becd722623259ff00c5a7623837cd118ef12511fe05bd9339e268b2ff8a0c9",
         "mode": "replace"
+      }
+    ],
+    "reviewedReplacements": [
+      {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "mode": "replace",
+        "size": 1664,
+        "sha256": "ee3e68554ab092f813c3b822eba6ef38fda1be45a29230d984fe2944d92ccff1"
       }
     ]
   }

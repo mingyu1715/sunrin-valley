@@ -451,6 +451,59 @@ class HostTests(unittest.TestCase):
             host.apply_owned_overlay(payload, server, spec)
         self.assertEqual(list(server.iterdir()), [])
 
+    def hotfix_overlay_fixture(self):
+        server = self.root / 'hotfix-stage'
+        policy = server / 'kubejs/server_scripts/sunrin_policy.js'
+        policy.parent.mkdir(parents=True)
+        policy.write_bytes(b'keep policy until all checks pass')
+        chat = server / 'kubejs/server_scripts/playerEvents/chatColors.js'
+        chat.parent.mkdir()
+        original = b'original upstream formatter'
+        chat.write_bytes(original)
+        contents = {'kubejs/server_scripts/sunrin_policy.js':b'new policy',
+                    'kubejs/server_scripts/playerEvents/chatColors.js':b'profile-aware formatter'}
+        payload = self.root / 'hotfix-overlay.zip'
+        with zipfile.ZipFile(payload,'w') as archive:
+            for name, content in contents.items(): archive.writestr(name,content)
+        spec = {'size':payload.stat().st_size,'hash':{'algorithm':'sha256','digest':hashlib.sha256(payload.read_bytes()).hexdigest()},
+                'files':[{'path':name,'size':len(content),'sha256':hashlib.sha256(content).hexdigest(),'mode':'replace'} for name,content in contents.items()],
+                'reviewedReplacements':[{'path':'kubejs/server_scripts/playerEvents/chatColors.js','size':len(original),'sha256':hashlib.sha256(original).hexdigest(),'mode':'replace'}]}
+        return payload,server,spec,policy,chat
+
+    def test_hotfix_overlay_accepts_only_the_reviewed_upstream_chat(self):
+        payload,server,spec,policy,chat = self.hotfix_overlay_fixture()
+        host.apply_owned_overlay(payload,server,spec)
+        self.assertEqual(policy.read_bytes(),b'new policy')
+        self.assertEqual(chat.read_bytes(),b'profile-aware formatter')
+
+    def test_hotfix_overlay_requires_review_even_when_upstream_chat_is_absent(self):
+        payload,server,spec,policy,chat = self.hotfix_overlay_fixture()
+        chat.unlink()
+        del spec['reviewedReplacements']
+        with self.assertRaises(host.HostError) as caught:
+            host.apply_owned_overlay(payload,server,spec)
+        self.assertEqual(caught.exception.code,'invalid-reviewed-upstream-replacement')
+        self.assertEqual(policy.read_bytes(),b'keep policy until all checks pass')
+        self.assertFalse(chat.exists())
+
+    def test_hotfix_overlay_rejects_changed_upstream_before_any_destination_write(self):
+        payload,server,spec,policy,chat = self.hotfix_overlay_fixture()
+        chat.write_bytes(b'operator edited formatter')
+        with self.assertRaises(host.HostError) as caught:
+            host.apply_owned_overlay(payload,server,spec)
+        self.assertEqual(caught.exception.code,'owned-overlay-predecessor-mismatch')
+        self.assertEqual(policy.read_bytes(),b'keep policy until all checks pass')
+        self.assertEqual(chat.read_bytes(),b'operator edited formatter')
+
+    def test_hotfix_overlay_rejects_duplicate_or_unrelated_upstream_review(self):
+        payload,server,spec,policy,chat = self.hotfix_overlay_fixture()
+        for reviewed in [spec['reviewedReplacements']*2,[{**spec['reviewedReplacements'][0],'path':'kubejs/server_scripts/playerEvents/other.js'}]]:
+            candidate={**spec,'reviewedReplacements':reviewed}
+            with self.assertRaises(host.HostError) as caught:
+                host.apply_owned_overlay(payload,server,candidate)
+            self.assertEqual(caught.exception.code,'invalid-reviewed-upstream-replacement')
+            self.assertEqual(policy.read_bytes(),b'keep policy until all checks pass')
+
     def install_fixture(self):
         payload = self.root / 'payload'
         payload.mkdir()
@@ -508,6 +561,40 @@ class HostTests(unittest.TestCase):
         self.assertEqual({i["path"] for i in receipt["files"]}, {*contents, "mods/" + core.name})
         self.assertEqual((server / "mods" / core.name).read_bytes(), core.read_bytes())
         self.assertEqual((server / "kubejs/startup_scripts/original.js").read_bytes(), b"keep original")
+
+    def hotfix_install_fixture(self, *, altered=False):
+        payload,mapping,fake_forge = self.install_fixture()
+        overlay,_,spec,_,_ = self.hotfix_overlay_fixture()
+        with zipfile.ZipFile(mapping['base.zip'],'a') as archive:
+            archive.writestr('kubejs/server_scripts/playerEvents/chatColors.js', b'operator edit' if altered else b'original upstream formatter')
+        target=payload/'Sunrin-Server-Overlay.zip'
+        target.write_bytes(overlay.read_bytes())
+        spec['filename']=target.name
+        lock_path=payload/'pack-lock.json'
+        lock=json.loads(lock_path.read_text());lock.pop('customStartup')
+        lock['clientPackVersion']='0.2.1';lock['ownedOverlay']=spec
+        lock_path.write_text(json.dumps(lock))
+        return payload,mapping,fake_forge
+
+    def test_fresh_hotfix_bootstrap_installs_reviewed_chat_and_records_ownership(self):
+        payload,mapping,fake_forge = self.hotfix_install_fixture()
+        server=self.root/'server'
+        with mock.patch.object(host,'download_verified',side_effect=lambda item,_:mapping[item['filename']]),mock.patch.object(host.subprocess,'run',side_effect=fake_forge):
+            result=host.install_server(payload,server,self.root/'cache',self.root/'etc/rcon.password',accept_eula=True,java='/fixed/java17')
+        self.assertEqual(result['status'],'installed')
+        self.assertEqual((server/'kubejs/server_scripts/playerEvents/chatColors.js').read_bytes(),b'profile-aware formatter')
+        receipt=json.loads((server/'.sunrin-owned-files.json').read_text())
+        self.assertEqual(receipt['version'],'0.2.1')
+        self.assertIn('kubejs/server_scripts/playerEvents/chatColors.js',[row['path'] for row in receipt['files']])
+
+    def test_fresh_hotfix_mismatched_upstream_leaves_server_and_secret_absent(self):
+        payload,mapping,_ = self.hotfix_install_fixture(altered=True)
+        server=self.root/'server';secret=self.root/'etc/rcon.password'
+        with mock.patch.object(host,'download_verified',side_effect=lambda item,_:mapping[item['filename']]),mock.patch.object(host.subprocess,'run',side_effect=AssertionError('Mismatch must fail before Forge installation')):
+            with self.assertRaises(host.HostError) as caught:
+                host.install_server(payload,server,self.root/'cache',secret,accept_eula=True,java='/fixed/java17')
+        self.assertEqual(caught.exception.code,'owned-overlay-predecessor-mismatch')
+        self.assertFalse(server.exists());self.assertFalse(secret.exists())
 
     def test_install_requires_explicit_eula_consent_before_any_files_are_created(self):
         with self.assertRaises(host.HostError) as caught:

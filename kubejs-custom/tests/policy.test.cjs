@@ -22,11 +22,12 @@ function fixture(options = {}) {
     },
     commitBox(...args) { commits.push(args); return true; }, rejectOpen(...args) { rejections.push(args); },
     requestOpen(...args) { requests.push(args); }, isOperator(p) { return !!p.operator; }, displayName(p) { return p.username; },
-    grant(p, id, payload) { const rewards=JSON.parse(payload).map(x=>({id:x.item,count:x.count})); grants.push({ p, id, rewards }); if (options.failGrant) return false; if (!delivered.has(id)) { delivered.add(id); p.received.push(...rewards); } return true; },
+    grantJson(p, id, payload) { const rewards=JSON.parse(payload).map(x=>({id:x.item,count:x.count})); grants.push({ p, id, rewards }); if (options.failGrant) return false; if (!delivered.has(id)) { delivered.add(id); p.received.push(...rewards); } return true; },
   };
   const players = [], server = { getTickCount: () => 20, players, getPlayerList: () => ({ getPlayer: uuid => players.find(p => p.uuid === String(uuid)) || null }) };
   function player(uuid = '00000000-0000-0000-0000-000000000001') {
-    const p = { uuid, username: 'tester', server, persistentData: { getString(k) { return this[k] || ''; }, putString(k, v) { this[k] = v; } }, received: [], messages: [], tell(x) { this.messages.push(x); }, getUUID: () => uuid, isFake: () => false };
+    // KubeJS's pinned EntityKJS wrapper exposes getUuid(), not the Mojang getUUID().
+    const p = { uuid, username: 'tester', server, persistentData: { getString(k) { return this[k] || ''; }, putString(k, v) { this[k] = v; } }, received: [], messages: [], tell(x) { this.messages.push(x); }, getUuid: () => uuid, isFake: () => false };
     players.push(p); return p;
   }
   const commandTrees = [];

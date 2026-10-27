@@ -77,7 +77,7 @@ class ResolverTests(unittest.TestCase):
         maker = next(f for f in manifest["files"] if f["source"].get("slug") == "music-disc-maker")
         self.assertIn("3.1.2", maker["path"])
         self.assertEqual(manifest["forge"], "47.4.0")
-        self.assertEqual(manifest["version"], "0.2.0")
+        self.assertEqual(manifest["version"], "0.2.1")
 
     def test_owned_artifact_has_sha256_and_strict_immutable_identity(self):
         pin = {"slug": "sunrin-core", "version": "0.1.0", "filename": "sunrin-core-0.1.0.jar",
@@ -128,9 +128,10 @@ class ResolverTests(unittest.TestCase):
 
     def test_content_version_comes_from_source_pin(self):
         sources = copy.deepcopy(self.sources)
+        previous = sources["packVersion"]
         sources["packVersion"] = "0.1.9"
         for pin in sources.get("ownedFiles", []):
-            pin["url"] = pin["url"].replace("/pack-0.2.0/", "/pack-0.1.9/")
+            pin["url"] = pin["url"].replace("/pack-" + previous + "/", "/pack-0.1.9/")
         self.assertEqual(self.resolve(sources=sources)["version"], "0.1.9")
 
     def test_visual_metadata_cannot_change_pinned_type_identity_or_compatibility(self):

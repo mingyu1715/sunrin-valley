@@ -37,9 +37,17 @@ public final class Profiles {
         AtomicJson.write(root.resolve(id + ".json"), json); cache.put(id, value);
     }
     public MutableComponent display(Player player) {
+        return displayWithFallback(player, null);
+    }
+    /** Chat's Curios dye fallback applies only to an account without a ticket color. */
+    public MutableComponent display(Player player, int fallbackNameColor) {
+        return displayWithFallback(player, fallbackNameColor);
+    }
+    private MutableComponent displayWithFallback(Player player, Integer fallbackNameColor) {
         Profile p = get(player.getUUID()); MutableComponent result = Component.empty();
         if (!p.titleText().isEmpty()) result.append(Component.literal(ProfileRules.wrap(p.titleText(), p.titleStyle()) + " ").setStyle(Style.EMPTY.withColor(ProfileRules.color(p.titleColor()))));
-        return result.append(Component.literal(player.getGameProfile().getName()).setStyle(p.hasNameColor() ? Style.EMPTY.withColor(ProfileRules.color(p.nameColor())) : Style.EMPTY));
+        Style nameStyle = p.hasNameColor() ? Style.EMPTY.withColor(ProfileRules.color(p.nameColor())) : fallbackNameColor == null ? Style.EMPTY : Style.EMPTY.withColor(fallbackNameColor);
+        return result.append(Component.literal(player.getGameProfile().getName()).setStyle(nameStyle));
     }
     public JsonObject json(UUID id) {
         Profile p = get(id); JsonObject json = new JsonObject();

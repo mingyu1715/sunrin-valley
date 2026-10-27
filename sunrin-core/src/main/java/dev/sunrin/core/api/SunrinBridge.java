@@ -18,7 +18,7 @@ public final class SunrinBridge {
     public static void rejectOpen(ServerPlayer player, String id, String message) { if (CoreRuntime.current() != null) CoreRuntime.current().reject(player, id, message); }
     public static boolean commitBox(ServerPlayer player, String id, String box, ItemStack reward, String tier, String version, String probabilities) { return CoreRuntime.current() != null && CoreRuntime.current().commitBox(player, id, box, reward, tier, version, probabilities); }
     public static boolean grant(ServerPlayer player, String grantId, ItemStack[] rewards) { return CoreRuntime.current() != null && CoreRuntime.current().grant(player, grantId, Arrays.stream(rewards).map(ItemStack::copy).toList()); }
-    public static boolean grant(ServerPlayer player, String grantId, String json) {
+    public static boolean grantJson(ServerPlayer player, String grantId, String json) {
         if (CoreRuntime.current() == null || json == null || json.length() > 16384) return false;
         try {
             JsonArray array = JsonParser.parseString(json).getAsJsonArray(); if (array.isEmpty() || array.size() > 16) return false;
@@ -32,5 +32,10 @@ public final class SunrinBridge {
         } catch (RuntimeException invalid) { return false; }
     }
     public static Component displayName(ServerPlayer player) { return CoreRuntime.current() == null ? Component.literal(player.getGameProfile().getName()) : player.getDisplayName(); }
+    public static Component chatDisplayName(ServerPlayer player, int fallbackNameColor) {
+        var runtime = CoreRuntime.current();
+        Component display = runtime == null ? Component.literal(player.getGameProfile().getName()).withStyle(style -> style.withColor(fallbackNameColor)) : runtime.profiles.display(player, fallbackNameColor);
+        return net.minecraft.world.scores.PlayerTeam.formatNameForTeam(player.getTeam(), display);
+    }
     public static boolean isOperator(ServerPlayer player) { return CoreRuntime.current() != null && CoreRuntime.current().operators.allowed(player); }
 }

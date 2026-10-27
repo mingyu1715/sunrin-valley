@@ -1,0 +1,100 @@
+{
+  "formatVersion": 1,
+  "version": "0.2.1",
+  "managedPaths": [],
+  "archive": {
+    "path": "../../../release/server/0.2.1/Sunrin-Owned-Update.zip",
+    "sha256": "11d1f32024b1c42bcf96a503bc4c11fa97e14850db18657bc8bbcadf60f85bd2"
+  },
+  "clientRelease": "../../../release/server/0.2.1/client-release.json",
+  "ownedFileMerge": {
+    "files": [
+      {
+        "path": "config/sunrin/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "defaultconfigs/ftbchunks/ftbchunks-world.snbt",
+        "size": 52,
+        "sha256": "1de1b32ea52fd3e1b8ae3097da92eaaaf45f4abc84da98ee78da7a51bfead42f",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/furniture-box.json",
+        "size": 125393,
+        "sha256": "35549f8af8ea3d704cfa445931b24592e46d2a4fd326f633b2e5f426faaed63c",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/random-box.json",
+        "size": 1099,
+        "sha256": "fe017d35ad897fbe218695b5c6cd23c6411a85d43a433b73b6c1812d0fbfbdd1",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/furniture-selection.json",
+        "size": 52642,
+        "sha256": "ee282c9b274cb5a099d6269f395c5222452504fd7a68d6b27a853656922d1ba4",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "size": 1940,
+        "sha256": "c4d99c7b1a8ed7bde777719485ce19b5c14a5c156eb7e3a1f44038f948d4d70d",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/sunrin_policy.js",
+        "size": 17492,
+        "sha256": "a4e4dd3afb2c9525ac2a5ecf9d1c5878d945943b33abaffcd528dcdf90e775a9",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_bridge.js",
+        "size": 880,
+        "sha256": "e1a898b9689ff2db02c13433bf77feae13534e68bf080a62f0e7f3c09be89738",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_items.js",
+        "size": 836,
+        "sha256": "24becd722623259ff00c5a7623837cd118ef12511fe05bd9339e268b2ff8a0c9",
+        "mode": "replace"
+      },
+      {
+        "path": "mods/sunrin-core-0.1.1.jar",
+        "size": 80748,
+        "sha256": "a11cc9006ab509ef9b2c059bd2ba3c09b879659e1ebe70d6cf25615236befcb2",
+        "mode": "replace"
+      },
+      {
+        "path": "mods/beatlamp-forge-1.20.1-1.2.2.jar",
+        "size": 547786,
+        "sha256": "1d2ec14285fee25db6e86f784c11d54b3e4eae9be4bddb525479e720638fd84f",
+        "mode": "replace"
+      }
+    ],
+    "reviewedReplacements": [
+      {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "mode": "replace",
+        "size": 1664,
+        "sha256": "ee3e68554ab092f813c3b822eba6ef38fda1be45a29230d984fe2944d92ccff1"
+      }
+    ]
+  },
+  "migrations": [],
+  "bootstrapMarker": {
+    "packId": "sunrin-valley-server-0.2.1",
+    "lockSha256": "b8c846867694144ceeeb357c82e2a4564c7762ce39ca769a481d6c4165fd5665",
+    "modCount": 316
+  }
+}

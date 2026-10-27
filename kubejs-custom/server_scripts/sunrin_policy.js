@@ -8,7 +8,8 @@
   let initialized = false
   const sessions = {}
   const clicks = {}
-  const uuid = p => String(p.getUUID())
+  // EntityKJS exposes getUuid() in this pinned build; getUUID() is hidden by Rhino.
+  const uuid = p => String(p.getUuid())
   const report = (kind, error) => {
     state.errors[kind] = String(error)
     console.error('[SUNRIN] ' + kind + ' disabled: ' + error)
@@ -141,7 +142,8 @@
   }
   function save(p,data) { p.persistentData.putString('sunrinRewardsV1',JSON.stringify(data)) }
   function grant(p,id,count) {
-    return bridge && bridge.grant(p,id,JSON.stringify([{item:'kubejs:random_box',count:count},{item:'kubejs:furniture_random_box',count:count}]))
+    // A distinct method avoids Rhino's ambiguous String / ItemStack[] conversion.
+    return bridge && bridge.grantJson(p,id,JSON.stringify([{item:'kubejs:random_box',count:count},{item:'kubejs:furniture_random_box',count:count}]))
   }
   function pay(p,data) {
     if (!data.first) {

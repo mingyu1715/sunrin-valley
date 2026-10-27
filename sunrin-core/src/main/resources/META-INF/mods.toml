@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 [[mods]]
 modId="sunrin_core"
-version="0.1.0"
+version="0.1.1"
 displayName="Sunrin Core"
 authors="Sunrin Valley"
 description='''선린밸리 개봉 화면·칭호·이름 색상과 서버 연동.'''

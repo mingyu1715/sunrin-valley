@@ -85,7 +85,7 @@ public class RhinoCompatibility {
         if(name==='net.minecraft.core.registries.Registries')return {DIMENSION:'dimension'};
         if(name==='net.minecraft.resources.ResourceLocation')return function(id){this.id=id;};
         if(name==='java.util.UUID')return {fromString:function(id){return id;},randomUUID:function(){return 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';}};
-        return {readConfig:function(name){return harnessConfigTexts['config/sunrin/'+name+'.json'];},rejectOpen:function(p,id,msg){harnessRejections.push([p,id,msg]);},commitBox:function(){harnessCommits.push(Array.prototype.slice.call(arguments));return true;},grant:function(){return true;},displayName:function(){return 'caller';}};
+        return {readConfig:function(name){return harnessConfigTexts['config/sunrin/'+name+'.json'];},rejectOpen:function(p,id,msg){harnessRejections.push([p,id,msg]);},commitBox:function(){harnessCommits.push(Array.prototype.slice.call(arguments));return true;},grantJson:function(){return true;},displayName:function(){return 'caller';}};
       };
       var JsonIO={readString:function(path){return harnessConfigTexts[path];}};
       // Controlled registry-existence boundary only: this is an engine evaluation
@@ -109,7 +109,7 @@ public class RhinoCompatibility {
     eval(cx,policy,"""
       var harnessMessages=[];
       var Text={of:function(){return {append:function(){return this;},green:function(){return this;},clickRunCommand:function(){return this;}};}};
-      var harnessCaller={getUUID:function(){return '00000000-0000-0000-0000-000000000001';},isFake:function(){return false;},tell:function(msg){harnessMessages.push(String(msg));}};
+      var harnessCaller={getUuid:function(){return '00000000-0000-0000-0000-000000000001';},isFake:function(){return false;},tell:function(msg){harnessMessages.push(String(msg));}};
       var harnessOperator={tell:function(){}};
       var harnessServer={getTickCount:function(){return 1;},getPlayerList:function(){return {getPlayer:function(){return harnessOperator;}};}};
       var harnessTicket={count:1,shrink:function(n){this.count-=n;}};
@@ -126,7 +126,7 @@ public class RhinoCompatibility {
       harnessListeners['server.commandRegistry']({commands:{literal:commandNode,argument:commandNode},register:function(node){harnessRoots.push(node);}});
       var geonpiRoot=harnessRoots.filter(function(node){return node.label==='sunringeonpi';})[0];
       var commandMessages=[];
-      var commandPlayer={getUUID:function(){return 'd415f5f4-e89d-4dcf-be37-242f5495681e';},tell:function(msg){commandMessages.push(String(msg));},persistentData:{getString:function(){return '';}}};
+      var commandPlayer={getUuid:function(){return 'd415f5f4-e89d-4dcf-be37-242f5495681e';},tell:function(msg){commandMessages.push(String(msg));},persistentData:{getString:function(){return '';}}};
       commandPlayer.server={getPlayerList:function(){return {getPlayer:function(){return null;}};},getLevel:function(){return null;}};
       var commandContext={token:'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',source:{getPlayerOrException:function(){return commandPlayer;}}};
       var go=geonpiRoot.children.filter(function(node){return node.label==='go';})[0].children[0].execute;

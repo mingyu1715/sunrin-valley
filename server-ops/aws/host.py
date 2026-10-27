@@ -465,13 +465,16 @@ def safe_extract(archive_path, destination, *, max_bytes=2 * 1024**3, max_entrie
         raise HostError('invalid-server-archive') from None
 
 
+UPSTREAM_CHAT_PATH = "kubejs/server_scripts/playerEvents/chatColors.js"
+
+
 def overlay_owned_path(name):
     if not isinstance(name, str):
         return False
     parts = name.split("/")
     if any(not p or p in {".", ".."} or "\\" in p or ":" in p or p.rstrip(" .") != p or any(ord(c) < 32 for c in p) for p in parts):
         return False
-    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
+    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt", UPSTREAM_CHAT_PATH}:
         return True
     return (len(parts) >= 3 and parts[0] == "kubejs" and
             ((parts[1] in {"startup_scripts", "server_scripts", "client_scripts"} and parts[-1].startswith("sunrin_") and parts[-1].endswith(".js"))
@@ -503,6 +506,25 @@ def apply_owned_overlay(archive_path, destination, spec):
                 or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))):
             raise HostError("invalid-owned-overlay")
         seen.add(name.casefold())
+    reviewed = spec.get("reviewedReplacements", [])
+    has_chat = UPSTREAM_CHAT_PATH.casefold() in seen
+    if (not isinstance(reviewed, list) or len(reviewed) != (1 if has_chat else 0)
+            or any(not isinstance(item, dict) or item.get("path") != UPSTREAM_CHAT_PATH
+                   or item.get("mode", "replace") != "replace"
+                   or type(item.get("size")) is not int or not 0 < item["size"] <= 8 * 1024 ** 2
+                   or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))
+                   for item in reviewed)):
+        raise HostError("invalid-reviewed-upstream-replacement")
+    # Validate every existing destination before writing the first overlay file.
+    for item in files:
+        target = Path(destination) / item["path"]
+        if any(p.is_symlink() for p in [target, *target.parents] if p == Path(destination) or p.is_relative_to(Path(destination))):
+            raise HostError("linked-overlay-target")
+        if item["path"] == UPSTREAM_CHAT_PATH and target.exists():
+            try:
+                verify_file(target, size=reviewed[0]["size"], algorithm="sha256", digest=reviewed[0]["sha256"])
+            except HostError:
+                raise HostError("owned-overlay-predecessor-mismatch") from None
     stage = Path(destination).with_name(".sunrin-overlay-" + uuid.uuid4().hex)
     try:
         with zipfile.ZipFile(archive_path) as archive:

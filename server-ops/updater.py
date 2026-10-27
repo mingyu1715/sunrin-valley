@@ -101,6 +101,7 @@ def file_hash(path):
 
 OWNED_RECEIPT = ".sunrin-owned-files.json"
 BOOTSTRAP_MARKER = ".sunrin-server-complete.json"
+UPSTREAM_CHAT_PATH = "kubejs/server_scripts/playerEvents/chatColors.js"
 
 
 def owned_path(name):
@@ -109,7 +110,7 @@ def owned_path(name):
     path = PurePosixPath(name)
     if str(path) != name or not all(safe_part(p) for p in path.parts):
         return False
-    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
+    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt", UPSTREAM_CHAT_PATH}:
         return True
     if len(path.parts) == 2 and path.parts[0] == "mods":
         return bool(re.fullmatch(r"(?:sunrin-core-[0-9.]+|beatlamp-forge-1\.20\.1-[0-9.]+|StageBox-Mod-1\.1\.2-Forge-1\.20\.1)\.jar", path.name))
@@ -197,6 +198,7 @@ class Updater:
             raise UpdateError("kubejs requires an owned-file merge")
         self.merge_files = []
         self.previous_files = []
+        self.reviewed_replacements = []
         self.migrations = []
         custom_protected = self.config.get("protectedPaths", [])
         if not isinstance(custom_protected, list) or not all(safe_part(part) for part in custom_protected):
@@ -380,6 +382,11 @@ class Updater:
         if not isinstance(merge, dict):
             raise UpdateError("invalid ownedFileMerge")
         self.merge_files = owned_entries(merge.get("files", []))
+        self.reviewed_replacements = owned_entries(merge.get("reviewedReplacements", []))
+        if any(item["path"] != UPSTREAM_CHAT_PATH or item.get("mode", "replace") != "replace"
+               or item["path"] not in {entry["path"] for entry in self.merge_files}
+               for item in self.reviewed_replacements):
+            raise UpdateError("invalid reviewed upstream replacement")
         if not self.managed and not self.merge_files:
             raise UpdateError("release has no managed content")
         if {PurePosixPath(item["path"]).parts[0] for item in self.merge_files} & set(self.managed):
@@ -402,6 +409,7 @@ class Updater:
                 if not path.is_file() or file_hash(path) != item["sha256"] or path.stat().st_size != item["size"]:
                     raise UpdateError("reviewed ownership migration checksum mismatch")
         old_stagebox = "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar"
+        self.verify_reviewed_replacements()
         if (self.merge_files and (self.server / old_stagebox).exists()
                 and old_stagebox not in {i["path"] for i in self.previous_files}):
             raise UpdateError("StageBox retirement requires explicit prior ownership")
@@ -592,6 +600,10 @@ class Updater:
             shutil.copy2(source, destination)
 
     def apply(self, stage):
+        # Recheck after scheduled waiting and backup, before changing any live files.
+        self.verify_reviewed_replacements()
+        self.journal["contentTouched"] = True
+        self.event("content_apply_intent")
         for name in self.managed:
             self.remove_owned(self.server / name)
             self.copy_owned(stage / name, self.server / name)
@@ -613,6 +625,22 @@ class Updater:
         if self.bootstrap_marker is not None and (self.server / BOOTSTRAP_MARKER).exists():
             atomic_json(self.server / BOOTSTRAP_MARKER, self.bootstrap_marker)
         self.sync_tree(self.server)
+
+    def verify_reviewed_replacements(self):
+        previous = {item["path"] for item in self.previous_files}
+        reviewed = {item["path"]: item for item in self.reviewed_replacements}
+        for item in self.merge_files:
+            if item["path"] != UPSTREAM_CHAT_PATH or item["path"] in previous:
+                continue
+            target = self.server / item["path"]
+            if not target.exists() and not target.is_symlink():
+                continue
+            predecessor = reviewed.get(item["path"])
+            if predecessor is None:
+                raise UpdateError("upstream chat requires a reviewed replacement")
+            if (not target.is_file() or target.is_symlink() or target.stat().st_size != predecessor["size"]
+                    or file_hash(target) != predecessor["sha256"]):
+                raise UpdateError("reviewed replacement checksum mismatch; upstream chat preserved")
 
     def apply_migrations(self):
         if "ftbchunks-member-limit" in self.migrations:
@@ -676,7 +704,8 @@ class Updater:
                             "originalVersion": self.active, "activeVersion": self.active, "targetVersion": self.target,
                             "startsAt": self.starts_at, "serverDirectory": str(self.server), "runDirectory": str(run),
                             "backupDirectory": str(run / "backup"), "managedPaths": self.managed,
-                            "protectedPaths": self.protected, "backupComplete": False, "saveIntent": False, "stopIntent": False}
+                            "protectedPaths": self.protected, "backupComplete": False, "saveIntent": False, "stopIntent": False,
+                            "contentTouched": False}
             self.event("update_created")
             try:
                 self.stage(run / "stage")
@@ -756,21 +785,25 @@ class Updater:
             self.journal["activeVersion"] = self.active
             self.event("rollback_stop_intent", phase="rolling_back")
             self.command("stop")  # Never restore files under a possibly running target.
-            self.verify_backup()  # Validate the complete snapshot before deleting any current path.
-            self.event("rollback_restore_intent")
-            backup = Path(self.journal["backupDirectory"])
-            for name in sorted(set(self.managed + self.protected)):
-                self.remove_owned(self.server / name)
-                self.copy_owned(backup / name, self.server / name)
-            for name in self.journal.get("ownedTouchedPaths", []):
-                if name not in {OWNED_RECEIPT, BOOTSTRAP_MARKER} and not owned_path(name):
-                    raise UpdateError("invalid owned rollback path")
-                target = self.server / name
-                self.remove_owned(target)
-                target.parent.mkdir(parents=True, exist_ok=True)
-                self.copy_owned(backup / name, target)
-            self.sync_tree(self.server)
-            self.event("snapshot_restored")
+            # Old journals predate this flag and must conservatively restore their snapshot.
+            if self.journal.get("contentTouched", True):
+                self.verify_backup()  # Validate the complete snapshot before deleting any current path.
+                self.event("rollback_restore_intent")
+                backup = Path(self.journal["backupDirectory"])
+                for name in sorted(set(self.managed + self.protected)):
+                    self.remove_owned(self.server / name)
+                    self.copy_owned(backup / name, self.server / name)
+                for name in self.journal.get("ownedTouchedPaths", []):
+                    if name not in {OWNED_RECEIPT, BOOTSTRAP_MARKER} and not owned_path(name):
+                        raise UpdateError("invalid owned rollback path")
+                    target = self.server / name
+                    self.remove_owned(target)
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    self.copy_owned(backup / name, target)
+                self.sync_tree(self.server)
+                self.event("snapshot_restored")
+            else:
+                self.event("original_content_retained")
             self.command("start")
             self.command("resumeSaves")
             self.check_health()

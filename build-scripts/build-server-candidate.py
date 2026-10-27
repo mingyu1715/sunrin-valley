@@ -34,15 +34,18 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     root = Path(root).resolve()
     metadata = json.loads((root / 'client-pack/manifest.json').read_text())
     version = metadata['version']
-    if version != '0.2.0':
-        raise ValueError('This reviewed migration targets candidate 0.2.0')
+    if version not in {'0.2.0', '0.2.1'}:
+        raise ValueError('This reviewed migration supports only candidates 0.2.0 and 0.2.1')
     sources = metadata['sources']
     artifacts = verified_owned_artifacts(root, sources)
     if sources.get("packVersion") != version or {i.get("slug") for i in sources.get("ownedFiles", [])} != {"sunrin-core"}:
         raise ValueError("Candidate requires the reviewed Core source pin")
     if any(entry not in metadata["files"] for entry in resolve_owned_files(sources)):
         raise ValueError("Owned artifact manifest is stale")
-    lock = json.loads((root / 'server-ops/releases/0.1.4/pack-lock.json').read_text())
+    predecessor = '0.1.4' if version == '0.2.0' else '0.2.0'
+    lock = json.loads((root / 'server-ops/releases' / predecessor / 'pack-lock.json').read_text())
+    if version == '0.2.1' and lock.get('clientPackVersion') != predecessor:
+        raise ValueError('Hotfix requires the exact previous operating lock')
     lamp = next(item for item in metadata['files'] if item['source'].get('slug') == 'beatlamp')
     if (lamp['path'] != 'mods/beatlamp-forge-1.20.1-1.2.2.jar'
             or lamp['hash'] != {'algorithm': 'sha1', 'value': '85becdb57a12924c00fbdda0ef6cfb59adc8dbab'}):
@@ -76,6 +79,13 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     updater = spec.module_from_spec(updater_spec)
     updater_spec.loader.exec_module(updater)
     updater.owned_entries(owned)
+    reviewed = []
+    if version == '0.2.1':
+        reviewed = updater.owned_entries(json.loads((root / 'server-ops/releases/0.2.1/reviewed-upstream-replacements.json').read_text()))
+        if (len(reviewed) != 1 or reviewed[0]['path'] != updater.UPSTREAM_CHAT_PATH
+                or reviewed[0].get('mode', 'replace') != 'replace'
+                or updater.UPSTREAM_CHAT_PATH not in files):
+            raise ValueError('Hotfix requires the reviewed exact upstream chat predecessor')
     output = Path(output) if output else root / 'release/server' / version
     output.mkdir(parents=True, exist_ok=True)
     overlay_path = output / 'Sunrin-Server-Overlay.zip'
@@ -83,6 +93,8 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     lock['ownedOverlay'] = {'filename': overlay_path.name, 'delivery': 'download',
                             'url': f"https://github.com/{sources['releaseRepository']}/releases/download/pack-{version}/{overlay_path.name}", 'size': overlay_path.stat().st_size,
                             'hash': {'algorithm': 'sha256', 'digest': sha256(overlay_path.read_bytes()).hexdigest()}, 'files': owned}
+    if reviewed:
+        lock['ownedOverlay']['reviewedReplacements'] = reviewed
     write_json(output / 'pack-lock.json', lock)
     update_output = Path(client_output) if client_output else root / 'release/updates' / version
     if not (update_output / 'stable.json').is_file():
@@ -115,9 +127,12 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     archive = output / 'Sunrin-Owned-Update.zip'
     write_zip(archive, release_files)
     shutil.copyfile(update_output / 'stable.json', output / 'client-release.json')
+    merge = {'files': owned}
+    if reviewed:
+        merge['reviewedReplacements'] = reviewed
     write_json(output / 'server-release.json', {'formatVersion': 1, 'version': version, 'managedPaths': [],
                'archive': {'path': archive.name, 'sha256': sha256(archive.read_bytes()).hexdigest()},
-               'clientRelease': 'client-release.json', 'ownedFileMerge': {'files': owned}, 'migrations': ['ftbchunks-member-limit'],
+               'clientRelease': 'client-release.json', 'ownedFileMerge': merge, 'migrations': ['ftbchunks-member-limit'] if version == '0.2.0' else [],
                'bootstrapMarker': {'packId': lock['id'], 'lockSha256': sha256((output / 'pack-lock.json').read_bytes()).hexdigest(), 'modCount': lock['serverModCount']}})
     return output
 
@@ -135,8 +150,9 @@ if __name__ == '__main__':
         for name in ('pack-lock.json',):
             shutil.copyfile(output / name, root / 'server-ops/aws' / name)
         # Candidate metadata is reviewable; the prepared binary update remains in ignored release/.
-        descriptor_path = root / 'server-ops/releases/0.2.0/server-release.json'
         release = json.loads((output / 'server-release.json').read_text())
+        descriptor_path = root / 'server-ops/releases' / release['version'] / 'server-release.json'
+        descriptor_path.parent.mkdir(parents=True, exist_ok=True)
         release['archive']['path'] = Path(os.path.relpath(output / release['archive']['path'], descriptor_path.parent)).as_posix()
         release['clientRelease'] = Path(os.path.relpath(output / release['clientRelease'], descriptor_path.parent)).as_posix()
         write_json(descriptor_path, release)

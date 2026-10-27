@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="sunrin_useflow_observer"
+version="0.1.0"
+displayName="Sunrin actual use-flow observer"
+description='''Disposable loopback regression only. Requires sunrin.useFlowServer or sunrin.useFlowTest. Never distribute with the product.'''
+[[dependencies.sunrin_useflow_observer]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sunrin_useflow_observer]]
+modId="sunrin_core"
+mandatory=true
+versionRange="[0.1.0,)"
+ordering="AFTER"
+side="BOTH"

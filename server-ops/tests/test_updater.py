@@ -135,6 +135,91 @@ if (root / ("fail-" + name)).exists() and (root / "server/server.jar").read_text
         self.assertFalse((self.server / "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar").exists())
         self.assertEqual(json.loads((self.server / "config/sunrin/geonpi.json").read_text())["operatorUuids"], ["custom"])
 
+    def chat_candidate(self, *, review=True, wrong_digest=False):
+        self.owned_candidate()
+        old_manifest = dict(self.manifest)
+        name = 'kubejs/server_scripts/playerEvents/chatColors.js'
+        target = self.server / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(b'original upstream chat')
+        with zipfile.ZipFile(self.archive) as z:
+            files = {n: z.read(n) for n in z.namelist()}
+        files[name] = b'profile-aware chat'
+        self.write_archive(files)
+        self.manifest.update({k:v for k,v in old_manifest.items() if k != 'archive'})
+        self.manifest['ownedFileMerge']['files'].append({'path':name,'size':len(files[name]),'sha256':hashlib.sha256(files[name]).hexdigest(),'mode':'replace'})
+        if review:
+            self.manifest['ownedFileMerge']['reviewedReplacements'] = [{'path':name,'size':len(b'original upstream chat'),'sha256':'0'*64 if wrong_digest else hashlib.sha256(b'original upstream chat').hexdigest(),'mode':'replace'}]
+        (self.release / 'server-release.json').write_text(json.dumps(self.manifest))
+        return target
+
+    def test_upstream_chat_takeover_requires_exact_review_before_any_hook(self):
+        target = self.chat_candidate(review=False)
+        with self.assertRaisesRegex(Exception, 'reviewed.*replacement'):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+        self.assertEqual(target.read_bytes(), b'original upstream chat')
+
+    def test_upstream_chat_takeover_rejects_changed_predecessor(self):
+        target = self.chat_candidate(wrong_digest=True)
+        with self.assertRaisesRegex(Exception, 'replacement.*checksum'):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+        self.assertEqual(target.read_bytes(), b'original upstream chat')
+
+    def test_reviewed_upstream_chat_replacement_is_backed_up_and_rolled_back(self):
+        target = self.chat_candidate()
+        (self.root / 'fail-health').write_text('target fails')
+        with self.assertRaises(Exception):
+            self.runner().execute()
+        self.assertTrue(any(c['name']=='start' for c in self.commands()))
+        self.assertEqual(target.read_bytes(), b'original upstream chat')
+        self.assertFalse((self.server / 'mods/sunrin-core-0.1.0.jar').exists())
+
+    def test_reviewed_chat_is_rechecked_after_scheduled_waiting(self):
+        target = self.chat_candidate()
+        with self.hook.open('a') as stream:
+            stream.write('\nif name == "announce":\n    (root / "server/kubejs/server_scripts/playerEvents/chatColors.js").write_bytes(b"operator edit during notice")\n')
+        with self.assertRaisesRegex(Exception, 'replacement.*checksum'):
+            self.runner().execute()
+        self.assertEqual(target.read_bytes(), b'operator edit during notice')
+        self.assertEqual((self.server / 'server.jar').read_text(), 'old')
+
+    def test_failed_final_predecessor_check_preserves_edits_after_backup(self):
+        target = self.chat_candidate()
+        with self.hook.open('a') as stream:
+            stream.write('\nif name == "stop" and not (root / "stop-edit").exists():\n    (root / "stop-edit").write_text("once")\n    (root / "server/kubejs/server_scripts/playerEvents/chatColors.js").write_bytes(b"operator edit after backup")\n')
+        with self.assertRaisesRegex(Exception, 'replacement.*checksum'):
+            self.runner().execute()
+        self.assertEqual(target.read_bytes(), b'operator edit after backup')
+        self.assertEqual((self.server / 'server.jar').read_text(), 'old')
+        self.assertEqual((self.server / 'world/level.dat').read_text(), 'old world')
+        self.assertFalse(self.journal()['contentTouched'])
+        self.assertEqual(self.journal()['phase'],'rolled_back')
+
+    def test_patch_core_retires_exact_previous_owned_version(self):
+        self.owned_candidate()
+        old_core = self.server / 'mods/sunrin-core-0.1.0.jar'
+        old_core.write_text('previous compiled core')
+        receipt_path = self.server / '.sunrin-owned-files.json'
+        receipt = json.loads(receipt_path.read_text())
+        receipt['files'].append({'path':'mods/sunrin-core-0.1.0.jar','mode':'replace','size':old_core.stat().st_size,'sha256':hashlib.sha256(old_core.read_bytes()).hexdigest()})
+        receipt_path.write_text(json.dumps(receipt))
+        old_manifest = dict(self.manifest)
+        with zipfile.ZipFile(self.archive) as z:
+            files={name:z.read(name) for name in z.namelist() if name!='mods/sunrin-core-0.1.0.jar'}
+        files['mods/sunrin-core-0.1.1.jar']=b'new compiled core'
+        self.write_archive(files)
+        self.manifest.update({k:v for k,v in old_manifest.items() if k!='archive'})
+        owned=self.manifest['ownedFileMerge']['files']
+        owned[:]=[r for r in owned if r['path']!='mods/sunrin-core-0.1.0.jar']
+        content=files['mods/sunrin-core-0.1.1.jar']
+        owned.append({'path':'mods/sunrin-core-0.1.1.jar','mode':'replace','size':len(content),'sha256':hashlib.sha256(content).hexdigest()})
+        (self.release/'server-release.json').write_text(json.dumps(self.manifest))
+        self.runner().execute()
+        self.assertFalse(old_core.exists())
+        self.assertEqual((self.server/'mods/sunrin-core-0.1.1.jar').read_bytes(),content)
+
     def test_owned_merge_bad_digest_is_rejected_before_hooks(self):
         self.owned_candidate(corrupt=True)
         with self.assertRaisesRegex(Exception, "checksum|digest"):
@@ -335,10 +420,14 @@ if (root / ("fail-" + name)).exists() and (root / "server/server.jar").read_text
 
     def test_apply_failure_restores_before_starting_old_server(self):
         updater = self.runner()
-        def fail_apply(stage):
-            (self.server / "server.jar").write_text("partially applied")
-            raise OSError("injected local disk failure")
-        updater.apply = fail_apply
+        original_copy = updater.copy_owned
+        def fail_copy(source, destination):
+            if source.parent.name == 'stage' and destination.resolve() == (self.server / 'server.jar').resolve():
+                self.assertTrue(self.journal()['contentTouched'])
+                destination.write_text('partially applied')
+                raise OSError('injected local disk failure')
+            return original_copy(source, destination)
+        updater.copy_owned = fail_copy
         with self.assertRaises(Exception):
             updater.execute()
         self.assertEqual((self.server / "server.jar").read_text(), "old")
@@ -381,6 +470,20 @@ if (root / ("fail-" + name)).exists() and (root / "server/server.jar").read_text
         self.runner().recover()
         self.assertEqual((self.server / "server.jar").read_text(), "old")
         self.assertEqual(self.journal()["phase"], "rolled_back")
+
+    def test_recovery_of_old_journal_without_content_flag_restores_snapshot(self):
+        updater = self.runner()
+        original_apply = updater.apply
+        def crash_after_apply(stage):
+            original_apply(stage)
+            raise KeyboardInterrupt()
+        updater.apply = crash_after_apply
+        with self.assertRaises(KeyboardInterrupt): updater.execute()
+        journal = self.journal(); del journal['contentTouched']
+        (self.state/'journal.json').write_text(json.dumps(journal))
+        self.runner().recover()
+        self.assertEqual((self.server/'server.jar').read_text(),'old')
+        self.assertEqual(self.journal()['phase'],'rolled_back')
 
     def test_schedule_requires_timezone_and_rejects_protected_allowlist(self):
         self.schedule["applyAt"] = "2030-01-01T00:00:10"
