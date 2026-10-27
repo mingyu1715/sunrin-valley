@@ -112,6 +112,156 @@ if (root / ("fail-" + name)).exists() and (root / "server/server.jar").read_text
     def journal(self):
         return json.loads((self.state / "journal.json").read_text())
 
+    def owned_candidate(self, *, corrupt=False):
+        files = {"kubejs/startup_scripts/sunrin_items.js": "new script", "mods/sunrin-core-0.1.0.jar": "core", "config/sunrin/geonpi.json": '{"operatorUuids":["default"]}'}
+        for name, value in {"kubejs/startup_scripts/sunrin_items.js": "old script", "kubejs/startup_scripts/original.js": "upstream", "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar": "old stagebox", "mods/operator.jar": "operator mod", "config/sunrin/geonpi.json": '{"operatorUuids":["custom"]}'}.items():
+            path = self.server / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(value)
+        previous = [{"path": name, "sha256": hashlib.sha256(value.encode()).hexdigest(), "size": len(value.encode()), "mode": "replace"}
+                    for name, value in {"kubejs/startup_scripts/sunrin_items.js": "old script", "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar": "old stagebox"}.items()]
+        (self.server / ".sunrin-owned-files.json").write_text(json.dumps({"formatVersion": 1, "files": previous}))
+        self.write_archive({"server.jar": "new", **files})
+        self.manifest["ownedFileMerge"] = {"files": [{"path": name, "sha256": hashlib.sha256(value.encode()).hexdigest() if not corrupt else "0" * 64,
+                                                   "size": len(value.encode()), "mode": "ifAbsent" if name.startswith("config/") else "replace"} for name, value in files.items()]}
+        (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+
+    def test_owned_merge_preserves_upstream_playerdata_and_existing_config(self):
+        self.owned_candidate()
+        self.runner().execute()
+        self.assertEqual((self.server / "kubejs/startup_scripts/sunrin_items.js").read_text(), "new script")
+        self.assertEqual((self.server / "kubejs/startup_scripts/original.js").read_text(), "upstream")
+        self.assertEqual((self.server / "mods/operator.jar").read_text(), "operator mod")
+        self.assertFalse((self.server / "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar").exists())
+        self.assertEqual(json.loads((self.server / "config/sunrin/geonpi.json").read_text())["operatorUuids"], ["custom"])
+
+    def test_owned_merge_bad_digest_is_rejected_before_hooks(self):
+        self.owned_candidate(corrupt=True)
+        with self.assertRaisesRegex(Exception, "checksum|digest"):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+
+    def test_owned_merge_rolls_back_retired_jar_scripts_and_receipt(self):
+        self.owned_candidate()
+        before = (self.server / ".sunrin-owned-files.json").read_bytes()
+        (self.root / "fail-health").write_text("target fails")
+        with self.assertRaises(Exception):
+            self.runner().execute()
+        self.assertEqual((self.server / "kubejs/startup_scripts/sunrin_items.js").read_text(), "old script")
+        self.assertTrue((self.server / "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar").is_file())
+        self.assertFalse((self.server / "mods/sunrin-core-0.1.0.jar").exists())
+        self.assertEqual((self.server / ".sunrin-owned-files.json").read_bytes(), before)
+
+    def test_ftb_key_merge_preserves_comments_extras_and_claim_data(self):
+        world = self.server / "world/serverconfig"
+        world.mkdir()
+        config = world / "ftbchunks-world.snbt"
+        original = b'{\r\n # operator comment\r\n max_claimed_chunks: 500\r\n party_limit_mode: "largest"\r\n extra_claim_chunks: 19\r\n hard_team_claim_limit: 0\r\n}\r\n'
+        config.write_bytes(original)
+        default = self.server / "defaultconfigs/ftbchunks/ftbchunks-world.snbt"
+        default.parent.mkdir(parents=True)
+        default.write_bytes(original)
+        claims = self.server / "world/claims.snbt"
+        claims.write_bytes(b"existing claims")
+        self.manifest["migrations"] = ["ftbchunks-member-limit"]
+        (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+        self.config["reviewedMigrations"] = ["ftbchunks-member-limit"]
+        self.write_inputs()
+        self.runner().execute()
+        merged = config.read_bytes()
+        self.assertEqual(merged, original.replace(b'max_claimed_chunks: 500', b'max_claimed_chunks: 4').replace(b'party_limit_mode: "largest"', b'party_limit_mode: "sum"'))
+        self.assertEqual(default.read_bytes(), merged)
+        self.assertEqual(claims.read_bytes(), b"existing claims")
+        self.assertEqual((Path(self.journal()["backupDirectory"]) / "world/serverconfig/ftbchunks-world.snbt").read_bytes(), original)
+
+    def test_retired_default_configuration_is_preserved(self):
+        self.owned_candidate()
+        receipt_path = self.server / ".sunrin-owned-files.json"
+        receipt = json.loads(receipt_path.read_text())
+        receipt["files"].append({"path": "config/sunrin/geonpi.json", "sha256": "a" * 64, "size": 10, "mode": "ifAbsent"})
+        receipt_path.write_text(json.dumps(receipt))
+        self.manifest["ownedFileMerge"]["files"] = [i for i in self.manifest["ownedFileMerge"]["files"] if not i["path"].startswith("config/")]
+        self.write_archive({"server.jar": "new", "kubejs/startup_scripts/sunrin_items.js": "new script", "mods/sunrin-core-0.1.0.jar": "core"})
+        self.manifest["ownedFileMerge"] = {"files": [{"path": name, "sha256": hashlib.sha256(value.encode()).hexdigest(), "size": len(value), "mode": "replace"} for name, value in {"kubejs/startup_scripts/sunrin_items.js": "new script", "mods/sunrin-core-0.1.0.jar": "core"}.items()]}
+        (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+        self.runner().execute()
+        self.assertTrue((self.server / "config/sunrin/geonpi.json").is_file())
+
+    def test_owned_descriptors_reject_protected_paths_and_case_collisions(self):
+        self.owned_candidate()
+        for paths in [["world/playerdata/player.dat"], ["kubejs/server_scripts/sunrin_a.js", "kubejs/server_scripts/sunrin_A.js"], ["kubejs/config/server.properties"]]:
+            self.manifest["ownedFileMerge"]["files"] = [{"path": name, "sha256": "a" * 64, "size": 1} for name in paths]
+            (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+            with self.assertRaises(Exception):
+                self.runner().execute()
+            self.assertEqual(self.commands(), [])
+
+    def test_bootstrap_ownership_import_requires_reviewed_matching_marker_and_bytes(self):
+        self.owned_candidate()
+        receipt = json.loads((self.server / ".sunrin-owned-files.json").read_text())
+        (self.server / ".sunrin-owned-files.json").unlink()
+        (self.server / ".sunrin-server-complete.json").write_text(json.dumps({"lockSha256": "a" * 64}))
+        with self.assertRaisesRegex(Exception, "reviewedOwnershipMigration"):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+        self.config["reviewedOwnershipMigration"] = {"lockSha256": "a" * 64, "files": receipt["files"]}
+        self.write_inputs()
+        self.runner().execute()
+        self.assertFalse((self.server / "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar").exists())
+
+    def test_stagebox_is_never_silently_left_or_adopted_without_ownership(self):
+        self.owned_candidate()
+        (self.server / ".sunrin-owned-files.json").unlink()
+        with self.assertRaisesRegex(Exception, "StageBox|ownership"):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+        self.assertEqual((self.server / "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar").read_text(), "old stagebox")
+
+    def test_geonpi_merge_requires_review_and_restores_original_after_failed_start(self):
+        config = self.server / "config/sunrin/geonpi.json"
+        config.parent.mkdir(parents=True)
+        config.write_text('{"operatorUuids":[],"tokenTtlSeconds":999}')
+        original = config.read_bytes()
+        self.manifest["migrations"] = ["geonpi-operators"]
+        (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+        with self.assertRaisesRegex(Exception, "reviewedMigrations"):
+            self.runner().execute()
+        self.assertEqual(self.commands(), [])
+        self.config["reviewedMigrations"] = ["geonpi-operators"]
+        self.write_inputs()
+        (self.root / "fail-start").write_text("target fails")
+        with self.assertRaises(Exception):
+            self.runner().execute()
+        self.assertEqual(config.read_bytes(), original)
+        (self.root / "fail-start").unlink()
+        self.runner().execute()
+        value = json.loads(config.read_text())
+        self.assertEqual(value["operatorUuids"], ["d415f5f4-e89d-4dcf-be37-242f5495681e"])
+        self.assertEqual(value["tokenTtlSeconds"], 999)
+
+    def test_reviewed_bootstrap_marker_is_promoted_and_rolls_back_with_owned_files(self):
+        self.owned_candidate()
+        marker = self.server / ".sunrin-server-complete.json"
+        marker.write_text('{"packId":"old","lockSha256":"old"}')
+        original = marker.read_bytes()
+        self.manifest["bootstrapMarker"] = {"packId": "sunrin-valley-server-1.1.0", "lockSha256": "b" * 64, "modCount": 316}
+        (self.release / "server-release.json").write_text(json.dumps(self.manifest))
+        (self.root / "fail-health").write_text("fail target")
+        with self.assertRaises(Exception):
+            self.runner().execute()
+        self.assertEqual(marker.read_bytes(), original)
+        (self.root / "fail-health").unlink()
+        self.runner().execute()
+        self.assertEqual(json.loads(marker.read_text()), self.manifest["bootstrapMarker"])
+
+    def test_release_without_owned_merge_preserves_existing_owned_content(self):
+        self.owned_candidate()
+        self.write_archive({"server.jar": "new"})
+        receipt = (self.server / ".sunrin-owned-files.json").read_bytes()
+        self.runner().execute()
+        self.assertEqual((self.server / "kubejs/startup_scripts/sunrin_items.js").read_text(), "old script")
+        self.assertEqual((self.server / ".sunrin-owned-files.json").read_bytes(), receipt)
+
     def test_cli_plan_is_read_only_even_when_disabled_and_release_absent(self):
         self.config["enabled"] = False
         self.config["hooks"] = {}

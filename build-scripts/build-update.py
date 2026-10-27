@@ -3,12 +3,17 @@ import argparse
 import json
 import re
 import shutil
+import sys
 import zipfile
 from hashlib import sha256
 from pathlib import Path
 
 
-def build_update(root: Path, repository: str, min_launcher_version: str, output: Path | None = None) -> Path:
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from owned_files import resolve_owned_files, verified_owned_artifacts
+
+
+def build_update(root: Path, repository: str, min_launcher_version: str, output: Path | None = None, *, bundle_output: Path | None = None) -> Path:
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', repository):
         raise ValueError('Use a GitHub OWNER/REPOSITORY name')
     if not re.fullmatch(r'(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)', min_launcher_version):
@@ -18,6 +23,13 @@ def build_update(root: Path, repository: str, min_launcher_version: str, output:
     version = metadata.get('version', '')
     if metadata.get('id') != 'sunrin-valley' or metadata.get('formatVersion') != 1 or not re.fullmatch(r'(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)', version):
         raise ValueError('Invalid Sunrin pack manifest identity/version')
+    sources = metadata.get("sources", {})
+    artifacts = verified_owned_artifacts(root, sources)
+    if artifacts and (sources.get("releaseRepository") != repository or sources.get("packVersion") != version):
+        raise ValueError("Owned artifact repository/version mismatch")
+    for entry in resolve_owned_files(sources):
+        if entry not in metadata.get("files", []):
+            raise ValueError("Owned artifact is absent or stale in manifest")
     own_files = []
     scripts = root / 'kubejs-custom'
     if scripts.is_symlink():
@@ -47,6 +59,8 @@ def build_update(root: Path, repository: str, min_launcher_version: str, output:
             entry.compress_type = zipfile.ZIP_DEFLATED
             entry.external_attr = 0o100644 << 16
             archive.writestr(entry, source.read_bytes())
+    for source, name in artifacts:
+        shutil.copyfile(source, output / name)
     bundle = {}
     for key, name in {'manifest': 'manifest.json', 'prism': 'prism-runtime.json', 'overlay': 'Sunrin-Overlay.zip'}.items():
         bundle[key] = {'url': f'https://github.com/{repository}/releases/download/pack-{version}/{name}',
@@ -61,7 +75,10 @@ def build_update(root: Path, repository: str, min_launcher_version: str, output:
         channel['changes'] = changes
     (output / 'stable.json').write_text(json.dumps(channel, ensure_ascii=False, indent=2) + '\n')
     (output / 'SHA256SUMS.txt').write_text(''.join(f'{sha256((output / name).read_bytes()).hexdigest()}  {name}\n'
-                                                for name in ('manifest.json', 'prism-runtime.json', 'Sunrin-Overlay.zip', 'stable.json')))
+                                                for name in ('manifest.json', 'prism-runtime.json', 'Sunrin-Overlay.zip', 'stable.json', *(name for _, name in artifacts))))
+    if bundle_output is not None:
+        bundle_output.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(output / "Sunrin-Overlay.zip", bundle_output / "Sunrin-Overlay.zip")
     return output
 
 
@@ -70,5 +87,6 @@ if __name__ == '__main__':
     parser.add_argument('--repo', required=True)
     parser.add_argument('--min-launcher-version', default='0.1.2')
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--bundle-output', type=Path)
     args = parser.parse_args()
-    print(build_update(Path(__file__).resolve().parents[1], args.repo, args.min_launcher_version, args.output))
+    print(build_update(Path(__file__).resolve().parents[1], args.repo, args.min_launcher_version, args.output, bundle_output=args.bundle_output))

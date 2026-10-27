@@ -99,6 +99,54 @@ def file_hash(path):
     return digest.hexdigest()
 
 
+OWNED_RECEIPT = ".sunrin-owned-files.json"
+BOOTSTRAP_MARKER = ".sunrin-server-complete.json"
+
+
+def owned_path(name):
+    if not isinstance(name, str):
+        return False
+    path = PurePosixPath(name)
+    if str(path) != name or not all(safe_part(p) for p in path.parts):
+        return False
+    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
+        return True
+    if len(path.parts) == 2 and path.parts[0] == "mods":
+        return bool(re.fullmatch(r"(?:sunrin-core-[0-9.]+|beatlamp-forge-1\.20\.1-[0-9.]+|StageBox-Mod-1\.1\.2-Forge-1\.20\.1)\.jar", path.name))
+    return (len(path.parts) >= 3 and path.parts[0] == "kubejs" and
+            ((path.parts[1] in {"startup_scripts", "server_scripts", "client_scripts"} and path.name.startswith("sunrin_") and path.suffix == ".js")
+             or (path.parts[1] in {"data", "assets"} and path.parts[2] == "sunrin")))
+
+
+def owned_entries(value):
+    if not isinstance(value, list) or len(value) > 1000:
+        raise UpdateError("owned files must be a bounded array")
+    seen = set()
+    for item in value:
+        if (not isinstance(item, dict) or not owned_path(item.get("path"))
+                or item.get("mode", "replace") not in {"replace", "ifAbsent"}
+                or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))
+                or type(item.get("size")) is not int or not 0 < item["size"] <= 128 * 1024 ** 2):
+            raise UpdateError("invalid owned file descriptor")
+        path = item["path"]
+        if path.casefold() in seen:
+            raise UpdateError("owned files contain colliding paths")
+        seen.add(path.casefold())
+        if (path.startswith(("config/", "defaultconfigs/")) and item.get("mode") != "ifAbsent"):
+            raise UpdateError("config defaults must use ifAbsent")
+    return value
+
+
+def merge_ftb(content):
+    text = content.decode("utf-8")
+    for key, value, pattern in [("max_claimed_chunks", "4", r"[0-9]+"), ("party_limit_mode", '\"sum\"', r'\"[^\"\r\n]*\"')]:
+        expression = re.compile(r"(?m)^(\s*" + key + r"\s*:\s*)" + pattern + r"(?=[ \t,]*(?:#.*)?\r?$)")
+        if len(expression.findall(text)) != 1:
+            raise UpdateError("FTB migration requires exactly one supported key: " + key)
+        text = expression.sub(lambda m: m.group(1) + value, text)
+    return text.encode("utf-8")
+
+
 class SystemClock:
     @staticmethod
     def now():
@@ -144,7 +192,12 @@ class Updater:
         if self.state == self.server or self.state.is_relative_to(self.server) or self.server.is_relative_to(self.state):
             raise UpdateError("stateDirectory and serverDirectory must be separate, non-nested directories")
         self.journal_path = self.state / "journal.json"
-        self.managed = roots(self.config.get("managedPaths"), "managedPaths")
+        self.managed = roots(self.config.get("managedPaths"), "managedPaths") if self.config.get("managedPaths") != [] else []
+        if "kubejs" in self.managed:
+            raise UpdateError("kubejs requires an owned-file merge")
+        self.merge_files = []
+        self.previous_files = []
+        self.migrations = []
         custom_protected = self.config.get("protectedPaths", [])
         if not isinstance(custom_protected, list) or not all(safe_part(part) for part in custom_protected):
             raise UpdateError("protectedPaths must contain safe top-level names")
@@ -319,8 +372,51 @@ class Updater:
         manifest = read_json(self.manifest_path)
         if manifest.get("formatVersion") != 1 or manifest.get("version") != self.target:
             raise UpdateError("server release version does not match targetVersion")
-        if roots(manifest.get("managedPaths"), "release managedPaths") != self.managed:
+        release_managed = roots(manifest.get("managedPaths"), "release managedPaths") if manifest.get("managedPaths") != [] else []
+        if release_managed != self.managed:
             raise UpdateError("release managedPaths does not match the configured allowlist")
+        self.owned_merge_enabled = "ownedFileMerge" in manifest
+        merge = manifest.get("ownedFileMerge", {})
+        if not isinstance(merge, dict):
+            raise UpdateError("invalid ownedFileMerge")
+        self.merge_files = owned_entries(merge.get("files", []))
+        if not self.managed and not self.merge_files:
+            raise UpdateError("release has no managed content")
+        if {PurePosixPath(item["path"]).parts[0] for item in self.merge_files} & set(self.managed):
+            raise UpdateError("owned merge overlaps managed roots")
+        self.migrations = manifest.get("migrations", [])
+        if (not isinstance(self.migrations, list) or any(m not in {"ftbchunks-member-limit", "geonpi-operators"} for m in self.migrations)
+                or not set(self.migrations).issubset(set(self.config.get("reviewedMigrations", [])))):
+            raise UpdateError("config migration requires explicit reviewedMigrations")
+        receipt = self.server / OWNED_RECEIPT
+        if self.owned_merge_enabled and receipt.exists():
+            self.previous_files = owned_entries(read_json(receipt).get("files"))
+        elif (self.server / ".sunrin-server-complete.json").exists() and self.merge_files:
+            migration = self.config.get("reviewedOwnershipMigration", {})
+            marker = read_json(self.server / ".sunrin-server-complete.json")
+            if not migration or migration.get("lockSha256") != marker.get("lockSha256"):
+                raise UpdateError("existing bootstrap ownership requires reviewedOwnershipMigration")
+            self.previous_files = owned_entries(migration.get("files"))
+            for item in self.previous_files:
+                path = self.server / item["path"]
+                if not path.is_file() or file_hash(path) != item["sha256"] or path.stat().st_size != item["size"]:
+                    raise UpdateError("reviewed ownership migration checksum mismatch")
+        old_stagebox = "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar"
+        if (self.merge_files and (self.server / old_stagebox).exists()
+                and old_stagebox not in {i["path"] for i in self.previous_files}):
+            raise UpdateError("StageBox retirement requires explicit prior ownership")
+        self.journal["ownedTouchedPaths"] = sorted({OWNED_RECEIPT, *(i["path"] for i in self.merge_files + self.previous_files)}) if self.owned_merge_enabled else []
+        self.bootstrap_marker = manifest.get("bootstrapMarker")
+        if self.bootstrap_marker is not None:
+            marker = self.bootstrap_marker
+            if (not isinstance(marker, dict) or marker.get("packId") != "sunrin-valley-server-" + self.target
+                    or not re.fullmatch(r"[0-9a-f]{64}", marker.get("lockSha256", ""))
+                    or type(marker.get("modCount")) is not int or marker["modCount"] <= 0):
+                raise UpdateError("invalid bootstrap marker migration")
+            if (self.server / BOOTSTRAP_MARKER).exists():
+                if not self.previous_files:
+                    raise UpdateError("bootstrap marker migration requires reviewed prior ownership")
+                self.journal["ownedTouchedPaths"].append(BOOTSTRAP_MARKER)
         archive_spec = manifest.get("archive")
         if not isinstance(archive_spec, dict) or not isinstance(archive_spec.get("path"), str):
             raise UpdateError("release archive requires a local path and sha256")
@@ -370,6 +466,10 @@ class Updater:
                         target.chmod(0o755 if mode & 0o111 else 0o644)
         except (OSError, ValueError, RuntimeError, zipfile.BadZipFile):
             raise UpdateError("cannot safely stage the complete release archive") from None
+        for item in self.merge_files:
+            path = destination / item["path"]
+            if not path.is_file() or path.stat().st_size != item["size"] or file_hash(path) != item["sha256"]:
+                raise UpdateError("owned file checksum mismatch")
         self.event("release_verified_and_staged", phase="prepared")
 
     def validate_archive(self, archive):
@@ -382,7 +482,9 @@ class Updater:
             path = PurePosixPath(name)
             if (not name or name.startswith("/") or "\\" in name or str(path) != name
                     or member.filename != name + ("/" if member.is_dir() else "")
-                    or not all(safe_part(part) for part in path.parts) or path.parts[0] not in self.managed):
+                    or not all(safe_part(part) for part in path.parts)
+                    or not (path.parts[0] in self.managed or name in {i["path"] for i in self.merge_files}
+                            or (member.is_dir() and any(i["path"].startswith(name + "/") for i in self.merge_files)))):
                 raise UpdateError("archive contains a path outside the managed allowlist")
             mode = member.external_attr >> 16
             if (member.flag_bits & 1) or (stat.S_IFMT(mode) not in {0, stat.S_IFREG, stat.S_IFDIR}):
@@ -493,7 +595,53 @@ class Updater:
         for name in self.managed:
             self.remove_owned(self.server / name)
             self.copy_owned(stage / name, self.server / name)
+        current = {item["path"] for item in self.merge_files}
+        for item in self.previous_files:
+            if item["path"] not in current and item.get("mode", "replace") != "ifAbsent":
+                self.remove_owned(self.server / item["path"])
+        for item in self.merge_files:
+            target = self.server / item["path"]
+            if item.get("mode") == "ifAbsent" and target.exists():
+                continue
+            if target.exists() and not target.is_file():
+                raise UpdateError("owned merge target must be a regular file")
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(stage / item["path"], target)
+        if self.owned_merge_enabled:
+            atomic_json(self.server / OWNED_RECEIPT, {"formatVersion": 1, "version": self.target, "files": self.merge_files})
+        self.apply_migrations()
+        if self.bootstrap_marker is not None and (self.server / BOOTSTRAP_MARKER).exists():
+            atomic_json(self.server / BOOTSTRAP_MARKER, self.bootstrap_marker)
         self.sync_tree(self.server)
+
+    def apply_migrations(self):
+        if "ftbchunks-member-limit" in self.migrations:
+            level = "world"
+            properties = self.server / "server.properties"
+            if properties.exists():
+                names = re.findall(r"(?m)^level-name=(.*)$", properties.read_text())
+                if len(names) > 1:
+                    raise UpdateError("ambiguous level-name")
+                if names:
+                    level = names[0].strip()
+            if not safe_part(level):
+                raise UpdateError("migration requires safe level-name")
+            if level not in self.protected:
+                raise UpdateError("world migration requires protected world root")
+            path = self.server / level / "serverconfig/ftbchunks-world.snbt"
+            if not path.is_file():
+                raise UpdateError("existing world FTB config is missing")
+            path.write_bytes(merge_ftb(path.read_bytes()))
+            default = self.server / "defaultconfigs/ftbchunks/ftbchunks-world.snbt"
+            if default.exists():
+                default.write_bytes(merge_ftb(default.read_bytes()))
+        if "geonpi-operators" in self.migrations:
+            path = self.server / "config/sunrin/geonpi.json"
+            config = read_json(path)
+            if config.get("operatorUuids") != []:
+                raise UpdateError("reviewed geonpi merge only accepts empty operatorUuids")
+            config["operatorUuids"] = ["d415f5f4-e89d-4dcf-be37-242f5495681e"]
+            atomic_json(path, config)
 
     def check_health(self):
         timer = getattr(self.clock, "monotonic", lambda: self.clock.now().timestamp())
@@ -614,6 +762,13 @@ class Updater:
             for name in sorted(set(self.managed + self.protected)):
                 self.remove_owned(self.server / name)
                 self.copy_owned(backup / name, self.server / name)
+            for name in self.journal.get("ownedTouchedPaths", []):
+                if name not in {OWNED_RECEIPT, BOOTSTRAP_MARKER} and not owned_path(name):
+                    raise UpdateError("invalid owned rollback path")
+                target = self.server / name
+                self.remove_owned(target)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                self.copy_owned(backup / name, target)
             self.sync_tree(self.server)
             self.event("snapshot_restored")
             self.command("start")

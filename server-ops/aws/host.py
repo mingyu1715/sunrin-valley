@@ -429,7 +429,7 @@ def safe_extract(archive_path, destination, *, max_bytes=2 * 1024**3, max_entrie
             entries = archive.infolist()
             if len(entries) > max_entries or sum(item.file_size for item in entries) > max_bytes:
                 raise HostError('archive-size-limit')
-            seen = {}
+            seen, spelling = {}, {}
             for item in entries:
                 name = item.filename.rstrip('/')
                 path = PurePosixPath(name)
@@ -441,6 +441,11 @@ def safe_extract(archive_path, destination, *, max_bytes=2 * 1024**3, max_entrie
                 key = name.casefold()
                 if key in seen:
                     raise HostError('archive-path-collision')
+                for depth in range(1, len(path.parts) + 1):
+                    prefix = '/'.join(path.parts[:depth])
+                    if spelling.get(prefix.casefold(), prefix) != prefix:
+                        raise HostError('archive-path-collision')
+                    spelling[prefix.casefold()] = prefix
                 seen[key] = item.is_dir()
             for name in seen:
                 for parent in PurePosixPath(name).parents:
@@ -458,6 +463,67 @@ def safe_extract(archive_path, destination, *, max_bytes=2 * 1024**3, max_entrie
                     target.chmod(0o644)
     except (zipfile.BadZipFile, RuntimeError):
         raise HostError('invalid-server-archive') from None
+
+
+def overlay_owned_path(name):
+    if not isinstance(name, str):
+        return False
+    parts = name.split("/")
+    if any(not p or p in {".", ".."} or "\\" in p or ":" in p or p.rstrip(" .") != p or any(ord(c) < 32 for c in p) for p in parts):
+        return False
+    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
+        return True
+    return (len(parts) >= 3 and parts[0] == "kubejs" and
+            ((parts[1] in {"startup_scripts", "server_scripts", "client_scripts"} and parts[-1].startswith("sunrin_") and parts[-1].endswith(".js"))
+             or (parts[1] in {"data", "assets"} and parts[2] == "sunrin")))
+
+
+def merge_fresh_ftb(content):
+    text = content.decode("utf-8")
+    for key, value, pattern in [("max_claimed_chunks", "4", r"[0-9]+"), ("party_limit_mode", '\"sum\"', r'\"[^\"\r\n]*\"')]:
+        expression = re.compile(r"(?m)^([ \t]*" + key + r"[ \t]*:[ \t]*)" + pattern + r"(?=[ \t,]*(?:#.*)?\r?$)")
+        if len(expression.findall(text)) != 1:
+            raise HostError("unsupported-fresh-ftb-config")
+        text = expression.sub(lambda m: m.group(1) + value, text)
+    return text.encode("utf-8")
+
+
+def apply_owned_overlay(archive_path, destination, spec):
+    verify_file(archive_path, size=spec.get("size"), **spec["hash"])
+    files = spec.get("files")
+    if not isinstance(files, list) or not files or len(files) > 1000:
+        raise HostError("invalid-owned-overlay")
+    seen = set()
+    for item in files:
+        name = item.get("path")
+        if (not overlay_owned_path(name) or name.casefold() in seen
+                or item.get("mode", "replace") not in {"replace", "ifAbsent"}
+                or (name.startswith(("config/", "defaultconfigs/")) and item.get("mode") != "ifAbsent")
+                or type(item.get("size")) is not int or not 0 < item["size"] <= 8 * 1024 ** 2
+                or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))):
+            raise HostError("invalid-owned-overlay")
+        seen.add(name.casefold())
+    stage = Path(destination).with_name(".sunrin-overlay-" + uuid.uuid4().hex)
+    try:
+        with zipfile.ZipFile(archive_path) as archive:
+            if set(archive.namelist()) != {i["path"] for i in files} or len(archive.infolist()) != len(files):
+                raise HostError("owned-overlay-file-list-mismatch")
+        safe_extract(archive_path, stage, max_entries=1000, max_bytes=16 * 1024 ** 2)
+        for item in files:
+            verify_file(stage / item["path"], size=item["size"], algorithm="sha256", digest=item["sha256"])
+        for item in files:
+            target = Path(destination) / item["path"]
+            if any(p.is_symlink() for p in [target, *target.parents] if p == Path(destination) or p.is_relative_to(Path(destination))):
+                raise HostError("linked-overlay-target")
+            if item.get("mode") == "ifAbsent" and target.exists():
+                if item["path"] == "defaultconfigs/ftbchunks/ftbchunks-world.snbt":
+                    target.write_bytes(merge_fresh_ftb(target.read_bytes()))
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(stage / item["path"], target)
+    finally:
+        if stage.exists():
+            shutil.rmtree(stage)
 
 
 def write_properties(path, updates):
@@ -485,7 +551,8 @@ def install_server(payload_dir, server_dir, cache_dir, secret_path, *, accept_eu
     lock = json.loads(lock_bytes)
     lock_hash = hashlib.sha256(lock_bytes).hexdigest()
     custom = payload_dir / 'sunrin_items.js'
-    verify_file(custom, **lock['customStartup']['hash'])
+    if 'customStartup' in lock:
+        verify_file(custom, **lock['customStartup']['hash'])
     if server_dir.exists() or server_dir.is_symlink():
         marker_path = server_dir / MARKER
         if server_dir.is_symlink() or not marker_path.is_file() or marker_path.is_symlink():
@@ -503,14 +570,30 @@ def install_server(payload_dir, server_dir, cache_dir, secret_path, *, accept_eu
         mods = stage / 'mods'
         if len(list(mods.glob('*.jar'))) != lock['upstreamModCount']:
             raise HostError('upstream-mod-count-mismatch')
-        for addon in lock['addons']:
+        for addon in lock['addons'] + lock.get('ownedFiles', []):
             target = mods / addon['filename']
             if target.exists():
                 raise HostError('addon-already-in-upstream')
             shutil.copyfile(download_verified(addon, cache_dir), target)
         if len(list(mods.glob('*.jar'))) != lock['serverModCount']:
             raise HostError('server-mod-count-mismatch')
-        shutil.copyfile(custom, stage / 'kubejs' / 'startup_scripts' / 'sunrin_items.js')
+        if 'ownedOverlay' in lock:
+            overlay = lock['ownedOverlay']
+            if overlay.get('filename') != 'Sunrin-Server-Overlay.zip':
+                raise HostError('invalid-owned-overlay-filename')
+            overlay_path = payload_dir / overlay['filename']
+            if overlay.get('delivery') == 'download':
+                overlay_path = download_verified(overlay, cache_dir)
+            apply_owned_overlay(overlay_path, stage, overlay)
+            owned = list(overlay['files'])
+            for item in lock.get('ownedFiles', []):
+                owned.append({'path': 'mods/' + item['filename'], 'size': item['size'], 'sha256': item['hash']['digest'], 'mode': 'replace'})
+            for item in lock['addons']:
+                if item.get('slug') == 'beatlamp':
+                    owned.append({'path': 'mods/' + item['filename'], 'size': item['size'], 'sha256': item['hash']['digest'], 'mode': 'replace'})
+            atomic_json(stage / '.sunrin-owned-files.json', {'formatVersion': 1, 'version': lock['clientPackVersion'], 'files': owned})
+        else:
+            shutil.copyfile(custom, stage / 'kubejs' / 'startup_scripts' / 'sunrin_items.js')
         installer = download_verified(lock['forgeInstaller'], cache_dir)
         with (stage / 'forge-install.log').open('w') as log:
             result = subprocess.run([java, '-jar', str(installer), '--installServer'],

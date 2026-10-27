@@ -362,6 +362,7 @@ class HostTests(unittest.TestCase):
             [('mods\\evil.jar', b'bad', None)],
             [('mods/link', b'/etc/passwd', stat.S_IFLNK | 0o777)],
             [('mods/A.jar', b'one', None), ('mods/a.jar', b'two', None)],
+            [('mods/Example/a.jar', b'one', None), ('mods/example/b.jar', b'two', None)],
             [('mods', b'file', None), ('mods/mod.jar', b'child', None)],
         ]
         for index, entries in enumerate(malicious):
@@ -403,6 +404,53 @@ class HostTests(unittest.TestCase):
                 host.validate_username(bad)
         self.assertEqual(host.validate_username('Valid_Player123'), 'Valid_Player123')
 
+    def test_owned_overlay_install_validates_all_files_and_preserves_upstream(self):
+        payload = self.root / "overlay.zip"
+        content = b"bridge script"
+        spec = {"filename": "overlay.zip", "size": 0, "hash": {"algorithm": "sha256", "digest": ""},
+                "files": [{"path": "kubejs/server_scripts/sunrin_policy.js", "size": len(content), "sha256": hashlib.sha256(content).hexdigest(), "mode": "replace"}]}
+        with zipfile.ZipFile(payload, "w") as archive:
+            archive.writestr(spec["files"][0]["path"], content)
+        spec["size"] = payload.stat().st_size
+        spec["hash"]["digest"] = hashlib.sha256(payload.read_bytes()).hexdigest()
+        server = self.root / "staged-server"
+        (server / "kubejs/startup_scripts").mkdir(parents=True)
+        (server / "kubejs/startup_scripts/original.js").write_bytes(b"upstream")
+        host.apply_owned_overlay(payload, server, spec)
+        self.assertEqual((server / spec["files"][0]["path"]).read_bytes(), content)
+        self.assertEqual((server / "kubejs/startup_scripts/original.js").read_bytes(), b"upstream")
+        spec["files"][0]["sha256"] = "0" * 64
+        with self.assertRaises(host.HostError):
+            host.apply_owned_overlay(payload, server, spec)
+
+    def test_fresh_bootstrap_merges_ftb_defaults_without_overwriting_unrelated_keys(self):
+        server = self.root / "fresh-stage"
+        default = server / "defaultconfigs/ftbchunks/ftbchunks-world.snbt"
+        default.parent.mkdir(parents=True)
+        original = b'{\n # comment\n max_claimed_chunks: 500\n party_limit_mode: "largest"\n hard_team_claim_limit: 0\n}\n'
+        default.write_bytes(original)
+        content = b'{\n max_claimed_chunks: 4\n party_limit_mode: "sum"\n}\n'
+        payload = self.root / "ftb-overlay.zip"
+        with zipfile.ZipFile(payload, "w") as archive:
+            archive.writestr("defaultconfigs/ftbchunks/ftbchunks-world.snbt", content)
+        spec = {"filename": payload.name, "size": payload.stat().st_size, "hash": {"algorithm": "sha256", "digest": hashlib.sha256(payload.read_bytes()).hexdigest()},
+                "files": [{"path": "defaultconfigs/ftbchunks/ftbchunks-world.snbt", "size": len(content), "sha256": hashlib.sha256(content).hexdigest(), "mode": "ifAbsent"}]}
+        host.apply_owned_overlay(payload, server, spec)
+        self.assertEqual(default.read_bytes(), original.replace(b'max_claimed_chunks: 500', b'max_claimed_chunks: 4').replace(b'party_limit_mode: "largest"', b'party_limit_mode: "sum"'))
+
+    def test_owned_overlay_refuses_playerdata_even_with_valid_archive_digest(self):
+        payload = self.root / "unsafe-overlay.zip"
+        with zipfile.ZipFile(payload, "w") as archive:
+            archive.writestr("world/playerdata/a.dat", b"bad")
+        spec = {"filename": payload.name, "size": payload.stat().st_size,
+                "hash": {"algorithm": "sha256", "digest": hashlib.sha256(payload.read_bytes()).hexdigest()},
+                "files": [{"path": "world/playerdata/a.dat", "size": 3, "sha256": hashlib.sha256(b"bad").hexdigest(), "mode": "replace"}]}
+        server = self.root / "staged-server"
+        server.mkdir()
+        with self.assertRaises(host.HostError):
+            host.apply_owned_overlay(payload, server, spec)
+        self.assertEqual(list(server.iterdir()), [])
+
     def install_fixture(self):
         payload = self.root / 'payload'
         payload.mkdir()
@@ -430,6 +478,36 @@ class HostTests(unittest.TestCase):
             args.write_text('forge launch arguments')
             return SimpleNamespace(returncode=0)
         return payload, mapping, fake_forge
+
+    def test_modern_install_includes_core_all_overlay_files_and_ownership_receipt(self):
+        payload, mapping, fake_forge = self.install_fixture()
+        lock_path = payload / "pack-lock.json"
+        lock = json.loads(lock_path.read_text())
+        lock["clientPackVersion"] = "0.2.0"
+        lock["serverModCount"] = 3
+        lock.pop("customStartup")
+        core = self.root / "sunrin-core-0.1.0.jar"
+        core.write_bytes(b"compiled core")
+        mapping[core.name] = core
+        lock["ownedFiles"] = [{"slug": "sunrin-core", "version": "0.1.0", "filename": core.name, "size": core.stat().st_size,
+            "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/" + core.name,
+            "hash": {"algorithm": "sha256", "digest": hashlib.sha256(core.read_bytes()).hexdigest()}}]
+        contents = {"kubejs/startup_scripts/sunrin_items.js": b"items", "kubejs/server_scripts/sunrin_policy.js": b"policy", "kubejs/data/sunrin/defaults/geonpi.json": b"{}"}
+        overlay = payload / "Sunrin-Server-Overlay.zip"
+        with zipfile.ZipFile(overlay, "w") as archive:
+            for name, content in contents.items():
+                archive.writestr(name, content)
+        lock["ownedOverlay"] = {"filename": overlay.name, "size": overlay.stat().st_size,
+            "hash": {"algorithm": "sha256", "digest": hashlib.sha256(overlay.read_bytes()).hexdigest()},
+            "files": [{"path": name, "size": len(content), "sha256": hashlib.sha256(content).hexdigest(), "mode": "replace"} for name, content in contents.items()]}
+        lock_path.write_text(json.dumps(lock))
+        server = self.root / "server"
+        with mock.patch.object(host, "download_verified", side_effect=lambda item, _: mapping[item["filename"]]), mock.patch.object(host.subprocess, "run", side_effect=fake_forge):
+            host.install_server(payload, server, self.root / "cache", self.root / "etc/rcon.password", accept_eula=True, java="/fixed/java17")
+        receipt = json.loads((server / ".sunrin-owned-files.json").read_text())
+        self.assertEqual({i["path"] for i in receipt["files"]}, {*contents, "mods/" + core.name})
+        self.assertEqual((server / "mods" / core.name).read_bytes(), core.read_bytes())
+        self.assertEqual((server / "kubejs/startup_scripts/original.js").read_bytes(), b"keep original")
 
     def test_install_requires_explicit_eula_consent_before_any_files_are_created(self):
         with self.assertRaises(host.HostError) as caught:

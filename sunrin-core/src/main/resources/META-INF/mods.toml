@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="sunrin_core"
+version="0.1.0"
+displayName="Sunrin Core"
+authors="Sunrin Valley"
+description='''선린밸리 개봉 화면·칭호·이름 색상과 서버 연동.'''
+[[dependencies.sunrin_core]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sunrin_core]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"

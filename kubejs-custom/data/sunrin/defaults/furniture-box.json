@@ -1,0 +1,6136 @@
+{
+  "version": "2026-10-26-1",
+  "rewards": [
+    {
+      "item": "bakery:baker_station"
+    },
+    {
+      "item": "bakery:bakery_standard"
+    },
+    {
+      "item": "bakery:bread_crate"
+    },
+    {
+      "item": "bakery:breadbox"
+    },
+    {
+      "item": "bakery:brick_counter"
+    },
+    {
+      "item": "bakery:cabinet"
+    },
+    {
+      "item": "bakery:cake_display"
+    },
+    {
+      "item": "bakery:cake_stand"
+    },
+    {
+      "item": "bakery:chocolate_box"
+    },
+    {
+      "item": "bakery:cupcake_display"
+    },
+    {
+      "item": "bakery:drawer"
+    },
+    {
+      "item": "bakery:iron_bench"
+    },
+    {
+      "item": "bakery:iron_chair"
+    },
+    {
+      "item": "bakery:iron_table"
+    },
+    {
+      "item": "bakery:jar"
+    },
+    {
+      "item": "bakery:kitchen_sink"
+    },
+    {
+      "item": "bakery:small_cooking_pot"
+    },
+    {
+      "item": "bakery:street_sign"
+    },
+    {
+      "item": "bakery:tray"
+    },
+    {
+      "item": "bakery:wall_cabinet"
+    },
+    {
+      "item": "bakery:wall_display"
+    },
+    {
+      "item": "beachparty:beach_chair"
+    },
+    {
+      "item": "beachparty:beach_parasol"
+    },
+    {
+      "item": "beachparty:beach_towel"
+    },
+    {
+      "item": "beachparty:cabinet"
+    },
+    {
+      "item": "beachparty:chair"
+    },
+    {
+      "item": "beachparty:deck_chair"
+    },
+    {
+      "item": "beachparty:empty_sand_bucket"
+    },
+    {
+      "item": "beachparty:hammock"
+    },
+    {
+      "item": "beachparty:lounge_chair"
+    },
+    {
+      "item": "beachparty:message_in_a_bottle"
+    },
+    {
+      "item": "beachparty:mini_fridge"
+    },
+    {
+      "item": "beachparty:palm_tall_torch"
+    },
+    {
+      "item": "beachparty:palm_torch_item"
+    },
+    {
+      "item": "beachparty:radio"
+    },
+    {
+      "item": "beachparty:sand_bucket"
+    },
+    {
+      "item": "beachparty:seashell"
+    },
+    {
+      "item": "beachparty:table"
+    },
+    {
+      "item": "beachparty:tiki_bar"
+    },
+    {
+      "item": "beachparty:tiki_chair"
+    },
+    {
+      "item": "beautify:acacia_blinds"
+    },
+    {
+      "item": "beautify:acacia_picture_frame"
+    },
+    {
+      "item": "beautify:birch_blinds"
+    },
+    {
+      "item": "beautify:birch_picture_frame"
+    },
+    {
+      "item": "beautify:bookstack"
+    },
+    {
+      "item": "beautify:crimson_blinds"
+    },
+    {
+      "item": "beautify:crimson_picture_frame"
+    },
+    {
+      "item": "beautify:dark_oak_blinds"
+    },
+    {
+      "item": "beautify:dark_oak_picture_frame"
+    },
+    {
+      "item": "beautify:hanging_pot"
+    },
+    {
+      "item": "beautify:iron_blinds"
+    },
+    {
+      "item": "beautify:jungle_blinds"
+    },
+    {
+      "item": "beautify:jungle_picture_frame"
+    },
+    {
+      "item": "beautify:lamp_bamboo"
+    },
+    {
+      "item": "beautify:lamp_candelabra"
+    },
+    {
+      "item": "beautify:lamp_candelabra_black"
+    },
+    {
+      "item": "beautify:lamp_candelabra_blue"
+    },
+    {
+      "item": "beautify:lamp_candelabra_brown"
+    },
+    {
+      "item": "beautify:lamp_candelabra_cyan"
+    },
+    {
+      "item": "beautify:lamp_candelabra_gray"
+    },
+    {
+      "item": "beautify:lamp_candelabra_green"
+    },
+    {
+      "item": "beautify:lamp_candelabra_light_blue"
+    },
+    {
+      "item": "beautify:lamp_candelabra_light_gray"
+    },
+    {
+      "item": "beautify:lamp_candelabra_lime"
+    },
+    {
+      "item": "beautify:lamp_candelabra_magenta"
+    },
+    {
+      "item": "beautify:lamp_candelabra_orange"
+    },
+    {
+      "item": "beautify:lamp_candelabra_pink"
+    },
+    {
+      "item": "beautify:lamp_candelabra_purple"
+    },
+    {
+      "item": "beautify:lamp_candelabra_red"
+    },
+    {
+      "item": "beautify:lamp_candelabra_white"
+    },
+    {
+      "item": "beautify:lamp_candelabra_yellow"
+    },
+    {
+      "item": "beautify:lamp_jar"
+    },
+    {
+      "item": "beautify:lamp_light_bulb"
+    },
+    {
+      "item": "beautify:mangrove_blinds"
+    },
+    {
+      "item": "beautify:mangrove_picture_frame"
+    },
+    {
+      "item": "beautify:oak_blinds"
+    },
+    {
+      "item": "beautify:oak_picture_frame"
+    },
+    {
+      "item": "beautify:quartz_picture_frame"
+    },
+    {
+      "item": "beautify:spruce_blinds"
+    },
+    {
+      "item": "beautify:spruce_picture_frame"
+    },
+    {
+      "item": "beautify:warped_blinds"
+    },
+    {
+      "item": "beautify:warped_picture_frame"
+    },
+    {
+      "item": "brewery:bar_counter"
+    },
+    {
+      "item": "brewery:barrel_main"
+    },
+    {
+      "item": "brewery:beer_mug"
+    },
+    {
+      "item": "brewery:beer_standard"
+    },
+    {
+      "item": "brewery:bench"
+    },
+    {
+      "item": "brewery:cabinet"
+    },
+    {
+      "item": "brewery:copper_brewingstation"
+    },
+    {
+      "item": "brewery:drawer"
+    },
+    {
+      "item": "brewery:dried_barley"
+    },
+    {
+      "item": "brewery:dried_corn"
+    },
+    {
+      "item": "brewery:dried_oat"
+    },
+    {
+      "item": "brewery:dried_wheat"
+    },
+    {
+      "item": "brewery:netherite_brewingstation"
+    },
+    {
+      "item": "brewery:patterned_carpet"
+    },
+    {
+      "item": "brewery:patterned_carpet_block"
+    },
+    {
+      "item": "brewery:sideboard"
+    },
+    {
+      "item": "brewery:table"
+    },
+    {
+      "item": "brewery:wall_cabinet"
+    },
+    {
+      "item": "brewery:wooden_brewingstation"
+    },
+    {
+      "item": "candlelight:acacia_big_table"
+    },
+    {
+      "item": "candlelight:acacia_cabinet"
+    },
+    {
+      "item": "candlelight:acacia_chair"
+    },
+    {
+      "item": "candlelight:acacia_drawer"
+    },
+    {
+      "item": "candlelight:acacia_shelf"
+    },
+    {
+      "item": "candlelight:acacia_table"
+    },
+    {
+      "item": "candlelight:bamboo_big_table"
+    },
+    {
+      "item": "candlelight:bamboo_cabinet"
+    },
+    {
+      "item": "candlelight:bamboo_chair"
+    },
+    {
+      "item": "candlelight:bamboo_counter"
+    },
+    {
+      "item": "candlelight:bamboo_drawer"
+    },
+    {
+      "item": "candlelight:bamboo_kitchen_sink"
+    },
+    {
+      "item": "candlelight:bamboo_shelf"
+    },
+    {
+      "item": "candlelight:bamboo_stove"
+    },
+    {
+      "item": "candlelight:bamboo_table"
+    },
+    {
+      "item": "candlelight:basalt_counter"
+    },
+    {
+      "item": "candlelight:basalt_kitchen_sink"
+    },
+    {
+      "item": "candlelight:basalt_stove"
+    },
+    {
+      "item": "candlelight:birch_big_table"
+    },
+    {
+      "item": "candlelight:birch_cabinet"
+    },
+    {
+      "item": "candlelight:birch_chair"
+    },
+    {
+      "item": "candlelight:birch_drawer"
+    },
+    {
+      "item": "candlelight:birch_shelf"
+    },
+    {
+      "item": "candlelight:birch_table"
+    },
+    {
+      "item": "candlelight:bowl"
+    },
+    {
+      "item": "candlelight:cabinet"
+    },
+    {
+      "item": "candlelight:candlelight_standard"
+    },
+    {
+      "item": "candlelight:chair"
+    },
+    {
+      "item": "candlelight:cherry_big_table"
+    },
+    {
+      "item": "candlelight:cherry_cabinet"
+    },
+    {
+      "item": "candlelight:cherry_chair"
+    },
+    {
+      "item": "candlelight:cherry_drawer"
+    },
+    {
+      "item": "candlelight:cherry_shelf"
+    },
+    {
+      "item": "candlelight:cherry_table"
+    },
+    {
+      "item": "candlelight:chocolate_box"
+    },
+    {
+      "item": "candlelight:cobblestone_counter"
+    },
+    {
+      "item": "candlelight:cobblestone_kitchen_sink"
+    },
+    {
+      "item": "candlelight:cobblestone_stove"
+    },
+    {
+      "item": "candlelight:cooking_pan"
+    },
+    {
+      "item": "candlelight:cooking_pot"
+    },
+    {
+      "item": "candlelight:crimson_big_table"
+    },
+    {
+      "item": "candlelight:crimson_cabinet"
+    },
+    {
+      "item": "candlelight:crimson_chair"
+    },
+    {
+      "item": "candlelight:crimson_drawer"
+    },
+    {
+      "item": "candlelight:crimson_shelf"
+    },
+    {
+      "item": "candlelight:crimson_table"
+    },
+    {
+      "item": "candlelight:dark_oak_big_table"
+    },
+    {
+      "item": "candlelight:dark_oak_cabinet"
+    },
+    {
+      "item": "candlelight:dark_oak_chair"
+    },
+    {
+      "item": "candlelight:dark_oak_drawer"
+    },
+    {
+      "item": "candlelight:dark_oak_shelf"
+    },
+    {
+      "item": "candlelight:dark_oak_table"
+    },
+    {
+      "item": "candlelight:deepslate_counter"
+    },
+    {
+      "item": "candlelight:deepslate_kitchen_sink"
+    },
+    {
+      "item": "candlelight:deepslate_stove"
+    },
+    {
+      "item": "candlelight:dinner_bell"
+    },
+    {
+      "item": "candlelight:drawer"
+    },
+    {
+      "item": "candlelight:end_counter"
+    },
+    {
+      "item": "candlelight:end_kitchen_sink"
+    },
+    {
+      "item": "candlelight:end_stove"
+    },
+    {
+      "item": "candlelight:glass"
+    },
+    {
+      "item": "candlelight:granite_counter"
+    },
+    {
+      "item": "candlelight:granite_kitchen_sink"
+    },
+    {
+      "item": "candlelight:granite_stove"
+    },
+    {
+      "item": "candlelight:hearth"
+    },
+    {
+      "item": "candlelight:jewelry_box"
+    },
+    {
+      "item": "candlelight:jungle_big_table"
+    },
+    {
+      "item": "candlelight:jungle_cabinet"
+    },
+    {
+      "item": "candlelight:jungle_chair"
+    },
+    {
+      "item": "candlelight:jungle_drawer"
+    },
+    {
+      "item": "candlelight:jungle_shelf"
+    },
+    {
+      "item": "candlelight:jungle_table"
+    },
+    {
+      "item": "candlelight:lamp"
+    },
+    {
+      "item": "candlelight:mangrove_big_table"
+    },
+    {
+      "item": "candlelight:mangrove_cabinet"
+    },
+    {
+      "item": "candlelight:mangrove_chair"
+    },
+    {
+      "item": "candlelight:mangrove_drawer"
+    },
+    {
+      "item": "candlelight:mangrove_shelf"
+    },
+    {
+      "item": "candlelight:mangrove_table"
+    },
+    {
+      "item": "candlelight:mud_counter"
+    },
+    {
+      "item": "candlelight:mud_kitchen_sink"
+    },
+    {
+      "item": "candlelight:mud_stove"
+    },
+    {
+      "item": "candlelight:note_paper"
+    },
+    {
+      "item": "candlelight:oak_big_table"
+    },
+    {
+      "item": "candlelight:oak_cabinet"
+    },
+    {
+      "item": "candlelight:oak_chair"
+    },
+    {
+      "item": "candlelight:oak_drawer"
+    },
+    {
+      "item": "candlelight:oak_shelf"
+    },
+    {
+      "item": "candlelight:oak_table"
+    },
+    {
+      "item": "candlelight:painting"
+    },
+    {
+      "item": "candlelight:plate"
+    },
+    {
+      "item": "candlelight:quartz_counter"
+    },
+    {
+      "item": "candlelight:quartz_kitchen_sink"
+    },
+    {
+      "item": "candlelight:quartz_stove"
+    },
+    {
+      "item": "candlelight:red_nether_bricks_counter"
+    },
+    {
+      "item": "candlelight:red_nether_bricks_kitchen_sink"
+    },
+    {
+      "item": "candlelight:red_nether_bricks_stove"
+    },
+    {
+      "item": "candlelight:sandstone_counter"
+    },
+    {
+      "item": "candlelight:sandstone_kitchen_sink"
+    },
+    {
+      "item": "candlelight:sandstone_stove"
+    },
+    {
+      "item": "candlelight:side_table"
+    },
+    {
+      "item": "candlelight:sideboard"
+    },
+    {
+      "item": "candlelight:spruce_big_table"
+    },
+    {
+      "item": "candlelight:spruce_cabinet"
+    },
+    {
+      "item": "candlelight:spruce_chair"
+    },
+    {
+      "item": "candlelight:spruce_drawer"
+    },
+    {
+      "item": "candlelight:spruce_shelf"
+    },
+    {
+      "item": "candlelight:spruce_table"
+    },
+    {
+      "item": "candlelight:stone_bricks_counter"
+    },
+    {
+      "item": "candlelight:stone_bricks_kitchen_sink"
+    },
+    {
+      "item": "candlelight:stone_bricks_stove"
+    },
+    {
+      "item": "candlelight:table"
+    },
+    {
+      "item": "candlelight:table_sign"
+    },
+    {
+      "item": "candlelight:typewriter_copper"
+    },
+    {
+      "item": "candlelight:typewriter_iron"
+    },
+    {
+      "item": "candlelight:warped_big_table"
+    },
+    {
+      "item": "candlelight:warped_cabinet"
+    },
+    {
+      "item": "candlelight:warped_chair"
+    },
+    {
+      "item": "candlelight:warped_drawer"
+    },
+    {
+      "item": "candlelight:warped_shelf"
+    },
+    {
+      "item": "candlelight:warped_table"
+    },
+    {
+      "item": "candlelight:wine_glass"
+    },
+    {
+      "item": "cluttered:adv_pastel_bunny_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "cluttered:adv_sand_seal_plush_blue",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "cluttered:adv_sand_seal_plush_green",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "cluttered:adv_sand_seal_plush_red",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "cluttered:adv_teddy_bear",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "cluttered:analog_kitchen_scale"
+    },
+    {
+      "item": "cluttered:ancient_codex"
+    },
+    {
+      "item": "cluttered:animated_flag_asexual"
+    },
+    {
+      "item": "cluttered:animated_flag_bisexual"
+    },
+    {
+      "item": "cluttered:animated_flag_lesbian"
+    },
+    {
+      "item": "cluttered:animated_flag_nonbinary"
+    },
+    {
+      "item": "cluttered:animated_flag_pansexual"
+    },
+    {
+      "item": "cluttered:animated_flag_rainbow"
+    },
+    {
+      "item": "cluttered:animated_flag_transgender"
+    },
+    {
+      "item": "cluttered:antique_book_stand"
+    },
+    {
+      "item": "cluttered:antique_library_books"
+    },
+    {
+      "item": "cluttered:antique_map"
+    },
+    {
+      "item": "cluttered:antique_mini_table"
+    },
+    {
+      "item": "cluttered:antique_standing_lamp"
+    },
+    {
+      "item": "cluttered:apple_chair"
+    },
+    {
+      "item": "cluttered:armchair_black_cat"
+    },
+    {
+      "item": "cluttered:armchair_flower"
+    },
+    {
+      "item": "cluttered:armchair_heart"
+    },
+    {
+      "item": "cluttered:armchair_lemon"
+    },
+    {
+      "item": "cluttered:armchair_starry"
+    },
+    {
+      "item": "cluttered:armchair_strawberry"
+    },
+    {
+      "item": "cluttered:armchair_watermelon"
+    },
+    {
+      "item": "cluttered:assorted_glass_jars"
+    },
+    {
+      "item": "cluttered:bamboo_bookshelf"
+    },
+    {
+      "item": "cluttered:basket_of_flowers"
+    },
+    {
+      "item": "cluttered:basket_of_produce"
+    },
+    {
+      "item": "cluttered:bee_lamp"
+    },
+    {
+      "item": "cluttered:bee_lamp_angry"
+    },
+    {
+      "item": "cluttered:berry_cake"
+    },
+    {
+      "item": "cluttered:bicycle_blue"
+    },
+    {
+      "item": "cluttered:bicycle_pink"
+    },
+    {
+      "item": "cluttered:bicycle_purple"
+    },
+    {
+      "item": "cluttered:bicycle_with_flowers_blue"
+    },
+    {
+      "item": "cluttered:bicycle_with_flowers_pink"
+    },
+    {
+      "item": "cluttered:bicycle_with_flowers_purple"
+    },
+    {
+      "item": "cluttered:bicycle_with_flowers_yellow"
+    },
+    {
+      "item": "cluttered:bicycle_yellow"
+    },
+    {
+      "item": "cluttered:birdhouse_blue"
+    },
+    {
+      "item": "cluttered:birdhouse_pastel"
+    },
+    {
+      "item": "cluttered:birdhouse_red"
+    },
+    {
+      "item": "cluttered:birdhouse_unpainted"
+    },
+    {
+      "item": "cluttered:black_cat_counter_drawers"
+    },
+    {
+      "item": "cluttered:black_cat_counter_left_door"
+    },
+    {
+      "item": "cluttered:black_cat_counter_right_door"
+    },
+    {
+      "item": "cluttered:black_cat_sink"
+    },
+    {
+      "item": "cluttered:black_cat_table"
+    },
+    {
+      "item": "cluttered:blue_mushroom_bed"
+    },
+    {
+      "item": "cluttered:blue_mushroom_bookshelf"
+    },
+    {
+      "item": "cluttered:blue_mushroom_lamp"
+    },
+    {
+      "item": "cluttered:blue_mushroom_table"
+    },
+    {
+      "item": "cluttered:blue_mushroom_tv"
+    },
+    {
+      "item": "cluttered:blue_mushroom_wardrobe"
+    },
+    {
+      "item": "cluttered:blueberry_muffin"
+    },
+    {
+      "item": "cluttered:book_open"
+    },
+    {
+      "item": "cluttered:box_of_paints"
+    },
+    {
+      "item": "cluttered:brass_key"
+    },
+    {
+      "item": "cluttered:briefcase_blank"
+    },
+    {
+      "item": "cluttered:briefcase_rover"
+    },
+    {
+      "item": "cluttered:bulletin_board"
+    },
+    {
+      "item": "cluttered:bulletin_board_cluttered"
+    },
+    {
+      "item": "cluttered:bunny_book_ends"
+    },
+    {
+      "item": "cluttered:button_stool"
+    },
+    {
+      "item": "cluttered:caged_bulb"
+    },
+    {
+      "item": "cluttered:card_index"
+    },
+    {
+      "item": "cluttered:cardboard_box_open"
+    },
+    {
+      "item": "cluttered:cat_mugs_cluttered"
+    },
+    {
+      "item": "cluttered:cat_plant_pot_black"
+    },
+    {
+      "item": "cluttered:cat_plant_pot_orange"
+    },
+    {
+      "item": "cluttered:cauldron_poster"
+    },
+    {
+      "item": "cluttered:chalcedony_sun_block"
+    },
+    {
+      "item": "cluttered:china_cabinet"
+    },
+    {
+      "item": "cluttered:chocolate_croissant"
+    },
+    {
+      "item": "cluttered:cinnamon_bun"
+    },
+    {
+      "item": "cluttered:coffee_grinder"
+    },
+    {
+      "item": "cluttered:colosseo_wall_lantern"
+    },
+    {
+      "item": "cluttered:confectionery_table_blue"
+    },
+    {
+      "item": "cluttered:confectionery_table_pink"
+    },
+    {
+      "item": "cluttered:cottage_armchair"
+    },
+    {
+      "item": "cluttered:cottage_bookcase"
+    },
+    {
+      "item": "cluttered:cottage_chair"
+    },
+    {
+      "item": "cluttered:cottage_chair_cushioned"
+    },
+    {
+      "item": "cluttered:cottage_ottoman"
+    },
+    {
+      "item": "cluttered:cottage_side_table"
+    },
+    {
+      "item": "cluttered:cottage_standing_lamp"
+    },
+    {
+      "item": "cluttered:crabapple_bookshelf"
+    },
+    {
+      "item": "cluttered:croissant"
+    },
+    {
+      "item": "cluttered:cupid_bench"
+    },
+    {
+      "item": "cluttered:darkwood_bed_geometric"
+    },
+    {
+      "item": "cluttered:darkwood_bed_quilted"
+    },
+    {
+      "item": "cluttered:darkwood_bed_southern_flair"
+    },
+    {
+      "item": "cluttered:darkwood_cabinet"
+    },
+    {
+      "item": "cluttered:darkwood_chair_geometric"
+    },
+    {
+      "item": "cluttered:darkwood_chair_quilted"
+    },
+    {
+      "item": "cluttered:darkwood_chair_southern_flair"
+    },
+    {
+      "item": "cluttered:darkwood_clock"
+    },
+    {
+      "item": "cluttered:darkwood_decorative_shelves_geometric"
+    },
+    {
+      "item": "cluttered:darkwood_decorative_shelves_quilted"
+    },
+    {
+      "item": "cluttered:darkwood_decorative_shelves_southern_flair"
+    },
+    {
+      "item": "cluttered:darkwood_endtable"
+    },
+    {
+      "item": "cluttered:darkwood_sofa_geometric"
+    },
+    {
+      "item": "cluttered:darkwood_sofa_quilted"
+    },
+    {
+      "item": "cluttered:darkwood_sofa_southern_flair"
+    },
+    {
+      "item": "cluttered:darkwood_stool"
+    },
+    {
+      "item": "cluttered:darkwood_table"
+    },
+    {
+      "item": "cluttered:deep_chalcedony_sun_block"
+    },
+    {
+      "item": "cluttered:desk_brown"
+    },
+    {
+      "item": "cluttered:desk_brown_cluttered"
+    },
+    {
+      "item": "cluttered:desk_green"
+    },
+    {
+      "item": "cluttered:desk_green_cluttered"
+    },
+    {
+      "item": "cluttered:dorado_cabinet"
+    },
+    {
+      "item": "cluttered:dorado_cabinet_cluttered"
+    },
+    {
+      "item": "cluttered:drying_herbs"
+    },
+    {
+      "item": "cluttered:endtable_amethyst"
+    },
+    {
+      "item": "cluttered:endtable_bubblegum"
+    },
+    {
+      "item": "cluttered:endtable_charcoal"
+    },
+    {
+      "item": "cluttered:endtable_decor"
+    },
+    {
+      "item": "cluttered:endtable_meadow"
+    },
+    {
+      "item": "cluttered:endtable_periwinkle"
+    },
+    {
+      "item": "cluttered:endtable_sunshine"
+    },
+    {
+      "item": "cluttered:endtable_wood"
+    },
+    {
+      "item": "cluttered:envelope_stack"
+    },
+    {
+      "item": "cluttered:eye_block"
+    },
+    {
+      "item": "cluttered:fabric_bolts"
+    },
+    {
+      "item": "cluttered:fence_shelf_blue"
+    },
+    {
+      "item": "cluttered:filing_box"
+    },
+    {
+      "item": "cluttered:flower_carpet_crabapple"
+    },
+    {
+      "item": "cluttered:flower_carpet_poplar"
+    },
+    {
+      "item": "cluttered:flower_carpet_willow"
+    },
+    {
+      "item": "cluttered:flower_desk_lamp"
+    },
+    {
+      "item": "cluttered:flower_shelf_blue"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_blue"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_green"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_pastel_yellow"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_pink"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_purple"
+    },
+    {
+      "item": "cluttered:flower_shelf_candle_yellow"
+    },
+    {
+      "item": "cluttered:flower_shelf_green"
+    },
+    {
+      "item": "cluttered:flower_shelf_pastel_yellow"
+    },
+    {
+      "item": "cluttered:flower_shelf_pink"
+    },
+    {
+      "item": "cluttered:flower_shelf_plant"
+    },
+    {
+      "item": "cluttered:flower_shelf_purple"
+    },
+    {
+      "item": "cluttered:flower_shelf_yellow"
+    },
+    {
+      "item": "cluttered:flower_tea_kettle"
+    },
+    {
+      "item": "cluttered:flowering_crabapple_bookshelf"
+    },
+    {
+      "item": "cluttered:flowering_poplar_bookshelf"
+    },
+    {
+      "item": "cluttered:fluorescent_maple_bookshelf"
+    },
+    {
+      "item": "cluttered:fwish_armchair"
+    },
+    {
+      "item": "cluttered:fwish_bookcase"
+    },
+    {
+      "item": "cluttered:fwish_ottoman"
+    },
+    {
+      "item": "cluttered:garland_black_cat"
+    },
+    {
+      "item": "cluttered:garland_blossom"
+    },
+    {
+      "item": "cluttered:garland_bunny"
+    },
+    {
+      "item": "cluttered:garland_polaroid_a"
+    },
+    {
+      "item": "cluttered:garland_polaroid_b"
+    },
+    {
+      "item": "cluttered:garland_starry"
+    },
+    {
+      "item": "cluttered:garland_sunflower"
+    },
+    {
+      "item": "cluttered:general_store_cabinet"
+    },
+    {
+      "item": "cluttered:glass_vase_of_flowers"
+    },
+    {
+      "item": "cluttered:glowshroom_terrarium_blue"
+    },
+    {
+      "item": "cluttered:glowshroom_terrarium_green"
+    },
+    {
+      "item": "cluttered:glowshroom_terrarium_pink"
+    },
+    {
+      "item": "cluttered:glowshroom_terrarium_purple"
+    },
+    {
+      "item": "cluttered:glowshroom_terrarium_yellow"
+    },
+    {
+      "item": "cluttered:gumball_machine_blue"
+    },
+    {
+      "item": "cluttered:gumball_machine_purple"
+    },
+    {
+      "item": "cluttered:gumball_machine_red"
+    },
+    {
+      "item": "cluttered:ham_sandwich"
+    },
+    {
+      "item": "cluttered:hanging_cloth"
+    },
+    {
+      "item": "cluttered:hanging_plant_pot_flowers"
+    },
+    {
+      "item": "cluttered:hanging_plant_pot_grass"
+    },
+    {
+      "item": "cluttered:hanging_shelves_plants"
+    },
+    {
+      "item": "cluttered:hanging_shelves_pottery"
+    },
+    {
+      "item": "cluttered:havana_cabinet"
+    },
+    {
+      "item": "cluttered:havana_cabinet_cluttered"
+    },
+    {
+      "item": "cluttered:heart_cake"
+    },
+    {
+      "item": "cluttered:heavenly_ornamental_array"
+    },
+    {
+      "item": "cluttered:honeycomb_lamp"
+    },
+    {
+      "item": "cluttered:hoppin_park_lantern"
+    },
+    {
+      "item": "cluttered:imperial_chair"
+    },
+    {
+      "item": "cluttered:imperial_table"
+    },
+    {
+      "item": "cluttered:jam_jars"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_brown_counter_sink"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_light_green_counter_sink"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_pink_counter_sink"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_purple_counter_sink"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_white_counter_sink"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet_glass"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet_mini"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet_open"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_cabinet_outer_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_counter"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_counter_inner_corner"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_counter_outer_corner_left"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_counter_outer_corner_right"
+    },
+    {
+      "item": "cluttered:kitchen_set_yellow_counter_sink"
+    },
+    {
+      "item": "cluttered:lemon_table"
+    },
+    {
+      "item": "cluttered:lovely_love_seat_black"
+    },
+    {
+      "item": "cluttered:lunar_observatory_basket_of_papers"
+    },
+    {
+      "item": "cluttered:lunar_observatory_books"
+    },
+    {
+      "item": "cluttered:lunar_observatory_globe"
+    },
+    {
+      "item": "cluttered:lunar_observatory_jar"
+    },
+    {
+      "item": "cluttered:lunar_observatory_pedestal_table"
+    },
+    {
+      "item": "cluttered:lunar_observatory_table"
+    },
+    {
+      "item": "cluttered:madonna_ottoman"
+    },
+    {
+      "item": "cluttered:marble_sun_block"
+    },
+    {
+      "item": "cluttered:mermaid_dresser"
+    },
+    {
+      "item": "cluttered:mermaid_pearl"
+    },
+    {
+      "item": "cluttered:mini_cactus_set"
+    },
+    {
+      "item": "cluttered:mini_flag_ace"
+    },
+    {
+      "item": "cluttered:mini_flag_bi"
+    },
+    {
+      "item": "cluttered:mini_flag_lesbian"
+    },
+    {
+      "item": "cluttered:mini_flag_nonbinary"
+    },
+    {
+      "item": "cluttered:mini_flag_pan"
+    },
+    {
+      "item": "cluttered:mini_flag_rainbow"
+    },
+    {
+      "item": "cluttered:mini_flag_trans"
+    },
+    {
+      "item": "cluttered:mini_hanging_terrariums"
+    },
+    {
+      "item": "cluttered:moon_decoration"
+    },
+    {
+      "item": "cluttered:moon_pendant"
+    },
+    {
+      "item": "cluttered:murex_cabinet"
+    },
+    {
+      "item": "cluttered:murex_cabinet_cluttered"
+    },
+    {
+      "item": "cluttered:mushroom_jars"
+    },
+    {
+      "item": "cluttered:mushroom_terrarium_brown"
+    },
+    {
+      "item": "cluttered:mushroom_terrarium_red"
+    },
+    {
+      "item": "cluttered:newspaper_pile_short"
+    },
+    {
+      "item": "cluttered:newspaper_pile_tall"
+    },
+    {
+      "item": "cluttered:nightstand_green"
+    },
+    {
+      "item": "cluttered:office_supplies_a"
+    },
+    {
+      "item": "cluttered:office_supplies_b"
+    },
+    {
+      "item": "cluttered:osson_pendant_black"
+    },
+    {
+      "item": "cluttered:osson_pendant_brown"
+    },
+    {
+      "item": "cluttered:osson_pendant_orange"
+    },
+    {
+      "item": "cluttered:osson_pendant_racing_green"
+    },
+    {
+      "item": "cluttered:osson_pendant_red"
+    },
+    {
+      "item": "cluttered:osson_pendant_sage_green"
+    },
+    {
+      "item": "cluttered:osson_pendant_white"
+    },
+    {
+      "item": "cluttered:osson_pendant_yellow"
+    },
+    {
+      "item": "cluttered:paint_water_jar"
+    },
+    {
+      "item": "cluttered:pancake_stack"
+    },
+    {
+      "item": "cluttered:paper_pile"
+    },
+    {
+      "item": "cluttered:pastel_bed"
+    },
+    {
+      "item": "cluttered:pastel_cabinet"
+    },
+    {
+      "item": "cluttered:pastel_chair"
+    },
+    {
+      "item": "cluttered:pastel_light"
+    },
+    {
+      "item": "cluttered:pastel_stool"
+    },
+    {
+      "item": "cluttered:pastel_table"
+    },
+    {
+      "item": "cluttered:pastel_wardrobe"
+    },
+    {
+      "item": "cluttered:pastry_display_case"
+    },
+    {
+      "item": "cluttered:pastry_plate"
+    },
+    {
+      "item": "cluttered:pedestal_hk"
+    },
+    {
+      "item": "cluttered:picnic_basket"
+    },
+    {
+      "item": "cluttered:picnic_basket_prepared"
+    },
+    {
+      "item": "cluttered:pineapple"
+    },
+    {
+      "item": "cluttered:plant_ladder"
+    },
+    {
+      "item": "cluttered:pok_ta_pok_hoop"
+    },
+    {
+      "item": "cluttered:pok_ta_pok_hoop_snakes"
+    },
+    {
+      "item": "cluttered:polaroid_camera"
+    },
+    {
+      "item": "cluttered:polaroids_a"
+    },
+    {
+      "item": "cluttered:polaroids_b"
+    },
+    {
+      "item": "cluttered:polaroids_c"
+    },
+    {
+      "item": "cluttered:poplar_bookshelf"
+    },
+    {
+      "item": "cluttered:potion_shelf"
+    },
+    {
+      "item": "cluttered:pumpkin_bookshelf"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_blue"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_green"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_pastel_blue"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_pastel_pink"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_pastel_purple"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_pastel_yellow"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_red"
+    },
+    {
+      "item": "cluttered:puzzle_piece_table_yellow"
+    },
+    {
+      "item": "cluttered:record_player_blue"
+    },
+    {
+      "item": "cluttered:record_player_brown"
+    },
+    {
+      "item": "cluttered:record_player_pink"
+    },
+    {
+      "item": "cluttered:record_player_purple"
+    },
+    {
+      "item": "cluttered:record_player_red"
+    },
+    {
+      "item": "cluttered:record_player_white"
+    },
+    {
+      "item": "cluttered:record_player_yellow"
+    },
+    {
+      "item": "cluttered:red_mushroom_bed"
+    },
+    {
+      "item": "cluttered:red_mushroom_bookshelf"
+    },
+    {
+      "item": "cluttered:red_mushroom_lamp"
+    },
+    {
+      "item": "cluttered:red_mushroom_table"
+    },
+    {
+      "item": "cluttered:red_mushroom_tv"
+    },
+    {
+      "item": "cluttered:red_mushroom_wardrobe"
+    },
+    {
+      "item": "cluttered:retro_cafe_shelf"
+    },
+    {
+      "item": "cluttered:retro_cafe_shelf_window"
+    },
+    {
+      "item": "cluttered:retro_fridge_black"
+    },
+    {
+      "item": "cluttered:retro_fridge_blue"
+    },
+    {
+      "item": "cluttered:retro_fridge_pink"
+    },
+    {
+      "item": "cluttered:retro_fridge_purple"
+    },
+    {
+      "item": "cluttered:retro_fridge_red"
+    },
+    {
+      "item": "cluttered:retro_fridge_turquoise"
+    },
+    {
+      "item": "cluttered:retro_fridge_white"
+    },
+    {
+      "item": "cluttered:retro_fridge_yellow"
+    },
+    {
+      "item": "cluttered:retro_toaster_black"
+    },
+    {
+      "item": "cluttered:retro_toaster_blue"
+    },
+    {
+      "item": "cluttered:retro_toaster_pink"
+    },
+    {
+      "item": "cluttered:retro_toaster_purple"
+    },
+    {
+      "item": "cluttered:retro_toaster_red"
+    },
+    {
+      "item": "cluttered:retro_toaster_turquoise"
+    },
+    {
+      "item": "cluttered:retro_toaster_white"
+    },
+    {
+      "item": "cluttered:retro_toaster_yellow"
+    },
+    {
+      "item": "cluttered:rito_wooden_books"
+    },
+    {
+      "item": "cluttered:rose_end_table"
+    },
+    {
+      "item": "cluttered:rose_end_table_black"
+    },
+    {
+      "item": "cluttered:rover_mug"
+    },
+    {
+      "item": "cluttered:rover_stool"
+    },
+    {
+      "item": "cluttered:row_of_small_books"
+    },
+    {
+      "item": "cluttered:row_of_small_books_pastel"
+    },
+    {
+      "item": "cluttered:row_of_small_books_pastel_shelved"
+    },
+    {
+      "item": "cluttered:row_of_small_books_shelved"
+    },
+    {
+      "item": "cluttered:rubiks_cube"
+    },
+    {
+      "item": "cluttered:rubiks_cube_pastel"
+    },
+    {
+      "item": "cluttered:safe_novakid"
+    },
+    {
+      "item": "cluttered:salt_pepper_shakers"
+    },
+    {
+      "item": "cluttered:scattered_papers"
+    },
+    {
+      "item": "cluttered:scissors_and_thread"
+    },
+    {
+      "item": "cluttered:sea_gem_lantern"
+    },
+    {
+      "item": "cluttered:seaweed_planter"
+    },
+    {
+      "item": "cluttered:seltzer_cans"
+    },
+    {
+      "item": "cluttered:sewing_clutter"
+    },
+    {
+      "item": "cluttered:sewing_machine_antique"
+    },
+    {
+      "item": "cluttered:sewing_mannequin"
+    },
+    {
+      "item": "cluttered:sewing_table_with_tablecloth"
+    },
+    {
+      "item": "cluttered:sketchbook_single"
+    },
+    {
+      "item": "cluttered:sliced_bread"
+    },
+    {
+      "item": "cluttered:small_bookcase"
+    },
+    {
+      "item": "cluttered:small_bush"
+    },
+    {
+      "item": "cluttered:small_cauldron_set"
+    },
+    {
+      "item": "cluttered:small_glass_jars"
+    },
+    {
+      "item": "cluttered:small_shelf"
+    },
+    {
+      "item": "cluttered:small_shelf_pink"
+    },
+    {
+      "item": "cluttered:small_spice_jars"
+    },
+    {
+      "item": "cluttered:spool_of_thread_green"
+    },
+    {
+      "item": "cluttered:spool_of_thread_pink"
+    },
+    {
+      "item": "cluttered:spool_of_thread_purple"
+    },
+    {
+      "item": "cluttered:spool_of_thread_yellow"
+    },
+    {
+      "item": "cluttered:stack_of_books"
+    },
+    {
+      "item": "cluttered:stack_of_books_tall"
+    },
+    {
+      "item": "cluttered:stained_glass_lamp"
+    },
+    {
+      "item": "cluttered:stars_pendant"
+    },
+    {
+      "item": "cluttered:steampunk_globe"
+    },
+    {
+      "item": "cluttered:steampunk_lamp"
+    },
+    {
+      "item": "cluttered:sweetheart_baking_set_bowl"
+    },
+    {
+      "item": "cluttered:sweetheart_baking_set_ingredients"
+    },
+    {
+      "item": "cluttered:sweetheart_counter_drawers"
+    },
+    {
+      "item": "cluttered:sweetheart_counter_left_door"
+    },
+    {
+      "item": "cluttered:sweetheart_counter_right_door"
+    },
+    {
+      "item": "cluttered:sweetheart_sink"
+    },
+    {
+      "item": "cluttered:sweetheart_table"
+    },
+    {
+      "item": "cluttered:sycamore_bookshelf"
+    },
+    {
+      "item": "cluttered:table"
+    },
+    {
+      "item": "cluttered:table_with_white_tablecloth"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_beige"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_blue"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_fluorescent"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_green"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_pink"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_purple"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_red"
+    },
+    {
+      "item": "cluttered:tarrey_town_planter_yellow"
+    },
+    {
+      "item": "cluttered:tarrytown_stove"
+    },
+    {
+      "item": "cluttered:textile_block_stone"
+    },
+    {
+      "item": "cluttered:tiles_green"
+    },
+    {
+      "item": "cluttered:tiles_iridescent"
+    },
+    {
+      "item": "cluttered:tiles_iridescent_small"
+    },
+    {
+      "item": "cluttered:tiles_kitchen"
+    },
+    {
+      "item": "cluttered:tiles_pink"
+    },
+    {
+      "item": "cluttered:tiles_purple"
+    },
+    {
+      "item": "cluttered:tiles_yellow"
+    },
+    {
+      "item": "cluttered:traditional_radio"
+    },
+    {
+      "item": "cluttered:two_flower_pots"
+    },
+    {
+      "item": "cluttered:unliving_chair"
+    },
+    {
+      "item": "cluttered:vial_stand"
+    },
+    {
+      "item": "cluttered:violet_screen"
+    },
+    {
+      "item": "cluttered:watering_can"
+    },
+    {
+      "item": "cluttered:watering_can_copper"
+    },
+    {
+      "item": "cluttered:wedding_arch"
+    },
+    {
+      "item": "cluttered:willow_bookshelf_black_cat"
+    },
+    {
+      "item": "cluttered:willow_bookshelf_bottles"
+    },
+    {
+      "item": "cluttered:willow_bookshelf_calico_cat"
+    },
+    {
+      "item": "cluttered:willow_bookshelf_cobweb"
+    },
+    {
+      "item": "cluttered:willow_bookshelf_vase"
+    },
+    {
+      "item": "cluttered:wine_bottle_rack"
+    },
+    {
+      "item": "cluttered:wine_bottles"
+    },
+    {
+      "item": "cluttered:wooden_block_bookshelf_pastel"
+    },
+    {
+      "item": "cluttered:yellow_notepad"
+    },
+    {
+      "item": "cozycafe:cafe_manager"
+    },
+    {
+      "item": "cozycafe:cafe_menu"
+    },
+    {
+      "item": "cozycafe:cafe_sign"
+    },
+    {
+      "item": "cozycafe:plating_station"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/bench"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/carpet"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/chair"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/chest"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/counter"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/door_double"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/door_single"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/drawer"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/dresser"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/oven"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/shelf"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/skull"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/sofa"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/stool"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/table_large"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/table_small"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:bone/skeleton/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/bench"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/carpet"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/chair"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/chest"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/counter"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/door_double"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/door_single"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/drawer"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/dresser"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/oven"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/shelf"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/skull"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/sofa"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/stool"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/table_large"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/table_small"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:bone/wither/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:decorations/berry_basket_blueberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/berry_basket_empty"
+    },
+    {
+      "item": "fantasyfurniture:decorations/berry_basket_strawberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/berry_basket_sweetberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bolts_of_cloth"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_candles"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_skeleton_chalices"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_skeleton_pile"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_skeleton_skull_blossoms"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_wither_chalices"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_wither_pile"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bone_wither_skull_blossoms"
+    },
+    {
+      "item": "fantasyfurniture:decorations/book_stack"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bowl_beetroot_soup"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bowl_empty"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bowl_mushroom_stew"
+    },
+    {
+      "item": "fantasyfurniture:decorations/brewing_cauldron"
+    },
+    {
+      "item": "fantasyfurniture:decorations/bronze_chain"
+    },
+    {
+      "item": "fantasyfurniture:decorations/coin_stack_gold"
+    },
+    {
+      "item": "fantasyfurniture:decorations/coin_stack_iron"
+    },
+    {
+      "item": "fantasyfurniture:decorations/cookie_jar"
+    },
+    {
+      "item": "fantasyfurniture:decorations/dunmer_pottery_0"
+    },
+    {
+      "item": "fantasyfurniture:decorations/dunmer_pottery_1"
+    },
+    {
+      "item": "fantasyfurniture:decorations/fairy_lights_1"
+    },
+    {
+      "item": "fantasyfurniture:decorations/fairy_lights_2"
+    },
+    {
+      "item": "fantasyfurniture:decorations/floating_tomes"
+    },
+    {
+      "item": "fantasyfurniture:decorations/gravestone"
+    },
+    {
+      "item": "fantasyfurniture:decorations/hanging_herbs"
+    },
+    {
+      "item": "fantasyfurniture:decorations/muffins_blueberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/muffins_chocolate"
+    },
+    {
+      "item": "fantasyfurniture:decorations/muffins_sweetberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/mushrooms_brown"
+    },
+    {
+      "item": "fantasyfurniture:decorations/mushrooms_red"
+    },
+    {
+      "item": "fantasyfurniture:decorations/necrolord_candelabra"
+    },
+    {
+      "item": "fantasyfurniture:decorations/nordic_boiled_creme_treats"
+    },
+    {
+      "item": "fantasyfurniture:decorations/nordic_mead_bottles"
+    },
+    {
+      "item": "fantasyfurniture:decorations/nordic_soul_gems_dark"
+    },
+    {
+      "item": "fantasyfurniture:decorations/nordic_soul_gems_light"
+    },
+    {
+      "item": "fantasyfurniture:decorations/nordic_sweetrolls"
+    },
+    {
+      "item": "fantasyfurniture:decorations/paper_stack"
+    },
+    {
+      "item": "fantasyfurniture:decorations/potion_bottles"
+    },
+    {
+      "item": "fantasyfurniture:decorations/potion_bottles_dyeable"
+    },
+    {
+      "item": "fantasyfurniture:decorations/presents_stack_1"
+    },
+    {
+      "item": "fantasyfurniture:decorations/presents_stack_2"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_candelabra"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_chalices"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_crown"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_cushioned_crown"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_food_0"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_food_1"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_platter"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_wall_mirror_large"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_wall_mirror_small"
+    },
+    {
+      "item": "fantasyfurniture:decorations/snowballs"
+    },
+    {
+      "item": "fantasyfurniture:decorations/spider_web_small"
+    },
+    {
+      "item": "fantasyfurniture:decorations/spider_web_wide"
+    },
+    {
+      "item": "fantasyfurniture:decorations/stackable_pumpkins"
+    },
+    {
+      "item": "fantasyfurniture:decorations/stocking"
+    },
+    {
+      "item": "fantasyfurniture:decorations/tankards_empty"
+    },
+    {
+      "item": "fantasyfurniture:decorations/tankards_honeymead"
+    },
+    {
+      "item": "fantasyfurniture:decorations/tankards_milk"
+    },
+    {
+      "item": "fantasyfurniture:decorations/tankards_sweetberry"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_banner"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_candles"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_chalices"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_food_0"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_food_1"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_platter"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_tea_cups"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_tea_set"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_tomes"
+    },
+    {
+      "item": "fantasyfurniture:decorations/venthyr_widow_bloom"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/bench"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/carpet"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/chair"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/chest"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/counter"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/door_double"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/door_single"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/drawer"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/dresser"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/oven"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/shelf"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/sofa"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/stool"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/table_large"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/table_small"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:furniture_station"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/bench"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/carpet"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/chair"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/chest"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/counter"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/door_double"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/door_single"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/drawer"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/dresser"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/oven"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/shelf"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/sofa"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/stool"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/table_large"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/table_small"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:nordic/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:nordic/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:nordic/bench"
+    },
+    {
+      "item": "fantasyfurniture:nordic/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:nordic/carpet"
+    },
+    {
+      "item": "fantasyfurniture:nordic/chair"
+    },
+    {
+      "item": "fantasyfurniture:nordic/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:nordic/chest"
+    },
+    {
+      "item": "fantasyfurniture:nordic/counter"
+    },
+    {
+      "item": "fantasyfurniture:nordic/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:nordic/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:nordic/door_double"
+    },
+    {
+      "item": "fantasyfurniture:nordic/door_single"
+    },
+    {
+      "item": "fantasyfurniture:nordic/drawer"
+    },
+    {
+      "item": "fantasyfurniture:nordic/dresser"
+    },
+    {
+      "item": "fantasyfurniture:nordic/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:nordic/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:nordic/oven"
+    },
+    {
+      "item": "fantasyfurniture:nordic/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:nordic/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:nordic/shelf"
+    },
+    {
+      "item": "fantasyfurniture:nordic/sofa"
+    },
+    {
+      "item": "fantasyfurniture:nordic/stool"
+    },
+    {
+      "item": "fantasyfurniture:nordic/table_large"
+    },
+    {
+      "item": "fantasyfurniture:nordic/table_small"
+    },
+    {
+      "item": "fantasyfurniture:nordic/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:nordic/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:nordic/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:nordic/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:royal/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:royal/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:royal/bench"
+    },
+    {
+      "item": "fantasyfurniture:royal/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:royal/carpet"
+    },
+    {
+      "item": "fantasyfurniture:royal/chair"
+    },
+    {
+      "item": "fantasyfurniture:royal/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:royal/chest"
+    },
+    {
+      "item": "fantasyfurniture:royal/counter"
+    },
+    {
+      "item": "fantasyfurniture:royal/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:royal/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:royal/door_double"
+    },
+    {
+      "item": "fantasyfurniture:royal/door_single"
+    },
+    {
+      "item": "fantasyfurniture:royal/drawer"
+    },
+    {
+      "item": "fantasyfurniture:royal/dresser"
+    },
+    {
+      "item": "fantasyfurniture:royal/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:royal/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:royal/oven"
+    },
+    {
+      "item": "fantasyfurniture:royal/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:royal/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:royal/shelf"
+    },
+    {
+      "item": "fantasyfurniture:royal/sofa"
+    },
+    {
+      "item": "fantasyfurniture:royal/stool"
+    },
+    {
+      "item": "fantasyfurniture:royal/table_large"
+    },
+    {
+      "item": "fantasyfurniture:royal/table_small"
+    },
+    {
+      "item": "fantasyfurniture:royal/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:royal/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:royal/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:royal/wardrobe_top"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/bed_double"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/bed_single"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/bench"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/bookshelf"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/carpet"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/chair"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/chandelier"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/chest"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/counter"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/desk_left"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/desk_right"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/door_double"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/door_single"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/drawer"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/dresser"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/floor_light"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/lockbox"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/oven"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/painting_small"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/painting_wide"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/shelf"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/sofa"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/stool"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_large"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_large_fancy"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_small"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_small_fancy"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_wide"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/table_wide_fancy"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/wall_light"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/wardrobe_bottom"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/wardrobe_top"
+    },
+    {
+      "item": "farm_and_charm:beetroot_bag"
+    },
+    {
+      "item": "farm_and_charm:carrot_bag"
+    },
+    {
+      "item": "farm_and_charm:cooking_pot"
+    },
+    {
+      "item": "farm_and_charm:corn_bag"
+    },
+    {
+      "item": "farm_and_charm:crafting_bowl"
+    },
+    {
+      "item": "farm_and_charm:feeding_trough"
+    },
+    {
+      "item": "farm_and_charm:flour_bag"
+    },
+    {
+      "item": "farm_and_charm:lettuce_bag"
+    },
+    {
+      "item": "farm_and_charm:mincer"
+    },
+    {
+      "item": "farm_and_charm:onion_bag"
+    },
+    {
+      "item": "farm_and_charm:potato_bag"
+    },
+    {
+      "item": "farm_and_charm:roaster"
+    },
+    {
+      "item": "farm_and_charm:scarecrow"
+    },
+    {
+      "item": "farm_and_charm:silo_copper"
+    },
+    {
+      "item": "farm_and_charm:silo_wood"
+    },
+    {
+      "item": "farm_and_charm:stove"
+    },
+    {
+      "item": "farm_and_charm:strawberry_bag"
+    },
+    {
+      "item": "farm_and_charm:tomato_bag"
+    },
+    {
+      "item": "farm_and_charm:tool_rack"
+    },
+    {
+      "item": "farm_and_charm:water_sprinkler"
+    },
+    {
+      "item": "farm_and_charm:window_sill"
+    },
+    {
+      "item": "furniture:acacia_bench"
+    },
+    {
+      "item": "furniture:acacia_cabinet"
+    },
+    {
+      "item": "furniture:acacia_clock"
+    },
+    {
+      "item": "furniture:acacia_desk"
+    },
+    {
+      "item": "furniture:acacia_desk_chair"
+    },
+    {
+      "item": "furniture:acacia_dresser"
+    },
+    {
+      "item": "furniture:acacia_grandfather_clock"
+    },
+    {
+      "item": "furniture:acacia_mirror"
+    },
+    {
+      "item": "furniture:acacia_shutter"
+    },
+    {
+      "item": "furniture:bin"
+    },
+    {
+      "item": "furniture:birch_bench"
+    },
+    {
+      "item": "furniture:birch_cabinet"
+    },
+    {
+      "item": "furniture:birch_clock"
+    },
+    {
+      "item": "furniture:birch_desk"
+    },
+    {
+      "item": "furniture:birch_desk_chair"
+    },
+    {
+      "item": "furniture:birch_dresser"
+    },
+    {
+      "item": "furniture:birch_grandfather_clock"
+    },
+    {
+      "item": "furniture:birch_mirror"
+    },
+    {
+      "item": "furniture:birch_shutter"
+    },
+    {
+      "item": "furniture:blueprints"
+    },
+    {
+      "item": "furniture:boat_in_a_jar"
+    },
+    {
+      "item": "furniture:brick_chimney"
+    },
+    {
+      "item": "furniture:cash_register"
+    },
+    {
+      "item": "furniture:cherry_bench"
+    },
+    {
+      "item": "furniture:cherry_cabinet"
+    },
+    {
+      "item": "furniture:cherry_clock"
+    },
+    {
+      "item": "furniture:cherry_desk"
+    },
+    {
+      "item": "furniture:cherry_desk_chair"
+    },
+    {
+      "item": "furniture:cherry_dresser"
+    },
+    {
+      "item": "furniture:cherry_grandfather_clock"
+    },
+    {
+      "item": "furniture:cherry_mirror"
+    },
+    {
+      "item": "furniture:cherry_shutter"
+    },
+    {
+      "item": "furniture:coffer"
+    },
+    {
+      "item": "furniture:copper_chimney"
+    },
+    {
+      "item": "furniture:copper_fish_tank"
+    },
+    {
+      "item": "furniture:curtain_black"
+    },
+    {
+      "item": "furniture:curtain_blue"
+    },
+    {
+      "item": "furniture:curtain_brown"
+    },
+    {
+      "item": "furniture:curtain_cyan"
+    },
+    {
+      "item": "furniture:curtain_gray"
+    },
+    {
+      "item": "furniture:curtain_green"
+    },
+    {
+      "item": "furniture:curtain_light_blue"
+    },
+    {
+      "item": "furniture:curtain_light_gray"
+    },
+    {
+      "item": "furniture:curtain_lime"
+    },
+    {
+      "item": "furniture:curtain_magenta"
+    },
+    {
+      "item": "furniture:curtain_orange"
+    },
+    {
+      "item": "furniture:curtain_pink"
+    },
+    {
+      "item": "furniture:curtain_purple"
+    },
+    {
+      "item": "furniture:curtain_red"
+    },
+    {
+      "item": "furniture:curtain_white"
+    },
+    {
+      "item": "furniture:curtain_yellow"
+    },
+    {
+      "item": "furniture:dark_oak_bench"
+    },
+    {
+      "item": "furniture:dark_oak_cabinet"
+    },
+    {
+      "item": "furniture:dark_oak_clock"
+    },
+    {
+      "item": "furniture:dark_oak_desk"
+    },
+    {
+      "item": "furniture:dark_oak_desk_chair"
+    },
+    {
+      "item": "furniture:dark_oak_dresser"
+    },
+    {
+      "item": "furniture:dark_oak_grandfather_clock"
+    },
+    {
+      "item": "furniture:dark_oak_mirror"
+    },
+    {
+      "item": "furniture:dark_oak_shutter"
+    },
+    {
+      "item": "furniture:display"
+    },
+    {
+      "item": "furniture:explorers_box"
+    },
+    {
+      "item": "furniture:gramophone"
+    },
+    {
+      "item": "furniture:iron_fish_tank"
+    },
+    {
+      "item": "furniture:jungle_bench"
+    },
+    {
+      "item": "furniture:jungle_cabinet"
+    },
+    {
+      "item": "furniture:jungle_clock"
+    },
+    {
+      "item": "furniture:jungle_desk"
+    },
+    {
+      "item": "furniture:jungle_desk_chair"
+    },
+    {
+      "item": "furniture:jungle_dresser"
+    },
+    {
+      "item": "furniture:jungle_grandfather_clock"
+    },
+    {
+      "item": "furniture:jungle_mirror"
+    },
+    {
+      "item": "furniture:jungle_shutter"
+    },
+    {
+      "item": "furniture:lamp_black"
+    },
+    {
+      "item": "furniture:lamp_blue"
+    },
+    {
+      "item": "furniture:lamp_brown"
+    },
+    {
+      "item": "furniture:lamp_cyan"
+    },
+    {
+      "item": "furniture:lamp_gray"
+    },
+    {
+      "item": "furniture:lamp_green"
+    },
+    {
+      "item": "furniture:lamp_light_blue"
+    },
+    {
+      "item": "furniture:lamp_light_gray"
+    },
+    {
+      "item": "furniture:lamp_lime"
+    },
+    {
+      "item": "furniture:lamp_magenta"
+    },
+    {
+      "item": "furniture:lamp_orange"
+    },
+    {
+      "item": "furniture:lamp_pink"
+    },
+    {
+      "item": "furniture:lamp_purple"
+    },
+    {
+      "item": "furniture:lamp_red"
+    },
+    {
+      "item": "furniture:lamp_white"
+    },
+    {
+      "item": "furniture:lamp_yellow"
+    },
+    {
+      "item": "furniture:mangrove_bench"
+    },
+    {
+      "item": "furniture:mangrove_cabinet"
+    },
+    {
+      "item": "furniture:mangrove_clock"
+    },
+    {
+      "item": "furniture:mangrove_desk"
+    },
+    {
+      "item": "furniture:mangrove_desk_chair"
+    },
+    {
+      "item": "furniture:mangrove_dresser"
+    },
+    {
+      "item": "furniture:mangrove_grandfather_clock"
+    },
+    {
+      "item": "furniture:mangrove_mirror"
+    },
+    {
+      "item": "furniture:mangrove_shutter"
+    },
+    {
+      "item": "furniture:oak_bench"
+    },
+    {
+      "item": "furniture:oak_cabinet"
+    },
+    {
+      "item": "furniture:oak_clock"
+    },
+    {
+      "item": "furniture:oak_desk"
+    },
+    {
+      "item": "furniture:oak_desk_chair"
+    },
+    {
+      "item": "furniture:oak_dresser"
+    },
+    {
+      "item": "furniture:oak_grandfather_clock"
+    },
+    {
+      "item": "furniture:oak_mirror"
+    },
+    {
+      "item": "furniture:oak_shutter"
+    },
+    {
+      "item": "furniture:plated_street_lantern_item"
+    },
+    {
+      "item": "furniture:sewing_kit"
+    },
+    {
+      "item": "furniture:spruce_bench"
+    },
+    {
+      "item": "furniture:spruce_cabinet"
+    },
+    {
+      "item": "furniture:spruce_clock"
+    },
+    {
+      "item": "furniture:spruce_desk"
+    },
+    {
+      "item": "furniture:spruce_desk_chair"
+    },
+    {
+      "item": "furniture:spruce_dresser"
+    },
+    {
+      "item": "furniture:spruce_grandfather_clock"
+    },
+    {
+      "item": "furniture:spruce_mirror"
+    },
+    {
+      "item": "furniture:spruce_shutter"
+    },
+    {
+      "item": "furniture:steam_vent"
+    },
+    {
+      "item": "furniture:stone_brick_planter"
+    },
+    {
+      "item": "furniture:stone_bricks_chimney"
+    },
+    {
+      "item": "furniture:street_lantern_item"
+    },
+    {
+      "item": "furniture:telescope"
+    },
+    {
+      "item": "furniture:terrarium"
+    },
+    {
+      "item": "furniture:tool_box"
+    },
+    {
+      "item": "furniture:wooden_planter"
+    },
+    {
+      "item": "herbalbrews:cauldron"
+    },
+    {
+      "item": "herbalbrews:copper_tea_kettle"
+    },
+    {
+      "item": "herbalbrews:herbalbrews_banner"
+    },
+    {
+      "item": "herbalbrews:jug"
+    },
+    {
+      "item": "herbalbrews:stove"
+    },
+    {
+      "item": "herbalbrews:tea_kettle"
+    },
+    {
+      "item": "herbalbrews:tea_leaf_crate"
+    },
+    {
+      "item": "meadow:bench"
+    },
+    {
+      "item": "meadow:camera"
+    },
+    {
+      "item": "meadow:can"
+    },
+    {
+      "item": "meadow:chair"
+    },
+    {
+      "item": "meadow:cheese_form"
+    },
+    {
+      "item": "meadow:cheese_rack"
+    },
+    {
+      "item": "meadow:cooking_cauldron"
+    },
+    {
+      "item": "meadow:doormat"
+    },
+    {
+      "item": "meadow:fire_log"
+    },
+    {
+      "item": "meadow:flecked_bed"
+    },
+    {
+      "item": "meadow:flecked_carpet"
+    },
+    {
+      "item": "meadow:fondue"
+    },
+    {
+      "item": "meadow:frame"
+    },
+    {
+      "item": "meadow:heart_patterned_window"
+    },
+    {
+      "item": "meadow:highland_bed"
+    },
+    {
+      "item": "meadow:highland_carpet"
+    },
+    {
+      "item": "meadow:inky_bed"
+    },
+    {
+      "item": "meadow:inky_carpet"
+    },
+    {
+      "item": "meadow:meadow_banner"
+    },
+    {
+      "item": "meadow:oil_lantern"
+    },
+    {
+      "item": "meadow:patched_bed"
+    },
+    {
+      "item": "meadow:patched_carpet"
+    },
+    {
+      "item": "meadow:pine_window"
+    },
+    {
+      "item": "meadow:rocky_bed"
+    },
+    {
+      "item": "meadow:rocky_carpet"
+    },
+    {
+      "item": "meadow:shelf"
+    },
+    {
+      "item": "meadow:shutter_block"
+    },
+    {
+      "item": "meadow:shutter_block_berry"
+    },
+    {
+      "item": "meadow:shutter_block_fir"
+    },
+    {
+      "item": "meadow:shutter_block_poppy"
+    },
+    {
+      "item": "meadow:stone_bench"
+    },
+    {
+      "item": "meadow:stone_table"
+    },
+    {
+      "item": "meadow:stove_tiles"
+    },
+    {
+      "item": "meadow:stove_tiles_bench"
+    },
+    {
+      "item": "meadow:stove_tiles_lid"
+    },
+    {
+      "item": "meadow:stove_tiles_wood"
+    },
+    {
+      "item": "meadow:straw_bed"
+    },
+    {
+      "item": "meadow:sun_patterned_window"
+    },
+    {
+      "item": "meadow:table"
+    },
+    {
+      "item": "meadow:umbra_bed"
+    },
+    {
+      "item": "meadow:umbra_carpet"
+    },
+    {
+      "item": "meadow:warped_bed"
+    },
+    {
+      "item": "meadow:warped_carpet"
+    },
+    {
+      "item": "meadow:watering_can"
+    },
+    {
+      "item": "meadow:wheelbarrow"
+    },
+    {
+      "item": "meadow:woodcutter"
+    },
+    {
+      "item": "meadow:wooden_cauldron"
+    },
+    {
+      "item": "meadow:wooden_flower_box"
+    },
+    {
+      "item": "meadow:wooden_flower_pot_big"
+    },
+    {
+      "item": "meadow:wooden_flower_pot_small"
+    },
+    {
+      "item": "nethervinery:crimson_apple_press"
+    },
+    {
+      "item": "nethervinery:crimson_barrel"
+    },
+    {
+      "item": "nethervinery:crimson_fermentation_barrel"
+    },
+    {
+      "item": "nethervinery:crimson_grape_crate"
+    },
+    {
+      "item": "nethervinery:crimson_grapevine_pot"
+    },
+    {
+      "item": "nethervinery:crimson_wine_rack_big"
+    },
+    {
+      "item": "nethervinery:crimson_wine_rack_mid"
+    },
+    {
+      "item": "nethervinery:crimson_wine_rack_small"
+    },
+    {
+      "item": "nethervinery:warped_apple_press"
+    },
+    {
+      "item": "nethervinery:warped_barrel"
+    },
+    {
+      "item": "nethervinery:warped_fermentation_barrel"
+    },
+    {
+      "item": "nethervinery:warped_grape_crate"
+    },
+    {
+      "item": "nethervinery:warped_grapevine_pot"
+    },
+    {
+      "item": "nethervinery:warped_wine_rack_big"
+    },
+    {
+      "item": "nethervinery:warped_wine_rack_mid"
+    },
+    {
+      "item": "nethervinery:warped_wine_rack_small"
+    },
+    {
+      "item": "nightlights:fairy_lights_black"
+    },
+    {
+      "item": "nightlights:fairy_lights_blue"
+    },
+    {
+      "item": "nightlights:fairy_lights_brown"
+    },
+    {
+      "item": "nightlights:fairy_lights_cyan"
+    },
+    {
+      "item": "nightlights:fairy_lights_default"
+    },
+    {
+      "item": "nightlights:fairy_lights_gray"
+    },
+    {
+      "item": "nightlights:fairy_lights_green"
+    },
+    {
+      "item": "nightlights:fairy_lights_light_blue"
+    },
+    {
+      "item": "nightlights:fairy_lights_light_gray"
+    },
+    {
+      "item": "nightlights:fairy_lights_lime"
+    },
+    {
+      "item": "nightlights:fairy_lights_magenta"
+    },
+    {
+      "item": "nightlights:fairy_lights_orange"
+    },
+    {
+      "item": "nightlights:fairy_lights_pink"
+    },
+    {
+      "item": "nightlights:fairy_lights_purple"
+    },
+    {
+      "item": "nightlights:fairy_lights_red"
+    },
+    {
+      "item": "nightlights:fairy_lights_white"
+    },
+    {
+      "item": "nightlights:fairy_lights_yellow"
+    },
+    {
+      "item": "nightlights:frog_black"
+    },
+    {
+      "item": "nightlights:frog_blue"
+    },
+    {
+      "item": "nightlights:frog_brown"
+    },
+    {
+      "item": "nightlights:frog_cyan"
+    },
+    {
+      "item": "nightlights:frog_gray"
+    },
+    {
+      "item": "nightlights:frog_green"
+    },
+    {
+      "item": "nightlights:frog_light_blue"
+    },
+    {
+      "item": "nightlights:frog_light_gray"
+    },
+    {
+      "item": "nightlights:frog_lime"
+    },
+    {
+      "item": "nightlights:frog_magenta"
+    },
+    {
+      "item": "nightlights:frog_orange"
+    },
+    {
+      "item": "nightlights:frog_pink"
+    },
+    {
+      "item": "nightlights:frog_purple"
+    },
+    {
+      "item": "nightlights:frog_red"
+    },
+    {
+      "item": "nightlights:frog_white"
+    },
+    {
+      "item": "nightlights:frog_yellow"
+    },
+    {
+      "item": "nightlights:hanging_lights_black"
+    },
+    {
+      "item": "nightlights:hanging_lights_blue"
+    },
+    {
+      "item": "nightlights:hanging_lights_brown"
+    },
+    {
+      "item": "nightlights:hanging_lights_cyan"
+    },
+    {
+      "item": "nightlights:hanging_lights_default"
+    },
+    {
+      "item": "nightlights:hanging_lights_gray"
+    },
+    {
+      "item": "nightlights:hanging_lights_green"
+    },
+    {
+      "item": "nightlights:hanging_lights_light_blue"
+    },
+    {
+      "item": "nightlights:hanging_lights_light_gray"
+    },
+    {
+      "item": "nightlights:hanging_lights_lime"
+    },
+    {
+      "item": "nightlights:hanging_lights_magenta"
+    },
+    {
+      "item": "nightlights:hanging_lights_orange"
+    },
+    {
+      "item": "nightlights:hanging_lights_pink"
+    },
+    {
+      "item": "nightlights:hanging_lights_purple"
+    },
+    {
+      "item": "nightlights:hanging_lights_red"
+    },
+    {
+      "item": "nightlights:hanging_lights_white"
+    },
+    {
+      "item": "nightlights:hanging_lights_yellow"
+    },
+    {
+      "item": "nightlights:mushroom_black"
+    },
+    {
+      "item": "nightlights:mushroom_blue"
+    },
+    {
+      "item": "nightlights:mushroom_brown"
+    },
+    {
+      "item": "nightlights:mushroom_cyan"
+    },
+    {
+      "item": "nightlights:mushroom_gray"
+    },
+    {
+      "item": "nightlights:mushroom_green"
+    },
+    {
+      "item": "nightlights:mushroom_light_blue"
+    },
+    {
+      "item": "nightlights:mushroom_light_gray"
+    },
+    {
+      "item": "nightlights:mushroom_lime"
+    },
+    {
+      "item": "nightlights:mushroom_magenta"
+    },
+    {
+      "item": "nightlights:mushroom_orange"
+    },
+    {
+      "item": "nightlights:mushroom_pink"
+    },
+    {
+      "item": "nightlights:mushroom_purple"
+    },
+    {
+      "item": "nightlights:mushroom_red"
+    },
+    {
+      "item": "nightlights:mushroom_white"
+    },
+    {
+      "item": "nightlights:mushroom_yellow"
+    },
+    {
+      "item": "nightlights:octopus_black"
+    },
+    {
+      "item": "nightlights:octopus_blue"
+    },
+    {
+      "item": "nightlights:octopus_brown"
+    },
+    {
+      "item": "nightlights:octopus_cyan"
+    },
+    {
+      "item": "nightlights:octopus_gray"
+    },
+    {
+      "item": "nightlights:octopus_green"
+    },
+    {
+      "item": "nightlights:octopus_light_blue"
+    },
+    {
+      "item": "nightlights:octopus_light_gray"
+    },
+    {
+      "item": "nightlights:octopus_lime"
+    },
+    {
+      "item": "nightlights:octopus_magenta"
+    },
+    {
+      "item": "nightlights:octopus_orange"
+    },
+    {
+      "item": "nightlights:octopus_pink"
+    },
+    {
+      "item": "nightlights:octopus_purple"
+    },
+    {
+      "item": "nightlights:octopus_red"
+    },
+    {
+      "item": "nightlights:octopus_white"
+    },
+    {
+      "item": "nightlights:octopus_yellow"
+    },
+    {
+      "item": "refurbished_furniture:acacia_basin"
+    },
+    {
+      "item": "refurbished_furniture:acacia_bath"
+    },
+    {
+      "item": "refurbished_furniture:acacia_chair"
+    },
+    {
+      "item": "refurbished_furniture:acacia_crate"
+    },
+    {
+      "item": "refurbished_furniture:acacia_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:acacia_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:acacia_desk"
+    },
+    {
+      "item": "refurbished_furniture:acacia_drawer"
+    },
+    {
+      "item": "refurbished_furniture:acacia_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:acacia_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:acacia_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:acacia_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:acacia_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:acacia_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:acacia_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:acacia_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:acacia_table"
+    },
+    {
+      "item": "refurbished_furniture:acacia_toilet"
+    },
+    {
+      "item": "refurbished_furniture:birch_basin"
+    },
+    {
+      "item": "refurbished_furniture:birch_bath"
+    },
+    {
+      "item": "refurbished_furniture:birch_chair"
+    },
+    {
+      "item": "refurbished_furniture:birch_crate"
+    },
+    {
+      "item": "refurbished_furniture:birch_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:birch_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:birch_desk"
+    },
+    {
+      "item": "refurbished_furniture:birch_drawer"
+    },
+    {
+      "item": "refurbished_furniture:birch_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:birch_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:birch_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:birch_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:birch_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:birch_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:birch_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:birch_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:birch_table"
+    },
+    {
+      "item": "refurbished_furniture:birch_toilet"
+    },
+    {
+      "item": "refurbished_furniture:black_basin"
+    },
+    {
+      "item": "refurbished_furniture:black_bath"
+    },
+    {
+      "item": "refurbished_furniture:black_cooler"
+    },
+    {
+      "item": "refurbished_furniture:black_grill"
+    },
+    {
+      "item": "refurbished_furniture:black_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:black_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:black_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:black_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:black_lamp"
+    },
+    {
+      "item": "refurbished_furniture:black_toilet"
+    },
+    {
+      "item": "refurbished_furniture:black_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:blue_basin"
+    },
+    {
+      "item": "refurbished_furniture:blue_bath"
+    },
+    {
+      "item": "refurbished_furniture:blue_cooler"
+    },
+    {
+      "item": "refurbished_furniture:blue_grill"
+    },
+    {
+      "item": "refurbished_furniture:blue_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:blue_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:blue_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:blue_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:blue_lamp"
+    },
+    {
+      "item": "refurbished_furniture:blue_toilet"
+    },
+    {
+      "item": "refurbished_furniture:blue_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:brown_basin"
+    },
+    {
+      "item": "refurbished_furniture:brown_bath"
+    },
+    {
+      "item": "refurbished_furniture:brown_cooler"
+    },
+    {
+      "item": "refurbished_furniture:brown_grill"
+    },
+    {
+      "item": "refurbished_furniture:brown_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:brown_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:brown_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:brown_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:brown_lamp"
+    },
+    {
+      "item": "refurbished_furniture:brown_toilet"
+    },
+    {
+      "item": "refurbished_furniture:brown_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:cherry_basin"
+    },
+    {
+      "item": "refurbished_furniture:cherry_bath"
+    },
+    {
+      "item": "refurbished_furniture:cherry_chair"
+    },
+    {
+      "item": "refurbished_furniture:cherry_crate"
+    },
+    {
+      "item": "refurbished_furniture:cherry_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:cherry_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:cherry_desk"
+    },
+    {
+      "item": "refurbished_furniture:cherry_drawer"
+    },
+    {
+      "item": "refurbished_furniture:cherry_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:cherry_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:cherry_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:cherry_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:cherry_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:cherry_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:cherry_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:cherry_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:cherry_table"
+    },
+    {
+      "item": "refurbished_furniture:cherry_toilet"
+    },
+    {
+      "item": "refurbished_furniture:computer"
+    },
+    {
+      "item": "refurbished_furniture:crimson_basin"
+    },
+    {
+      "item": "refurbished_furniture:crimson_bath"
+    },
+    {
+      "item": "refurbished_furniture:crimson_chair"
+    },
+    {
+      "item": "refurbished_furniture:crimson_crate"
+    },
+    {
+      "item": "refurbished_furniture:crimson_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:crimson_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:crimson_desk"
+    },
+    {
+      "item": "refurbished_furniture:crimson_drawer"
+    },
+    {
+      "item": "refurbished_furniture:crimson_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:crimson_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:crimson_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:crimson_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:crimson_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:crimson_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:crimson_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:crimson_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:crimson_table"
+    },
+    {
+      "item": "refurbished_furniture:crimson_toilet"
+    },
+    {
+      "item": "refurbished_furniture:cyan_basin"
+    },
+    {
+      "item": "refurbished_furniture:cyan_bath"
+    },
+    {
+      "item": "refurbished_furniture:cyan_cooler"
+    },
+    {
+      "item": "refurbished_furniture:cyan_grill"
+    },
+    {
+      "item": "refurbished_furniture:cyan_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:cyan_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:cyan_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:cyan_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:cyan_lamp"
+    },
+    {
+      "item": "refurbished_furniture:cyan_toilet"
+    },
+    {
+      "item": "refurbished_furniture:cyan_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:dark_ceiling_light"
+    },
+    {
+      "item": "refurbished_furniture:dark_electricity_generator"
+    },
+    {
+      "item": "refurbished_furniture:dark_fridge"
+    },
+    {
+      "item": "refurbished_furniture:dark_lightswitch"
+    },
+    {
+      "item": "refurbished_furniture:dark_microwave"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_basin"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_bath"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_chair"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_crate"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_desk"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_drawer"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_table"
+    },
+    {
+      "item": "refurbished_furniture:dark_oak_toilet"
+    },
+    {
+      "item": "refurbished_furniture:dark_range_hood"
+    },
+    {
+      "item": "refurbished_furniture:dark_stove"
+    },
+    {
+      "item": "refurbished_furniture:dark_toaster"
+    },
+    {
+      "item": "refurbished_furniture:door_mat"
+    },
+    {
+      "item": "refurbished_furniture:doorbell"
+    },
+    {
+      "item": "refurbished_furniture:frying_pan"
+    },
+    {
+      "item": "refurbished_furniture:gray_basin"
+    },
+    {
+      "item": "refurbished_furniture:gray_bath"
+    },
+    {
+      "item": "refurbished_furniture:gray_cooler"
+    },
+    {
+      "item": "refurbished_furniture:gray_grill"
+    },
+    {
+      "item": "refurbished_furniture:gray_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:gray_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:gray_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:gray_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:gray_lamp"
+    },
+    {
+      "item": "refurbished_furniture:gray_toilet"
+    },
+    {
+      "item": "refurbished_furniture:gray_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:green_basin"
+    },
+    {
+      "item": "refurbished_furniture:green_bath"
+    },
+    {
+      "item": "refurbished_furniture:green_cooler"
+    },
+    {
+      "item": "refurbished_furniture:green_grill"
+    },
+    {
+      "item": "refurbished_furniture:green_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:green_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:green_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:green_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:green_lamp"
+    },
+    {
+      "item": "refurbished_furniture:green_toilet"
+    },
+    {
+      "item": "refurbished_furniture:green_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:jungle_basin"
+    },
+    {
+      "item": "refurbished_furniture:jungle_bath"
+    },
+    {
+      "item": "refurbished_furniture:jungle_chair"
+    },
+    {
+      "item": "refurbished_furniture:jungle_crate"
+    },
+    {
+      "item": "refurbished_furniture:jungle_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:jungle_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:jungle_desk"
+    },
+    {
+      "item": "refurbished_furniture:jungle_drawer"
+    },
+    {
+      "item": "refurbished_furniture:jungle_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:jungle_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:jungle_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:jungle_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:jungle_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:jungle_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:jungle_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:jungle_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:jungle_table"
+    },
+    {
+      "item": "refurbished_furniture:jungle_toilet"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_basin"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_bath"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_cooler"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_grill"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_lamp"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_toilet"
+    },
+    {
+      "item": "refurbished_furniture:light_blue_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:light_ceiling_light"
+    },
+    {
+      "item": "refurbished_furniture:light_electricity_generator"
+    },
+    {
+      "item": "refurbished_furniture:light_fridge"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_basin"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_bath"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_cooler"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_grill"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_lamp"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_toilet"
+    },
+    {
+      "item": "refurbished_furniture:light_gray_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:light_lightswitch"
+    },
+    {
+      "item": "refurbished_furniture:light_microwave"
+    },
+    {
+      "item": "refurbished_furniture:light_range_hood"
+    },
+    {
+      "item": "refurbished_furniture:light_stove"
+    },
+    {
+      "item": "refurbished_furniture:light_toaster"
+    },
+    {
+      "item": "refurbished_furniture:lime_basin"
+    },
+    {
+      "item": "refurbished_furniture:lime_bath"
+    },
+    {
+      "item": "refurbished_furniture:lime_cooler"
+    },
+    {
+      "item": "refurbished_furniture:lime_grill"
+    },
+    {
+      "item": "refurbished_furniture:lime_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:lime_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:lime_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:lime_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:lime_lamp"
+    },
+    {
+      "item": "refurbished_furniture:lime_toilet"
+    },
+    {
+      "item": "refurbished_furniture:lime_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:magenta_basin"
+    },
+    {
+      "item": "refurbished_furniture:magenta_bath"
+    },
+    {
+      "item": "refurbished_furniture:magenta_cooler"
+    },
+    {
+      "item": "refurbished_furniture:magenta_grill"
+    },
+    {
+      "item": "refurbished_furniture:magenta_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:magenta_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:magenta_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:magenta_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:magenta_lamp"
+    },
+    {
+      "item": "refurbished_furniture:magenta_toilet"
+    },
+    {
+      "item": "refurbished_furniture:magenta_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_basin"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_bath"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_chair"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_crate"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_desk"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_drawer"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_table"
+    },
+    {
+      "item": "refurbished_furniture:mangrove_toilet"
+    },
+    {
+      "item": "refurbished_furniture:oak_basin"
+    },
+    {
+      "item": "refurbished_furniture:oak_bath"
+    },
+    {
+      "item": "refurbished_furniture:oak_chair"
+    },
+    {
+      "item": "refurbished_furniture:oak_crate"
+    },
+    {
+      "item": "refurbished_furniture:oak_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:oak_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:oak_desk"
+    },
+    {
+      "item": "refurbished_furniture:oak_drawer"
+    },
+    {
+      "item": "refurbished_furniture:oak_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:oak_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:oak_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:oak_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:oak_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:oak_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:oak_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:oak_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:oak_table"
+    },
+    {
+      "item": "refurbished_furniture:oak_toilet"
+    },
+    {
+      "item": "refurbished_furniture:orange_basin"
+    },
+    {
+      "item": "refurbished_furniture:orange_bath"
+    },
+    {
+      "item": "refurbished_furniture:orange_cooler"
+    },
+    {
+      "item": "refurbished_furniture:orange_grill"
+    },
+    {
+      "item": "refurbished_furniture:orange_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:orange_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:orange_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:orange_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:orange_lamp"
+    },
+    {
+      "item": "refurbished_furniture:orange_toilet"
+    },
+    {
+      "item": "refurbished_furniture:orange_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:pink_basin"
+    },
+    {
+      "item": "refurbished_furniture:pink_bath"
+    },
+    {
+      "item": "refurbished_furniture:pink_cooler"
+    },
+    {
+      "item": "refurbished_furniture:pink_grill"
+    },
+    {
+      "item": "refurbished_furniture:pink_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:pink_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:pink_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:pink_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:pink_lamp"
+    },
+    {
+      "item": "refurbished_furniture:pink_toilet"
+    },
+    {
+      "item": "refurbished_furniture:pink_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:plate"
+    },
+    {
+      "item": "refurbished_furniture:post_box"
+    },
+    {
+      "item": "refurbished_furniture:purple_basin"
+    },
+    {
+      "item": "refurbished_furniture:purple_bath"
+    },
+    {
+      "item": "refurbished_furniture:purple_cooler"
+    },
+    {
+      "item": "refurbished_furniture:purple_grill"
+    },
+    {
+      "item": "refurbished_furniture:purple_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:purple_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:purple_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:purple_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:purple_lamp"
+    },
+    {
+      "item": "refurbished_furniture:purple_toilet"
+    },
+    {
+      "item": "refurbished_furniture:purple_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:recycle_bin"
+    },
+    {
+      "item": "refurbished_furniture:red_basin"
+    },
+    {
+      "item": "refurbished_furniture:red_bath"
+    },
+    {
+      "item": "refurbished_furniture:red_cooler"
+    },
+    {
+      "item": "refurbished_furniture:red_grill"
+    },
+    {
+      "item": "refurbished_furniture:red_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:red_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:red_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:red_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:red_lamp"
+    },
+    {
+      "item": "refurbished_furniture:red_toilet"
+    },
+    {
+      "item": "refurbished_furniture:red_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:spruce_basin"
+    },
+    {
+      "item": "refurbished_furniture:spruce_bath"
+    },
+    {
+      "item": "refurbished_furniture:spruce_chair"
+    },
+    {
+      "item": "refurbished_furniture:spruce_crate"
+    },
+    {
+      "item": "refurbished_furniture:spruce_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:spruce_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:spruce_desk"
+    },
+    {
+      "item": "refurbished_furniture:spruce_drawer"
+    },
+    {
+      "item": "refurbished_furniture:spruce_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:spruce_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:spruce_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:spruce_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:spruce_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:spruce_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:spruce_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:spruce_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:spruce_table"
+    },
+    {
+      "item": "refurbished_furniture:spruce_toilet"
+    },
+    {
+      "item": "refurbished_furniture:television"
+    },
+    {
+      "item": "refurbished_furniture:warped_basin"
+    },
+    {
+      "item": "refurbished_furniture:warped_bath"
+    },
+    {
+      "item": "refurbished_furniture:warped_chair"
+    },
+    {
+      "item": "refurbished_furniture:warped_crate"
+    },
+    {
+      "item": "refurbished_furniture:warped_cutting_board"
+    },
+    {
+      "item": "refurbished_furniture:warped_dark_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:warped_desk"
+    },
+    {
+      "item": "refurbished_furniture:warped_drawer"
+    },
+    {
+      "item": "refurbished_furniture:warped_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:warped_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:warped_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:warped_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:warped_light_ceiling_fan"
+    },
+    {
+      "item": "refurbished_furniture:warped_mail_box"
+    },
+    {
+      "item": "refurbished_furniture:warped_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:warped_storage_jar"
+    },
+    {
+      "item": "refurbished_furniture:warped_table"
+    },
+    {
+      "item": "refurbished_furniture:warped_toilet"
+    },
+    {
+      "item": "refurbished_furniture:white_basin"
+    },
+    {
+      "item": "refurbished_furniture:white_bath"
+    },
+    {
+      "item": "refurbished_furniture:white_cooler"
+    },
+    {
+      "item": "refurbished_furniture:white_grill"
+    },
+    {
+      "item": "refurbished_furniture:white_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:white_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:white_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:white_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:white_lamp"
+    },
+    {
+      "item": "refurbished_furniture:white_toilet"
+    },
+    {
+      "item": "refurbished_furniture:white_trampoline"
+    },
+    {
+      "item": "refurbished_furniture:workbench"
+    },
+    {
+      "item": "refurbished_furniture:yellow_basin"
+    },
+    {
+      "item": "refurbished_furniture:yellow_bath"
+    },
+    {
+      "item": "refurbished_furniture:yellow_cooler"
+    },
+    {
+      "item": "refurbished_furniture:yellow_grill"
+    },
+    {
+      "item": "refurbished_furniture:yellow_kitchen_cabinetry"
+    },
+    {
+      "item": "refurbished_furniture:yellow_kitchen_drawer"
+    },
+    {
+      "item": "refurbished_furniture:yellow_kitchen_sink"
+    },
+    {
+      "item": "refurbished_furniture:yellow_kitchen_storage_cabinet"
+    },
+    {
+      "item": "refurbished_furniture:yellow_lamp"
+    },
+    {
+      "item": "refurbished_furniture:yellow_toilet"
+    },
+    {
+      "item": "refurbished_furniture:yellow_trampoline"
+    },
+    {
+      "item": "tanukidecor:alarm_clock"
+    },
+    {
+      "item": "tanukidecor:anniversary_clock"
+    },
+    {
+      "item": "tanukidecor:antique_bed"
+    },
+    {
+      "item": "tanukidecor:antique_bookcase"
+    },
+    {
+      "item": "tanukidecor:antique_bureau"
+    },
+    {
+      "item": "tanukidecor:antique_cabinet"
+    },
+    {
+      "item": "tanukidecor:antique_chair"
+    },
+    {
+      "item": "tanukidecor:antique_clock"
+    },
+    {
+      "item": "tanukidecor:antique_desk"
+    },
+    {
+      "item": "tanukidecor:antique_mirror"
+    },
+    {
+      "item": "tanukidecor:antique_phone"
+    },
+    {
+      "item": "tanukidecor:antique_radio"
+    },
+    {
+      "item": "tanukidecor:antique_small_table"
+    },
+    {
+      "item": "tanukidecor:antique_small_table_with_doily"
+    },
+    {
+      "item": "tanukidecor:antique_table"
+    },
+    {
+      "item": "tanukidecor:antique_wall_oil_lamp"
+    },
+    {
+      "item": "tanukidecor:antique_wall_shelf"
+    },
+    {
+      "item": "tanukidecor:antique_wardrobe"
+    },
+    {
+      "item": "tanukidecor:banjo_clock"
+    },
+    {
+      "item": "tanukidecor:birdcage"
+    },
+    {
+      "item": "tanukidecor:blue_bed"
+    },
+    {
+      "item": "tanukidecor:blue_bench"
+    },
+    {
+      "item": "tanukidecor:blue_bookshelf"
+    },
+    {
+      "item": "tanukidecor:blue_bureau"
+    },
+    {
+      "item": "tanukidecor:blue_cabinet"
+    },
+    {
+      "item": "tanukidecor:blue_chair"
+    },
+    {
+      "item": "tanukidecor:blue_clock"
+    },
+    {
+      "item": "tanukidecor:blue_dresser"
+    },
+    {
+      "item": "tanukidecor:blue_lamp"
+    },
+    {
+      "item": "tanukidecor:blue_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:blue_science_pod"
+    },
+    {
+      "item": "tanukidecor:blue_stall_tarp"
+    },
+    {
+      "item": "tanukidecor:blue_table"
+    },
+    {
+      "item": "tanukidecor:blue_wall_tarp"
+    },
+    {
+      "item": "tanukidecor:blue_wardrobe"
+    },
+    {
+      "item": "tanukidecor:brown_mushroom_bed"
+    },
+    {
+      "item": "tanukidecor:brown_mushroom_lamp"
+    },
+    {
+      "item": "tanukidecor:brown_mushroom_log_stool"
+    },
+    {
+      "item": "tanukidecor:brown_mushroom_stool"
+    },
+    {
+      "item": "tanukidecor:brown_mushroom_table"
+    },
+    {
+      "item": "tanukidecor:cabana_armchair"
+    },
+    {
+      "item": "tanukidecor:cabana_bed"
+    },
+    {
+      "item": "tanukidecor:cabana_bookcase"
+    },
+    {
+      "item": "tanukidecor:cabana_chair"
+    },
+    {
+      "item": "tanukidecor:cabana_dresser"
+    },
+    {
+      "item": "tanukidecor:cabana_lamp"
+    },
+    {
+      "item": "tanukidecor:cabana_screen"
+    },
+    {
+      "item": "tanukidecor:cabana_table"
+    },
+    {
+      "item": "tanukidecor:cabana_vanity"
+    },
+    {
+      "item": "tanukidecor:cabana_wardrobe"
+    },
+    {
+      "item": "tanukidecor:carriage_clock"
+    },
+    {
+      "item": "tanukidecor:cash_register"
+    },
+    {
+      "item": "tanukidecor:classic_vase"
+    },
+    {
+      "item": "tanukidecor:crystal_clock"
+    },
+    {
+      "item": "tanukidecor:cuckoo_clock"
+    },
+    {
+      "item": "tanukidecor:dessert_case"
+    },
+    {
+      "item": "tanukidecor:display_case"
+    },
+    {
+      "item": "tanukidecor:display_watch"
+    },
+    {
+      "item": "tanukidecor:egyptian_bed"
+    },
+    {
+      "item": "tanukidecor:egyptian_chair"
+    },
+    {
+      "item": "tanukidecor:egyptian_crest"
+    },
+    {
+      "item": "tanukidecor:egyptian_lamp"
+    },
+    {
+      "item": "tanukidecor:egyptian_table"
+    },
+    {
+      "item": "tanukidecor:elegant_birdcage"
+    },
+    {
+      "item": "tanukidecor:emblem_clock"
+    },
+    {
+      "item": "tanukidecor:fancy_vase"
+    },
+    {
+      "item": "tanukidecor:firewood"
+    },
+    {
+      "item": "tanukidecor:foliot_clock"
+    },
+    {
+      "item": "tanukidecor:gingerbread_clock"
+    },
+    {
+      "item": "tanukidecor:globe"
+    },
+    {
+      "item": "tanukidecor:glowing_moss_jar"
+    },
+    {
+      "item": "tanukidecor:gorgeous_bed"
+    },
+    {
+      "item": "tanukidecor:gorgeous_chest"
+    },
+    {
+      "item": "tanukidecor:gorgeous_clock"
+    },
+    {
+      "item": "tanukidecor:gorgeous_closet"
+    },
+    {
+      "item": "tanukidecor:gorgeous_counter"
+    },
+    {
+      "item": "tanukidecor:gorgeous_desk"
+    },
+    {
+      "item": "tanukidecor:gorgeous_lamp"
+    },
+    {
+      "item": "tanukidecor:gorgeous_mini_drawer"
+    },
+    {
+      "item": "tanukidecor:gorgeous_seat"
+    },
+    {
+      "item": "tanukidecor:gorgeous_stool"
+    },
+    {
+      "item": "tanukidecor:gorgeous_table"
+    },
+    {
+      "item": "tanukidecor:grandfather_clock"
+    },
+    {
+      "item": "tanukidecor:green_bed"
+    },
+    {
+      "item": "tanukidecor:green_bench"
+    },
+    {
+      "item": "tanukidecor:green_chair"
+    },
+    {
+      "item": "tanukidecor:green_clock"
+    },
+    {
+      "item": "tanukidecor:green_counter"
+    },
+    {
+      "item": "tanukidecor:green_desk"
+    },
+    {
+      "item": "tanukidecor:green_dresser"
+    },
+    {
+      "item": "tanukidecor:green_lamp"
+    },
+    {
+      "item": "tanukidecor:green_mini_drawer"
+    },
+    {
+      "item": "tanukidecor:green_pantry"
+    },
+    {
+      "item": "tanukidecor:green_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:green_science_pod"
+    },
+    {
+      "item": "tanukidecor:green_stall_tarp"
+    },
+    {
+      "item": "tanukidecor:green_table"
+    },
+    {
+      "item": "tanukidecor:green_wall_tarp"
+    },
+    {
+      "item": "tanukidecor:green_wardrobe"
+    },
+    {
+      "item": "tanukidecor:gumball_machine"
+    },
+    {
+      "item": "tanukidecor:handcart"
+    },
+    {
+      "item": "tanukidecor:holiday_tree"
+    },
+    {
+      "item": "tanukidecor:hourglass"
+    },
+    {
+      "item": "tanukidecor:lantern_clock"
+    },
+    {
+      "item": "tanukidecor:large_clock_tower_dial"
+    },
+    {
+      "item": "tanukidecor:large_fancy_vase"
+    },
+    {
+      "item": "tanukidecor:large_fireplace"
+    },
+    {
+      "item": "tanukidecor:large_striped_vase"
+    },
+    {
+      "item": "tanukidecor:library_clock"
+    },
+    {
+      "item": "tanukidecor:log_bench"
+    },
+    {
+      "item": "tanukidecor:log_stool"
+    },
+    {
+      "item": "tanukidecor:long_display_case"
+    },
+    {
+      "item": "tanukidecor:mantle_clock"
+    },
+    {
+      "item": "tanukidecor:metronome"
+    },
+    {
+      "item": "tanukidecor:minimalist_bed"
+    },
+    {
+      "item": "tanukidecor:minimalist_chair"
+    },
+    {
+      "item": "tanukidecor:minimalist_clock"
+    },
+    {
+      "item": "tanukidecor:minimalist_dresser"
+    },
+    {
+      "item": "tanukidecor:minimalist_lamp"
+    },
+    {
+      "item": "tanukidecor:minimalist_mirror"
+    },
+    {
+      "item": "tanukidecor:minimalist_small_table"
+    },
+    {
+      "item": "tanukidecor:minimalist_stool"
+    },
+    {
+      "item": "tanukidecor:minimalist_table"
+    },
+    {
+      "item": "tanukidecor:minimalist_wardrobe"
+    },
+    {
+      "item": "tanukidecor:narrow_blue_streamer"
+    },
+    {
+      "item": "tanukidecor:narrow_green_streamer"
+    },
+    {
+      "item": "tanukidecor:narrow_red_streamer"
+    },
+    {
+      "item": "tanukidecor:narrow_string_lights"
+    },
+    {
+      "item": "tanukidecor:narrow_yellow_streamer"
+    },
+    {
+      "item": "tanukidecor:neon_club_sign"
+    },
+    {
+      "item": "tanukidecor:neon_diamond_sign"
+    },
+    {
+      "item": "tanukidecor:neon_heart_sign"
+    },
+    {
+      "item": "tanukidecor:neon_spade_sign"
+    },
+    {
+      "item": "tanukidecor:newtons_cradle"
+    },
+    {
+      "item": "tanukidecor:orange_science_pod"
+    },
+    {
+      "item": "tanukidecor:owl_clock"
+    },
+    {
+      "item": "tanukidecor:phonograph"
+    },
+    {
+      "item": "tanukidecor:piano"
+    },
+    {
+      "item": "tanukidecor:pink_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:plasma_ball"
+    },
+    {
+      "item": "tanukidecor:purple_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:recognizable_clock"
+    },
+    {
+      "item": "tanukidecor:red_clock"
+    },
+    {
+      "item": "tanukidecor:red_mushroom_bed"
+    },
+    {
+      "item": "tanukidecor:red_mushroom_lamp"
+    },
+    {
+      "item": "tanukidecor:red_mushroom_log_stool"
+    },
+    {
+      "item": "tanukidecor:red_mushroom_stool"
+    },
+    {
+      "item": "tanukidecor:red_mushroom_table"
+    },
+    {
+      "item": "tanukidecor:red_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:red_science_pod"
+    },
+    {
+      "item": "tanukidecor:red_stall_tarp"
+    },
+    {
+      "item": "tanukidecor:red_wall_tarp"
+    },
+    {
+      "item": "tanukidecor:reed_clock"
+    },
+    {
+      "item": "tanukidecor:regal_armoire"
+    },
+    {
+      "item": "tanukidecor:regal_bed"
+    },
+    {
+      "item": "tanukidecor:regal_bookshelf"
+    },
+    {
+      "item": "tanukidecor:regal_chair"
+    },
+    {
+      "item": "tanukidecor:regal_clock"
+    },
+    {
+      "item": "tanukidecor:regal_dresser"
+    },
+    {
+      "item": "tanukidecor:regal_lamp"
+    },
+    {
+      "item": "tanukidecor:regal_small_table"
+    },
+    {
+      "item": "tanukidecor:regal_table"
+    },
+    {
+      "item": "tanukidecor:regal_vanity"
+    },
+    {
+      "item": "tanukidecor:regal_wall_lamp"
+    },
+    {
+      "item": "tanukidecor:rococo_clock"
+    },
+    {
+      "item": "tanukidecor:rough_log_bench"
+    },
+    {
+      "item": "tanukidecor:ship_in_a_bottle"
+    },
+    {
+      "item": "tanukidecor:slate_clock"
+    },
+    {
+      "item": "tanukidecor:slot_machine"
+    },
+    {
+      "item": "tanukidecor:small_clock_tower_dial"
+    },
+    {
+      "item": "tanukidecor:small_fancy_vase"
+    },
+    {
+      "item": "tanukidecor:small_fireplace"
+    },
+    {
+      "item": "tanukidecor:small_striped_vase"
+    },
+    {
+      "item": "tanukidecor:snowglobe"
+    },
+    {
+      "item": "tanukidecor:station_clock"
+    },
+    {
+      "item": "tanukidecor:sweets_bed"
+    },
+    {
+      "item": "tanukidecor:sweets_bookcase"
+    },
+    {
+      "item": "tanukidecor:sweets_chair"
+    },
+    {
+      "item": "tanukidecor:sweets_closet"
+    },
+    {
+      "item": "tanukidecor:sweets_dresser"
+    },
+    {
+      "item": "tanukidecor:sweets_mini_lamp"
+    },
+    {
+      "item": "tanukidecor:sweets_mini_table"
+    },
+    {
+      "item": "tanukidecor:sweets_table"
+    },
+    {
+      "item": "tanukidecor:sweets_wall_lamp"
+    },
+    {
+      "item": "tanukidecor:train_set"
+    },
+    {
+      "item": "tanukidecor:turquoise_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:wide_blue_streamer"
+    },
+    {
+      "item": "tanukidecor:wide_green_streamer"
+    },
+    {
+      "item": "tanukidecor:wide_red_streamer"
+    },
+    {
+      "item": "tanukidecor:wide_string_lights"
+    },
+    {
+      "item": "tanukidecor:wide_yellow_streamer"
+    },
+    {
+      "item": "tanukidecor:wooden_block_bed"
+    },
+    {
+      "item": "tanukidecor:wooden_block_bench"
+    },
+    {
+      "item": "tanukidecor:wooden_block_bookshelf"
+    },
+    {
+      "item": "tanukidecor:wooden_block_chair"
+    },
+    {
+      "item": "tanukidecor:wooden_block_clock"
+    },
+    {
+      "item": "tanukidecor:wooden_block_drawers"
+    },
+    {
+      "item": "tanukidecor:wooden_block_stool"
+    },
+    {
+      "item": "tanukidecor:wooden_block_table"
+    },
+    {
+      "item": "tanukidecor:wooden_block_toys"
+    },
+    {
+      "item": "tanukidecor:yellow_rocket_lamp"
+    },
+    {
+      "item": "tanukidecor:yellow_stall_tarp"
+    },
+    {
+      "item": "tanukidecor:yellow_wall_tarp"
+    },
+    {
+      "item": "vinery:acacia_wine_rack_big"
+    },
+    {
+      "item": "vinery:acacia_wine_rack_mid"
+    },
+    {
+      "item": "vinery:acacia_wine_rack_small"
+    },
+    {
+      "item": "vinery:apple_bag"
+    },
+    {
+      "item": "vinery:apple_press"
+    },
+    {
+      "item": "vinery:bamboo_wine_rack_big"
+    },
+    {
+      "item": "vinery:bamboo_wine_rack_mid"
+    },
+    {
+      "item": "vinery:bamboo_wine_rack_small"
+    },
+    {
+      "item": "vinery:basket"
+    },
+    {
+      "item": "vinery:birch_wine_rack_big"
+    },
+    {
+      "item": "vinery:birch_wine_rack_mid"
+    },
+    {
+      "item": "vinery:birch_wine_rack_small"
+    },
+    {
+      "item": "vinery:cherry_bag"
+    },
+    {
+      "item": "vinery:cherry_wine_rack_big"
+    },
+    {
+      "item": "vinery:cherry_wine_rack_mid"
+    },
+    {
+      "item": "vinery:cherry_wine_rack_small"
+    },
+    {
+      "item": "vinery:dark_cherry_barrel"
+    },
+    {
+      "item": "vinery:dark_cherry_big_table"
+    },
+    {
+      "item": "vinery:dark_cherry_cabinet"
+    },
+    {
+      "item": "vinery:dark_cherry_chair"
+    },
+    {
+      "item": "vinery:dark_cherry_drawer"
+    },
+    {
+      "item": "vinery:dark_cherry_shelf"
+    },
+    {
+      "item": "vinery:dark_cherry_table"
+    },
+    {
+      "item": "vinery:dark_cherry_wine_rack_big"
+    },
+    {
+      "item": "vinery:dark_cherry_wine_rack_mid"
+    },
+    {
+      "item": "vinery:dark_cherry_wine_rack_small"
+    },
+    {
+      "item": "vinery:dark_oak_wine_rack_big"
+    },
+    {
+      "item": "vinery:dark_oak_wine_rack_mid"
+    },
+    {
+      "item": "vinery:dark_oak_wine_rack_small"
+    },
+    {
+      "item": "vinery:fermentation_barrel"
+    },
+    {
+      "item": "vinery:flower_box"
+    },
+    {
+      "item": "vinery:flower_pot_big"
+    },
+    {
+      "item": "vinery:grapevine_pot"
+    },
+    {
+      "item": "vinery:jungle_wine_rack_big"
+    },
+    {
+      "item": "vinery:jungle_wine_rack_mid"
+    },
+    {
+      "item": "vinery:jungle_wine_rack_small"
+    },
+    {
+      "item": "vinery:mangrove_wine_rack_big"
+    },
+    {
+      "item": "vinery:mangrove_wine_rack_mid"
+    },
+    {
+      "item": "vinery:mangrove_wine_rack_small"
+    },
+    {
+      "item": "vinery:oak_wine_rack_big"
+    },
+    {
+      "item": "vinery:oak_wine_rack_mid"
+    },
+    {
+      "item": "vinery:oak_wine_rack_small"
+    },
+    {
+      "item": "vinery:red_grape_bag"
+    },
+    {
+      "item": "vinery:red_jungle_grape_bag"
+    },
+    {
+      "item": "vinery:red_savanna_grape_bag"
+    },
+    {
+      "item": "vinery:red_taiga_grape_bag"
+    },
+    {
+      "item": "vinery:spruce_wine_rack_big"
+    },
+    {
+      "item": "vinery:spruce_wine_rack_mid"
+    },
+    {
+      "item": "vinery:spruce_wine_rack_small"
+    },
+    {
+      "item": "vinery:stackable_log"
+    },
+    {
+      "item": "vinery:storage_pot"
+    },
+    {
+      "item": "vinery:vinery_standard"
+    },
+    {
+      "item": "vinery:white_grape_bag"
+    },
+    {
+      "item": "vinery:white_jungle_grape_bag"
+    },
+    {
+      "item": "vinery:white_savanna_grape_bag"
+    },
+    {
+      "item": "vinery:white_taiga_grape_bag"
+    },
+    {
+      "item": "vinery:wine_box"
+    },
+    {
+      "item": "whimsy_deco:antique_vintage_globe"
+    },
+    {
+      "item": "whimsy_deco:bamboo_candle"
+    },
+    {
+      "item": "whimsy_deco:bamboo_framed_paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:bathroom_rack"
+    },
+    {
+      "item": "whimsy_deco:black_atm"
+    },
+    {
+      "item": "whimsy_deco:black_cash_register"
+    },
+    {
+      "item": "whimsy_deco:black_curio_cash_register"
+    },
+    {
+      "item": "whimsy_deco:black_phone"
+    },
+    {
+      "item": "whimsy_deco:black_swan_swimming_ring"
+    },
+    {
+      "item": "whimsy_deco:blue_atm"
+    },
+    {
+      "item": "whimsy_deco:blue_froggy_chair"
+    },
+    {
+      "item": "whimsy_deco:blue_lawn_mower"
+    },
+    {
+      "item": "whimsy_deco:blue_life_preserver_ring"
+    },
+    {
+      "item": "whimsy_deco:blue_paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:blue_phone"
+    },
+    {
+      "item": "whimsy_deco:blue_stocking"
+    },
+    {
+      "item": "whimsy_deco:blue_toy_plane"
+    },
+    {
+      "item": "whimsy_deco:bronze_cowbell"
+    },
+    {
+      "item": "whimsy_deco:broom"
+    },
+    {
+      "item": "whimsy_deco:cash_register"
+    },
+    {
+      "item": "whimsy_deco:caution_floor_sign"
+    },
+    {
+      "item": "whimsy_deco:copper_curio_cash_register"
+    },
+    {
+      "item": "whimsy_deco:cowbell"
+    },
+    {
+      "item": "whimsy_deco:dark_oak_desk_mirror"
+    },
+    {
+      "item": "whimsy_deco:dartboard"
+    },
+    {
+      "item": "whimsy_deco:fan"
+    },
+    {
+      "item": "whimsy_deco:flamingo_swimming_ring"
+    },
+    {
+      "item": "whimsy_deco:froggy_chair"
+    },
+    {
+      "item": "whimsy_deco:gatcha_machine"
+    },
+    {
+      "item": "whimsy_deco:gnome"
+    },
+    {
+      "item": "whimsy_deco:gold_curio_cash_register"
+    },
+    {
+      "item": "whimsy_deco:gold_lucky_cat"
+    },
+    {
+      "item": "whimsy_deco:golden_horseshoe"
+    },
+    {
+      "item": "whimsy_deco:gray_cash_register"
+    },
+    {
+      "item": "whimsy_deco:green_atm"
+    },
+    {
+      "item": "whimsy_deco:green_stocking"
+    },
+    {
+      "item": "whimsy_deco:horseshoe"
+    },
+    {
+      "item": "whimsy_deco:iron_curio_cash_register"
+    },
+    {
+      "item": "whimsy_deco:lantern_gnome"
+    },
+    {
+      "item": "whimsy_deco:lucky_cat"
+    },
+    {
+      "item": "whimsy_deco:matryoshka_doll"
+    },
+    {
+      "item": "whimsy_deco:oak_desk_mirror"
+    },
+    {
+      "item": "whimsy_deco:orange_froggy_chair"
+    },
+    {
+      "item": "whimsy_deco:orange_lawn_mower"
+    },
+    {
+      "item": "whimsy_deco:orange_life_preserver_ring"
+    },
+    {
+      "item": "whimsy_deco:orange_stocking"
+    },
+    {
+      "item": "whimsy_deco:paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:phone"
+    },
+    {
+      "item": "whimsy_deco:pink_froggy_chair"
+    },
+    {
+      "item": "whimsy_deco:push_broom"
+    },
+    {
+      "item": "whimsy_deco:rattan_stool"
+    },
+    {
+      "item": "whimsy_deco:recorder"
+    },
+    {
+      "item": "whimsy_deco:red_atm"
+    },
+    {
+      "item": "whimsy_deco:red_lawn_mower"
+    },
+    {
+      "item": "whimsy_deco:red_life_preserver_ring"
+    },
+    {
+      "item": "whimsy_deco:red_paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:red_phone"
+    },
+    {
+      "item": "whimsy_deco:red_stocking"
+    },
+    {
+      "item": "whimsy_deco:red_toy_plane"
+    },
+    {
+      "item": "whimsy_deco:rubber_duck"
+    },
+    {
+      "item": "whimsy_deco:ship_helm"
+    },
+    {
+      "item": "whimsy_deco:shower"
+    },
+    {
+      "item": "whimsy_deco:singing_frog"
+    },
+    {
+      "item": "whimsy_deco:spruce_desk_mirror"
+    },
+    {
+      "item": "whimsy_deco:swan_swimming_ring"
+    },
+    {
+      "item": "whimsy_deco:traffic_cone"
+    },
+    {
+      "item": "whimsy_deco:tree_paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:vine_rattan_chair"
+    },
+    {
+      "item": "whimsy_deco:vintage_globe"
+    },
+    {
+      "item": "whimsy_deco:warped_rattan_chair"
+    },
+    {
+      "item": "whimsy_deco:washing_machine"
+    },
+    {
+      "item": "whimsy_deco:wood_framed_paper_lantern"
+    },
+    {
+      "item": "whimsy_deco:yellow_atm"
+    },
+    {
+      "item": "whimsy_deco:yellow_froggy_chair"
+    },
+    {
+      "item": "whimsy_deco:yellow_lawn_mower"
+    },
+    {
+      "item": "whimsy_deco:yellow_life_preserver_ring"
+    },
+    {
+      "item": "whimsy_deco:yellow_toy_plane"
+    },
+    {
+      "item": "kata:adv_ace_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_chimera",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_dipp_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_foomin_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_fredbear_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_geraldine_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_havana_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_honey_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_ichigo_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_johnson_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_june_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_jungle_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_prince_kata_doll",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_princess_fredbear_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "kata:adv_shiny_fredbear_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_aye_aye_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_bear_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_brown_rabbit_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_capybara_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_cat_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_doe_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_dog_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_dolphin_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_duck_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_elephant_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_fennec_fox_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_frog_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_goose_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_hedgehog_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_hippo_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_hummingbird_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_koala_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_lion_cub_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_monkey_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_mouse_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_panda_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_quokka_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_raccoon_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_red_fox_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_red_panda_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_red_ruffed_lemur_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_reindeer_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_robin_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_rubber_duck_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_seal_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_snow_fox_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_turtle_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "perfectplushies:adv_white_rabbit_plushie",
+      "initializer": "upstream_plushie"
+    },
+    {
+      "item": "society:gnome"
+    },
+    {
+      "item": "society:lantern_gnome"
+    },
+    {
+      "item": "tanukidecor:antique_sofa"
+    },
+    {
+      "item": "tanukidecor:gorgeous_sofa"
+    },
+    {
+      "item": "tanukidecor:regal_sofa"
+    },
+    {
+      "item": "tanukidecor:sweets_sofa"
+    },
+    {
+      "item": "whimsy_deco:moroccan_sofa"
+    }
+  ]
+}

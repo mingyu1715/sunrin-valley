@@ -1,3 +1,8 @@
+import base64
+import io
+from pathlib import Path
+import tarfile
+import tempfile
 import json
 import subprocess
 import unittest
@@ -7,6 +12,32 @@ import infrastructure as infra
 
 
 class InfrastructureTests(unittest.TestCase):
+    def test_modern_bootstrap_carries_bounded_flat_overlay_payload(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, content in {"bootstrap.sh": b"script", "host.py": b"host", "server-icon.png": b"png", "pack-lock.json": b'{"ownedOverlay":{"filename":"Sunrin-Server-Overlay.zip"}}', "Sunrin-Server-Overlay.zip": b"overlay"}.items():
+                (root / name).write_bytes(content)
+            with patch.object(infra, "HERE", root):
+                encoded = infra.bootstrap_payload()
+                command = infra.bootstrap_command([], 60)
+            with tarfile.open(fileobj=io.BytesIO(base64.b64decode(encoded)), mode="r:gz") as archive:
+                self.assertEqual(set(archive.getnames()), {"bootstrap.sh", "host.py", "pack-lock.json", "server-icon.png", "Sunrin-Server-Overlay.zip"})
+            self.assertLessEqual(len(encoded), 45000)
+            self.assertIn("Sunrin-Server-Overlay.zip", command)
+            with patch.object(infra, "bootstrap_payload", return_value="x" * 45001):
+                with self.assertRaisesRegex(RuntimeError, "bounded"):
+                    infra.bootstrap_command([], 60)
+
+    def test_downloaded_overlay_bootstrap_omits_zip_and_stays_bounded(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, content in {"bootstrap.sh": b"script", "host.py": b"host", "server-icon.png": b"png", "pack-lock.json": b'{"ownedOverlay":{"filename":"Sunrin-Server-Overlay.zip","delivery":"download"}}'}.items():
+                (root / name).write_bytes(content)
+            with patch.object(infra, "HERE", root):
+                encoded = infra.bootstrap_payload()
+            with tarfile.open(fileobj=io.BytesIO(base64.b64decode(encoded)), mode="r:gz") as archive:
+                self.assertEqual(set(archive.getnames()), {"bootstrap.sh", "host.py", "pack-lock.json", "server-icon.png"})
+
     def test_template_pins_requested_machine_and_limits_network(self):
         template = infra.build_template('vpc-test', 'subnet-test', 'ami-test')
         resources = template['Resources']

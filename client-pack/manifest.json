@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "id": "sunrin-valley",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "minecraft": "1.20.1",
   "forge": "47.4.0",
   "base": {
@@ -1174,21 +1174,6 @@
       }
     },
     {
-      "path": "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "url": "https://edge.forgecdn.net/files/8918/785/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "hash": {
-        "algorithm": "sha1",
-        "value": "d015cd4bad85a30e5405f5db5450e30ceebf08b8"
-      },
-      "size": 1054415,
-      "source": {
-        "provider": "curseforge",
-        "projectId": 1591857,
-        "fileId": 8918785,
-        "slug": "stagebox"
-      }
-    },
-    {
       "path": "mods/Steam_Rails-1.7.2+forge-mc1.20.1.jar",
       "url": "https://edge.forgecdn.net/files/7758/640/Steam_Rails-1.7.2+forge-mc1.20.1.jar",
       "hash": {
@@ -1508,6 +1493,21 @@
         "provider": "curseforge",
         "projectId": 531761,
         "fileId": 7420617
+      }
+    },
+    {
+      "path": "mods/beatlamp-forge-1.20.1-1.2.2.jar",
+      "url": "https://cdn.modrinth.com/data/bAwlLfyK/versions/aX4Y7ORE/beatlamp-forge-1.20.1-1.2.2.jar",
+      "hash": {
+        "algorithm": "sha1",
+        "value": "85becdb57a12924c00fbdda0ef6cfb59adc8dbab"
+      },
+      "size": 547786,
+      "source": {
+        "provider": "modrinth",
+        "projectId": "bAwlLfyK",
+        "versionId": "aX4Y7ORE",
+        "slug": "beatlamp"
       }
     },
     {
@@ -4622,6 +4622,20 @@
       }
     },
     {
+      "path": "mods/sunrin-core-0.1.0.jar",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
+      "hash": {
+        "algorithm": "sha256",
+        "value": "8ef7e7ebd06e4b74855948e09c093e92b39d8d7caf834c85e5a10173617c94ef"
+      },
+      "size": 80138,
+      "source": {
+        "provider": "sunrin",
+        "slug": "sunrin-core",
+        "version": "0.1.0"
+      }
+    },
+    {
       "path": "mods/supermartijn642configlib-1.1.8-forge-mc1.20.jar",
       "url": "https://edge.forgecdn.net/files/4715/408/supermartijn642configlib-1.1.8-forge-mc1.20.jar",
       "hash": {
@@ -7222,7 +7236,7 @@
         "path": "fixtures/addon-versions.json",
         "sourceHash": {
           "algorithm": "sha256",
-          "value": "04535fce550d1335ac3dfb725235cf63042bc7ad25919545d07a444b9feddb0c"
+          "value": "8856018f6da68856db4051cc4e56f8ec0331fa6d71bd28d63541d70d3489906a"
         },
         "url": null
       },
@@ -7274,12 +7288,12 @@
         "metadataUrl": "https://api.modrinth.com/v2/version/gAWvw3aR"
       },
       {
-        "provider": "curseforge",
-        "slug": "stagebox",
-        "projectId": 1591857,
-        "fileId": 8918785,
-        "version": "1.1.2",
-        "metadataUrl": "https://www.curseforge.com/api/v1/mods/1591857/files/8918785"
+        "provider": "modrinth",
+        "slug": "beatlamp",
+        "projectId": "bAwlLfyK",
+        "versionId": "aX4Y7ORE",
+        "version": "1.2.2-forge-1.20.1",
+        "metadataUrl": "https://api.modrinth.com/v2/version/aX4Y7ORE"
       },
       {
         "provider": "modrinth",
@@ -7290,7 +7304,7 @@
         "metadataUrl": "https://api.modrinth.com/v2/version/6R6bSXKY"
       }
     ],
-    "packVersion": "0.1.4",
+    "packVersion": "0.2.0",
     "visuals": [
       {
         "slug": "stay-true",
@@ -7323,6 +7337,19 @@
         "size": 1134153,
         "sha1": "e89818c8827d0131c102fb480c3c3446624db0df",
         "sha256": "36b0a50ff7918bf10e9422c401d93779f9d0088a26acea975b435243f96930b5"
+      }
+    ],
+    "releaseRepository": "mingyu1715/sunrin-valley",
+    "ownedFiles": [
+      {
+        "slug": "sunrin-core",
+        "version": "0.1.0",
+        "filename": "sunrin-core-0.1.0.jar",
+        "path": "mods/sunrin-core-0.1.0.jar",
+        "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
+        "size": 80138,
+        "sha256": "8ef7e7ebd06e4b74855948e09c093e92b39d8d7caf834c85e5a10173617c94ef",
+        "localPath": "sunrin-core/build/libs/sunrin-core-0.1.0.jar"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "name": "sunrin-valley-launcher",
   "version": "1.1.3",
-  "description": "선린밸리 전용 설치 및 실행 도우미",
+  "description": "\uc120\ub9b0\ubc38\ub9ac \uc804\uc6a9 \uc124\uce58 \ubc0f \uc2e4\ud589 \ub3c4\uc6b0\ubbf8",
   "author": "Sunrin Valley",
   "private": true,
   "main": "out/main/index.js",
@@ -74,6 +74,10 @@
       {
         "from": "build/launcher-update-helper.ps1",
         "to": "launcher-update-helper.ps1"
+      },
+      {
+        "from": "../release/bundled/Sunrin-Overlay.zip",
+        "to": "pack/Sunrin-Overlay.zip"
       }
     ],
     "mac": {

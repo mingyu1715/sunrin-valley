@@ -16,6 +16,9 @@ from urllib.parse import quote, urlsplit
 from urllib.request import Request, urlopen
 import zipfile
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from owned_files import resolve_owned_files
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -177,6 +180,7 @@ def resolve_manifest(cf, pakku, lock, addons, sources, inventory, archive=None, 
                                  identity_key: addon["id"], "slug": slug}))
 
     files.extend(resolve_visual_files(visuals or [], sources))
+    files.extend(resolve_owned_files(sources))
     paths = [f["path"].casefold() for f in files]
     if len(set(paths)) != len(paths):
         raise ValueError("Duplicate install path (case-insensitive)")

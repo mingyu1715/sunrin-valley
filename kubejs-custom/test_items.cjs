@@ -47,9 +47,9 @@ function registerItems() {
   return items;
 }
 
-test('startup registry creates exactly three matching resource-backed items', () => {
+test('startup registry creates six matching resource-backed items', () => {
   const items = registerItems();
-  assert.deepEqual([...items.keys()], ['kubejs:geonpi_ticket', 'kubejs:rename_ticket', 'kubejs:sunrin_meal']);
+  assert.deepEqual([...items.keys()], ['kubejs:geonpi_ticket', 'kubejs:rename_ticket', 'kubejs:sunrin_meal', 'kubejs:random_box', 'kubejs:furniture_random_box', 'kubejs:name_color_ticket']);
   for (const item of items.values()) {
     const [namespace, name] = item.id.split(':');
     assert.equal(item.texture, `${namespace}:item/${name}`);
@@ -69,4 +69,10 @@ test('only the meal is food and its translated tooltip and properties match the 
   const lang = JSON.parse(fs.readFileSync(path.join(packRoot, 'assets', 'kubejs', 'lang', 'ko_kr.json'), 'utf8'));
   assert.equal(lang['item.kubejs.sunrin_meal'], '선린 급식');
   assert.equal(lang[tooltip[0].translate], '학교에서 먹던 그 맛.');
+});
+
+test('all tickets and boxes have translated tooltips', () => {
+  for (const [id,item] of registerItems()) {
+    if (id !== 'kubejs:sunrin_meal') assert.deepEqual(item.tooltips, [{translate:'tooltip.'+id.replace(':','.') }]);
+  }
 });

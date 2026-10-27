@@ -141,8 +141,11 @@
     "source_slug": "music-disc-maker"
   },
   {
-    "provider": "curseforge",
-    "source_slug": "stagebox",
+    "provider": "modrinth",
+    "source_slug": "beatlamp",
+    "id": "aX4Y7ORE",
+    "project_id": "bAwlLfyK",
+    "version_number": "1.2.2-forge-1.20.1",
     "game_versions": [
       "1.20.1"
     ],
@@ -150,59 +153,20 @@
       "forge"
     ],
     "environment": "client_and_server",
-    "id": 8918785,
-    "project_id": 1591857,
-    "name": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-    "version_number": "1.1.2",
-    "date_published": "2026-09-19T08:29:51.237Z",
-    "version_type": "release",
     "files": [
       {
-        "hashes": {
-          "sha1": "d015cd4bad85a30e5405f5db5450e30ceebf08b8",
-          "sha256": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325",
-          "sha512": "9ac2cb693e146d69bdf74fe561f3eda3a987f163100043b3fa69d3963ebc504e860ab2f224a9113b9523192d6c74ebcf76ce33b7863514d8189d92db30f13789"
-        },
-        "url": "https://edge.forgecdn.net/files/8918/785/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-        "filename": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+        "id": "za37n9oT",
         "primary": true,
-        "size": 1054415
+        "filename": "beatlamp-forge-1.20.1-1.2.2.jar",
+        "url": "https://cdn.modrinth.com/data/bAwlLfyK/versions/aX4Y7ORE/beatlamp-forge-1.20.1-1.2.2.jar",
+        "size": 547786,
+        "hashes": {
+          "sha1": "85becdb57a12924c00fbdda0ef6cfb59adc8dbab",
+          "sha512": "5fbd4160cb8bf683ae251d565c39397cb03893060730908e01c7712f044b98219f9961254ed3130f170adeac6f56e19e04de15b8a22a71f15f01ee045441cd3b"
+        }
       }
     ],
-    "dependencies": [],
-    "curseforge_metadata": {
-      "id": 8918785,
-      "dateCreated": "2026-09-19T08:29:51.237Z",
-      "dateModified": "2026-09-19T08:48:57.807Z",
-      "displayName": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "fileLength": 1054415,
-      "fileName": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "status": 4,
-      "projectId": 1591857,
-      "gameVersions": [
-        "Client",
-        "1.20.1",
-        "Forge",
-        "Server"
-      ],
-      "gameVersionTypeIds": [
-        75125,
-        68441
-      ],
-      "releaseType": 1,
-      "totalDownloads": 268,
-      "user": {
-        "username": "user_mlts8b27k3itkvf7",
-        "id": 141929927,
-        "twitchAvatarUrl": "https://media.forgecdn.net/avatars/1886/253/639180458077550893.png",
-        "displayName": "TTPing"
-      },
-      "additionalFilesCount": 0,
-      "hasServerPack": false,
-      "additionalServerPackFilesCount": 0,
-      "isEarlyAccessContent": false,
-      "isCompatibleWithClient": true
-    }
+    "dependencies": []
   },
   {
     "game_versions": [

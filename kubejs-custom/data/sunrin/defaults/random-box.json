@@ -1,0 +1,56 @@
+{
+  "version": "2026-10-27-1",
+  "denominator": 10000,
+  "seasonal": {
+    "totalWeight": 400,
+    "missingPolicy": "fail_if_any_missing",
+    "items": [
+      "simplehats:hatbag_easter",
+      "simplehats:hatbag_summer",
+      "simplehats:hatbag_halloween",
+      "simplehats:hatbag_festive"
+    ]
+  },
+  "rewards": [
+    {
+      "item": "simplehats:hatbag_common",
+      "tier": "common",
+      "weight": 3899
+    },
+    {
+      "item": "simplehats:hatbag_uncommon",
+      "tier": "uncommon",
+      "weight": 2700
+    },
+    {
+      "item": "simplehats:hatbag_rare",
+      "tier": "rare",
+      "weight": 1200
+    },
+    {
+      "item": "simplehats:hatbag_epic",
+      "tier": "epic",
+      "weight": 300
+    },
+    {
+      "item": "kubejs:rename_ticket",
+      "tier": "ticket",
+      "weight": 300
+    },
+    {
+      "item": "kubejs:name_color_ticket",
+      "tier": "ticket",
+      "weight": 200
+    },
+    {
+      "item": "kubejs:geonpi_ticket",
+      "tier": "ticket",
+      "weight": 1000
+    },
+    {
+      "item": "minecraft:brown_dye",
+      "tier": "poop",
+      "weight": 1
+    }
+  ]
+}

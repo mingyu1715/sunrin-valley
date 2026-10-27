@@ -2,7 +2,9 @@
 
 서울 `m7i.xlarge`(4 vCPU·16GiB), 암호화 gp3 100GB, Ubuntu 24.04 x64·Java 17, Forge 47.4.0용입니다. 기존 런처와 운영 버전 채널은 변경하지 않습니다.
 
-공식 Sunlit Valley 4.1.5A **서버 팩**에 추가 모드 4종과 선린 KubeJS를 적용합니다. Java 힙은 초기 4GB·최대 12GB입니다. 고정 Elastic IP를 사용하고 Minecraft TCP 25565·음성 UDP 24454만 공개합니다. 관리에는 SSM을 사용하며 SSH·RCON은 공개하지 않습니다.
+현재 로컬 0.2.0 후보는 공식 Sunlit Valley 4.1.5A **서버 팩**에 추가 모드 4종(Beat Lamp 1.2.2 포함), Sunrin Core 및 재귀 선린 KubeJS 오버레이를 준비합니다. 운영 채널은 0.1.4를 유지하며, 후보 GitHub 자산은 아직 게시하지 않았습니다. Java 힙은 초기 4GB·최대 12GB입니다. 고정 Elastic IP를 사용하고 Minecraft TCP 25565·음성 UDP 24454만 공개합니다. 관리에는 SSM을 사용하며 SSH·RCON은 공개하지 않습니다.
+
+신규 부트스트랩은 체크섬으로 고정한 자체 서버 오버레이를 다운로드합니다. 완전한 내장 페이로드가 SSM 크기 제한을 넘으므로 후보 자산 게시 전에는 실제 설치를 실행할 수 없습니다. 기존 설치는 변경된 잠금 파일을 거부하며, 검토된 소유권 마이그레이션과 백업·롤백은 [서버 업데이트 절차](../README.md#sunrin-020-local-candidate)를 따릅니다.
 
 ## 실행
 

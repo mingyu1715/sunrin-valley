@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
-  "id": "sunrin-valley-server-0.1.4",
-  "clientPackVersion": "0.1.4",
+  "id": "sunrin-valley-server-0.2.0",
+  "clientPackVersion": "0.2.0",
   "minecraft": "1.20.1",
   "forge": "47.4.0",
   "javaMajor": 17,
   "upstreamModCount": 311,
-  "serverModCount": 315,
+  "serverModCount": 316,
   "serverPack": {
     "filename": "SERVER-PACK-Society-Sunlit-Valley-4.1.5A.zip",
     "url": "https://mediafilez.forgecdn.net/files/8980/858/SERVER-PACK-Society-Sunlit-Valley-4.1.5A.zip",
@@ -62,23 +62,94 @@
       }
     },
     {
-      "slug": "stagebox",
-      "version": "1.1.2",
-      "filename": "StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "url": "https://edge.forgecdn.net/files/8918/785/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
-      "size": 1054415,
+      "slug": "beatlamp",
+      "version": "1.2.2-forge-1.20.1",
+      "filename": "beatlamp-forge-1.20.1-1.2.2.jar",
+      "url": "https://cdn.modrinth.com/data/bAwlLfyK/versions/aX4Y7ORE/beatlamp-forge-1.20.1-1.2.2.jar",
+      "size": 547786,
       "hash": {
         "algorithm": "sha256",
-        "digest": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325"
+        "digest": "1d2ec14285fee25db6e86f784c11d54b3e4eae9be4bddb525479e720638fd84f"
       }
     }
   ],
-  "customStartup": {
-    "payloadFilename": "sunrin_items.js",
-    "targetPath": "kubejs/startup_scripts/sunrin_items.js",
+  "ownedFiles": [
+    {
+      "slug": "sunrin-core",
+      "version": "0.1.0",
+      "filename": "sunrin-core-0.1.0.jar",
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
+      "size": 80138,
+      "hash": {
+        "algorithm": "sha256",
+        "digest": "8ef7e7ebd06e4b74855948e09c093e92b39d8d7caf834c85e5a10173617c94ef"
+      }
+    }
+  ],
+  "ownedOverlay": {
+    "filename": "Sunrin-Server-Overlay.zip",
+    "delivery": "download",
+    "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.0/Sunrin-Server-Overlay.zip",
+    "size": 23403,
     "hash": {
       "algorithm": "sha256",
-      "digest": "1028fa803dc4be54e65442eb9dfe78984448bcbc839b8d491978ea3776f1f839"
-    }
+      "digest": "aeb076204ee499e1305ff8644600029d9473b4a9c2c7254411a0a2484451856b"
+    },
+    "files": [
+      {
+        "path": "config/sunrin/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "defaultconfigs/ftbchunks/ftbchunks-world.snbt",
+        "size": 52,
+        "sha256": "1de1b32ea52fd3e1b8ae3097da92eaaaf45f4abc84da98ee78da7a51bfead42f",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/furniture-box.json",
+        "size": 125393,
+        "sha256": "35549f8af8ea3d704cfa445931b24592e46d2a4fd326f633b2e5f426faaed63c",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/random-box.json",
+        "size": 1099,
+        "sha256": "fe017d35ad897fbe218695b5c6cd23c6411a85d43a433b73b6c1812d0fbfbdd1",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/furniture-selection.json",
+        "size": 52642,
+        "sha256": "ee282c9b274cb5a099d6269f395c5222452504fd7a68d6b27a853656922d1ba4",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/sunrin_policy.js",
+        "size": 17320,
+        "sha256": "f87fa0f11f2fcdcdad5a322e1974d05f9d900bd8559a754d05c7074077e627f7",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_bridge.js",
+        "size": 880,
+        "sha256": "e1a898b9689ff2db02c13433bf77feae13534e68bf080a62f0e7f3c09be89738",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_items.js",
+        "size": 836,
+        "sha256": "24becd722623259ff00c5a7623837cd118ef12511fe05bd9339e268b2ff8a0c9",
+        "mode": "replace"
+      }
+    ]
   }
 }

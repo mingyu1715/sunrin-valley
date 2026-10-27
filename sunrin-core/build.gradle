@@ -1,0 +1,36 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+group = 'dev.sunrin'
+version = '0.1.0'
+base { archivesName = 'sunrin-core' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'info'
+            mods { sunrin_core { source sourceSets.main } }
+        }
+        client {}
+        server { args '--nogui' }
+    }
+}
+dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.4.0' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+tasks.named('jar', Jar).configure {
+    manifest.attributes(['Specification-Title': 'Sunrin Core', 'Specification-Version': '1', 'Implementation-Version': project.version])
+    finalizedBy 'reobfJar'
+}
+tasks.withType(AbstractArchiveTask).configureEach { preserveFileTimestamps = false; reproducibleFileOrder = true }
+
+// The behavioral suite is a dependency-free Java main, not a JUnit engine.
+tasks.named('test').configure { enabled = false }
+tasks.register('domainTest', JavaExec) {
+    dependsOn 'testClasses'
+    classpath = files(sourceSets.main.output, sourceSets.test.output)
+    mainClass = 'dev.sunrin.core.domain.DomainTests'
+    enableAssertions = true
+}
+tasks.named('check').configure { dependsOn 'domainTest' }

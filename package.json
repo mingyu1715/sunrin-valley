@@ -7,11 +7,13 @@
   ],
   "scripts": {
     "dev": "npm --workspace launcher run dev",
-    "build": "python3 build-scripts/build-resources.py && npm --workspace launcher run build",
-    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py' && python3 -m unittest discover -s server-ops/tests -p \"test_*.py\"",
+    "build": "npm run core:build && npm run build:pack && npm --workspace launcher run build",
+    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs kubejs-custom/tests/*.test.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py' && python3 -m unittest discover -s server-ops/tests -p \"test_*.py\" && python3 sunrin-core/test-domain.py",
     "typecheck": "npm --workspace launcher run typecheck",
     "package:mac": "npm run build && npm --workspace launcher run package:mac",
     "package:win": "npm run build && npm --workspace launcher run package:win",
-    "verify:install": "npm --workspace launcher run verify:install"
+    "verify:install": "npm --workspace launcher run verify:install",
+    "core:build": "node build-scripts/build-core.cjs",
+    "build:pack": "python3 build-scripts/build-resources.py && python3 build-scripts/build-update.py --repo mingyu1715/sunrin-valley --min-launcher-version 1.1.3 --bundle-output release/bundled"
   }
 }

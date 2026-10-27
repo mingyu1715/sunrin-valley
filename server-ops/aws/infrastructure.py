@@ -247,7 +247,14 @@ def bootstrap_instance(api, instance, command):
 
 def bootstrap_payload():
     entries = {name: HERE / name for name in ('bootstrap.sh', 'host.py', 'pack-lock.json', 'server-icon.png')}
-    entries['sunrin_items.js'] = REPO / 'kubejs-custom/startup_scripts/sunrin_items.js'
+    lock = json.loads((HERE / 'pack-lock.json').read_text())
+    if 'ownedOverlay' in lock:
+        if lock['ownedOverlay'].get('filename') != 'Sunrin-Server-Overlay.zip':
+            raise RuntimeError('Unexpected bootstrap overlay identity')
+        if lock['ownedOverlay'].get('delivery') != 'download':
+            entries['Sunrin-Server-Overlay.zip'] = HERE / 'Sunrin-Server-Overlay.zip'
+    else:
+        entries['sunrin_items.js'] = REPO / 'kubejs-custom/startup_scripts/sunrin_items.js'
     buffer = io.BytesIO()
     with tarfile.open(fileobj=buffer, mode='w:gz') as archive:
         for name, path in entries.items():
@@ -314,7 +321,9 @@ python3 - <<'SUNRIN_UNPACK'
 import base64,io,tarfile
 data=base64.b64decode(open('/opt/sunrin/bootstrap/payload.b64','rb').read().strip(),validate=True)
 with tarfile.open(fileobj=io.BytesIO(data),mode='r:gz') as a:
- assert set(a.getnames()) == {{'bootstrap.sh','host.py','pack-lock.json','sunrin_items.js','server-icon.png'}}
+ names=set(a.getnames())
+ assert names in ({{'bootstrap.sh','host.py','pack-lock.json','sunrin_items.js','server-icon.png'}}, {{'bootstrap.sh','host.py','pack-lock.json','Sunrin-Server-Overlay.zip','server-icon.png'}}, {{'bootstrap.sh','host.py','pack-lock.json','server-icon.png'}})
+ assert len(a.getmembers()) == len(names)
  assert all(m.isfile() and '/' not in m.name for m in a.getmembers())
  a.extractall('/opt/sunrin/bootstrap',filter='data')
 SUNRIN_UNPACK

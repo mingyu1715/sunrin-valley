@@ -49,6 +49,41 @@ class UpdatePublishTests(unittest.TestCase):
         self.assertEqual(overlay.read_bytes(), before)
         self.assertEqual({p.name for p in output.iterdir()}, {'manifest.json', 'prism-runtime.json', 'Sunrin-Overlay.zip', 'stable.json', 'SHA256SUMS.txt'})
 
+    def test_owned_jar_is_verified_copied_and_excluded_from_overlay(self):
+        content = b"actual compiled artifact"
+        name = "sunrin-core-0.1.0.jar"
+        local = self.root / "sunrin-core/build/libs" / name
+        local.parent.mkdir(parents=True)
+        local.write_bytes(content)
+        metadata = json.loads((self.root / "client-pack/manifest.json").read_text())
+        pin = {"slug": "sunrin-core", "version": "0.1.0", "filename": name,
+               "path": "mods/" + name, "url": "https://github.com/owner/sunrin/releases/download/pack-1.2.3/" + name,
+               "sha256": sha256(content).hexdigest(), "size": len(content), "localPath": "sunrin-core/build/libs/" + name}
+        metadata["sources"] = {"packVersion": "1.2.3", "releaseRepository": "owner/sunrin", "ownedFiles": [pin]}
+        metadata["files"] = [{"path": pin["path"], "url": pin["url"], "hash": {"algorithm": "sha256", "value": pin["sha256"]}, "size": pin["size"], "source": {"provider": "sunrin", "slug": "sunrin-core", "version": "0.1.0"}}]
+        (self.root / "client-pack/manifest.json").write_text(json.dumps(metadata))
+        for relative in ["startup_scripts/nested/bridge.js", "data/sunrin/nested/settings.json"]:
+            target = self.root / "kubejs-custom" / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text("nested content")
+        output = MODULE.build_update(self.root, "owner/sunrin", "0.1.2")
+        self.assertEqual((output / name).read_bytes(), content)
+        self.assertIn(sha256(content).hexdigest() + "  " + name, (output / "SHA256SUMS.txt").read_text())
+        with zipfile.ZipFile(output / "Sunrin-Overlay.zip") as archive:
+            self.assertIn("kubejs/data/sunrin/nested/settings.json", archive.namelist())
+            self.assertFalse(any(p.startswith("mods/") for p in archive.namelist()))
+        local.write_bytes(b"stale")
+        with self.assertRaisesRegex(ValueError, "artifact"):
+            MODULE.build_update(self.root, "owner/sunrin", "0.1.2")
+        local.unlink()
+        with self.assertRaises(ValueError):
+            MODULE.build_update(self.root, "owner/sunrin", "0.1.2")
+
+    def test_optional_bundle_output_copies_exact_overlay_bytes(self):
+        bundle = self.root / "release/bundled"
+        output = MODULE.build_update(self.root, "owner/repo", "0.1.2", bundle_output=bundle)
+        self.assertEqual((bundle / "Sunrin-Overlay.zip").read_bytes(), (output / "Sunrin-Overlay.zip").read_bytes())
+
     def test_rejects_repository_or_version_values_that_cannot_form_immutable_release_urls(self):
         for repo, version in [('https://github.com/a/b', '0.1.2'), ('../escape', '0.1.2'), ('owner/repo', 'not-a-version')]:
             with self.subTest(repo=repo, version=version), self.assertRaises(ValueError):

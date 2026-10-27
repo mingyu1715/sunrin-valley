@@ -1,0 +1,21 @@
+{
+  "reviewRequired": true,
+  "source": "Historical 0.1.4 lock; verify the live marker and both file hashes before copying this into an enabled operator config",
+  "reviewedOwnershipMigration": {
+    "lockSha256": "96171daed874684fb837390af99d3de50fb33a6039df98eb91a8e2eea3c14306",
+    "files": [
+      {
+        "path": "kubejs/startup_scripts/sunrin_items.js",
+        "size": 506,
+        "sha256": "1028fa803dc4be54e65442eb9dfe78984448bcbc839b8d491978ea3776f1f839",
+        "mode": "replace"
+      },
+      {
+        "path": "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar",
+        "size": 1054415,
+        "sha256": "b59cd5e13b205582a9f847a9246ed113aa283ef596a0ae823a4930f95cc22325",
+        "mode": "replace"
+      }
+    ]
+  }
+}

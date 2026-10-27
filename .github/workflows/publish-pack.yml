@@ -4,7 +4,7 @@ on:
     inputs:
       min_launcher_version:
         description: Minimum launcher version
-        default: 0.1.2
+        default: 1.1.3
         required: true
         type: string
   push:
@@ -16,6 +16,11 @@ on:
       - resourcepacks/Sunrin-Custom/**
       - build-scripts/build-resources.py
       - build-scripts/build-update.py
+      - build-scripts/build-server-candidate.py
+      - build-scripts/owned_files.py
+      - sunrin-core/**
+      - server-ops/aws/pack-lock.json
+      - .github/workflows/publish-pack.yml
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -26,23 +31,30 @@ jobs:
       cancel-in-progress: false
     env:
       GH_TOKEN: ${{ github.token }}
-      MIN_LAUNCHER_VERSION: ${{ inputs.min_launcher_version || '0.1.2' }}
+      MIN_LAUNCHER_VERSION: ${{ inputs.min_launcher_version || '1.1.3' }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
       - name: Build and validate content
         run: |
+          sh sunrin-core/gradlew -p sunrin-core build --no-daemon
           python3 build-scripts/build-resources.py
           python3 build-scripts/resolve-pack.py --check
           python3 -m unittest discover -s client-pack -p 'test_*.py'
           python3 build-scripts/build-update.py --repo "$GITHUB_REPOSITORY" --min-launcher-version "$MIN_LAUNCHER_VERSION" --output release/pack
+          python3 build-scripts/build-server-candidate.py --output release/server --client-output release/pack --overlay-only
+          python3 -m unittest discover -s server-ops/tests -p 'test_*.py'
           echo "PACK_VERSION=$(python3 -c 'import json;print(json.load(open("client-pack/manifest.json"))["version"])')" >> "$GITHUB_ENV"
       - name: Publish immutable release assets
         run: |
-          printf '%s\n' 'Game content only. Install or update through the Sunrin launcher. Mod files remain hosted by their official publishers.' > release/pack/notes.md
-          gh release create "pack-$PACK_VERSION" release/pack/manifest.json release/pack/prism-runtime.json release/pack/Sunrin-Overlay.zip release/pack/SHA256SUMS.txt --title "Sunrin game content $PACK_VERSION" --notes-file release/pack/notes.md --latest=false --target "$GITHUB_SHA"
+          printf '%s\n' 'Game content only. Install or update through the Sunrin launcher. Third-party mod files remain hosted by their official publishers. Sunrin Core and the own server overlay are included.' > release/pack/notes.md
+          gh release create "pack-$PACK_VERSION" release/pack/stable.json release/pack/manifest.json release/pack/prism-runtime.json release/pack/Sunrin-Overlay.zip release/pack/Sunrin-Server-Overlay.zip release/pack/server-pack-lock.json release/pack/sunrin-core-*.jar release/pack/SHA256SUMS.txt --title "Sunrin game content $PACK_VERSION" --notes-file release/pack/notes.md --latest=false --target "$GITHUB_SHA"
       - name: Record the published release without promoting the operating server
         run: |
           git config user.name 'github-actions[bot]'

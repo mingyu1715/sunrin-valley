@@ -39,7 +39,7 @@ done
 id sunrin >/dev/null 2>&1 || fail missing-service-user
 
 payload_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
-for payload_file in host.py pack-lock.json sunrin_items.js server-icon.png; do
+for payload_file in host.py pack-lock.json server-icon.png; do
   [[ -f "$payload_dir/$payload_file" && ! -L "$payload_dir/$payload_file" ]] || fail missing-bootstrap-payload
 done
 
@@ -174,4 +174,8 @@ fi
 for player_name in "${whitelist_names[@]}"; do
   python3 /usr/local/lib/sunrin/host.py whitelist --name "$player_name"
 done
-printf '{"ok":true,"status":"ready","unit":"sunrin-minecraft.service","modCount":315,"testMinutes":%s}\n' "$test_minutes"
+python3 - "$payload_dir/pack-lock.json" "$test_minutes" <<'PY'
+import json,sys
+lock=json.load(open(sys.argv[1]))
+print(json.dumps({'ok':True,'status':'ready','unit':'sunrin-minecraft.service','modCount':lock['serverModCount'],'testMinutes':int(sys.argv[2])}))
+PY

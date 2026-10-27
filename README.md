@@ -48,6 +48,8 @@
 
 Node.js 22.12 이상, Python 3.10 이상을 권장합니다.
 
+개발 빌드에는 Node.js·Python과 JDK 17 또는 21이 필요합니다. Gradle Wrapper가 Java 17 모드 빌드와 리소스 묶음을 먼저 준비한 뒤 런처를 빌드합니다. Java 17 toolchain이 없으면 Gradle이 내려받습니다.
+
 ```sh
 npm ci
 npm run build
@@ -108,3 +110,5 @@ Prism은 수정하지 않은 공식 프로그램을 다운로드하여 별도로
 - Windows 실제 PC 설치·제거 및 Microsoft 로그인 후 플레이 검증은 사용자 요청에 따라 후속 패치 점검으로 남겨두었습니다. 신뢰된 개발자 인증서를 통한 서명·Apple 공증과 실제 서버 연결은 이번 발행에 포함되지 않습니다.
 
 1.1.1은 런처 테스트 256개와 실제 Electron 팝업·알림·버튼 회귀 검증을 통과했습니다. Mac에서는 격리된 실제 앱으로 1.1.0→1.1.1 교체·시작 확인·이전 앱 정리와 실패 시 1.1.0 복원을 검증하고 가짜 계정·설정·월드 파일의 바이트 보존을 확인합니다. Windows 업데이트 도우미는 [Windows PowerShell 실행 검증](https://github.com/mingyu1715/sunrin-valley/actions/runs/40202478591)에서 교체·복구를 통과했으며, 설치 화면과 실제 플레이는 Windows 사용자 확인이 필요합니다.
+
+커스텀 시스템 0.2.0 후보의 구현·검증 결과와 운영 전 확인 목록은 [현재 현황](docs/custom-systems-status.md)에 정리했습니다.

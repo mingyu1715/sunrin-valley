@@ -60,27 +60,45 @@ class ResolverTests(unittest.TestCase):
                   for f in manifest["files"]
                   if f["source"]["provider"] == "curseforge" and not f["source"].get("slug")}
         self.assertEqual(actual, expected)
-        self.assertEqual(len(manifest["files"]), len(self.cf["files"]) + len(self.addons) + len(self.visuals))
-        self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 351 + len(self.addons))
+        self.assertEqual(len(manifest["files"]), len(self.cf["files"]) + len(self.addons) + len(self.visuals) + len(self.sources.get("ownedFiles", [])))
+        self.assertEqual(sum(f["path"].startswith("mods/") for f in manifest["files"]), 351 + len(self.addons) + len(self.sources.get("ownedFiles", [])))
         self.assertEqual(len(manifest["localizations"]), 481)
         self.assertEqual(manifest["forge"], "47.4.0")
         player = next(f for f in manifest["files"] if f["source"].get("projectId") == 658587)
         self.assertEqual(player["source"]["fileId"], 4587214)
 
-    def test_stagebox_pin_avoids_the_missing_forge_4740_renderer_api(self):
+    def test_beatlamp_candidate_replaces_stagebox_and_preserves_music_disc_maker(self):
         manifest = self.resolve()
-        self.assertFalse(any("beatlamp" in f["path"].lower() for f in manifest["files"]))
-        stagebox = next(f for f in manifest["files"] if f["source"].get("slug") == "stagebox")
-        self.assertEqual(stagebox["path"], "mods/StageBox-Mod-1.1.2-Forge-1.20.1.jar")
-        self.assertEqual(stagebox["source"], {"provider": "curseforge", "projectId": 1591857,
-                                            "fileId": 8918785, "slug": "stagebox"})
-        self.assertEqual(stagebox["hash"], {"algorithm": "sha1", "value": "d015cd4bad85a30e5405f5db5450e30ceebf08b8"})
-        self.assertEqual(stagebox["size"], 1054415)
+        self.assertFalse(any("stagebox" in f["path"].lower() for f in manifest["files"]))
+        lamp = next(f for f in manifest["files"] if f["source"].get("slug") == "beatlamp")
+        self.assertEqual(lamp["path"], "mods/beatlamp-forge-1.20.1-1.2.2.jar")
+        self.assertEqual(lamp["hash"]["value"], "85becdb57a12924c00fbdda0ef6cfb59adc8dbab")
+        self.assertEqual(lamp["size"], 547786)
+        maker = next(f for f in manifest["files"] if f["source"].get("slug") == "music-disc-maker")
+        self.assertIn("3.1.2", maker["path"])
         self.assertEqual(manifest["forge"], "47.4.0")
-        self.assertEqual({f["source"]["slug"] for f in manifest["files"] if f["source"].get("slug")},
-                         {item["slug"] for item in self.sources["addons"] + self.sources["visuals"]})
-        self.assertEqual(manifest["version"], self.sources["packVersion"])
-        self.assertEqual(manifest["sources"]["upstream"]["version"], "4.1.5A")
+        self.assertEqual(manifest["version"], "0.2.0")
+
+    def test_owned_artifact_has_sha256_and_strict_immutable_identity(self):
+        pin = {"slug": "sunrin-core", "version": "0.1.0", "filename": "sunrin-core-0.1.0.jar",
+               "path": "mods/sunrin-core-0.1.0.jar", "url": "https://github.com/owner/repo/releases/download/pack-0.2.0/sunrin-core-0.1.0.jar",
+               "sha256": "a" * 64, "size": 100, "localPath": "sunrin-core/build/libs/sunrin-core-0.1.0.jar"}
+        sources = copy.deepcopy(self.sources)
+        sources["packVersion"] = "0.2.0"
+        sources["releaseRepository"] = "owner/repo"
+        sources["ownedFiles"] = [pin]
+        entry = next(f for f in self.resolve(sources=sources)["files"] if f["source"]["provider"] == "sunrin")
+        self.assertEqual(entry["hash"], {"algorithm": "sha256", "value": "a" * 64})
+        self.assertEqual(entry["source"], {"provider": "sunrin", "slug": "sunrin-core", "version": "0.1.0"})
+        for field, value in [("path", "mods/../escape.jar"), ("filename", "wrong.jar"), ("sha256", "A" * 64),
+                             ("url", pin["url"].replace("pack-0.2.0", "latest")), ("localPath", "../secret"), ("size", True)]:
+            changed = copy.deepcopy(sources)
+            changed["ownedFiles"][0][field] = value
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                self.resolve(sources=changed)
+        sources["ownedFiles"].append(copy.deepcopy(pin))
+        with self.assertRaises(ValueError):
+            self.resolve(sources=sources)
 
     def test_rejects_addon_provider_substitution(self):
         addons = copy.deepcopy(self.addons)
@@ -97,8 +115,8 @@ class ResolverTests(unittest.TestCase):
                          {"algorithm": "sha1", "value": "e62cef3d46234f8e2b04d5d01c870a6f41f9ae79"})
         self.assertEqual(entries["shaderpacks/BSL_v10.1.8.zip"]["hash"],
                          {"algorithm": "sha1", "value": "e89818c8827d0131c102fb480c3c3446624db0df"})
-        self.assertEqual(len(entries), len(self.cf["files"]) + len(self.addons) + len(self.visuals))
-        self.assertEqual(sum(path.startswith("mods/") for path in entries), 351 + len(self.addons))
+        self.assertEqual(len(entries), len(self.cf["files"]) + len(self.addons) + len(self.visuals) + len(self.sources.get("ownedFiles", [])))
+        self.assertEqual(sum(path.startswith("mods/") for path in entries), 351 + len(self.addons) + len(self.sources.get("ownedFiles", [])))
         for project in self.lock["projects"]:
             for item in project["files"]:
                 expected = next(entry for entry in entries.values()
@@ -111,6 +129,8 @@ class ResolverTests(unittest.TestCase):
     def test_content_version_comes_from_source_pin(self):
         sources = copy.deepcopy(self.sources)
         sources["packVersion"] = "0.1.9"
+        for pin in sources.get("ownedFiles", []):
+            pin["url"] = pin["url"].replace("/pack-0.2.0/", "/pack-0.1.9/")
         self.assertEqual(self.resolve(sources=sources)["version"], "0.1.9")
 
     def test_visual_metadata_cannot_change_pinned_type_identity_or_compatibility(self):

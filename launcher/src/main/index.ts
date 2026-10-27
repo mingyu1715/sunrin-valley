@@ -28,6 +28,7 @@ import { readCurrentCrash } from './crash-report'
 import { checkLauncherUpdate, downloadLauncherUpdate } from './launcher-update'
 import { acknowledgeLauncherUpdate, launchLauncherUpdate, prepareLauncherUpdate } from './launcher-update-install'
 import { configureSunrinServer } from './server-list'
+import { bundledPackPaths } from './bundle-paths'
 
 let window: BrowserWindow | undefined
 let state: LauncherState
@@ -425,11 +426,7 @@ else {
     store = new SettingsStore(root); logPath = join(root, 'logs', 'launcher.log')
     await ensureLauncherMarker(root)
     const pack = app.isPackaged ? join(process.resourcesPath, 'pack') : resolve(__dirname, '../../..')
-    bundledPaths = app.isPackaged ? {
-      manifest: join(pack, 'manifest.json'), prism: join(pack, 'prism-runtime.json'), customPack: join(pack, 'Sunrin-Custom.zip'), startup: join(pack, 'sunrin_items.js')
-    } : {
-      manifest: join(pack, 'client-pack/manifest.json'), prism: join(pack, 'client-pack/prism-runtime.json'), customPack: join(pack, 'resourcepacks/dist/Sunrin-Custom.zip'), startup: join(pack, 'kubejs-custom/startup_scripts/sunrin_items.js')
-    }
+    bundledPaths = bundledPackPaths(pack, app.isPackaged)
     paths = bundledPaths
     updateSourcePath = app.isPackaged ? join(pack, 'update-source.json') : join(pack, 'client-pack/update-source.json')
     state = { phase: 'checking', message: '최신 게임 구성 확인 중', progress: null, settings: await store.load(), launcherVersion: app.getVersion(), memoryRecommendation: recommendMemory(Math.floor(totalmem() / 1024 ** 2)) }

@@ -1,0 +1,1284 @@
+{
+  "source": "docs/data/furniture-random-box-candidates-2026-10-26.json",
+  "policy": "Unique statically registered candidate items; broad furniture/decor pool. All IDs validated again at server load; any missing configured ID blocks furniture boxes. No weights or rarity. Visual QA still required.",
+  "includedCount": 2026,
+  "initializedPlushies": 53,
+  "excludedFromCandidates": [
+    {
+      "item": "beautify:acacia_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:birch_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:botanist_workbench",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:crimson_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:dark_oak_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:jungle_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:mangrove_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:oak_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:spruce_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "beautify:warped_trellis",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "candlelight:sofa",
+      "reason": "Bland basic cushion/sofa excluded from decorative reward pool"
+    },
+    {
+      "item": "chimes:amethyst_chimes",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "chimes:bamboo_chimes",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "chimes:carved_bamboo_chimes",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "chimes:copper_chimes",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "chimes:glass_bells",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "chimes:iron_chimes",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "create:cuckoo_clock",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:bar_panel",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:brazier",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:chain",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:chandelier",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:lattice",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:soul_brazier",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "decorative_blocks:soul_chandelier",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "displaydelight:food_plate",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "displaydelight:small_food_plate",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:bouquet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:dice",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:drum",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:frame",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:glow_item_stand",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:iridescent_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:item_stand",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:light_bulb",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:prickly_can",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:squid_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:terracotta_vase",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "etcetera:tinted_light_bulb",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "fantasyfurniture:decorations/royal_floor_cushion",
+      "reason": "Bland basic cushion/sofa excluded from decorative reward pool"
+    },
+    {
+      "item": "farmersdelight:acacia_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:bamboo_basket",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:bamboo_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:birch_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:cherry_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:cooking_pot",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:crimson_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:cutting_board",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:dark_oak_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:full_tatami_mat",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:half_tatami_mat",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:jungle_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:mangrove_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:oak_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:spruce_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:stove",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:warped_cabinet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "farmersdelight:wooden_basket",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:daniel_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:dumbo_blob_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:gamerpotion_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:gamerpotion_plushie_rare",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:geode_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:joosh_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:june_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:nyf_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:rocris_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:silk_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:sirjain_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:sirjain_plushie_rare",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:sizableshrimp_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "perfectplushies:tslat_plushie",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:acacia_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:ancient_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:azalea_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:birch_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:black_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:blaze_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:blue_blossom_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:blue_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:cherry_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:dark_oak_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:duskbound_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:flowering_azalea_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:glass_item_frame",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:glowing_glass_item_frame",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:green_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:indigo_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:jungle_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:lavender_blossom_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:mangrove_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:oak_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:orange_blossom_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:orange_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:paper_lantern_sakura",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:red_blossom_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:red_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:spruce_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:violet_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:white_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:yellow_blossom_leaf_carpet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "quark:yellow_crystal_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:candy_cane_block",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_prismatic",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:glow_lights_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:gumdrop_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:snow_globe",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "snowyspirit:wreath",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "strawstatues:straw_statue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:awning_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:blackboard",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:blackstone_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:bunting_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:cage",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_cupric",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_ender",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_soul",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_spectacle",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:candle_holder_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:clock_block",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:crystal_display",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:deepslate_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:doormat",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:end_stone_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:faucet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:fire_pit",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flag_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:flower_box",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:globe",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:globe_sepia",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:goblet",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:hat_stand",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:hourglass",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:item_shelf",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:jar",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:jar_boat",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:lunch_basket",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:notice_board",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:pedestal",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:present_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:safe",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_ender",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_glow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_lever",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_nether_brass",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:sconce_soul",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:statue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:stone_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:tater_in_a_jar",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_black",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_brown",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_cyan",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_green",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_light_blue",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_light_gray",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_lime",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_magenta",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_orange",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_pink",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_purple",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_red",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_white",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:trapped_present_yellow",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:urn",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "supplementaries:wind_vane",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "tanukidecor:adv_developer_mini_figure",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "tanukidecor:adv_mayoral_mini_figure",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "tanukidecor:diy_workbench",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "tanukidecor:minimalist_couch",
+      "reason": "Bland basic cushion/sofa excluded from decorative reward pool"
+    },
+    {
+      "item": "twigs:allium_paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:azalea_flowers",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:blue_orchid_paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:bronzed_seashell",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:crimson_roots_paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:crimson_shroomlamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:dandelion_paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:opaline_seashell",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:roseate_seashell",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:soul_lamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:tangerine_seashell",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:torchflower_paper_lantern",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "twigs:warped_shroomlamp",
+      "reason": "No static item registration evidence; resource-only candidate requires runtime research"
+    },
+    {
+      "item": "whimsy_deco:adv_big_panda_plushie",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:adv_flower_pig_plushie",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:adv_fufu_plushie",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:adv_golden_pig_plushie",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:adv_red_vocal_doll",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:adv_vocal_doll",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:cast_iron_ledge",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "whimsy_deco:cast_iron_trapdoor",
+      "reason": "Research boundary item deferred pending explicit eligibility review"
+    },
+    {
+      "item": "cluttered:lovely_love_seat_basic",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    },
+    {
+      "item": "fantasyfurniture:dunmer/cushion",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    },
+    {
+      "item": "fantasyfurniture:necrolord/cushion",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    },
+    {
+      "item": "fantasyfurniture:nordic/cushion",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    },
+    {
+      "item": "fantasyfurniture:royal/cushion",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    },
+    {
+      "item": "fantasyfurniture:venthyr/cushion",
+      "reason": "Bland basic floor cushion/basic loveseat excluded; themed ornate sofas retained"
+    }
+  ],
+  "upstreamExcludedCount": 2356,
+  "upstreamExclusionsSource": "docs/data/furniture-random-box-candidates-2026-10-26.json#excluded",
+  "initializerEvidence": {
+    "registration": "overrides/kubejs/startup_scripts/registration/plushieReRegister.js",
+    "factory": "overrides/kubejs/server_scripts/itemEvents/plushieCapsule.js",
+    "fields": {
+      "quality_food": {
+        "quality": 0
+      },
+      "type": "random integer 0..14",
+      "quest_id": "random integer 1..3",
+      "affection": 0
+    },
+    "note": "Same required NBT schema; standard quality only, no stages/animal copied. One item."
+  },
+  "gnomeEvidence": {
+    "source": "overrides/kubejs/startup_scripts/registration/gnome.js",
+    "items": [
+      "society:gnome",
+      "society:lantern_gnome"
+    ],
+    "note": "Fresh item/blockstate factory supplies type=0; these are not plushies and require no quality_food/quest NBT."
+  },
+  "selectionNotes": [
+    "Antique, gorgeous, regal, sweets and Moroccan sofas retained as themed decorative furniture; basic candlelight sofa, minimalist couch, plain floor cushions and basic loveseat excluded.",
+    "cluttered:fabric_bolts retained as a placed decorative fabric display, not a crafting material.",
+    "8 plushie candidates with boundary review are explicitly deferred; 53 upstream initialized plushies included."
+  ]
+}

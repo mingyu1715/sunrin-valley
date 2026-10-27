@@ -13,7 +13,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "resourcepacks" / "Sunrin-Custom"
-ITEMS = ("geonpi_ticket", "rename_ticket", "sunrin_meal")
+ITEMS = ("geonpi_ticket", "rename_ticket", "sunrin_meal", "random_box", "furniture_random_box", "name_color_ticket")
 ENTRIES = {
     "pack.mcmeta",
     "pack.png",
@@ -77,7 +77,15 @@ class ResourcePackTests(unittest.TestCase):
         names = json.loads(read("assets/kubejs/lang/ko_kr.json"))
         self.assertEqual(names, {
             "item.kubejs.geonpi_ticket": "건피권",
-            "item.kubejs.rename_ticket": "닉변권",
+            "item.kubejs.rename_ticket": "칭호권",
+            "item.kubejs.random_box": "랜덤박스",
+            "item.kubejs.furniture_random_box": "가구랜덤박스",
+            "item.kubejs.name_color_ticket": "닉네임 색상 변경권",
+            "tooltip.kubejs.random_box": "인생은 한 방.",
+            "tooltip.kubejs.furniture_random_box": "집은 좁은데 가구는 자꾸 늘어난다.",
+            "tooltip.kubejs.geonpi_ticket": "부르면 옵니다. 아마도.",
+            "tooltip.kubejs.rename_ticket": "명예는 없지만 칭호는 있습니다",
+            "tooltip.kubejs.name_color_ticket": "화려한 닉이 나를 감싸네",
             "item.kubejs.sunrin_meal": "선린 급식",
             "tooltip.kubejs.sunrin_meal": "학교에서 먹던 그 맛.",
         })
@@ -89,7 +97,7 @@ class ResourcePackTests(unittest.TestCase):
             self.assertEqual(model["textures"], {"layer0": f"kubejs:item/{item}"})
             namespace, texture = model["textures"]["layer0"].split(":", 1)
             artwork.append(self.assert_png(read(f"assets/{namespace}/textures/{texture}.png"), {(16, 16), (32, 32)}, transparent=True))
-        self.assertEqual(len(set(artwork)), 3, "The three items must have distinct artwork")
+        self.assertEqual(len(set(artwork)), len(ITEMS), "Each item must have distinct artwork")
 
     def test_source_pack_is_usable(self):
         entries = [path.relative_to(SOURCE).as_posix() for path in SOURCE.rglob("*") if path.is_file() and path.name != ".DS_Store"]
