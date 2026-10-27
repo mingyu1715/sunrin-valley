@@ -28,9 +28,9 @@
     ]
   },
   "status": {
-    "state": "online",
-    "message": "0.2.1 적용 완료 · 상자·칭호·색상 오류 수정 · 15:02 자동 종료 예정",
-    "targetVersion": "0.2.1"
+    "state": "maintenance",
+    "message": "튜토리얼·급식 보상 업데이트 적용 중입니다. 잠시 뒤 다시 접속해 주세요.",
+    "targetVersion": "0.2.2"
   },
-  "updatedAt": "2026-10-27T05:18:15.800669+00:00"
+  "updatedAt": "2026-10-27T15:21:22.720684+00:00"
 }
