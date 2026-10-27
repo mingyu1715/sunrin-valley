@@ -141,6 +141,34 @@
     return data
   }
   function save(p,data) { p.persistentData.putString('sunrinRewardsV1',JSON.stringify(data)) }
+  // Food uses the same elapsed clock, with its own cursor and Core journal namespace.
+  // Seed before either payout so adding this stream never backpays old online rounds.
+  function mealPersistence(p,data) {
+    try {
+      var text = String(p.persistentData.getString('sunrinMealRewardsV1'))
+      var due = Math.floor(data.elapsedMs/1800000)
+      var meal = text ? JSON.parse(text) : {paidThroughRound:due}
+      if (!meal || !Number.isInteger(meal.paidThroughRound) || meal.paidThroughRound < 0 || meal.paidThroughRound > due) throw Error('Invalid Sunrin meal persistence')
+      if (!text) saveMeal(p,meal)
+      return meal
+    } catch(e) {
+      console.error('[SUNRIN] Meal disabled for ' + uuid(p) + ': ' + e)
+      return null
+    }
+  }
+  function saveMeal(p,meal) { p.persistentData.putString('sunrinMealRewardsV1',JSON.stringify(meal)) }
+  function payMeal(p,data,meal) {
+    if (!meal) return
+    try {
+      var due = Math.floor(data.elapsedMs/1800000)
+      while (meal.paidThroughRound < due) {
+        var round = meal.paidThroughRound + 1
+        if (!bridge || !bridge.grantJson(p,'sunrin:meal-online:v1:' + uuid(p) + ':' + round,JSON.stringify([{item:'kubejs:sunrin_meal',count:10}]))) break
+        meal.paidThroughRound = round
+        saveMeal(p,meal)
+      }
+    } catch(e) { console.error('[SUNRIN] Meal grant failed for ' + uuid(p) + ': ' + e) }
+  }
   function grant(p,id,count) {
     // A distinct method avoids Rhino's ambiguous String / ItemStack[] conversion.
     return bridge && bridge.grantJson(p,id,JSON.stringify([{item:'kubejs:random_box',count:count},{item:'kubejs:furniture_random_box',count:count}]))
@@ -159,12 +187,28 @@
       save(p,data)
     }
   }
+  function notifyOnline(p,data,meal,previousBoxes,previousMeals) {
+    // Cursor deltas count only Core-acknowledged rounds, never migration or login gifts.
+    // Keep bindings function-scoped for the pinned Rhino engine.
+    try {
+      var boxes = (data.paidRounds-previousBoxes)*5
+      var meals = meal ? (meal.paidThroughRound-previousMeals)*10 : 0
+      var received = []
+      if (boxes > 0) { received.push('랜덤상자 ' + boxes + '개'); received.push('가구 랜덤상자 ' + boxes + '개') }
+      if (meals > 0) received.push('선린 급식 ' + meals + '개')
+      if (received.length) p.tell('30분 접속 보상을 받았습니다: ' + received.join(', '))
+    } catch(e) { console.error('[SUNRIN] Reward notification failed for ' + uuid(p) + ': ' + e) }
+  }
   function login(p) {
     if (p.isFake()) return
     try {
       let data = persisted(p)
-      sessions[uuid(p)] = {last:Date.now(),data:data}
+      sessions[uuid(p)] = {last:Date.now(),data:data,meal:mealPersistence(p,data)}
+      var previousBoxes = data.paidRounds
+      var previousMeals = sessions[uuid(p)].meal ? sessions[uuid(p)].meal.paidThroughRound : 0
       pay(p,data)
+      payMeal(p,data,sessions[uuid(p)].meal)
+      notifyOnline(p,data,sessions[uuid(p)].meal,previousBoxes,previousMeals)
     } catch(e) { console.error('[SUNRIN] Playtime disabled for ' + uuid(p) + ': ' + e) }
   }
   function sample(p,finish) {
@@ -174,8 +218,12 @@
     session.last = now
     // One-second samples; discard reversed clocks and cap delayed ticks at five seconds.
     session.data.elapsedMs += Math.max(0,Math.min(5000,delta))
+    var previousBoxes = session.data.paidRounds
+    var previousMeals = session.meal ? session.meal.paidThroughRound : 0
     pay(p,session.data)
     save(p,session.data)
+    payMeal(p,session.data,session.meal)
+    notifyOnline(p,session.data,session.meal,previousBoxes,previousMeals)
     if (finish) delete sessions[uuid(p)]
   }
   PlayerEvents.loggedIn(event => login(event.player))

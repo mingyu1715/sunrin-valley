@@ -197,6 +197,89 @@ if (root / ("fail-" + name)).exists() and (root / "server/server.jar").read_text
         self.assertFalse(self.journal()['contentTouched'])
         self.assertEqual(self.journal()['phase'],'rolled_back')
 
+    def tutorial_candidate(self):
+        self.owned_candidate()
+        old_manifest = dict(self.manifest)
+        names = ['config/ftbquests/quests/chapters/welcome.snbt',
+                 'config/ftbquests/quests/chapters/perfection.snbt',
+                 'kubejs/assets/ftbquestlocalizer/lang/ko_kr.json',
+                 'kubejs/assets/ftbquestlocalizer/lang/en_us.json']
+        with zipfile.ZipFile(self.archive) as archive:
+            files = {name: archive.read(name) for name in archive.namelist()}
+        originals = {name: ('original ' + name).encode() for name in names}
+        for name, content in originals.items():
+            target = self.server / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(content)
+            files[name] = ('new ' + name).encode()
+        self.write_archive(files)
+        self.manifest.update({k: v for k, v in old_manifest.items() if k != 'archive'})
+        self.manifest['ownedFileMerge']['files'].extend(
+            {'path': name, 'mode': 'replace', 'size': len(files[name]), 'sha256': hashlib.sha256(files[name]).hexdigest()}
+            for name in names)
+        self.manifest['ownedFileMerge']['reviewedReplacements'] = [
+            {'path': name, 'mode': 'replace', 'size': len(content), 'sha256': hashlib.sha256(content).hexdigest()}
+            for name, content in originals.items()]
+        (self.release / 'server-release.json').write_text(json.dumps(self.manifest))
+        return originals
+
+    def test_reviewed_tutorial_merge_replaces_exact_quests_and_languages_and_records_ownership(self):
+        originals = self.tutorial_candidate()
+        self.runner().execute()
+        receipt = json.loads((self.server / '.sunrin-owned-files.json').read_text())
+        for name, content in originals.items():
+            self.assertEqual((self.server / name).read_bytes(), ('new ' + name).encode())
+            self.assertEqual((Path(self.journal()['backupDirectory']) / name).read_bytes(), content)
+            self.assertIn(name, [item['path'] for item in receipt['files']])
+        self.assertEqual((self.server / 'world/level.dat').read_text(), 'target world')
+
+    def test_tutorial_takeover_rejects_missing_review_and_changed_upstream_before_hooks(self):
+        for changed in (False, True):
+            with self.subTest(changed=changed):
+                originals = self.tutorial_candidate()
+                name = next(iter(originals))
+                if changed:
+                    (self.server / name).write_bytes(b'operator edited quest')
+                else:
+                    self.manifest['ownedFileMerge']['reviewedReplacements'] = []
+                    (self.release / 'server-release.json').write_text(json.dumps(self.manifest))
+                with self.assertRaisesRegex(Exception, 'reviewed.*replacement|replacement.*checksum'):
+                    self.runner().execute()
+                self.assertEqual(self.commands(), [])
+                self.assertEqual((self.server / name).read_bytes(), b'operator edited quest' if changed else originals[name])
+
+    def test_tutorial_rechecks_after_stop_without_overwriting_the_detected_edit(self):
+        self.tutorial_candidate()
+        name = 'config/ftbquests/quests/chapters/welcome.snbt'
+        with self.hook.open('a') as stream:
+            stream.write('\nif name == "stop" and not (root / "stop-edit").exists():\n    (root / "stop-edit").write_text("once")\n    (root / "server/config/ftbquests/quests/chapters/welcome.snbt").write_bytes(b"operator edit after backup")\n')
+        with self.assertRaisesRegex(Exception, 'replacement.*checksum'):
+            self.runner().execute()
+        self.assertEqual((self.server / name).read_bytes(), b'operator edit after backup')
+        self.assertFalse(self.journal()['contentTouched'])
+        self.assertEqual(self.journal()['phase'], 'rolled_back')
+
+    def test_failed_tutorial_start_restores_quest_language_and_owned_receipt(self):
+        originals = self.tutorial_candidate()
+        receipt = (self.server / '.sunrin-owned-files.json').read_bytes()
+        (self.root / 'fail-health').write_text('target fails')
+        with self.assertRaises(Exception):
+            self.runner().execute()
+        for name, content in originals.items():
+            self.assertEqual((self.server / name).read_bytes(), content)
+        self.assertEqual((self.server / '.sunrin-owned-files.json').read_bytes(), receipt)
+        self.assertEqual(self.journal()['phase'], 'rolled_back')
+
+    def test_tutorial_exception_does_not_allow_other_config_or_localizer_paths(self):
+        self.runner()
+        for name in ['config/ftbquests/quests/chapters/operator.snbt',
+                     'config/ftbquests/quests/data.snbt', 'config/ftbquests/quests',
+                     'config/server.properties', 'kubejs/assets/ftbquestlocalizer/lang/fr_fr.json']:
+            with self.subTest(path=name), self.assertRaisesRegex(Exception, 'owned file'):
+                self.module.owned_entries([{'path': name, 'mode': 'replace', 'size': 1, 'sha256': 'a' * 64}])
+        with self.assertRaisesRegex(Exception, 'ifAbsent'):
+            self.module.owned_entries([{'path': 'config/sunrin/geonpi.json', 'mode': 'replace', 'size': 1, 'sha256': 'a' * 64}])
+
     def test_patch_core_retires_exact_previous_owned_version(self):
         self.owned_candidate()
         old_core = self.server / 'mods/sunrin-core-0.1.0.jar'

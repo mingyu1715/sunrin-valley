@@ -466,6 +466,19 @@ def safe_extract(archive_path, destination, *, max_bytes=2 * 1024**3, max_entrie
 
 
 UPSTREAM_CHAT_PATH = "kubejs/server_scripts/playerEvents/chatColors.js"
+QUEST_CHAPTER_PATHS = frozenset("config/ftbquests/quests/chapters/" + name for name in (
+    "abandoned_farm.snbt", "armor_weapons__tools.snbt", "artifacts.snbt", "banners.snbt",
+    "boiler_room.snbt", "botania.snbt", "crafts_room.snbt", "creatures.snbt", "crops.snbt",
+    "drinks.snbt", "fish_tank.snbt", "fishing.snbt", "gems.snbt", "getting_started.snbt",
+    "ii__building_up_the_farm.snbt", "iii__advanced_farming.snbt", "iv__prismatic_farming.snbt",
+    "ivi__mechanical_farming.snbt", "longwings.snbt", "minerals.snbt", "pantry.snbt",
+    "perfection.snbt", "relics.snbt", "slimes.snbt", "tools.snbt", "transportation.snbt",
+    "vault.snbt", "villagers.snbt", "welcome.snbt",
+))
+REVIEWED_UPSTREAM_PATHS = QUEST_CHAPTER_PATHS | {
+    UPSTREAM_CHAT_PATH, "kubejs/assets/ftbquestlocalizer/lang/ko_kr.json",
+    "kubejs/assets/ftbquestlocalizer/lang/en_us.json",
+}
 
 
 def overlay_owned_path(name):
@@ -474,7 +487,7 @@ def overlay_owned_path(name):
     parts = name.split("/")
     if any(not p or p in {".", ".."} or "\\" in p or ":" in p or p.rstrip(" .") != p or any(ord(c) < 32 for c in p) for p in parts):
         return False
-    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt", UPSTREAM_CHAT_PATH}:
+    if name in REVIEWED_UPSTREAM_PATHS | {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
         return True
     return (len(parts) >= 3 and parts[0] == "kubejs" and
             ((parts[1] in {"startup_scripts", "server_scripts", "client_scripts"} and parts[-1].startswith("sunrin_") and parts[-1].endswith(".js"))
@@ -501,28 +514,33 @@ def apply_owned_overlay(archive_path, destination, spec):
         name = item.get("path")
         if (not overlay_owned_path(name) or name.casefold() in seen
                 or item.get("mode", "replace") not in {"replace", "ifAbsent"}
-                or (name.startswith(("config/", "defaultconfigs/")) and item.get("mode") != "ifAbsent")
+                or (name.startswith(("config/", "defaultconfigs/")) and name not in QUEST_CHAPTER_PATHS
+                    and item.get("mode") != "ifAbsent")
                 or type(item.get("size")) is not int or not 0 < item["size"] <= 8 * 1024 ** 2
                 or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))):
             raise HostError("invalid-owned-overlay")
         seen.add(name.casefold())
     reviewed = spec.get("reviewedReplacements", [])
-    has_chat = UPSTREAM_CHAT_PATH.casefold() in seen
-    if (not isinstance(reviewed, list) or len(reviewed) != (1 if has_chat else 0)
-            or any(not isinstance(item, dict) or item.get("path") != UPSTREAM_CHAT_PATH
+    required_reviews = {item["path"] for item in files if item["path"] in REVIEWED_UPSTREAM_PATHS}
+    if (not isinstance(reviewed, list)
+            or any(not isinstance(item, dict) or not isinstance(item.get("path"), str) or item["path"] not in required_reviews
                    or item.get("mode", "replace") != "replace"
                    or type(item.get("size")) is not int or not 0 < item["size"] <= 8 * 1024 ** 2
                    or not re.fullmatch(r"[0-9a-f]{64}", item.get("sha256", ""))
-                   for item in reviewed)):
+                   for item in reviewed)
+            or len(reviewed) != len(required_reviews)
+            or {item["path"] for item in reviewed} != required_reviews):
         raise HostError("invalid-reviewed-upstream-replacement")
+    predecessors = {item["path"]: item for item in reviewed}
     # Validate every existing destination before writing the first overlay file.
     for item in files:
         target = Path(destination) / item["path"]
         if any(p.is_symlink() for p in [target, *target.parents] if p == Path(destination) or p.is_relative_to(Path(destination))):
             raise HostError("linked-overlay-target")
-        if item["path"] == UPSTREAM_CHAT_PATH and target.exists():
+        if item["path"] in required_reviews and target.exists():
             try:
-                verify_file(target, size=reviewed[0]["size"], algorithm="sha256", digest=reviewed[0]["sha256"])
+                predecessor = predecessors[item["path"]]
+                verify_file(target, size=predecessor["size"], algorithm="sha256", digest=predecessor["sha256"])
             except HostError:
                 raise HostError("owned-overlay-predecessor-mismatch") from None
     stage = Path(destination).with_name(".sunrin-overlay-" + uuid.uuid4().hex)

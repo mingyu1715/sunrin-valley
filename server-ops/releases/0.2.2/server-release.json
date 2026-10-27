@@ -1,0 +1,478 @@
+{
+  "formatVersion": 1,
+  "version": "0.2.2",
+  "managedPaths": [],
+  "archive": {
+    "path": "../../../release/server/0.2.2/Sunrin-Owned-Update.zip",
+    "sha256": "8a70bf69500d7f38bb32126d343aed5a576404af176fb369b410d9ef9a628ea4"
+  },
+  "clientRelease": "../../../release/server/0.2.2/client-release.json",
+  "ownedFileMerge": {
+    "files": [
+      {
+        "path": "config/ftbquests/quests/chapters/abandoned_farm.snbt",
+        "size": 4459,
+        "sha256": "9cffe793c8ba3e76b07cd35aaf6cab5a6f2750e947da48988f26b8f5e0721190",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/armor_weapons__tools.snbt",
+        "size": 42123,
+        "sha256": "86549e63a45a3245cfc28ab243d7fda3f08a401b29e040a4608a87cb104ac85e",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/artifacts.snbt",
+        "size": 11535,
+        "sha256": "a8abc29c388502218afb7d4d862192c45725fdca04a595b3676298fa5ebf5f57",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/banners.snbt",
+        "size": 84689,
+        "sha256": "48a055cf2d057e9048f1869fb56188c40a409b07f24e267488f01b7eeb0f3be8",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/boiler_room.snbt",
+        "size": 9213,
+        "sha256": "97ed864b8788b0aadddc800b9aa2bf6706520ff58dea5e798524a9d121529a50",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/botania.snbt",
+        "size": 28553,
+        "sha256": "2f06187bb7e61b35a6db43969d75ec0ad31e136ec42f30c149c77f9ba89eb31e",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/crafts_room.snbt",
+        "size": 10177,
+        "sha256": "845a8ee88b0f3f34bb26761f1c3dd9c1cfee11df71d3438c4c9bcb0179877d74",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/creatures.snbt",
+        "size": 10099,
+        "sha256": "b8e70575dba7f736c3b8ef3c94d0261a79bc076a74934a1ce3da2a049a978e21",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/crops.snbt",
+        "size": 60985,
+        "sha256": "acd334bdc753d05db3966609163152b433b68d6ff48adc7d1e825598f9992fbb",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/drinks.snbt",
+        "size": 37913,
+        "sha256": "1165a6edc9f0784b57293b76eb4c7f22c26eb5ba2589e68a7eaa9b0c9bbcdf0f",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/fish_tank.snbt",
+        "size": 7786,
+        "sha256": "f6e7e19bfeb6cce73af14e72948644b884284d949efd4f720597e2409b15fa83",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/fishing.snbt",
+        "size": 50231,
+        "sha256": "6d3d884d99d94e0f7d3d11165ea7c6b5b9479b476be3f6885e265667e801816f",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/gems.snbt",
+        "size": 11375,
+        "sha256": "8b667beeec220b17c6d0e06ae1c9325f8b4dc233dd8deb6458195c7c28acf6c6",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/getting_started.snbt",
+        "size": 20084,
+        "sha256": "b1610f3234bb15d95bfa0fe4ee1c5a402ee91a1a9e0bc66ba6a7075810a18f69",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/ii__building_up_the_farm.snbt",
+        "size": 68439,
+        "sha256": "06eda7e37cecfcd8ba1ed99b213455555ab223f3f11ac5747664c3113c89afae",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/iii__advanced_farming.snbt",
+        "size": 44895,
+        "sha256": "fc6fd8ddaa78f8710e6177bf69a5068c45ae209e8b12166f463b6b0c5dadc959",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/iv__prismatic_farming.snbt",
+        "size": 57868,
+        "sha256": "0f2e4df7c19d10f8c21d34104a3bd1d5035341ae3c6b9d817fbcc2787ba745b7",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/ivi__mechanical_farming.snbt",
+        "size": 34896,
+        "sha256": "1a273f92b24108581a00fa209cd489b558a7be74c7764cbcd6834d8103662f67",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/longwings.snbt",
+        "size": 66769,
+        "sha256": "78dd1300f7ae0791cd7184638be183eb0a033aa96e513f76c24895229f146d0f",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/minerals.snbt",
+        "size": 32820,
+        "sha256": "fdecefd1f9e93b6cf7003ba3aa3c7b16025844bb1082d19dcb9827a9795438a0",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/pantry.snbt",
+        "size": 8218,
+        "sha256": "d6061d9b6337d717ef8ef73aeb72a7510012945958578a87486a9cda3033771b",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/perfection.snbt",
+        "size": 19353,
+        "sha256": "dab1dd4ebba1f89a63ce2fa7e694987777ef14ef63f0fd5be311f49ed9d6205a",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/relics.snbt",
+        "size": 19290,
+        "sha256": "8ac2c29ea8a147eebcd991d068c1cac42d34ec8a2aa430835206924c2d2f93e1",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/slimes.snbt",
+        "size": 22063,
+        "sha256": "5f97c5fe2d088ff90289689b5bf7c1e28de8f4c544c2a9e11e5c7a0373e29c99",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/tools.snbt",
+        "size": 19105,
+        "sha256": "b74238bded3290929764be5b74b952fc7abba51c508efd848455a06aa2e98b41",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/transportation.snbt",
+        "size": 18112,
+        "sha256": "52c611ed3b546b6e1fa25ae5a36994748c25a15ee922fb4e236044381aa4d92d",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/vault.snbt",
+        "size": 4558,
+        "sha256": "3908c4cd1df9f7517a31f2c9463f7bba34ffd417f35ad2a8d668b40d4c646de2",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/villagers.snbt",
+        "size": 12587,
+        "sha256": "5b285cd77ac36760923c21d1972e961419a19ad8d093de412774991b202b7e42",
+        "mode": "replace"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/welcome.snbt",
+        "size": 9748,
+        "sha256": "bc18bf8fe9dcf63c99b10bdc48971edcc982341609a713c9f1bda2383ba2c664",
+        "mode": "replace"
+      },
+      {
+        "path": "config/sunrin/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "defaultconfigs/ftbchunks/ftbchunks-world.snbt",
+        "size": 52,
+        "sha256": "1de1b32ea52fd3e1b8ae3097da92eaaaf45f4abc84da98ee78da7a51bfead42f",
+        "mode": "ifAbsent"
+      },
+      {
+        "path": "kubejs/assets/ftbquestlocalizer/lang/en_us.json",
+        "size": 235750,
+        "sha256": "4c7d61a4ac8bb404092af52621598ebbeb11f7fc374b89e701b9af48245d61cc",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/assets/ftbquestlocalizer/lang/ko_kr.json",
+        "size": 255451,
+        "sha256": "936eff45357891723345353a3a180b116eb170feff558540c63a41382bbb5995",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/furniture-box.json",
+        "size": 125393,
+        "sha256": "35549f8af8ea3d704cfa445931b24592e46d2a4fd326f633b2e5f426faaed63c",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/geonpi.json",
+        "size": 127,
+        "sha256": "bb689defd74aba812ac242548df39c132c1fe918e551c63b6e3d94f9d58d9536",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/defaults/random-box.json",
+        "size": 1099,
+        "sha256": "fe017d35ad897fbe218695b5c6cd23c6411a85d43a433b73b6c1812d0fbfbdd1",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/data/sunrin/furniture-selection.json",
+        "size": 52642,
+        "sha256": "ee282c9b274cb5a099d6269f395c5222452504fd7a68d6b27a853656922d1ba4",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "size": 1940,
+        "sha256": "c4d99c7b1a8ed7bde777719485ce19b5c14a5c156eb7e3a1f44038f948d4d70d",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/sunrin_community_start.js",
+        "size": 13652,
+        "sha256": "c95738b07478fd656cc73f72705cb14287fb4275dc4e08cd7252adebd6d50d1a",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/server_scripts/sunrin_policy.js",
+        "size": 20173,
+        "sha256": "363c18382bdf4f77ea6db3182fa475f9bb1971a9126483188235d6ef69ed63de",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_bridge.js",
+        "size": 880,
+        "sha256": "e1a898b9689ff2db02c13433bf77feae13534e68bf080a62f0e7f3c09be89738",
+        "mode": "replace"
+      },
+      {
+        "path": "kubejs/startup_scripts/sunrin_items.js",
+        "size": 836,
+        "sha256": "24becd722623259ff00c5a7623837cd118ef12511fe05bd9339e268b2ff8a0c9",
+        "mode": "replace"
+      },
+      {
+        "path": "mods/sunrin-core-0.1.1.jar",
+        "size": 80748,
+        "sha256": "a11cc9006ab509ef9b2c059bd2ba3c09b879659e1ebe70d6cf25615236befcb2",
+        "mode": "replace"
+      },
+      {
+        "path": "mods/beatlamp-forge-1.20.1-1.2.2.jar",
+        "size": 547786,
+        "sha256": "1d2ec14285fee25db6e86f784c11d54b3e4eae9be4bddb525479e720638fd84f",
+        "mode": "replace"
+      }
+    ],
+    "reviewedReplacements": [
+      {
+        "path": "kubejs/server_scripts/playerEvents/chatColors.js",
+        "mode": "replace",
+        "size": 1664,
+        "sha256": "ee3e68554ab092f813c3b822eba6ef38fda1be45a29230d984fe2944d92ccff1"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/perfection.snbt",
+        "mode": "replace",
+        "size": 15548,
+        "sha256": "f8eed360832277302d7489a6293802ce0c6de25b3d9bfdc637ba56719209789e"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/boiler_room.snbt",
+        "mode": "replace",
+        "size": 8403,
+        "sha256": "c4904495e7f0ef3a291ac47662b093262803bb6da429ea65cfabf8f7e60a78a2"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/getting_started.snbt",
+        "mode": "replace",
+        "size": 23063,
+        "sha256": "8a88b1e60a34d9c508811d190e2b94de784c30b82a726a5b026cafa148784751"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/pantry.snbt",
+        "mode": "replace",
+        "size": 7245,
+        "sha256": "8d0161b9014615bfe54ef35772bb81d7248f5442c47a2f74ccbb9d544531b05f"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/crops.snbt",
+        "mode": "replace",
+        "size": 44717,
+        "sha256": "a8a74ca1545ab39217512c189d406d5253e84cfd4110e2238d9528b13765f7dd"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/longwings.snbt",
+        "mode": "replace",
+        "size": 51575,
+        "sha256": "b8a8614757b35b59c43b331f99fb2d864beb0c9dce18ba235a7a14209ba3ef82"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/slimes.snbt",
+        "mode": "replace",
+        "size": 17609,
+        "sha256": "fdd05ae1c6c239ab244c0a79879809118b0c5ba1f21fa90aa10953f2951f8d3a"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/abandoned_farm.snbt",
+        "mode": "replace",
+        "size": 4138,
+        "sha256": "2447e73afdd53e2250fbe40104a6e4b9d9daf7de1d3763ad18a30faf57112643"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/botania.snbt",
+        "mode": "replace",
+        "size": 23310,
+        "sha256": "1b1e6d7ef52a66bc5222df90f7b9337930a981efe2ec1ee4def1db815f6d318e"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/artifacts.snbt",
+        "mode": "replace",
+        "size": 6544,
+        "sha256": "eaf3b6cdf98ba97d8fbdca228cae547afa57eb0b9c3d81e3edd7e3e19cf1a11d"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/armor_weapons__tools.snbt",
+        "mode": "replace",
+        "size": 35577,
+        "sha256": "3dbec13dda1a459b2c78bd3ea39670a9b9153339239b4e6955415f122aa936a9"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/minerals.snbt",
+        "mode": "replace",
+        "size": 24297,
+        "sha256": "9d5825cc86bdbfedc51f4fbe93b99177978926bd568d4f68036f569d941b96a2"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/creatures.snbt",
+        "mode": "replace",
+        "size": 8469,
+        "sha256": "ce4926ce76f8da38f2674f541e8efc101a906913e5161319107429d0b7ad7523"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/banners.snbt",
+        "mode": "replace",
+        "size": 46468,
+        "sha256": "3303853da9e33a89acf72ffd3830e04ced4a4603371a59e423924c85a0c6190d"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/fishing.snbt",
+        "mode": "replace",
+        "size": 35927,
+        "sha256": "daa334e9792776dc76a59257956fa6d3ded8810ee0e8829eb986728b6c2567d1"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/relics.snbt",
+        "mode": "replace",
+        "size": 14657,
+        "sha256": "ca44d80b9c8942e50b1647ab3e5310fce9d4a5c40d288af4c416440a2bb90972"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/crafts_room.snbt",
+        "mode": "replace",
+        "size": 9209,
+        "sha256": "c8f972969f5888fb55b23e98c18df065dd81dba8b5c83e417080565ac7369879"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/gems.snbt",
+        "mode": "replace",
+        "size": 8727,
+        "sha256": "a4e3bcabee0d4192a8f7b2cc23a4ffec6994f3dcf383e9f115b7f41555b34191"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/transportation.snbt",
+        "mode": "replace",
+        "size": 14830,
+        "sha256": "f61faf04e0940806094169eee5ce245db2e9c71525089c1cc635535ced997bdc"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/ii__building_up_the_farm.snbt",
+        "mode": "replace",
+        "size": 57500,
+        "sha256": "9371298e984751ce838a6f54d86d250115c784d1d3f6509e3e978824ef12c046"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/ivi__mechanical_farming.snbt",
+        "mode": "replace",
+        "size": 28028,
+        "sha256": "ce3b40120aa0c56cee50c7918a9f820b2e3f043e52f1cf01eefee86ddd68c5b4"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/vault.snbt",
+        "mode": "replace",
+        "size": 3748,
+        "sha256": "c9638b6dd81df2bfcc0d08c3f4dcc703c9a356d92169aa7e28342d335b6395f4"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/fish_tank.snbt",
+        "mode": "replace",
+        "size": 6818,
+        "sha256": "3a0d7e24f8d56091b6bd82788a15ede17aaab42d441e624452e86601bfbdd95f"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/iv__prismatic_farming.snbt",
+        "mode": "replace",
+        "size": 47071,
+        "sha256": "4ef4c631fd855d37685bab97702b4d0013e1f04482670b27a6abc344e7c55e9b"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/villagers.snbt",
+        "mode": "replace",
+        "size": 10198,
+        "sha256": "59734e1fbdaa410a440036852a35fcade05a61e62427d691a9b10783ed47d52e"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/drinks.snbt",
+        "mode": "replace",
+        "size": 22767,
+        "sha256": "6280eadcdae3500c92b80a8921b0bbe0cfb70acc06457945ef810e3565c7680d"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/iii__advanced_farming.snbt",
+        "mode": "replace",
+        "size": 36686,
+        "sha256": "b353279591b31cd746969a547fec24ac2ea980aa11353356b19b930d7cef9a81"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/tools.snbt",
+        "mode": "replace",
+        "size": 16144,
+        "sha256": "d9eaf28801854685e1f37c5100cd1bf7d3a55ac07ff6232ac4d1c06c8b2c6444"
+      },
+      {
+        "path": "config/ftbquests/quests/chapters/welcome.snbt",
+        "mode": "replace",
+        "size": 11341,
+        "sha256": "973f772e51c905c6b17fe60332fd217e8f8e6b29d4bb2b32f5d66a6ae66b410c"
+      },
+      {
+        "path": "kubejs/assets/ftbquestlocalizer/lang/ko_kr.json",
+        "mode": "replace",
+        "size": 252401,
+        "sha256": "69c021bf0c6dba24928c932510cbbe8842e9010a73f5d941f66f074be1f5bd1a"
+      },
+      {
+        "path": "kubejs/assets/ftbquestlocalizer/lang/en_us.json",
+        "mode": "replace",
+        "size": 233257,
+        "sha256": "de48c1ecad823a237bcdf1fcbc43cf345f2b6f8d3ddb2f2da49c920315d6ce2d"
+      }
+    ]
+  },
+  "migrations": [],
+  "bootstrapMarker": {
+    "packId": "sunrin-valley-server-0.2.2",
+    "lockSha256": "da79e9ebf19ce1d44a3bf25589515bef0d19e9830f880318ce3e30d2aabbc867",
+    "modCount": 316
+  }
+}

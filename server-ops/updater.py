@@ -102,6 +102,19 @@ def file_hash(path):
 OWNED_RECEIPT = ".sunrin-owned-files.json"
 BOOTSTRAP_MARKER = ".sunrin-server-complete.json"
 UPSTREAM_CHAT_PATH = "kubejs/server_scripts/playerEvents/chatColors.js"
+QUEST_CHAPTER_PATHS = frozenset("config/ftbquests/quests/chapters/" + name for name in (
+    "abandoned_farm.snbt", "armor_weapons__tools.snbt", "artifacts.snbt", "banners.snbt",
+    "boiler_room.snbt", "botania.snbt", "crafts_room.snbt", "creatures.snbt", "crops.snbt",
+    "drinks.snbt", "fish_tank.snbt", "fishing.snbt", "gems.snbt", "getting_started.snbt",
+    "ii__building_up_the_farm.snbt", "iii__advanced_farming.snbt", "iv__prismatic_farming.snbt",
+    "ivi__mechanical_farming.snbt", "longwings.snbt", "minerals.snbt", "pantry.snbt",
+    "perfection.snbt", "relics.snbt", "slimes.snbt", "tools.snbt", "transportation.snbt",
+    "vault.snbt", "villagers.snbt", "welcome.snbt",
+))
+REVIEWED_UPSTREAM_PATHS = QUEST_CHAPTER_PATHS | {
+    UPSTREAM_CHAT_PATH, "kubejs/assets/ftbquestlocalizer/lang/ko_kr.json",
+    "kubejs/assets/ftbquestlocalizer/lang/en_us.json",
+}
 
 
 def owned_path(name):
@@ -110,7 +123,7 @@ def owned_path(name):
     path = PurePosixPath(name)
     if str(path) != name or not all(safe_part(p) for p in path.parts):
         return False
-    if name in {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt", UPSTREAM_CHAT_PATH}:
+    if name in REVIEWED_UPSTREAM_PATHS | {"config/sunrin/geonpi.json", "defaultconfigs/ftbchunks/ftbchunks-world.snbt"}:
         return True
     if len(path.parts) == 2 and path.parts[0] == "mods":
         return bool(re.fullmatch(r"(?:sunrin-core-[0-9.]+|beatlamp-forge-1\.20\.1-[0-9.]+|StageBox-Mod-1\.1\.2-Forge-1\.20\.1)\.jar", path.name))
@@ -133,7 +146,8 @@ def owned_entries(value):
         if path.casefold() in seen:
             raise UpdateError("owned files contain colliding paths")
         seen.add(path.casefold())
-        if (path.startswith(("config/", "defaultconfigs/")) and item.get("mode") != "ifAbsent"):
+        if (path.startswith(("config/", "defaultconfigs/")) and path not in QUEST_CHAPTER_PATHS
+                and item.get("mode") != "ifAbsent"):
             raise UpdateError("config defaults must use ifAbsent")
     return value
 
@@ -383,7 +397,7 @@ class Updater:
             raise UpdateError("invalid ownedFileMerge")
         self.merge_files = owned_entries(merge.get("files", []))
         self.reviewed_replacements = owned_entries(merge.get("reviewedReplacements", []))
-        if any(item["path"] != UPSTREAM_CHAT_PATH or item.get("mode", "replace") != "replace"
+        if any(item["path"] not in REVIEWED_UPSTREAM_PATHS or item.get("mode", "replace") != "replace"
                or item["path"] not in {entry["path"] for entry in self.merge_files}
                for item in self.reviewed_replacements):
             raise UpdateError("invalid reviewed upstream replacement")
@@ -630,17 +644,17 @@ class Updater:
         previous = {item["path"] for item in self.previous_files}
         reviewed = {item["path"]: item for item in self.reviewed_replacements}
         for item in self.merge_files:
-            if item["path"] != UPSTREAM_CHAT_PATH or item["path"] in previous:
+            if item["path"] not in REVIEWED_UPSTREAM_PATHS or item["path"] in previous:
                 continue
             target = self.server / item["path"]
             if not target.exists() and not target.is_symlink():
                 continue
             predecessor = reviewed.get(item["path"])
             if predecessor is None:
-                raise UpdateError("upstream chat requires a reviewed replacement")
+                raise UpdateError("upstream file requires a reviewed replacement")
             if (not target.is_file() or target.is_symlink() or target.stat().st_size != predecessor["size"]
                     or file_hash(target) != predecessor["sha256"]):
-                raise UpdateError("reviewed replacement checksum mismatch; upstream chat preserved")
+                raise UpdateError("reviewed replacement checksum mismatch; upstream file preserved")
 
     def apply_migrations(self):
         if "ftbchunks-member-limit" in self.migrations:

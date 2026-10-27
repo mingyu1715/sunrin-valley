@@ -10,7 +10,7 @@ const copy = x => JSON.parse(JSON.stringify(x));
 function fixture(options = {}) {
   const handlers = {}, files = new Map(), commits = [], rejections = [], grants = [], requests = [], errors = [];
   let now = 100000, roll = 0;
-  const missing = new Set(options.missing || []), delivered = new Set();
+  const missing = new Set(options.missing || []), delivered = options.journal || new Set();
   const items = { exists: id => !missing.has(id), of(id, count = 1, nbt) { if(options.failItem)throw Error('fixture item construction failed '+ 'x'.repeat(5000)); if (typeof count !== 'number') { nbt = count; count = 1; } return { id, count, nbt: nbt || null, isEmpty() { return id === 'minecraft:air' || missing.has(id); } }; } };
   const bridge = {
     readConfig(name) {
@@ -22,12 +22,18 @@ function fixture(options = {}) {
     },
     commitBox(...args) { commits.push(args); return true; }, rejectOpen(...args) { rejections.push(args); },
     requestOpen(...args) { requests.push(args); }, isOperator(p) { return !!p.operator; }, displayName(p) { return p.username; },
-    grantJson(p, id, payload) { const rewards=JSON.parse(payload).map(x=>({id:x.item,count:x.count})); grants.push({ p, id, rewards }); if (options.failGrant) return false; if (!delivered.has(id)) { delivered.add(id); p.received.push(...rewards); } return true; },
+    grantJson(p, id, payload) {
+      const rewards=JSON.parse(payload).map(x=>({id:x.item,count:x.count}));
+      const attempt={p,id,payload,rewards};grants.push(attempt);
+      if (options.failGrant || (options.grant && options.grant(attempt) === false)) return false;
+      if (!delivered.has(id)) { delivered.add(id); p.received.push(...rewards); }
+      return true;
+    },
   };
   const players = [], server = { getTickCount: () => 20, players, getPlayerList: () => ({ getPlayer: uuid => players.find(p => p.uuid === String(uuid)) || null }) };
   function player(uuid = '00000000-0000-0000-0000-000000000001') {
     // KubeJS's pinned EntityKJS wrapper exposes getUuid(), not the Mojang getUUID().
-    const p = { uuid, username: 'tester', server, persistentData: { getString(k) { return this[k] || ''; }, putString(k, v) { this[k] = v; } }, received: [], messages: [], tell(x) { this.messages.push(x); }, getUuid: () => uuid, isFake: () => false };
+    const p = { uuid, username: 'tester', server, persistentData: { getString(k) { return this[k] || ''; }, putString(k, v) { if(options.write)options.write(k,v);this[k] = v; } }, received: [], messages: [], tell(x) { this.messages.push(x); }, getUuid: () => uuid, isFake: () => !!options.fake };
     players.push(p); return p;
   }
   const commandTrees = [];
@@ -62,7 +68,7 @@ function fixture(options = {}) {
   assert.ok(fs.existsSync(script), 'Server reward policy script must exist');
   function reload() { vm.runInNewContext(fs.readFileSync(script, 'utf8'), context, { filename: script }); }
   reload();
-  return { context, handlers, files, commits, rejections, grants, requests, errors, player:worldPlayer, server, world, commands, run, commandTrees, reload, setNow: x => now = x, advance: x => now += x, setRoll: x => roll = x,
+  return { context, handlers, files, commits, rejections, grants, requests, errors, journal:delivered, player:worldPlayer, server, world, commands, run, commandTrees, reload, setNow: x => now = x, advance: x => now += x, setRoll: x => roll = x,
     load() { handlers['server.loaded']({server}); }, open(p, kind='random', id='request-1') { context.global.sunrinHandleBoxRequest({ getPlayer:()=>p, getRequestId:()=>id, getKind:()=>kind }); },
     login(p) { handlers['player.loggedIn']({player:p, server}); }, tick(p) { handlers['player.tick']({player:p, server}); }, logout(p) { handlers['player.loggedOut']({player:p, server}); },
   };
@@ -146,11 +152,20 @@ test('right click forwards only main hand and suppresses duplicate tick requests
 });
 
 test('first grant happens once and online rounds exclude offline and clock jumps', () => {
-  const f=fixture();f.load();const p=f.player();f.login(p);assert.deepEqual(f.grants[0].rewards.map(x=>[x.id,x.count]),[['kubejs:random_box',15],['kubejs:furniture_random_box',15]]);
+  const f=fixture();f.load();const p=f.player();f.login(p);
+  assert.deepEqual(grantRequests(f),[{id:'sunrin:first:v1:'+p.uuid,payload:FIRST_BOX_PAYLOAD}]);
+  assert.deepEqual(p.messages,[],'first-login gifts must not announce a 30-minute reward');
   f.logout(p);f.advance(86400000);f.login(p);assert.equal(f.grants.length,1);
-  for(let i=0;i<1800;i++){f.advance(1000);f.tick(p);}assert.equal(f.grants.length,2);assert.deepEqual(f.grants[1].rewards.map(x=>x.count),[5,5]);
-  f.advance(-100000);f.tick(p);f.advance(86400000);f.tick(p);assert.equal(f.grants.length,2);
-  f.logout(p);f.login(p);assert.equal(f.grants.length,2);
+  elapse(f,p,1800);
+  const expected=[
+    {id:'sunrin:first:v1:'+p.uuid,payload:FIRST_BOX_PAYLOAD},
+    {id:'sunrin:online:v1:'+p.uuid+':1',payload:ROUND_BOX_PAYLOAD},
+    {id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD},
+  ];
+  assert.deepEqual(grantRequests(f),expected);assert.equal(p.messages.length,1);assertNotice(p.messages[0],5,10);
+  f.advance(-100000);f.tick(p);f.advance(86400000);f.tick(p);
+  assert.equal(JSON.parse(p.persistentData.sunrinRewardsV1).elapsedMs,1805000,'reversed clocks are discarded and delayed samples are capped at five seconds');
+  f.logout(p);f.login(p);assert.deepEqual(grantRequests(f),expected);assert.equal(p.messages.length,1);
 });
 
 test('failed grants preserve deterministic retry IDs without increasing paid rounds', () => {
@@ -194,11 +209,127 @@ test('furniture rejects uninitialized adv items and duplicate IDs without delive
 });
 
 test('playtime restart reuses persisted total and Core journal grant IDs prevent crash replay',()=>{
- const f=fixture();f.load();const p=f.player();f.login(p);for(let i=0;i<900;i++){f.advance(1000);f.tick(p);}f.logout(p);
- const g=fixture();g.load();const restored=g.player();restored.persistentData.sunrinRewardsV1=p.persistentData.sunrinRewardsV1;g.login(restored);assert.equal(g.grants.length,0);
- for(let i=0;i<900;i++){g.advance(1000);g.tick(restored);}assert.equal(g.grants.length,1);assert.match(g.grants[0].id,/:1$/);
+ const f=fixture();f.load();const p=f.player();f.login(p);elapse(f,p,900);f.logout(p);assert.deepEqual(p.messages,[]);
+ const g=fixture();g.load();const restored=g.player();restored.persistentData.sunrinRewardsV1=p.persistentData.sunrinRewardsV1;restored.persistentData.sunrinMealRewardsV1=p.persistentData.sunrinMealRewardsV1;g.login(restored);assert.equal(g.grants.length,0);
+ elapse(g,restored,899);assert.equal(g.grants.length,0);elapse(g,restored,1);
+ assert.deepEqual(grantRequests(g),[
+   {id:'sunrin:online:v1:'+restored.uuid+':1',payload:ROUND_BOX_PAYLOAD},
+   {id:'sunrin:meal-online:v1:'+restored.uuid+':1',payload:MEAL_PAYLOAD},
+ ]);
+ assert.equal(restored.messages.length,1);assertNotice(restored.messages[0],5,10);
  // Simulate a successful Core delivery whose player NBT had not been saved before a crash.
  const h=fixture();h.load();const c=h.player();h.login(c);c.persistentData.sunrinRewardsV1='';h.logout(c);c.persistentData.sunrinRewardsV1='';h.login(c);assert.equal(h.grants[0].id,h.grants[1].id);assert.equal(c.received.length,2);
+});
+
+// Literal request contracts keep the original box IDs/payloads visible alongside the new meal stream.
+const FIRST_BOX_PAYLOAD='[{"item":"kubejs:random_box","count":15},{"item":"kubejs:furniture_random_box","count":15}]';
+const ROUND_BOX_PAYLOAD='[{"item":"kubejs:random_box","count":5},{"item":"kubejs:furniture_random_box","count":5}]';
+const MEAL_PAYLOAD='[{"item":"kubejs:sunrin_meal","count":10}]';
+const grantRequests=f=>f.grants.map(({id,payload})=>({id,payload}));
+function elapse(f,p,seconds){for(let i=0;i<seconds;i++){f.advance(1000);f.tick(p);}}
+function seedPlaytime(p,elapsedMs,paidRounds,paidThroughRound,first=true){
+  p.persistentData.sunrinRewardsV1=JSON.stringify({first,elapsedMs,paidRounds});
+  if(paidThroughRound!==undefined)p.persistentData.sunrinMealRewardsV1=JSON.stringify({paidThroughRound});
+}
+function assertNotice(message,boxes,meals){
+  assert.equal(typeof message,'string','the native player receives plain chat text');assert.match(message,/30분/);
+  if(boxes){assert.match(message,new RegExp('랜덤상자\\s*'+boxes+'개'));assert.match(message,new RegExp('가구 랜덤상자\\s*'+boxes+'개'));}
+  else assert.doesNotMatch(message,/랜덤상자/);
+  if(meals)assert.match(message,new RegExp('선린 급식\\s*'+meals+'개'));
+  else assert.doesNotMatch(message,/선린 급식/);
+}
+
+test('legacy meal migration skips historical food while preserving pending box IDs and actual notifications',()=>{
+  // Catches seeding from paid boxes, backpaying meals, and falsely announcing the migration cursor.
+  const operations=[];
+  const f=fixture({write:(key,value)=>operations.push({key,value}),grant:row=>operations.push({id:row.id})});f.load();
+  const p=f.player();seedPlaytime(p,5400000,2);f.login(p);
+  assert.deepEqual(grantRequests(f),[{id:'sunrin:online:v1:'+p.uuid+':3',payload:ROUND_BOX_PAYLOAD}]);
+  assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":3}');
+  assert.ok(operations.findIndex(row=>row.key==='sunrinMealRewardsV1')<operations.findIndex(row=>row.id),'seed persists before either payout');
+  assert.equal(p.messages.length,1);assertNotice(p.messages[0],5,0);elapse(f,p,1799);assert.equal(f.grants.length,1);elapse(f,p,1);
+  assert.deepEqual(grantRequests(f),[
+    {id:'sunrin:online:v1:'+p.uuid+':3',payload:ROUND_BOX_PAYLOAD},
+    {id:'sunrin:online:v1:'+p.uuid+':4',payload:ROUND_BOX_PAYLOAD},
+    {id:'sunrin:meal-online:v1:'+p.uuid+':4',payload:MEAL_PAYLOAD},
+  ]);assert.equal(p.messages.length,2);assertNotice(p.messages[1],5,10);
+});
+
+test('food acknowledgement failures retry the same ID and report only successful independent reward streams',()=>{
+  // Catches optimistic cursor advancement, box replay, and notifications for food that Core rejected.
+  for(const failure of ['false','throw']){
+    let failing=true;
+    const f=fixture({grant:row=>{if(failing&&row.id.startsWith('sunrin:meal-online:')){if(failure==='throw')throw Error('food unavailable');return false;}}});f.load();
+    const p=f.player();seedPlaytime(p,1799000,0,0);f.login(p);elapse(f,p,1);
+    assert.equal(p.messages.length,1);assertNotice(p.messages[0],5,0);
+    assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":0}');
+    assert.equal(JSON.parse(p.persistentData.sunrinRewardsV1).paidRounds,1);
+    failing=false;f.tick(p);
+    assert.deepEqual(grantRequests(f),[
+      {id:'sunrin:online:v1:'+p.uuid+':1',payload:ROUND_BOX_PAYLOAD},
+      {id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD},
+      {id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD},
+    ]);assert.equal(p.messages.length,2);assertNotice(p.messages[1],0,10);
+    assert.deepEqual(p.received,[{id:'kubejs:random_box',count:5},{id:'kubejs:furniture_random_box',count:5},{id:'kubejs:sunrin_meal',count:10}]);
+    f.tick(p);assert.equal(f.grants.length,3);assert.equal(p.messages.length,2);
+  }
+  const f=fixture({grant:row=>!row.id.startsWith('sunrin:first:')});f.load();const p=f.player();seedPlaytime(p,1800000,0,0,false);f.login(p);
+  assert.deepEqual(grantRequests(f),[{id:'sunrin:first:v1:'+p.uuid,payload:FIRST_BOX_PAYLOAD},{id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD}]);
+  assert.equal(p.messages.length,1);assertNotice(p.messages[0],0,10);assert.equal(JSON.parse(p.persistentData.sunrinRewardsV1).first,false);
+});
+
+test('partial catch-up announces acknowledged quantities once and the next retry pays only the remaining round',()=>{
+  // Catches hardcoded single-round notices and counting a due round that did not succeed.
+  let failing=true;const f=fixture({grant:row=>!(failing&&row.id.endsWith(':3'))});f.load();
+  const p=f.player();seedPlaytime(p,5400000,0,0);f.login(p);
+  assert.deepEqual(grantRequests(f),[
+    {id:'sunrin:online:v1:'+p.uuid+':1',payload:ROUND_BOX_PAYLOAD},{id:'sunrin:online:v1:'+p.uuid+':2',payload:ROUND_BOX_PAYLOAD},{id:'sunrin:online:v1:'+p.uuid+':3',payload:ROUND_BOX_PAYLOAD},
+    {id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD},{id:'sunrin:meal-online:v1:'+p.uuid+':2',payload:MEAL_PAYLOAD},{id:'sunrin:meal-online:v1:'+p.uuid+':3',payload:MEAL_PAYLOAD},
+  ]);assert.equal(p.messages.length,1);assertNotice(p.messages[0],10,20);assert.equal(p.received.length,6);
+  failing=false;f.tick(p);assert.deepEqual(grantRequests(f).slice(6),[{id:'sunrin:online:v1:'+p.uuid+':3',payload:ROUND_BOX_PAYLOAD},{id:'sunrin:meal-online:v1:'+p.uuid+':3',payload:MEAL_PAYLOAD}]);
+  assert.equal(p.messages.length,2);assertNotice(p.messages[1],5,10);assert.equal(p.received.length,9);
+});
+
+test('malformed meal persistence disables only food while legacy corruption, fake players and absent Core stay closed',()=>{
+  // Catches silently resetting corrupt data or bypassing the existing fail-closed player/Core gates.
+  for(const corrupt of ['{broken','null','[]','{}','{"paidThroughRound":-1}','{"paidThroughRound":0.5}','{"paidThroughRound":"0"}','{"paidThroughRound":2}']){
+    const f=fixture();f.load();const p=f.player();seedPlaytime(p,1799000,0);p.persistentData.sunrinMealRewardsV1=corrupt;f.login(p);elapse(f,p,1);
+    assert.deepEqual(grantRequests(f),[{id:'sunrin:online:v1:'+p.uuid+':1',payload:ROUND_BOX_PAYLOAD}]);
+    assert.equal(p.persistentData.sunrinMealRewardsV1,corrupt);assert.ok(f.errors.some(line=>line.includes('Meal disabled')));
+    assert.equal(p.messages.length,1);assertNotice(p.messages[0],5,0);
+  }
+  for(const corrupt of ['{broken','null','{"first":true,"elapsedMs":-1,"paidRounds":0}','{"first":true,"elapsedMs":0,"paidRounds":1}']){
+    const f=fixture();f.load();const p=f.player();p.persistentData.sunrinRewardsV1=corrupt;p.persistentData.sunrinMealRewardsV1='{"paidThroughRound":0}';f.login(p);
+    assert.deepEqual(f.grants,[]);assert.deepEqual(p.messages,[]);assert.equal(p.persistentData.sunrinRewardsV1,corrupt);
+    assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":0}');assert.ok(f.errors.some(line=>line.includes('Playtime disabled')));
+  }
+  for(const options of [{fake:true},{noCore:true}]){
+    const f=fixture(options);f.load();const p=f.player();seedPlaytime(p,1799000,0,0);f.login(p);elapse(f,p,1);
+    assert.deepEqual(f.grants,[]);assert.deepEqual(p.messages,[]);assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":0}');
+  }
+});
+
+test('chat failure never disables or replays rewards and saved cursors silence rejoin and script reload',()=>{
+  // Catches display failure escaping into reward state and a new session notification clock.
+  const f=fixture();f.load();const p=f.player();seedPlaytime(p,1799000,0,0);let tells=0;p.tell=()=>{tells++;throw Error('chat unavailable');};
+  f.login(p);elapse(f,p,1);elapse(f,p,2);assert.equal(tells,1);assert.equal(f.grants.length,2);
+  assert.ok(f.errors.some(line=>line.includes('Reward notification failed')));assert.ok(!f.errors.some(line=>/Playtime disabled|Meal grant failed/.test(line)));
+  assert.equal(JSON.parse(p.persistentData.sunrinRewardsV1).paidRounds,1);assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":1}');
+  f.logout(p);const g=fixture({journal:f.journal});g.load();const q=g.player();q.persistentData.sunrinRewardsV1=p.persistentData.sunrinRewardsV1;q.persistentData.sunrinMealRewardsV1=p.persistentData.sunrinMealRewardsV1;
+  g.advance(86400000);g.login(q);g.reload();g.load();g.tick(q);assert.deepEqual(g.grants,[]);assert.deepEqual(q.messages,[]);
+  elapse(g,q,1798);assert.deepEqual(grantRequests(g),[{id:'sunrin:online:v1:'+q.uuid+':2',payload:ROUND_BOX_PAYLOAD},{id:'sunrin:meal-online:v1:'+q.uuid+':2',payload:MEAL_PAYLOAD}]);
+  assert.equal(q.messages.length,1);assertNotice(q.messages[0],5,10);
+});
+
+test('a crash after Core acknowledges meals retries the identical journal request without a second item delivery',()=>{
+  // Catches bypassing Core idempotency or advancing a persisted meal cursor before successful acknowledgement.
+  const f=fixture({write:(key,value)=>{if(key==='sunrinMealRewardsV1'&&value==='{"paidThroughRound":1}')throw Error('crash before NBT save');}});f.load();
+  const p=f.player();seedPlaytime(p,1800000,1,0);f.login(p);
+  const expected=[{id:'sunrin:meal-online:v1:'+p.uuid+':1',payload:MEAL_PAYLOAD}];assert.deepEqual(grantRequests(f),expected);
+  assert.equal(p.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":0}');assert.deepEqual(p.received,[{id:'kubejs:sunrin_meal',count:10}]);
+  const g=fixture({journal:f.journal});g.load();const q=g.player();q.persistentData.sunrinRewardsV1=p.persistentData.sunrinRewardsV1;q.persistentData.sunrinMealRewardsV1=p.persistentData.sunrinMealRewardsV1;g.login(q);
+  assert.deepEqual(grantRequests(g),expected);assert.deepEqual(q.received,[]);assert.equal(q.persistentData.sunrinMealRewardsV1,'{"paidThroughRound":1}');
+  assert.equal(q.messages.length,1);assertNotice(q.messages[0],0,10);g.tick(q);g.login(q);assert.equal(g.grants.length,1);assert.equal(q.messages.length,1);
 });
 
 test('furniture delivery omits random-screen probability payload',()=>{

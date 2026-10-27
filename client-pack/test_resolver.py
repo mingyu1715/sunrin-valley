@@ -77,7 +77,7 @@ class ResolverTests(unittest.TestCase):
         maker = next(f for f in manifest["files"] if f["source"].get("slug") == "music-disc-maker")
         self.assertIn("3.1.2", maker["path"])
         self.assertEqual(manifest["forge"], "47.4.0")
-        self.assertEqual(manifest["version"], "0.2.1")
+        self.assertEqual(manifest["version"], "0.2.2")
 
     def test_owned_artifact_has_sha256_and_strict_immutable_identity(self):
         pin = {"slug": "sunrin-core", "version": "0.1.0", "filename": "sunrin-core-0.1.0.jar",
