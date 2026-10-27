@@ -27,10 +27,10 @@
     ]
   },
   "status": {
-    "state": "scheduled",
-    "message": "Server update to 0.2.0 is scheduled.",
+    "state": "maintenance",
+    "message": "Applying server update to 0.2.0.",
     "targetVersion": "0.2.0",
     "startsAt": "2026-10-27T03:57:17.773120+00:00"
   },
-  "updatedAt": "2026-10-27T03:56:19.982025+00:00"
+  "updatedAt": "2026-10-27T03:57:21.359018+00:00"
 }
