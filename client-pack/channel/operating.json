@@ -29,9 +29,8 @@
   },
   "status": {
     "state": "online",
-    "message": "Server update to 0.2.1 is healthy.",
-    "targetVersion": "0.2.1",
-    "startsAt": "2026-10-27T05:14:35.224397+00:00"
+    "message": "0.2.1 적용 완료 · 상자·칭호·색상 오류 수정 · 15:02 자동 종료 예정",
+    "targetVersion": "0.2.1"
   },
-  "updatedAt": "2026-10-27T05:16:46.122967+00:00"
+  "updatedAt": "2026-10-27T05:18:15.800669+00:00"
 }
