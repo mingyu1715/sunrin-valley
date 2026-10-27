@@ -1,0 +1,27 @@
+{
+  "formatVersion": 1,
+  "id": "sunrin-valley",
+  "version": "0.2.2",
+  "minLauncherVersion": "1.1.3",
+  "bundle": {
+    "manifest": {
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.2/manifest.json",
+      "sha256": "e872b83aee9d0f8aace1a1c4eba419768d404b337a229be66ce2b3b49a78d60d"
+    },
+    "prism": {
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.2/prism-runtime.json",
+      "sha256": "f4fb765db40c48183ca005901d5d14bf0f1b070deee3d51749bb91dd3271c53e"
+    },
+    "overlay": {
+      "url": "https://github.com/mingyu1715/sunrin-valley/releases/download/pack-0.2.2/Sunrin-Overlay.zip",
+      "sha256": "066a3c5abe13312672105bba5178ba851ece158a27842c3421ab5e4c5fdf8d53"
+    }
+  },
+  "changes": [
+    "어서오세요와 시작하기 튜토리얼을 간소화하고 음성 채팅·단축키·집터·배낭 구매 안내를 보충합니다.",
+    "배송 상자 다음 내 집 마련에서 메인과 집·배낭 사이드가 갈라지며, 개인 은행·전화기 보상을 유지합니다.",
+    "전체 퀘스트에 선린 급식 5개 보상을 추가합니다. 기존 나무 곡괭이 20개와 온라인 30분마다 10개는 유지합니다.",
+    "마을 회관 6개 챕터의 30개 퀘스트를 사전 완료하며, 원본 보상과 기존 수령 이력을 유지합니다.",
+    "30분 접속 보상 지급 시 실제 받은 상자·급식 수량을 채팅으로 안내합니다."
+  ]
+}
