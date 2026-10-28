@@ -793,6 +793,14 @@
 		{
 			icon_scale: 1.2d
 			id: "3522F8640E3D593F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001E06868973BB9"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3A999AE548F93448"
@@ -807,20 +815,18 @@
 			}]
 			x: 17.5d
 			y: 1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001E06868973BB9"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "01812E508905580F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A05263B05575B"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "11EB7B14BFAC2764"
@@ -829,20 +835,18 @@
 			}]
 			x: 4.976190476190489d
 			y: -8.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A05263B05575B"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "67BE6E4E05B6DBDB"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007CDEB42A2702D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "7068D0794B1CA163"
@@ -851,20 +855,18 @@
 			}]
 			x: 19.0d
 			y: 1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007CDEB42A2702D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "01672B990EB52879"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0006DABE6160B6D3"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 1.0d
 			tasks: [{
@@ -874,20 +876,18 @@
 			}]
 			x: -0.09523809523808069d
 			y: -4.166666666666693d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0006DABE6160B6D3"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6D54919EEF24689A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00047DA67500DDA2"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "24C2869DB5D39C8D"
@@ -896,20 +896,18 @@
 			}]
 			x: -4.595238095238081d
 			y: -4.166666666666693d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00047DA67500DDA2"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2ED3CADD33431647"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000FDD154E3891EF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "5A59269E1EF2E4B4"
@@ -918,20 +916,18 @@
 			}]
 			x: 16.0d
 			y: -3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000FDD154E3891EF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "3114FBAE57711CFB"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007D8A68713F813"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 1.0d
 			tasks: [{
@@ -941,20 +937,18 @@
 			}]
 			x: 1.4047619047619193d
 			y: -4.166666666666693d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007D8A68713F813"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5EF21A4328930A7F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001B245B3A64E62"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "73B69D458DFC797A"
@@ -963,20 +957,18 @@
 			}]
 			x: 17.5d
 			y: -3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001B245B3A64E62"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "564D7EEAD6415CD4"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A5EC882CDC87E"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "1AC83FCD9B891027"
@@ -985,20 +977,18 @@
 			}]
 			x: 7.976190476190489d
 			y: -8.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A5EC882CDC87E"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "7157D07D4ECC63F8"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00012CF02AA5239B"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "58C341F9CA7F0003"
@@ -1007,20 +997,18 @@
 			}]
 			x: 9.476190476190489d
 			y: -8.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00012CF02AA5239B"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6BE09CECBF452878"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007F7F5371122EA"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "6F1F7170B99B6970"
@@ -1029,20 +1017,18 @@
 			}]
 			x: 14.5d
 			y: -3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007F7F5371122EA"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1F283A2DC2059799"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000AE80FB6EAD132"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "0939B37CBD427FBC"
@@ -1051,20 +1037,18 @@
 			}]
 			x: 19.0d
 			y: -3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000AE80FB6EAD132"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2A51B962F55DBB92"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00085B15275C4984"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "0F02DDA217DD1482"
@@ -1073,20 +1057,18 @@
 			}]
 			x: -3.0952380952380807d
 			y: -2.6666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00085B15275C4984"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "4D4AB4388BECABF8"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001379A7CCD9474"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "722757036EE8273F"
@@ -1095,20 +1077,18 @@
 			}]
 			x: 20.5d
 			y: -3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001379A7CCD9474"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "7F4A24A855519E86"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00064DC44DF0BBF9"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "443B13FC2F4AA5DC"
@@ -1117,20 +1097,18 @@
 			}]
 			x: -3.0952380952380807d
 			y: -4.166666666666693d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00064DC44DF0BBF9"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "14D5726EBD33D4CE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0002C73A7D19AFB1"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "74C847CFDE029FD3"
@@ -1139,20 +1117,18 @@
 			}]
 			x: 14.5d
 			y: -1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0002C73A7D19AFB1"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "7BE9B25EF273BDB9"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A6B09D1197F43"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3BB14A5CF2E2B871"
@@ -1161,20 +1137,18 @@
 			}]
 			x: -1.5952380952380807d
 			y: -2.6666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A6B09D1197F43"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "05E7FC06FA454F83"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B6FC6BEA63C82"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 1.0d
 			tasks: [{
@@ -1184,20 +1158,18 @@
 			}]
 			x: -0.09523809523808069d
 			y: -2.6666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B6FC6BEA63C82"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5844A30AAD7B1E8F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0008EB98DA90E3C0"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "4AFA0D1717A4B95A"
@@ -1206,20 +1178,18 @@
 			}]
 			x: 10.976190476190489d
 			y: -8.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0008EB98DA90E3C0"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "68B4ED9CF2502E8C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000121D0EC5DD63F"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "1FE95F788ADB83CB"
@@ -1228,20 +1198,18 @@
 			}]
 			x: 16.0d
 			y: -1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000121D0EC5DD63F"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "4CF0E3778E419F6E"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0000404735002EE5"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "23F85FC13ADA1922"
@@ -1250,20 +1218,18 @@
 			}]
 			x: 20.5d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0000404735002EE5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "0EBE99E6AA862AFA"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00050B57629DF0BB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "4C4C86EBDBD50D77"
@@ -1272,20 +1238,18 @@
 			}]
 			x: 19.0d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00050B57629DF0BB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1A7AA7C173E51B7C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00049480058CF07D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3FA2C58C614D3CE0"
@@ -1294,20 +1258,18 @@
 			}]
 			x: -3.0952380952380807d
 			y: 0.3333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00049480058CF07D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6443325A6D50F74A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000354FB5BA19A11"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "12F7158F3D76068E"
@@ -1316,20 +1278,18 @@
 			}]
 			x: 9.476190476190489d
 			y: -6.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000354FB5BA19A11"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "46685E875650F015"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000967B2FE86EEFE"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "695AE9CF26A8F900"
@@ -1344,20 +1304,18 @@
 			}]
 			x: 7.976190476190489d
 			y: -6.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000967B2FE86EEFE"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1A3C2C6B85041C26"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D2441E0B0EFA2"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "5E0AA1AE4E4ECBAD"
@@ -1366,20 +1324,18 @@
 			}]
 			x: 16.0d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D2441E0B0EFA2"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6A12028EDEAF70B9"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0008D121268E2248"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3C8AFF7BBE30583E"
@@ -1388,20 +1344,18 @@
 			}]
 			x: -4.595238095238081d
 			y: 0.3333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0008D121268E2248"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "4519CD10F03EE5A1"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000335A633DDF927"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "45EF8DE16607613F"
@@ -1410,20 +1364,18 @@
 			}]
 			x: 14.5d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000335A633DDF927"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "35F2A259D88E1DAB"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B454A14360FF0"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "1BE5493794717046"
@@ -1432,20 +1384,18 @@
 			}]
 			x: 6.476190476190489d
 			y: -9.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B454A14360FF0"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6DFCDE2FE92F1BF5"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D63C211353A0E"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "6CD5775B46E69524"
@@ -1454,20 +1404,18 @@
 			}]
 			x: -1.5952380952380807d
 			y: 0.3333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D63C211353A0E"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "284A57ABB71E83CB"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00038999660B35E5"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3B944CA1271865B2"
@@ -1476,20 +1424,18 @@
 			}]
 			x: 20.5d
 			y: -1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00038999660B35E5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "06B05AA7A41786E2"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00041DA0F4EB64E7"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "799282040F9EA43F"
@@ -1498,20 +1444,18 @@
 			}]
 			x: -0.09523809523808069d
 			y: 0.3333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00041DA0F4EB64E7"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "294C2CD37A5563EE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000AC4EC75020ECF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "2A0258D35894A5C5"
@@ -1520,20 +1464,18 @@
 			}]
 			x: 1.4047619047619193d
 			y: 0.3333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000AC4EC75020ECF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5CB131E426245664"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00036796E5C75C2D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "454C03628A3529C0"
@@ -1542,20 +1484,18 @@
 			}]
 			x: 19.0d
 			y: -1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00036796E5C75C2D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5579D31A89FB0036"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0006405BEB201790"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "351DEDBE2F5D6211"
@@ -1564,20 +1504,18 @@
 			}]
 			x: -4.095238095238081d
 			y: 1.8333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0006405BEB201790"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5772297454483D4D"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00051C73576627EF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "22F01D3213337CB7"
@@ -1586,20 +1524,18 @@
 			}]
 			x: 17.5d
 			y: -1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00051C73576627EF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "079B064AF1657990"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000C3CAE60697246"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "67894240D363154E"
@@ -1608,20 +1544,18 @@
 			}]
 			x: -4.595238095238081d
 			y: -1.1666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000C3CAE60697246"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "7C403DDBA1AF988B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009C07F110D028C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3445F0E56FDD27F5"
@@ -1630,20 +1564,18 @@
 			}]
 			x: 21.0d
 			y: -11.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009C07F110D028C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "0C73E86956FFB60C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007D62F1EDD32A6"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "10C18F73E4AA1093"
@@ -1652,20 +1584,18 @@
 			}]
 			x: 22.5d
 			y: -10.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007D62F1EDD32A6"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "7C99BF1D6503A026"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004D9AC115D215C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "696DDC1CDC530743"
@@ -1674,20 +1604,18 @@
 			}]
 			x: 22.0d
 			y: -12.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004D9AC115D215C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "59FB197A96CFF76A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000E6B1322DD97BB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "76BB3830833FCED1"
@@ -1696,20 +1624,18 @@
 			}]
 			x: 23.5d
 			y: -11.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000E6B1322DD97BB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "76A4655B58938BB1"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0000991033AAE6DB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "77DACE0BD28E5D82"
@@ -1718,20 +1644,18 @@
 			}]
 			x: 4.190476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0000991033AAE6DB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "65E4231BF6E97D62"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000709BC4026F53C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "594FEDF1B4B77B9C"
@@ -1740,20 +1664,18 @@
 			}]
 			x: 5.690476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000709BC4026F53C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "36737EDD2BD12A80"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000F5B5DC4CAE2AB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3DE086B98D83ED36"
@@ -1762,20 +1684,18 @@
 			}]
 			x: 7.190476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000F5B5DC4CAE2AB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "46B364471152F134"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004A1EC361B2A14"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "43AC9CCC66EFB60D"
@@ -1784,20 +1704,18 @@
 			}]
 			x: 8.690476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004A1EC361B2A14"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "120534B74B5D96E0"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000685C47FC4B5BA"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "0A455E3C22DA1869"
@@ -1806,20 +1724,18 @@
 			}]
 			x: 10.190476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000685C47FC4B5BA"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2E7D151ADE98C873"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004BA233715FCA6"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "295CFA091A8721B1"
@@ -1828,20 +1744,18 @@
 			}]
 			x: 11.690476190476204d
 			y: 6.5476190476190155d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004BA233715FCA6"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2A46E7F813D4E6FE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000C22F4634993A4"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "5FABC2FBC1AA02AD"
@@ -1850,20 +1764,18 @@
 			}]
 			x: 5.0d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000C22F4634993A4"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "0D0E38A7AB6D0479"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000053268EC7C11F"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "3B6378AB87081CDF"
@@ -1872,20 +1784,18 @@
 			}]
 			x: 6.5d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000053268EC7C11F"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "735FD2A9634A391D"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D69F3662F4936"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "4EA561B2C007684F"
@@ -1894,16 +1804,6 @@
 			}]
 			x: 8.0d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D69F3662F4936"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: [
@@ -1998,19 +1898,20 @@
 				}
 			}
 			id: "0C17CF9D782787BE"
-			rewards: [{
-				id: "436CC95C4472006E"
-				item: {
-					Count: 1
-					id: "trofers:large_pillar"
-					tag: {
-						BlockEntityTag: {
-							Trophy: "trofers:fish"
+			rewards: [
+				{
+					id: "436CC95C4472006E"
+					item: {
+						Count: 1
+						id: "trofers:large_pillar"
+						tag: {
+							BlockEntityTag: {
+								Trophy: "trofers:fish"
+							}
 						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -2043,6 +1944,14 @@
 		{
 			icon_scale: 1.2d
 			id: "233148E0BC298D51"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0006E6374ADFB98C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 1.0d
 			tasks: [{
@@ -2052,20 +1961,18 @@
 			}]
 			x: -1.5952380952380807d
 			y: -4.166666666666693d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0006E6374ADFB98C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "0183B8EDA54158A8"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004B63CAB363F34"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "08AB845146F7C772"
@@ -2074,20 +1981,18 @@
 			}]
 			x: -4.595238095238081d
 			y: -2.6666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004B63CAB363F34"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6633922D4A513628"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000BAEC6AB20D2C7"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "0DA9242210B3FFCF"
@@ -2096,20 +2001,18 @@
 			}]
 			x: 6.476190476190489d
 			y: -8.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000BAEC6AB20D2C7"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "276AB91D9F9E4F10"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D2517DF99ACA8"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "139BCCF4C5C46E11"
@@ -2118,20 +2021,18 @@
 			}]
 			x: -3.0952380952380807d
 			y: -1.1666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D2517DF99ACA8"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "30577B253011D988"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000BC8415EDE06B1"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "2ED729EF394F9E86"
@@ -2140,20 +2041,18 @@
 			}]
 			x: -0.09523809523808069d
 			y: -1.1666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000BC8415EDE06B1"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "30F71EAC330E2F04"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000F0CCF68B02BD2"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "131A1A97184CFAD4"
@@ -2162,20 +2061,18 @@
 			}]
 			x: 1.4047619047619193d
 			y: -1.1666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000F0CCF68B02BD2"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2CAB0C399E47A8A5"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A99906938B249"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "26715366DF5577C7"
@@ -2184,20 +2081,18 @@
 			}]
 			x: -2.5952380952380807d
 			y: 1.8333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A99906938B249"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1033069FA900E45E"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000308B81CB0AAFE"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 1.0d
 			tasks: [{
@@ -2207,20 +2102,18 @@
 			}]
 			x: 1.4047619047619193d
 			y: -2.6666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000308B81CB0AAFE"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2B63A537561A6268"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009FC8ABE0EADBA"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "69EA4CE06BA93036"
@@ -2229,20 +2122,18 @@
 			}]
 			x: 16.0d
 			y: 1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009FC8ABE0EADBA"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "526C8E6964EEA342"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007014D66541205"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "4D49BA4895EF41D4"
@@ -2251,20 +2142,18 @@
 			}]
 			x: 17.5d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007014D66541205"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "49A8E6DDDB7A223C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000C4F49BABABF97"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "082DE648F6E71731"
@@ -2273,20 +2162,18 @@
 			}]
 			x: 7.976190476190489d
 			y: -9.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000C4F49BABABF97"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "169ED01135FE9803"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0003D351A406559A"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "1832D2F5813E831C"
@@ -2295,20 +2182,18 @@
 			}]
 			x: 9.476190476190489d
 			y: -9.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0003D351A406559A"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "3A902D82DE68F26D"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004CF25464BBA0D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "61034C2E2C148C8A"
@@ -2317,20 +2202,18 @@
 			}]
 			x: -1.0952380952380807d
 			y: 1.8333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004CF25464BBA0D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "0D71278891A2053B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D7295AD9B2F1C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "202BCD115752F902"
@@ -2339,20 +2222,18 @@
 			}]
 			x: 4.976190476190489d
 			y: -9.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D7295AD9B2F1C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1C6D5827C58E0B51"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009E39DF84FBBA0"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "79AD5249B43C7231"
@@ -2361,20 +2242,18 @@
 			}]
 			x: 10.976190476190489d
 			y: -6.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009E39DF84FBBA0"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1F07E289F038E105"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B31BA9337AEC6"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "7670AF7E12648763"
@@ -2383,20 +2262,18 @@
 			}]
 			x: 10.976190476190489d
 			y: -9.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B31BA9337AEC6"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "77B3EB3759EBFE4F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001B693094A4B9B"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "63DD54E7579299E7"
@@ -2405,20 +2282,18 @@
 			}]
 			x: 6.476190476190489d
 			y: -6.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001B693094A4B9B"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6405DE9A78EAEF20"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000441CB5AA01752"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "33BA7D18AEBE68FD"
@@ -2427,19 +2302,17 @@
 			}]
 			x: 4.976190476190489d
 			y: -6.809523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000441CB5AA01752"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			id: "60BF26C2986DCFD9"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A87A95CF09417"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			size: 2.0d
 			tasks: [{
@@ -2449,20 +2322,18 @@
 			}]
 			x: 8.0d
 			y: -3.5238095238095326d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A87A95CF09417"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "3A37BDD1FC16B8AF"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000E6D84FC65B3BF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "64C9485723623185"
@@ -2471,20 +2342,18 @@
 			}]
 			x: 11.0d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000E6D84FC65B3BF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "6E4D5B648B0BDEC7"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000CB83040086B90"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "7A013265CAC9EC3A"
@@ -2493,20 +2362,18 @@
 			}]
 			x: 0.4047619047619193d
 			y: 1.8333333333333073d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000CB83040086B90"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "39A4724958097814"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000DD5F5C131E69A"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "4EB6E2EB36456B86"
@@ -2515,20 +2382,18 @@
 			}]
 			x: 9.5d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000DD5F5C131E69A"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "240127F0C0DB502A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000F430E7525364F"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "01E1F6DE52138FB1"
@@ -2537,20 +2402,18 @@
 			}]
 			x: 7.976190476190489d
 			y: -5.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000F430E7525364F"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "1DB773E066EDE29B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004CE1077D66A38"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "028110E3DCC15C73"
@@ -2559,20 +2422,18 @@
 			}]
 			x: -1.5952380952380807d
 			y: -1.1666666666666927d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004CE1077D66A38"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "2D7198B6091906E9"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004DDAB220747AF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "2C1953C5140A6C7A"
@@ -2581,20 +2442,18 @@
 			}]
 			x: 6.476190476190489d
 			y: -5.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004DDAB220747AF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.2d
 			id: "5CEA04A378013FDE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0005B03AC9A65141"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "19F152A183EE713A"
@@ -2609,20 +2468,18 @@
 			}]
 			x: 9.476190476190489d
 			y: -5.309523809523839d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0005B03AC9A65141"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.5d
 			id: "56E9893B32A31414"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00051D23C5982DDB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "446E4BE0FB65EBB4"
@@ -2631,20 +2488,18 @@
 			}]
 			x: 12.5d
 			y: 0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00051D23C5982DDB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.5d
 			id: "581C7185817CF55A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00055C0ACE05E22D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "60C7010E890D0D2E"
@@ -2653,20 +2508,18 @@
 			}]
 			x: 3.5d
 			y: 0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00055C0ACE05E22D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			icon_scale: 1.5d
 			id: "77C5FB64BB5A375A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000ED502053BBD5C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			shape: "none"
 			tasks: [{
 				id: "0380803223256599"
@@ -2675,16 +2528,6 @@
 			}]
 			x: 8.0d
 			y: 5.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000ED502053BBD5C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 	]
 	title: "{ftbquests.chapter.fishing.title}"

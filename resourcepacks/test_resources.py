@@ -20,6 +20,7 @@ ENTRIES = {
     "assets/kubejs/lang/ko_kr.json",
     *(f"assets/kubejs/models/item/{item}.json" for item in ITEMS),
     *(f"assets/kubejs/textures/item/{item}.png" for item in ITEMS),
+    "assets/kubejs/models/item/town_warp_ticket.json",
 }
 
 
@@ -88,6 +89,8 @@ class ResourcePackTests(unittest.TestCase):
             "tooltip.kubejs.name_color_ticket": "화려한 닉이 나를 감싸네",
             "item.kubejs.sunrin_meal": "선린 급식",
             "tooltip.kubejs.sunrin_meal": "학교에서 먹던 그 맛.",
+            "item.kubejs.town_warp_ticket": "마을 이동권",
+            "tooltip.kubejs.town_warp_ticket": "우클릭하면 마을 스폰으로 이동합니다. 사용 시 1개 소모됩니다.",
         })
         self.assert_png(read("pack.png"), {(128, 128)})
         artwork = []
@@ -98,6 +101,8 @@ class ResourcePackTests(unittest.TestCase):
             namespace, texture = model["textures"]["layer0"].split(":", 1)
             artwork.append(self.assert_png(read(f"assets/{namespace}/textures/{texture}.png"), {(16, 16), (32, 32)}, transparent=True))
         self.assertEqual(len(set(artwork)), len(ITEMS), "Each item must have distinct artwork")
+        ticket = json.loads(read("assets/kubejs/models/item/town_warp_ticket.json"))
+        self.assertEqual(ticket, {"parent": "minecraft:item/generated", "textures": {"layer0": "minecraft:item/map"}})
 
     def test_source_pack_is_usable(self):
         entries = [path.relative_to(SOURCE).as_posix() for path in SOURCE.rglob("*") if path.is_file() and path.name != ".DS_Store"]

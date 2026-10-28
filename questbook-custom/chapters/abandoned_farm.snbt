@@ -25,17 +25,18 @@
 			icon: "supplementaries:present_green"
 			id: "661A3A466ABF29BA"
 			min_required_tasks: 6
-			rewards: [{
-				id: "23C19AD4A368AA0F"
-				item: {
-					Count: 1
-					id: "minecraft:elytra"
-					tag: {
-						Damage: 0
+			rewards: [
+				{
+					id: "23C19AD4A368AA0F"
+					item: {
+						Count: 1
+						id: "minecraft:elytra"
+						tag: {
+							Damage: 0
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -83,7 +84,7 @@
 					count: 5L
 					id: "167D06E351C49C00"
 					item: {
-						Count: 5
+						Count: 1
 						id: "society:neptuna"
 						tag: {
 							quality_food: {
@@ -158,7 +159,7 @@
 				}
 				{
 					auto: "invisible"
-					command: "/kjs stages add @p abandoned_farm_complete"
+					command: "/kjs stages add @s abandoned_farm_complete"
 					elevate_perms: true
 					id: "699EAE14FFE8E2AB"
 					silent: true

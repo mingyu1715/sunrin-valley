@@ -164,5 +164,39 @@ public class RhinoCompatibility {
       ""","verify-success-return-action-engine");
     System.out.println("PASS: actual Rhino successful go emits fixed return component and back completes round trip (world/Text boundaries controlled)");
 
+    Scriptable warp = boundary(cx);
+    eval(cx,warp,Files.readString(root.resolve("server_scripts/sunrin_town_warp.js")),"sunrin_town_warp.js");
+    eval(cx,warp,"""
+      function pos(x,y,z){return {getX:function(){return x;},getY:function(){return y;},getZ:function(){return z;}};}
+      Java.loadClass=function(name){
+        if(name==='net.minecraft.resources.ResourceKey')return {create:function(reg,id){return id;}};
+        if(name==='net.minecraft.core.registries.Registries')return {DIMENSION:'dimension'};
+        if(name==='net.minecraft.resources.ResourceLocation')return function(id){this.id=id;};
+        if(name==='net.minecraft.core.BlockPos')return {containing:pos};
+        if(name==='net.minecraft.core.Direction')return {UP:'up'};
+        if(name==='net.minecraft.world.phys.AABB')return function(){};
+        if(name==='java.util.Collections')return {emptySet:function(){return [];}};
+        if(name==='net.minecraft.core.registries.BuiltInRegistries')return {BLOCK:{getKey:function(block){return block;}}};
+        throw Error('Unknown warp class '+name);
+      };
+      var warpWorld={getSharedSpawnPos:function(){return pos(20,70,30);},getSharedSpawnAngle:function(){return 45;},
+        getMinBuildHeight:function(){return -64;},getMaxBuildHeight:function(){return 320;},
+        getWorldBorder:function(){return {getMinX:function(){return -1000;},getMaxX:function(){return 1000;},getMinZ:function(){return -1000;},getMaxZ:function(){return 1000;}};},getChunkAt:function(){},
+        getBlockState:function(){return {isFaceSturdy:function(){return true;},getBlock:function(){return 'minecraft:stone';}};},
+        getFluidState:function(){return {isEmpty:function(){return true;}};},noCollision:function(){return true;},
+        getDimension:function(){return 'minecraft:overworld';}};
+      var warpMessages=[],warpStack={count:2,shrink:function(n){this.count-=n;}};
+      var warpPlayer={getUuid:function(){return 'warp-player';},isFake:function(){return false;},isPassenger:function(){return false;},
+        tell:function(msg){warpMessages.push(String(msg));},serverLevel:function(){return warpWorld;},
+        teleportTo:function(world,x,y,z,relative,yaw,pitch){if(arguments.length!==7)throw Error('Expected native seven-argument teleport');this.x=x;this.y=y;this.z=z;},getX:function(){return this.x;},getY:function(){return this.y;},getZ:function(){return this.z;},setMotionX:function(){},setMotionY:function(){},setMotionZ:function(){}};
+      var warpExit={},warpEvent={player:warpPlayer,item:warpStack,hand:'MAIN_HAND',
+        server:{getTickCount:function(){return 1;},getOverworld:function(){return warpWorld;}},
+        success:function(){throw warpExit;},cancel:function(){throw Error('Warp cancelled: '+warpMessages.join('; '));}};
+      try{harnessListeners['item.kubejs:town_warp_ticket'](warpEvent);throw Error('Expected EventExit');}catch(error){if(error!==warpExit)throw error;}
+      if(warpStack.count!==1||warpPlayer.x!==20.5||warpPlayer.y!==70||warpPlayer.z!==30.5)throw Error('Warp did not consume exactly once after arrival');
+      if(warpMessages.length!==1||warpMessages[0]!=='마을로 이동했습니다.')throw Error(warpMessages.join('; '));
+      ""","verify-warp-engine-scope");
+    System.out.println("PASS: actual town warp callback reaches confirmed arrival and EventExit in Rhino");
+
   }
 }

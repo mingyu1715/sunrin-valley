@@ -25,6 +25,14 @@
 				}
 			}
 			id: "48F1059FC059D3E5"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000DCC70BEC86CEA"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "3CE6113B51970AC2"
 				item: {
@@ -97,16 +105,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest48F1059FC059D3E5.title}"
 			x: -8.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000DCC70BEC86CEA"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["48F1059FC059D3E5"]
@@ -118,6 +116,14 @@
 				}
 			}
 			id: "21FD7614E314BA14"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00020567E5B19E26"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "7D036618EBB21410"
 				item: {
@@ -162,16 +168,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest21FD7614E314BA14.title}"
 			x: -6.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00020567E5B19E26"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["0ACB2E342421B74E"]
@@ -184,6 +180,14 @@
 				}
 			}
 			id: "7A5974D470C5AA9C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009AF4432954BBC"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "6E8880D4D8EB4DF5"
 				item: {
@@ -228,16 +232,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest7A5974D470C5AA9C.title}"
 			x: -2.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009AF4432954BBC"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["21FD7614E314BA14"]
@@ -249,6 +243,14 @@
 				}
 			}
 			id: "0ACB2E342421B74E"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000217DA600E28E6"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "487C30F04C7295E0"
 				item: {
@@ -293,16 +295,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.questACB2E342421B74E.title}"
 			x: -4.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000217DA600E28E6"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["7A5974D470C5AA9C"]
@@ -314,6 +306,14 @@
 				}
 			}
 			id: "38A0B8D54F85B846"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000F9AEFD4B34D4E"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "3E0453D9C60A9B8C"
 				item: {
@@ -358,16 +358,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest38A0B8D54F85B846.title}"
 			x: 0.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000F9AEFD4B34D4E"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["38A0B8D54F85B846"]
@@ -380,6 +370,14 @@
 				}
 			}
 			id: "4C2120EC29BE0E64"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00092C9265B3DB4A"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "5E760A955BFF6876"
 				item: {
@@ -424,16 +422,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest4C2120EC29BE0E64.title}"
 			x: 2.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00092C9265B3DB4A"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["38A0B8D54F85B846"]
@@ -450,6 +438,14 @@
 				}
 			}
 			id: "33FD69B12C21E495"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000EC5E0DB0EF688"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "2ED9B316F07C51F3"
 				item: {
@@ -494,16 +490,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest33FD69B12C21E495.title}"
 			x: 2.0d
 			y: -5.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000EC5E0DB0EF688"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["617AC2E80908BFD7"]
@@ -515,6 +501,14 @@
 				}
 			}
 			id: "1B614E9E38B45BD0"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00006960F36F2AD7"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "7972CE0709D02D49"
 				item: {
@@ -566,16 +560,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest1B614E9E38B45BD0.title}"
 			x: -8.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00006960F36F2AD7"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["1B614E9E38B45BD0"]
@@ -587,6 +571,14 @@
 				}
 			}
 			id: "43C52E202277C5AA"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000E783564F44795"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "0E5D7529339C2A99"
 				item: {
@@ -638,16 +630,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest43C52E202277C5AA.title}"
 			x: -6.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000E783564F44795"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["08241E18191275AE"]
@@ -660,6 +642,14 @@
 				}
 			}
 			id: "32FE1F4EF913EADA"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00020E4ADD664B75"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "4D916A97F18FCE61"
 				item: {
@@ -711,16 +701,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest32FE1F4EF913EADA.title}"
 			x: -2.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00020E4ADD664B75"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["43C52E202277C5AA"]
@@ -732,6 +712,14 @@
 				}
 			}
 			id: "08241E18191275AE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000ED57700672D59"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "18CE25FAB2D5E7FE"
 				item: {
@@ -783,16 +771,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest8241E18191275AE.title}"
 			x: -4.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000ED57700672D59"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["32FE1F4EF913EADA"]
@@ -804,6 +782,14 @@
 				}
 			}
 			id: "54301E900FFA56D7"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000A72D8BDF1288D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "0A266FA5E2FD2103"
 				item: {
@@ -855,16 +841,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest54301E900FFA56D7.title}"
 			x: 0.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A72D8BDF1288D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["54301E900FFA56D7"]
@@ -877,6 +853,14 @@
 				}
 			}
 			id: "319129CE8210964A"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D94441763E69C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "6D157C77899A7115"
 				item: {
@@ -928,16 +912,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest319129CE8210964A.title}"
 			x: 2.0d
 			y: -0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D94441763E69C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["54301E900FFA56D7"]
@@ -955,6 +929,14 @@
 				}
 			}
 			id: "4EA02089CD02F7C0"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001D7A067309C1C"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "1756A4BFB7D46C3B"
 				item: {
@@ -1007,26 +989,17 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest4EA02089CD02F7C0.title}"
 			x: 2.0d
 			y: 1.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001D7A067309C1C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["319129CE8210964A"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.questB85DF081F75ECA7.description1}"]
 			id: "0B85DF081F75ECA7"
-			rewards: [{
-				id: "2605209B1A6CAD51"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2605209B1A6CAD51"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1058,11 +1031,12 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest33176CD4D28070D3.description2}"
 			]
 			id: "33176CD4D28070D3"
-			rewards: [{
-				id: "11DEF451B99DD9F9"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "11DEF451B99DD9F9"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1095,6 +1069,14 @@
 			]
 			id: "617AC2E80908BFD7"
 			optional: true
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B026B58BA3F92"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				icon: {
@@ -1113,16 +1095,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest617AC2E80908BFD7.title}"
 			x: -10.0d
 			y: -2.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B026B58BA3F92"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["34206688082CCC57"]
@@ -1132,11 +1104,12 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest3B30AFF91D59746A.description2}"
 			]
 			id: "3B30AFF91D59746A"
-			rewards: [{
-				id: "5AFEED8149346DA0"
-				item: "numismatics:sprocket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5AFEED8149346DA0"
+					item: "numismatics:sprocket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1170,11 +1143,12 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest10C0B87E2EA1C8A5.description3}"
 			]
 			id: "10C0B87E2EA1C8A5"
-			rewards: [{
-				id: "478FF52B8E89F86D"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "478FF52B8E89F86D"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1200,6 +1174,14 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest2447ECC5ACB657A7.description2}"
 			]
 			id: "2447ECC5ACB657A7"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000C3D9EFCAF1001"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "679F77AC09496A00"
 				item: {
@@ -1213,26 +1195,17 @@
 			}]
 			x: 0.0d
 			y: -2.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000C3D9EFCAF1001"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["10C0B87E2EA1C8A5"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest702A9E699FC422CC.description1}"]
 			id: "702A9E699FC422CC"
-			rewards: [{
-				id: "44E2A57DD54F4A43"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "44E2A57DD54F4A43"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1254,11 +1227,12 @@
 			dependencies: ["702A9E699FC422CC"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest5C8CF40663CCE754.description1}"]
 			id: "5C8CF40663CCE754"
-			rewards: [{
-				id: "4CD41495CD166B97"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4CD41495CD166B97"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1280,11 +1254,12 @@
 			dependencies: ["5C8CF40663CCE754"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest1F144802D59DB4.description1}"]
 			id: "001F144802D59DB4"
-			rewards: [{
-				id: "39CEA2F22564D0FB"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "39CEA2F22564D0FB"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1306,11 +1281,12 @@
 			dependencies: ["5C8CF40663CCE754"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest4F54E885ECC26922.description1}"]
 			id: "4F54E885ECC26922"
-			rewards: [{
-				id: "7FFD73B83D19A769"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7FFD73B83D19A769"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1338,11 +1314,12 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest18274B43429F2808.description3}"
 			]
 			id: "18274B43429F2808"
-			rewards: [{
-				id: "5BEDBA63B9A11483"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5BEDBA63B9A11483"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1372,11 +1349,12 @@
 				}
 			}
 			id: "4EFD1F876D69591E"
-			rewards: [{
-				id: "513417F90E4B9769"
-				item: "numismatics:sprocket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "513417F90E4B9769"
+					item: "numismatics:sprocket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1430,11 +1408,12 @@
 				}
 			}
 			id: "1BA73EA72B471270"
-			rewards: [{
-				id: "46F8621CBFAD3966"
-				item: "numismatics:sun"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "46F8621CBFAD3966"
+					item: "numismatics:sun"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1498,11 +1477,12 @@
 			dependencies: ["4EFD1F876D69591E"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest4BC9FE01DC8D5ADB.description1}"]
 			id: "4BC9FE01DC8D5ADB"
-			rewards: [{
-				id: "4FD79C56D7547153"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4FD79C56D7547153"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1531,11 +1511,12 @@
 			dependencies: ["4EFD1F876D69591E"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest5E89F151176083E6.description1}"]
 			id: "5E89F151176083E6"
-			rewards: [{
-				id: "5CCF1F636469BF46"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5CCF1F636469BF46"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1571,6 +1552,14 @@
 				}
 			}
 			id: "34206688082CCC57"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000E35CD5C986FD9"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "75D3693267CE0239"
 				type: "checkmark"
@@ -1578,26 +1567,17 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest34206688082CCC57.title}"
 			x: -10.0d
 			y: 1.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000E35CD5C986FD9"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["34206688082CCC57"]
 			description: ["{ftbquests.chapter.armor_weapons__tools.quest55A3F4C2B6F3460B.description1}"]
 			id: "55A3F4C2B6F3460B"
-			rewards: [{
-				id: "33550E79FF5DE2D6"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "33550E79FF5DE2D6"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1632,11 +1612,12 @@
 				}
 			}
 			id: "66510F15A69EBAED"
-			rewards: [{
-				id: "03FACD1CB0A7EF22"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "03FACD1CB0A7EF22"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1684,6 +1665,14 @@
 				}
 			}
 			id: "6080E8F9B0DDAE72"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000776C4AC5564EB"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			subtitle: "{ftbquests.chapter.armor_weapons__tools.quest6080E8F9B0DDAE72.subtitle}"
 			tasks: [{
 				id: "12DAF95F0B50680C"
@@ -1729,16 +1718,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest6080E8F9B0DDAE72.title}"
 			x: -2.0d
 			y: -5.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000776C4AC5564EB"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["6080E8F9B0DDAE72"]
@@ -1750,6 +1729,14 @@
 				}
 			}
 			id: "6E4CC63B8CF1EDAF"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0003DD651C22F1E0"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "7EDA5896186979D5"
 				item: {
@@ -1794,16 +1781,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest6E4CC63B8CF1EDAF.title}"
 			x: 2.0d
 			y: -6.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0003DD651C22F1E0"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["6080E8F9B0DDAE72"]
@@ -1815,6 +1792,14 @@
 				}
 			}
 			id: "3FC4155A11F14663"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0001563662EEA985"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "033A4317987E15C2"
 				item: {
@@ -1859,16 +1844,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest3FC4155A11F14663.title}"
 			x: 0.0d
 			y: -5.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0001563662EEA985"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["38A0B8D54F85B846"]
@@ -1881,6 +1856,14 @@
 				}
 			}
 			id: "6FDA9C1E5D681CDA"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00061E1A9909297E"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			subtitle: "{ftbquests.chapter.armor_weapons__tools.quest6FDA9C1E5D681CDA.subtitle}"
 			tasks: [{
 				id: "652F7B6F053D1586"
@@ -1926,16 +1909,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest6FDA9C1E5D681CDA.title}"
 			x: 2.0d
 			y: -2.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00061E1A9909297E"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["54301E900FFA56D7"]
@@ -1952,6 +1925,14 @@
 				}
 			}
 			id: "11207C347FC407E1"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000332A8712F3B0A"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			subtitle: "{ftbquests.chapter.armor_weapons__tools.quest11207C347FC407E1.subtitle}"
 			tasks: [{
 				id: "2712211EC08C9471"
@@ -2004,16 +1985,6 @@
 			title: "{ftbquests.chapter.armor_weapons__tools.quest11207C347FC407E1.title}"
 			x: 2.0d
 			y: 2.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000332A8712F3B0A"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["0B85DF081F75ECA7"]
@@ -2023,11 +1994,12 @@
 				"{ftbquests.chapter.armor_weapons__tools.quest62C9E95DF7C987D.description1}"
 			]
 			id: "062C9E95DF7C987D"
-			rewards: [{
-				id: "0BB83B3A3B326CDB"
-				item: "botania:cosmetic_cat_ears"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0BB83B3A3B326CDB"
+					item: "botania:cosmetic_cat_ears"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

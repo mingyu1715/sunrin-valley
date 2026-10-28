@@ -21,17 +21,18 @@
 		{
 			icon: "supplementaries:present_yellow"
 			id: "03F3D0F74A5BC0C4"
-			rewards: [{
-				id: "765B2BAE7BB2EFCC"
-				item: {
-					Count: 1
-					id: "minecraft:trident"
-					tag: {
-						Damage: 0
+			rewards: [
+				{
+					id: "765B2BAE7BB2EFCC"
+					item: {
+						Count: 1
+						id: "minecraft:trident"
+						tag: {
+							Damage: 0
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -77,11 +78,12 @@
 		{
 			icon: "supplementaries:present_blue"
 			id: "76A35BBCA4E0CDD9"
-			rewards: [{
-				id: "7B52E86D7D2077D0"
-				item: "society:fish_smoker"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7B52E86D7D2077D0"
+					item: "society:fish_smoker"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -121,11 +123,12 @@
 		{
 			icon: "supplementaries:present_light_blue"
 			id: "4D00DF575B8FC1B2"
-			rewards: [{
-				id: "16343D44A8CFEED6"
-				item: "vintagedelight:evaporator"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "16343D44A8CFEED6"
+					item: "vintagedelight:evaporator"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -264,12 +267,13 @@
 		{
 			icon: "supplementaries:present_red"
 			id: "3129F3C2D43EE6EE"
-			rewards: [{
-				count: 2
-				id: "258CBA10BD8B2772"
-				item: "crabbersdelight:crab_trap"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "258CBA10BD8B2772"
+					item: "crabbersdelight:crab_trap"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

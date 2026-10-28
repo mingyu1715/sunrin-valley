@@ -29,6 +29,33 @@ def module(name):
 
 
 class DeliveryAdapterTests(unittest.TestCase):
+    def test_unpublished_023_candidate_uses_022_lock_and_keeps_server_quest_overlay(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            predecessor, reviewed = self.tutorial_fixture(root)
+            predecessor['clientPackVersion'] = '0.2.2'
+            lock = root / 'server-ops/releases/0.2.2/pack-lock.json'
+            lock.write_text(json.dumps(predecessor))
+            manifest_path = root / 'client-pack/manifest.json'
+            manifest = json.loads(manifest_path.read_text())
+            manifest['version'] = manifest['sources']['packVersion'] = '0.2.3'
+            manifest['sources']['ownedFiles'][0]['url'] = manifest['sources']['ownedFiles'][0]['url'].replace('pack-0.2.2/', 'pack-0.2.3/')
+            manifest['files'][1]['url'] = manifest['sources']['ownedFiles'][0]['url']
+            manifest_path.write_text(json.dumps(manifest))
+            review = root / 'server-ops/releases/0.2.3/reviewed-upstream-replacements.json'
+            review.parent.mkdir()
+            review.write_text(json.dumps(reviewed))
+            client = module('build-update').build_update(root, 'owner/repo', '1.1.3')
+            result = module('build-server-candidate').build_candidate(root, client_output=client, overlay_only=True)
+            current = json.loads((result / 'pack-lock.json').read_text())
+            self.assertEqual(current['clientPackVersion'], '0.2.3')
+            self.assertEqual(current['addons'], predecessor['addons'])
+            self.assertEqual(current['serverModCount'], predecessor['serverModCount'])
+            self.assertEqual(len([i for i in current['ownedOverlay']['files'] if i['path'].startswith('config/ftbquests/')]), 29)
+            with zipfile.ZipFile(result / 'Sunrin-Server-Overlay.zip') as archive:
+                self.assertFalse(any('/ftbquests/' in name and not name.startswith('config/') for name in archive.namelist()))
+                self.assertNotIn('kubejs/server_scripts/sunrin_community_start.js', archive.namelist())
+
     def tutorial_fixture(self, root):
         predecessor = json.loads((ROOT / 'server-ops/releases/0.2.0/pack-lock.json').read_text())
         predecessor['clientPackVersion'] = '0.2.1'

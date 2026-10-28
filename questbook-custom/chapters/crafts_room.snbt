@@ -21,12 +21,13 @@
 		{
 			icon: "supplementaries:present_red"
 			id: "0403045A4DA7A770"
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "7C954934496A21F9"
-				table_id: 2467450565259284777L
-				type: "random"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "7C954934496A21F9"
+					table_id: 2467450565259284777L
+					type: "random"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -87,48 +88,49 @@
 			icon: "supplementaries:present_green"
 			id: "1E6139BDE9202B6A"
 			min_required_tasks: 6
-			rewards: [{
-				id: "490B15BEE84A932A"
-				item: {
-					Count: 1
-					id: "relics:spore_sack"
-					tag: {
-						abilities: {
-							buffer: {
-								points: 0
-								stats: {
-									capacity: 4.22862d
-									chance: 0.02577d
+			rewards: [
+				{
+					id: "490B15BEE84A932A"
+					item: {
+						Count: 1
+						id: "relics:spore_sack"
+						tag: {
+							abilities: {
+								buffer: {
+									points: 0
+									stats: {
+										capacity: 4.22862d
+										chance: 0.02577d
+									}
 								}
-							}
-							explosion: {
-								points: 0
-								stats: {
-									size: 0.22587d
+								explosion: {
+									points: 0
+									stats: {
+										size: 0.22587d
+									}
 								}
-							}
-							multiplying: {
-								points: 0
-								stats: {
-									amount: 0.12577d
-									chance: 0.08342d
-									size: 0.08699d
+								multiplying: {
+									points: 0
+									stats: {
+										amount: 0.12577d
+										chance: 0.08342d
+										size: 0.08699d
+									}
 								}
-							}
-							spore: {
-								points: 0
-								stats: {
-									cooldown: 13.95169d
-									damage: 0.36405d
-									duration: 3.67542d
-									size: 0.10392d
+								spore: {
+									points: 0
+									stats: {
+										cooldown: 13.95169d
+										damage: 0.36405d
+										duration: 3.67542d
+										size: 0.10392d
+									}
 								}
 							}
 						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -239,7 +241,7 @@
 				{
 					count: 16L
 					id: "116A9CF43B613B8F"
-					item: { Count: 16, id: "meadow:fire_log" }
+					item: "meadow:fire_log"
 					type: "item"
 				}
 				{
@@ -328,11 +330,12 @@
 			icon: "supplementaries:present_lime"
 			id: "174FBAB7BF83C049"
 			min_required_tasks: 5
-			rewards: [{
-				id: "3F8B2A9CF4518F08"
-				item: "vintagedelight:magic_peanut"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3F8B2A9CF4518F08"
+					item: "vintagedelight:magic_peanut"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -394,11 +397,12 @@
 			icon: "supplementaries:present_blue"
 			id: "7466DCDD6C3CDDE8"
 			min_required_tasks: 5
-			rewards: [{
-				id: "54A04C9C43D4139E"
-				item: "society:artifact_trove"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "54A04C9C43D4139E"
+					item: "society:artifact_trove"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

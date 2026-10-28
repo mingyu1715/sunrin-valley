@@ -67,28 +67,18 @@
 					silent: true
 					type: "command"
 				}
-				{
-					auto: "disabled"
-					count: 5
-					id: "000A7D9BC3F8B2A9"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
 			]
-			tasks: [
-				{
-					dimension: "minecraft:overworld"
-					disable_toast: true
-					icon: "minecraft:grass_block"
-					id: "0570B72A57438956"
-					title: "{ftbquests.chapter.welcome.quest5FB57C45A25D41F0.task.392014560061786454.title}"
-					type: "dimension"
-				}
-			]
+			tasks: [{
+				dimension: "minecraft:overworld"
+				disable_toast: true
+				icon: "minecraft:grass_block"
+				id: "0570B72A57438956"
+				title: "{ftbquests.chapter.welcome.quest5FB57C45A25D41F0.task.392014560061786454.title}"
+				type: "dimension"
+			}]
 			title: "{ftbquests.chapter.welcome.quest5FB57C45A25D41F0.title}"
-			x: 0.0d
-			y: -1.5d
+			x: 1.5d
+			y: 2.0d
 		}
 		{
 			description: [
@@ -142,13 +132,11 @@
 				type: "checkmark"
 			}]
 			title: "{ftbquests.chapter.welcome.quest2B6877708A709B5C.title}"
-			x: 0.0d
-			y: 0.0d
+			x: -5.0d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"2B6877708A709B5C"
-			]
+			dependencies: ["2B6877708A709B5C"]
 			description: [
 				"{ftbquests.chapter.welcome.quest42BBE95A6DE1DD19.description1}"
 				""
@@ -156,31 +144,17 @@
 			]
 			icon: "numismatics:cog"
 			id: "42BBE95A6DE1DD19"
-			tasks: [
-				{
-					id: "18D7A7C05EC66667"
-					title: "{ftbquests.chapter.welcome.quest42BBE95A6DE1DD19.task.1790083821568681575.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "18D7A7C05EC66667"
+				title: "{ftbquests.chapter.welcome.quest42BBE95A6DE1DD19.task.1790083821568681575.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest42BBE95A6DE1DD19.title}"
-			x: 0.0d
-			y: 1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000098CC13FF691B"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: -2.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"42BBE95A6DE1DD19"
-			]
+			dependencies: ["42BBE95A6DE1DD19"]
 			description: [
 				"{ftbquests.chapter.welcome.quest25777939975C3CEE.description1}"
 				""
@@ -188,31 +162,17 @@
 			]
 			icon: "minecraft:chorus_fruit"
 			id: "25777939975C3CEE"
-			tasks: [
-				{
-					id: "12B5F8FF7A12B850"
-					title: "{ftbquests.chapter.welcome.quest25777939975C3CEE.task.1348257439615727696.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "12B5F8FF7A12B850"
+				title: "{ftbquests.chapter.welcome.quest25777939975C3CEE.task.1348257439615727696.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest25777939975C3CEE.title}"
-			x: 0.0d
-			y: 3.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00058737B7970531"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: -0.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"25777939975C3CEE"
-			]
+			dependencies: ["25777939975C3CEE"]
 			description: [
 				"{ftbquests.chapter.welcome.quest7A7B131D229E5279.description1}"
 				""
@@ -220,36 +180,22 @@
 			]
 			icon: "solonion:food_book"
 			id: "7A7B131D229E5279"
-			rewards: [
-				{
-					id: "7564618DEEDF5B88"
-					item: "solonion:food_book"
-					type: "item"
-				}
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D18CC6419BF32"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
-			tasks: [
-				{
-					id: "1751982CCE09E023"
-					title: "{ftbquests.chapter.welcome.quest7A7B131D229E5279.task.1680291454188642339.title}"
-					type: "checkmark"
-				}
-			]
+			rewards: [{
+				id: "7564618DEEDF5B88"
+				item: "solonion:food_book"
+				type: "item"
+			}]
+			tasks: [{
+				id: "1751982CCE09E023"
+				title: "{ftbquests.chapter.welcome.quest7A7B131D229E5279.task.1680291454188642339.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest7A7B131D229E5279.title}"
-			x: 0.0d
-			y: 4.5d
+			x: 1.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"7A7B131D229E5279"
-			]
+			dependencies: ["7A7B131D229E5279"]
 			description: [
 				"{ftbquests.chapter.welcome.quest4F7FB7C8808AF152.description1}"
 				""
@@ -257,31 +203,17 @@
 			]
 			icon: "simplehats:rainboworbiters"
 			id: "4F7FB7C8808AF152"
-			tasks: [
-				{
-					id: "5268786D837BACF0"
-					title: "{ftbquests.chapter.welcome.quest4F7FB7C8808AF152.task.5938128520440687856.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "5268786D837BACF0"
+				title: "{ftbquests.chapter.welcome.quest4F7FB7C8808AF152.task.5938128520440687856.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest4F7FB7C8808AF152.title}"
-			x: 0.0d
-			y: 6.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000BB474373EBB45"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: 3.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"4F7FB7C8808AF152"
-			]
+			dependencies: ["4F7FB7C8808AF152"]
 			description: [
 				"{ftbquests.chapter.welcome.quest67486880FE3E2CCD.description1}"
 				""
@@ -292,31 +224,17 @@
 			icon: "etched:radio"
 			id: "67486880FE3E2CCD"
 			subtitle: "{ftbquests.chapter.welcome.quest67486880FE3E2CCD.subtitle}"
-			tasks: [
-				{
-					id: "5330CA06B1E9BEE3"
-					title: "{ftbquests.chapter.welcome.quest67486880FE3E2CCD.task.5994513234133630691.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "5330CA06B1E9BEE3"
+				title: "{ftbquests.chapter.welcome.quest67486880FE3E2CCD.task.5994513234133630691.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest67486880FE3E2CCD.title}"
-			x: 0.0d
-			y: 7.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00036A39D1AF3566"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: 5.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"67486880FE3E2CCD"
-			]
+			dependencies: ["67486880FE3E2CCD"]
 			description: [
 				"{ftbquests.chapter.welcome.quest73E34871B4AEC80C.description1}"
 				""
@@ -326,31 +244,17 @@
 			]
 			icon: "minecraft:note_block"
 			id: "73E34871B4AEC80C"
-			tasks: [
-				{
-					id: "3FF2BBDC99BD0510"
-					title: "{ftbquests.chapter.welcome.quest73E34871B4AEC80C.task.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "3FF2BBDC99BD0510"
+				title: "{ftbquests.chapter.welcome.quest73E34871B4AEC80C.task.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest73E34871B4AEC80C.title}"
-			x: 0.0d
-			y: 9.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0002CFCD1A883CB5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: 7.5d
+			y: 4.0d
 		}
 		{
-			dependencies: [
-				"73E34871B4AEC80C"
-			]
+			dependencies: ["73E34871B4AEC80C"]
 			description: [
 				"{ftbquests.chapter.welcome.quest238702B124895A0A.description1}"
 				""
@@ -366,26 +270,14 @@
 			icon: "society:magnifying_glass"
 			id: "238702B124895A0A"
 			subtitle: "{ftbquests.chapter.welcome.quest238702B124895A0A.subtitle}"
-			tasks: [
-				{
-					id: "071758A047AA8A61"
-					title: "{ftbquests.chapter.welcome.quest238702B124895A0A.task.510974528150211169.title}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "071758A047AA8A61"
+				title: "{ftbquests.chapter.welcome.quest238702B124895A0A.task.510974528150211169.title}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.welcome.quest238702B124895A0A.title}"
-			x: 0.0d
-			y: 10.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000EC8203FB3B50C"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
+			x: 9.5d
+			y: 4.0d
 		}
 	]
 	title: "{ftbquests.chapter.welcome.title}"

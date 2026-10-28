@@ -10,5 +10,7 @@
   "tooltip.kubejs.furniture_random_box": "집은 좁은데 가구는 자꾸 늘어난다.",
   "tooltip.kubejs.geonpi_ticket": "부르면 옵니다. 아마도.",
   "tooltip.kubejs.rename_ticket": "명예는 없지만 칭호는 있습니다",
-  "tooltip.kubejs.name_color_ticket": "화려한 닉이 나를 감싸네"
+  "tooltip.kubejs.name_color_ticket": "화려한 닉이 나를 감싸네",
+  "item.kubejs.town_warp_ticket": "마을 이동권",
+  "tooltip.kubejs.town_warp_ticket": "우클릭하면 마을 스폰으로 이동합니다. 사용 시 1개 소모됩니다."
 }

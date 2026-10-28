@@ -15,17 +15,18 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest66E1AC55824DF1D9.description2}"
 			]
 			id: "66E1AC55824DF1D9"
-			rewards: [{
-				id: "6FDF35ACBB9324CF"
-				item: {
-					Count: 1
-					id: "minecraft:potion"
-					tag: {
-						Potion: "minecraft:fire_resistance"
+			rewards: [
+				{
+					id: "6FDF35ACBB9324CF"
+					item: {
+						Count: 1
+						id: "minecraft:potion"
+						tag: {
+							Potion: "minecraft:fire_resistance"
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -54,12 +55,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.questF176FBF01ABB774.description2}"
 			]
 			id: "0F176FBF01ABB774"
-			rewards: [{
-				count: 2
-				id: "24FB85F28FE47C80"
-				item: "society:fire_quartz"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "24FB85F28FE47C80"
+					item: "society:fire_quartz"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -87,11 +89,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest11A36B05684D70A9.description3}"
 			]
 			id: "11A36B05684D70A9"
-			rewards: [{
-				id: "64B8C750A013A432"
-				item: "netherdepthsupgrade:baked_lava_pufferfish_stew"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "64B8C750A013A432"
+					item: "netherdepthsupgrade:baked_lava_pufferfish_stew"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -125,12 +128,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest41FD632FA78AFB49.description3}"
 			]
 			id: "41FD632FA78AFB49"
-			rewards: [{
-				count: 2
-				id: "4BBE6F93470E2C44"
-				item: "minecraft:blaze_rod"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "4BBE6F93470E2C44"
+					item: "minecraft:blaze_rod"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -162,12 +166,13 @@
 			]
 			icon: "society:charging_rod"
 			id: "0C7D8F89BCF645AA"
-			rewards: [{
-				count: 4
-				id: "04D0C4AFA237AE98"
-				item: "minecraft:blaze_rod"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "04D0C4AFA237AE98"
+					item: "minecraft:blaze_rod"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -194,11 +199,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest4F698E7353FD76F1.description2}"
 			]
 			id: "4F698E7353FD76F1"
-			rewards: [{
-				id: "63206696243D6D35"
-				item: "society:steamed_milk"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "63206696243D6D35"
+					item: "society:steamed_milk"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -227,11 +233,12 @@
 			]
 			id: "44A512703C4A9990"
 			min_required_dependencies: 1
-			rewards: [{
-				id: "5D1ACC2F4590CCD5"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5D1ACC2F4590CCD5"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -255,11 +262,12 @@
 			dependencies: ["0F176FBF01ABB774"]
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest3492FA6A5DFCC390.description1}"]
 			id: "3492FA6A5DFCC390"
-			rewards: [{
-				id: "51B4932933C92BF1"
-				item: "society:fire_quartz"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "51B4932933C92BF1"
+					item: "society:fire_quartz"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -282,11 +290,12 @@
 			dependencies: ["214BFF5CB710FFE2"]
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest2746CBE8BDA47E40.description1}"]
 			id: "2746CBE8BDA47E40"
-			rewards: [{
-				id: "674EAF8B280ADA6F"
-				item: "society:battery"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "674EAF8B280ADA6F"
+					item: "society:battery"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -312,6 +321,14 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest711AC0F5208316D5.description2}"
 			]
 			id: "711AC0F5208316D5"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000BA6FF044A4118"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "58A708BD47826C8B"
 				item: "farm_and_charm:mincer"
@@ -319,16 +336,6 @@
 			}]
 			x: 3.0d
 			y: -2.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000BA6FF044A4118"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["44A512703C4A9990"]
@@ -344,17 +351,18 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest3291A30C1D1B009D.description5}"
 			]
 			id: "3291A30C1D1B009D"
-			rewards: [{
-				id: "38538EA8C9CD5981"
-				item: {
-					Count: 1
-					id: "gag:escape_rope"
-					tag: {
-						Damage: 0
+			rewards: [
+				{
+					id: "38538EA8C9CD5981"
+					item: {
+						Count: 1
+						id: "gag:escape_rope"
+						tag: {
+							Damage: 0
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -387,11 +395,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest1AA78CF8A14DEE76.description4}"
 			]
 			id: "1AA78CF8A14DEE76"
-			rewards: [{
-				id: "5A8820C7C1720E99"
-				item: "farmersdelight:bamboo_basket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5A8820C7C1720E99"
+					item: "farmersdelight:bamboo_basket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -418,11 +427,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest473D0A5E8D57CD4B.description2}"
 			]
 			id: "473D0A5E8D57CD4B"
-			rewards: [{
-				id: "7B09ACE2B2FC8F17"
-				item: "tanukidecor:brown_mushroom_log_stool"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7B09ACE2B2FC8F17"
+					item: "tanukidecor:brown_mushroom_log_stool"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -448,11 +458,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest79C92AEDE15E7E6D.description2}"
 			]
 			id: "79C92AEDE15E7E6D"
-			rewards: [{
-				id: "066F8F09F441E594"
-				item: "vintagedelight:century_egg"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "066F8F09F441E594"
+					item: "vintagedelight:century_egg"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -478,11 +489,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest572D70993411EA53.description2}"
 			]
 			id: "572D70993411EA53"
-			rewards: [{
-				id: "212C9E001544957C"
-				item: "vintagedelight:vinegar_bottle"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "212C9E001544957C"
+					item: "vintagedelight:vinegar_bottle"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -504,12 +516,13 @@
 			dependencies: ["711AC0F5208316D5"]
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest7938A28F31B7473.description1}"]
 			id: "07938A28F31B7473"
-			rewards: [{
-				count: 4
-				id: "6B031C8E4704F25D"
-				item: "farm_and_charm:fertilizer"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "6B031C8E4704F25D"
+					item: "farm_and_charm:fertilizer"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -532,12 +545,13 @@
 			dependencies: ["07938A28F31B7473"]
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest291360E395E2BA29.description1}"]
 			id: "291360E395E2BA29"
-			rewards: [{
-				count: 16
-				id: "66CAB99AF7FD676F"
-				item: "society:enriched_bone_meal"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 16
+					id: "66CAB99AF7FD676F"
+					item: "society:enriched_bone_meal"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -560,12 +574,13 @@
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest1D21615AEE411491.description1}"]
 			icon: "dew_drop_farmland_growth:strong_fertilizer"
 			id: "1D21615AEE411491"
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "2E25CFC302D54349"
-				table_id: 148309168996942632L
-				type: "choice"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "2E25CFC302D54349"
+					table_id: 148309168996942632L
+					type: "choice"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -608,11 +623,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest25569C0D687E6FA5.description2}"
 			]
 			id: "25569C0D687E6FA5"
-			rewards: [{
-				id: "5DEF7D3C10F81A09"
-				item: "society:raisins"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5DEF7D3C10F81A09"
+					item: "society:raisins"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -638,12 +654,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest8CFE766C9645FC8.description2}"
 			]
 			id: "08CFE766C9645FC8"
-			rewards: [{
-				count: 4
-				id: "69E47AA8BD899E47"
-				item: "dew_drop_farmland_growth:high_quality_fertilizer"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "69E47AA8BD899E47"
+					item: "dew_drop_farmland_growth:high_quality_fertilizer"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -671,11 +688,12 @@
 			]
 			icon: "splendid_slimes:slime_incubator"
 			id: "139B02AFBCBBF350"
-			rewards: [{
-				id: "2BA89ACB2F811833"
-				item: "splendid_slimes:slime_ticket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2BA89ACB2F811833"
+					item: "splendid_slimes:slime_ticket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -712,11 +730,12 @@
 			]
 			icon: "splendid_slimes:plort_rippit"
 			id: "41029F073ADDDC2F"
-			rewards: [{
-				id: "074853EA3D01718D"
-				item: "splendid_slimes:slime_ticket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "074853EA3D01718D"
+					item: "splendid_slimes:slime_ticket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -750,12 +769,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest648FD0A599A54A0F.description2}"
 			]
 			id: "648FD0A599A54A0F"
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "5B5664CA140D5ED2"
-				table_id: 2207679701817321554L
-				type: "choice"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "5B5664CA140D5ED2"
+					table_id: 2207679701817321554L
+					type: "choice"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -785,6 +805,14 @@
 			]
 			icon: "minecraft:slime_spawn_egg"
 			id: "747B28CA5F55AFA7"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0004B7B61BEA764A"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "21F03480B5D4F77D"
 				title: "{ftbquests.chapter.iii__advanced_farming.quest747B28CA5F55AFA7.task.2445512325073270653.title}"
@@ -793,16 +821,6 @@
 			title: "{ftbquests.chapter.iii__advanced_farming.quest747B28CA5F55AFA7.title}"
 			x: 4.5d
 			y: 5.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0004B7B61BEA764A"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			description: [
@@ -813,11 +831,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest632578AFE8A0D12D.description3}"
 			]
 			id: "632578AFE8A0D12D"
-			rewards: [{
-				id: "61DCF25489EF651E"
-				item: "minecraft:slime_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "61DCF25489EF651E"
+					item: "minecraft:slime_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -860,12 +879,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest5C9C7A5A88613109.description3}"
 			]
 			id: "5C9C7A5A88613109"
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "577C0F0F5A40DFD6"
-				table_id: 2207679701817321554L
-				type: "random"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "577C0F0F5A40DFD6"
+					table_id: 2207679701817321554L
+					type: "random"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -904,12 +924,13 @@
 			}
 			id: "07A551F04BB9A117"
 			min_required_dependencies: 1
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "0AF350DA4D7F6BE5"
-				table_id: 2207679701817321554L
-				type: "random"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "0AF350DA4D7F6BE5"
+					table_id: 2207679701817321554L
+					type: "random"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -943,6 +964,14 @@
 			]
 			hide_until_deps_complete: true
 			id: "527F7721ED60868C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00021257EB925190"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "0FBC71E396E14EB1"
 				item: "numismatics:neptunium_coin"
@@ -951,16 +980,6 @@
 			title: "{ftbquests.chapter.iii__advanced_farming.quest527F7721ED60868C.title}"
 			x: 10.5d
 			y: 1.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00021257EB925190"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["07A551F04BB9A117"]
@@ -975,12 +994,13 @@
 			]
 			icon: "simplehats:slime_head"
 			id: "1030BCF34FEAE03C"
-			rewards: [{
-				count: 8
-				id: "44E79EEB6DF983D7"
-				item: "splendid_slimes:rocket_pod"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 8
+					id: "44E79EEB6DF983D7"
+					item: "splendid_slimes:rocket_pod"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1008,11 +1028,12 @@
 			]
 			icon: "splendid_slimes:slime_ticket"
 			id: "668AEE0B5CD49EE4"
-			rewards: [{
-				id: "3FE7A424DC656AA8"
-				item: "splendid_slimes:slime_ticket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3FE7A424DC656AA8"
+					item: "splendid_slimes:slime_ticket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1040,15 +1061,16 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest6F8709C925DE7237.description3}"
 			]
 			id: "6F8709C925DE7237"
-			rewards: [{
-				id: "23B7515792CD7747"
-				item: {
-					Count: 1
-					id: "longwings:butterfly_handbook"
-					tag: { }
+			rewards: [
+				{
+					id: "23B7515792CD7747"
+					item: {
+						Count: 1
+						id: "longwings:butterfly_handbook"
+						tag: { }
+					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -1084,11 +1106,12 @@
 			]
 			icon: "longwings:butterfly_driplure"
 			id: "7ADD57C8AF4092B2"
-			rewards: [{
-				id: "7098A56E92FB337B"
-				item: "longwings:berry_butterfly_brew_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7098A56E92FB337B"
+					item: "longwings:berry_butterfly_brew_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1151,11 +1174,12 @@
 			dependencies: ["6F8709C925DE7237"]
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest1571D0424A7A34D1.description1}"]
 			id: "1571D0424A7A34D1"
-			rewards: [{
-				id: "7BC53903BE8140F0"
-				item: "longwings:sugar_water_bowl"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7BC53903BE8140F0"
+					item: "longwings:sugar_water_bowl"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1192,11 +1216,12 @@
 				tag: { }
 			}
 			id: "4DC073ABF3D72467"
-			rewards: [{
-				id: "2E19FA6FA274E294"
-				item: "society:merino_wool"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2E19FA6FA274E294"
+					item: "society:merino_wool"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1294,11 +1319,12 @@
 			]
 			id: "54E81642A0E67042"
 			min_required_dependencies: 1
-			rewards: [{
-				id: "1DD372F2BF6522C8"
-				item: "splendid_slimes:slime_ticket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "1DD372F2BF6522C8"
+					item: "splendid_slimes:slime_ticket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1329,11 +1355,12 @@
 			]
 			id: "2C9C87690BD8E23B"
 			min_required_dependencies: 1
-			rewards: [{
-				id: "79A4DD37EA638059"
-				item: "splendid_slimes:slime_candy"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "79A4DD37EA638059"
+					item: "splendid_slimes:slime_candy"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1360,6 +1387,14 @@
 		{
 			dependencies: ["0C7D8F89BCF645AA"]
 			id: "214BFF5CB710FFE2"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007D360024AD410"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "3E230604E4BD6C0A"
 				item: "society:battery"
@@ -1367,16 +1402,6 @@
 			}]
 			x: 7.0d
 			y: 0.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007D360024AD410"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["214BFF5CB710FFE2"]
@@ -1390,11 +1415,12 @@
 			hide_dependency_lines: false
 			icon: "refurbished_furniture:light_electricity_generator"
 			id: "0462313FFAEC4054"
-			rewards: [{
-				id: "010FC9BAC3A786B3"
-				item: "refurbished_furniture:wrench"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "010FC9BAC3A786B3"
+					item: "refurbished_furniture:wrench"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1439,12 +1465,13 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest44ACDBB4DE598EA6.description2}"
 			]
 			id: "44ACDBB4DE598EA6"
-			rewards: [{
-				count: 4
-				id: "5519E022BD00A560"
-				item: "furniture:trash_bag"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "5519E022BD00A560"
+					item: "furniture:trash_bag"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1471,11 +1498,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest3C9A245CFCD5D8E8.description2}"
 			]
 			id: "3C9A245CFCD5D8E8"
-			rewards: [{
-				id: "6766C5B6D5AD2DF5"
-				item: "society:wine_keg"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "6766C5B6D5AD2DF5"
+					item: "society:wine_keg"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1501,11 +1529,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest66C1440EFF12DC66.description2}"
 			]
 			id: "66C1440EFF12DC66"
-			rewards: [{
-				id: "47A229EC3B1CEBC8"
-				item: "splendid_slimes:slime_candy"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "47A229EC3B1CEBC8"
+					item: "splendid_slimes:slime_candy"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1536,11 +1565,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.questC5EB5F66FB04A29.description3}"
 			]
 			id: "0C5EB5F66FB04A29"
-			rewards: [{
-				id: "59AF65650E1BB645"
-				item: "society:cordycep"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "59AF65650E1BB645"
+					item: "society:cordycep"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1567,11 +1597,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest51772B6C1CD5DD1E.description3}"
 			]
 			id: "51772B6C1CD5DD1E"
-			rewards: [{
-				id: "03E0A5A2565799B6"
-				item: "society:mossberry_stew"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "03E0A5A2565799B6"
+					item: "society:mossberry_stew"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1595,12 +1626,13 @@
 			description: ["{ftbquests.chapter.iii__advanced_farming.quest6689D68F72E56A40.description1}"]
 			icon: "etcetera:bismuth_ingot"
 			id: "6689D68F72E56A40"
-			rewards: [{
-				count: 4
-				id: "6B18B1CF41610DDF"
-				item: "etcetera:raw_bismuth"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "6B18B1CF41610DDF"
+					item: "etcetera:raw_bismuth"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1630,12 +1662,13 @@
 			]
 			icon: "classicpipes:oak_pipe"
 			id: "6C95E6AEEC55CFA5"
-			rewards: [{
-				count: 4
-				id: "18CC62D39ADF1ED4"
-				item: "classicpipes:advanced_copper_pipe"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "18CC62D39ADF1ED4"
+					item: "classicpipes:advanced_copper_pipe"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1669,11 +1702,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.questA455A4E0D7D074E.description2}"
 			]
 			id: "0A455A4E0D7D074E"
-			rewards: [{
-				id: "7E326A0759D9BB95"
-				item: "society:yard_work_yearly"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7E326A0759D9BB95"
+					item: "society:yard_work_yearly"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1701,11 +1735,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest17C8B0197B8636E7.description3}"
 			]
 			id: "17C8B0197B8636E7"
-			rewards: [{
-				id: "3EEE60A52B681D92"
-				item: "longwings:melon_butterfly_brew_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3EEE60A52B681D92"
+					item: "longwings:melon_butterfly_brew_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1734,11 +1769,12 @@
 				"{ftbquests.chapter.iii__advanced_farming.quest263CCA4D2EAF2629.description3}"
 			]
 			id: "263CCA4D2EAF2629"
-			rewards: [{
-				id: "694D864C0AD86F86"
-				item: "longwings:apple_butterfly_brew_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "694D864C0AD86F86"
+					item: "longwings:apple_butterfly_brew_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1767,12 +1803,13 @@
 			icon: "society:ribbit_hut_block"
 			id: "3DE36C9FBCB58800"
 			min_required_tasks: 1
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "5D016D7DF3355B6A"
-				table_id: 369102599118070839L
-				type: "choice"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "5D016D7DF3355B6A"
+					table_id: 369102599118070839L
+					type: "choice"
+				}
 				{
 					auto: "disabled"
 					count: 5

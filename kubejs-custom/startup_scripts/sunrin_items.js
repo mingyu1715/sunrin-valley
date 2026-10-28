@@ -20,4 +20,7 @@ StartupEvents.registry('item', event => {
       .texture('kubejs:item/' + id)
       .tooltip(Text.translate('tooltip.kubejs.' + id))
   })
+  event.create('kubejs:town_warp_ticket')
+    .texture('minecraft:item/map')
+    .tooltip(Text.translate('tooltip.kubejs.town_warp_ticket'))
 })

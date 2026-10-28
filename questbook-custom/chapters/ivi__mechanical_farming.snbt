@@ -53,11 +53,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest6A580C44B2AEF52F.description2}"
 			]
 			id: "6A580C44B2AEF52F"
-			rewards: [{
-				id: "14353B2F38F6F558"
-				item: "minecraft:netherite_scrap"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "14353B2F38F6F558"
+					item: "minecraft:netherite_scrap"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -83,12 +84,13 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest23BE07D35DAEA28C.description2}"
 			]
 			id: "23BE07D35DAEA28C"
-			rewards: [{
-				count: 4
-				id: "77EAB729280DE798"
-				item: "oreganized:raw_silver"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "77EAB729280DE798"
+					item: "oreganized:raw_silver"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -111,6 +113,14 @@
 			dependencies: ["23BE07D35DAEA28C"]
 			description: ["{ftbquests.chapter.ivi__mechanical_farming.quest1A1129507F643085.description1}"]
 			id: "1A1129507F643085"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0002D4B6491931C3"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "7F95E2F70E2681F4"
 				item: "create:electron_tube"
@@ -118,16 +128,6 @@
 			}]
 			x: 6.5d
 			y: 2.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0002D4B6491931C3"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["23BE07D35DAEA28C"]
@@ -137,12 +137,13 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest4575948F05E18615.description2}"
 			]
 			id: "4575948F05E18615"
-			rewards: [{
-				count: 4
-				id: "1A04AEC85EDDB536"
-				item: "oreganized:silver_sheet"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "1A04AEC85EDDB536"
+					item: "oreganized:silver_sheet"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -172,11 +173,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest4FE455E397B5E65D.description2}"
 			]
 			id: "4FE455E397B5E65D"
-			rewards: [{
-				id: "284884927D86AE5B"
-				item: "create:mechanical_pump"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "284884927D86AE5B"
+					item: "create:mechanical_pump"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -203,11 +205,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest65A8A3BFFA00CB7.description2}"
 			]
 			id: "065A8A3BFFA00CB7"
-			rewards: [{
-				id: "0B18D3785CB7B346"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0B18D3785CB7B346"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -234,11 +237,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest174A6EE7CF7900F0.description2}"
 			]
 			id: "174A6EE7CF7900F0"
-			rewards: [{
-				id: "05347AB3C9EB09F2"
-				item: "create:mechanical_arm"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "05347AB3C9EB09F2"
+					item: "create:mechanical_arm"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -271,11 +275,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest1B84BE72772B00B.description2}"
 			]
 			id: "01B84BE72772B00B"
-			rewards: [{
-				id: "03BF7FF5B5CE6BB8"
-				item: "oreganized:raw_lead_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "03BF7FF5B5CE6BB8"
+					item: "oreganized:raw_lead_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -302,12 +307,13 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest264888DE7B32E80B.description2}"
 			]
 			id: "264888DE7B32E80B"
-			rewards: [{
-				count: 32
-				id: "5CE3CC1D51E8A2E2"
-				item: "minecraft:andesite"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 32
+					id: "5CE3CC1D51E8A2E2"
+					item: "minecraft:andesite"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -333,11 +339,12 @@
 			]
 			icon: "create:wrench"
 			id: "221306DB217B8F93"
-			rewards: [{
-				id: "5314621E326C669A"
-				item: "create:wrench"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5314621E326C669A"
+					item: "create:wrench"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -366,6 +373,14 @@
 			]
 			icon: "etcetera:light_bulb"
 			id: "0F8E0141BDC23F7B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0008AA373B8029BD"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "64BDD9087ECA22C2"
 				title: "{ftbquests.chapter.ivi__mechanical_farming.questF8E0141BDC23F7B.task.7259196804901249730.title}"
@@ -374,16 +389,6 @@
 			title: "{ftbquests.chapter.ivi__mechanical_farming.questF8E0141BDC23F7B.title}"
 			x: -3.0d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0008AA373B8029BD"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["221306DB217B8F93"]
@@ -394,12 +399,13 @@
 			]
 			icon: "society:rubber"
 			id: "472A339723DE2777"
-			rewards: [{
-				count: 2
-				id: "4B09C38243950978"
-				item: "society:tapper"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "4B09C38243950978"
+					item: "society:tapper"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -437,12 +443,13 @@
 			]
 			icon: "create:water_wheel"
 			id: "6A931F456D6FEA3E"
-			rewards: [{
-				count: 4
-				id: "15BB4FE6AFB6F0DD"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "15BB4FE6AFB6F0DD"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -477,12 +484,13 @@
 			]
 			icon: "create:belt_connector"
 			id: "74CB97A6B1ADC2B8"
-			rewards: [{
-				count: 4
-				id: "64732BFA9CAD2E87"
-				item: "create:belt_connector"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "64732BFA9CAD2E87"
+					item: "create:belt_connector"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -512,11 +520,12 @@
 			dependencies: ["6A931F456D6FEA3E"]
 			description: ["{ftbquests.chapter.ivi__mechanical_farming.quest5BAFB04B1F3B8150.description1}"]
 			id: "5BAFB04B1F3B8150"
-			rewards: [{
-				id: "752E5EF148153A7F"
-				item: "create:goggles"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "752E5EF148153A7F"
+					item: "create:goggles"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -543,11 +552,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest3B74A3D3DABA26EF.description2}"
 			]
 			id: "3B74A3D3DABA26EF"
-			rewards: [{
-				id: "344BE9AE2D6B0677"
-				item: "create:chocolate_bucket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "344BE9AE2D6B0677"
+					item: "create:chocolate_bucket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -574,11 +584,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest7282287A6621FF82.description2}"
 			]
 			id: "7282287A6621FF82"
-			rewards: [{
-				id: "0A182E92C8F9F968"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0A182E92C8F9F968"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -601,12 +612,13 @@
 			dependencies: ["7282287A6621FF82"]
 			description: ["{ftbquests.chapter.ivi__mechanical_farming.quest18699F88064119B.description1}"]
 			id: "018699F88064119B"
-			rewards: [{
-				count: 4
-				id: "78755F7BA9A377AC"
-				item: "create:brass_ingot"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "78755F7BA9A377AC"
+					item: "create:brass_ingot"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -633,12 +645,13 @@
 			]
 			icon: "create:white_sail"
 			id: "5704D9E5E98945DF"
-			rewards: [{
-				count: 16
-				id: "16C0C03EBC4F13A2"
-				item: "create:andesite_alloy"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 16
+					id: "16C0C03EBC4F13A2"
+					item: "create:andesite_alloy"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -688,11 +701,12 @@
 			icon: "create:mechanical_crafter"
 			id: "3D532DC93531B0D0"
 			min_required_tasks: 1
-			rewards: [{
-				id: "14A959D5C2755CA3"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "14A959D5C2755CA3"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -760,11 +774,12 @@
 			]
 			icon: "create:crushing_wheel"
 			id: "4C9E6CB01631C0B6"
-			rewards: [{
-				id: "69656356F460D387"
-				item: "numismatics:sun"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "69656356F460D387"
+					item: "numismatics:sun"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -798,11 +813,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest25B8A904433E17B3.description2}"
 			]
 			id: "25B8A904433E17B3"
-			rewards: [{
-				id: "7795F9A91BD9C41A"
-				item: "create:railway_casing"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7795F9A91BD9C41A"
+					item: "create:railway_casing"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -825,11 +841,12 @@
 			dependencies: ["7282287A6621FF82"]
 			description: ["{ftbquests.chapter.ivi__mechanical_farming.quest48C83D8D34DBFB4B.description1}"]
 			id: "48C83D8D34DBFB4B"
-			rewards: [{
-				id: "6901D568CABDDAC2"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "6901D568CABDDAC2"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -856,11 +873,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest140472B5516ED9F1.description2}"
 			]
 			id: "140472B5516ED9F1"
-			rewards: [{
-				id: "09B32021E9514324"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "09B32021E9514324"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -886,11 +904,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest3C0965E47666E5B3.description2}"
 			]
 			id: "3C0965E47666E5B3"
-			rewards: [{
-				id: "2E9779630BADAD5D"
-				item: "numismatics:sun"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2E9779630BADAD5D"
+					item: "numismatics:sun"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -916,11 +935,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest5108E61542739DFC.description2}"
 			]
 			id: "5108E61542739DFC"
-			rewards: [{
-				id: "7932326EE1442B8C"
-				item: "numismatics:sun"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7932326EE1442B8C"
+					item: "numismatics:sun"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -946,11 +966,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest26AF7B63E961DF18.description2}"
 			]
 			id: "26AF7B63E961DF18"
-			rewards: [{
-				id: "1F7BC10AA92414CB"
-				item: "numismatics:sun"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "1F7BC10AA92414CB"
+					item: "numismatics:sun"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -976,11 +997,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest514F85795846913A.description2}"
 			]
 			id: "514F85795846913A"
-			rewards: [{
-				id: "65B694E06F2894A6"
-				item: "minecraft:netherite_scrap"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "65B694E06F2894A6"
+					item: "minecraft:netherite_scrap"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1006,11 +1028,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest17D2933C4B133AA8.description2}"
 			]
 			id: "17D2933C4B133AA8"
-			rewards: [{
-				id: "5135783CF6E9EE57"
-				item: "minecraft:netherite_scrap"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5135783CF6E9EE57"
+					item: "minecraft:netherite_scrap"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1034,11 +1057,12 @@
 			icon: "create:fluid_pipe"
 			id: "505BE1C2FA826879"
 			ignore_reward_blocking: true
-			rewards: [{
-				id: "4EAF022B48142714"
-				item: "society:oak_resin"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4EAF022B48142714"
+					item: "society:oak_resin"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1085,11 +1109,12 @@
 			}
 			id: "162C1DFB58132D45"
 			min_required_tasks: 1
-			rewards: [{
-				id: "1650A58F51D70C0D"
-				item: "create_enchantment_industry:hyper_experience_bottle"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "1650A58F51D70C0D"
+					item: "create_enchantment_industry:hyper_experience_bottle"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1123,11 +1148,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest523925A720130B12.description2}"
 			]
 			id: "523925A720130B12"
-			rewards: [{
-				id: "5BE55A32607B297A"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5BE55A32607B297A"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1155,12 +1181,13 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest36ACACFB9D5A97F9.description3}"
 			]
 			id: "36ACACFB9D5A97F9"
-			rewards: [{
-				count: 16
-				id: "492A34DDC06691E0"
-				item: "pipez:item_pipe"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 16
+					id: "492A34DDC06691E0"
+					item: "pipez:item_pipe"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1194,11 +1221,12 @@
 			]
 			icon: "pipez:advanced_upgrade"
 			id: "45D9A962F73792EA"
-			rewards: [{
-				id: "27FC316449EF8E78"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "27FC316449EF8E78"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1232,11 +1260,12 @@
 			]
 			icon: "create_hypertube:hypertube_entrance"
 			id: "75472A79424BCD40"
-			rewards: [{
-				id: "489B88094397CA13"
-				item: "create_hypertube:hypertube_entrance"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "489B88094397CA13"
+					item: "create_hypertube:hypertube_entrance"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1323,11 +1352,12 @@
 			]
 			icon: "oreganized:molten_lead_bucket"
 			id: "7718055315817CB1"
-			rewards: [{
-				id: "15301D9B9720AB6A"
-				item: "society:alchemical_varnish_bucket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "15301D9B9720AB6A"
+					item: "society:alchemical_varnish_bucket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1354,11 +1384,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest5384CAC9635C71E5.description2}"
 			]
 			id: "5384CAC9635C71E5"
-			rewards: [{
-				id: "499721765F7F78CB"
-				item: "nethervinery:crimson_grape_juice_bucket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "499721765F7F78CB"
+					item: "nethervinery:crimson_grape_juice_bucket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1385,12 +1416,13 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest501D5F9B05EF9B3F.description2}"
 			]
 			id: "501D5F9B05EF9B3F"
-			rewards: [{
-				count: 32
-				id: "3A530F4875905870"
-				item: "minecraft:chain"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 32
+					id: "3A530F4875905870"
+					item: "minecraft:chain"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1420,11 +1452,12 @@
 			]
 			icon: "create:package_frogport"
 			id: "3211E60DF860BE29"
-			rewards: [{
-				id: "585D48B3E2E22AE1"
-				item: "create:package_frogport"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "585D48B3E2E22AE1"
+					item: "create:package_frogport"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -1458,11 +1491,12 @@
 				"{ftbquests.chapter.ivi__mechanical_farming.quest54B5FB32B885916A.description2}"
 			]
 			id: "54B5FB32B885916A"
-			rewards: [{
-				id: "352303D920F6A3CF"
-				item: "create_factory_logistics:jar_packager"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "352303D920F6A3CF"
+					item: "create_factory_logistics:jar_packager"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

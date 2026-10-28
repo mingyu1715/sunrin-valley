@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "npm --workspace launcher run dev",
     "build": "npm run core:build && npm run build:pack && npm --workspace launcher run build",
-    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs kubejs-custom/tests/*.test.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py' && python3 -m unittest discover -s server-ops/tests -p \"test_*.py\" && python3 sunrin-core/test-domain.py",
+    "test": "npm --workspace launcher test && node --test kubejs-custom/test_items.cjs kubejs-custom/tests/*.test.cjs && python3 -m unittest discover -s resourcepacks -p 'test_*.py' && python3 -m unittest discover -s questbook-custom/tests -p 'test_*.py' && python3 -m unittest discover -s client-pack -p 'test_*.py' && python3 -m unittest discover -s server-ops/tests -p \"test_*.py\" && python3 sunrin-core/test-domain.py",
     "typecheck": "npm --workspace launcher run typecheck",
     "package:mac": "npm run build && npm --workspace launcher run package:mac",
     "package:win": "npm run build && npm --workspace launcher run package:win",

@@ -21,11 +21,12 @@
 		{
 			icon: "supplementaries:present_red"
 			id: "7CE6C320CC9F9B87"
-			rewards: [{
-				id: "3F382B3123CA893C"
-				item: "simplehats:hatbag_epic"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3F382B3123CA893C"
+					item: "simplehats:hatbag_epic"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -39,7 +40,7 @@
 			tasks: [{
 				count: 4L
 				id: "22FC2E88EA6ABB6A"
-				item: { Count: 4, id: "numismatics:crown" }
+				item: "numismatics:crown"
 				type: "item"
 			}]
 			title: "{ftbquests.chapter.vault.quest7CE6C320CC9F9B87.title}"
@@ -49,12 +50,13 @@
 		{
 			icon: "supplementaries:present_orange"
 			id: "6541E0430F050B7D"
-			rewards: [{
-				count: 24
-				id: "2B9244C2AEEF15F7"
-				item: "dew_drop_farmland_growth:high_quality_fertilizer"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 24
+					id: "2B9244C2AEEF15F7"
+					item: "dew_drop_farmland_growth:high_quality_fertilizer"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -78,11 +80,12 @@
 		{
 			icon: "supplementaries:present_yellow"
 			id: "5629152AF2F5D6EE"
-			rewards: [{
-				id: "4A564B58A7CFA60B"
-				item: "society:charging_rod"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4A564B58A7CFA60B"
+					item: "society:charging_rod"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -106,11 +109,12 @@
 		{
 			icon: "supplementaries:present_purple"
 			id: "10EC025C45540E52"
-			rewards: [{
-				id: "0187862826FFF6F2"
-				item: "society:crystalarium"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0187862826FFF6F2"
+					item: "society:crystalarium"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -168,7 +172,7 @@
 				}
 				{
 					auto: "invisible"
-					command: "/kjs stages add @p vault_complete"
+					command: "/kjs stages add @s vault_complete"
 					elevate_perms: true
 					id: "547F885D1C8553E3"
 					silent: true

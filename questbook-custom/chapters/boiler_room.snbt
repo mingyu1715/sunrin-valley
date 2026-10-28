@@ -53,7 +53,7 @@
 				}
 				{
 					auto: "invisible"
-					command: "/kjs stages add @p boiler_room_complete"
+					command: "/kjs stages add @s boiler_room_complete"
 					elevate_perms: true
 					id: "3DE1133EC784FE2F"
 					silent: true
@@ -85,11 +85,12 @@
 		{
 			icon: "supplementaries:present_purple"
 			id: "3889A9F0A1CF45FF"
-			rewards: [{
-				id: "4897B3F9C4577A1D"
-				item: "extractinator:extractinator"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4897B3F9C4577A1D"
+					item: "extractinator:extractinator"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -129,12 +130,13 @@
 		{
 			icon: "supplementaries:present_light_blue"
 			id: "52A3D52D6251EDB6"
-			rewards: [{
-				count: 5
-				id: "13E35DB7EB1B7401"
-				item: "society:omni_geode"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 5
+					id: "13E35DB7EB1B7401"
+					item: "society:omni_geode"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -171,11 +173,12 @@
 			icon: "supplementaries:present_blue"
 			id: "0B45A918213371FA"
 			min_required_tasks: 3
-			rewards: [{
-				id: "6E3C4F2F04BA9298"
-				item: "society:relic_trove"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "6E3C4F2F04BA9298"
+					item: "society:relic_trove"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -347,42 +350,43 @@
 			icon: "supplementaries:present_red"
 			id: "0F606FEB98D44C0F"
 			min_required_tasks: 3
-			rewards: [{
-				id: "496273F8A86D642D"
-				item: {
-					Count: 1
-					id: "relics:rage_glove"
-					tag: {
-						abilities: {
-							phlebotomy: {
-								points: 0
-								stats: {
-									attack_speed: 0.00981d
-									heal: 2.0E-4d
-									movement_speed: 0.01501d
+			rewards: [
+				{
+					id: "496273F8A86D642D"
+					item: {
+						Count: 1
+						id: "relics:rage_glove"
+						tag: {
+							abilities: {
+								phlebotomy: {
+									points: 0
+									stats: {
+										attack_speed: 0.00981d
+										heal: 2.0E-4d
+										movement_speed: 0.01501d
+									}
 								}
-							}
-							rage: {
-								points: 0
-								stats: {
-									dealt_damage: 0.04615d
-									duration: 2.65473d
-									incoming_damage: 0.03639d
+								rage: {
+									points: 0
+									stats: {
+										dealt_damage: 0.04615d
+										duration: 2.65473d
+										incoming_damage: 0.03639d
+									}
 								}
-							}
-							spurt: {
-								points: 0
-								stats: {
-									cooldown: 18.76162d
-									damage: 0.14556d
-									distance: 3.66219d
+								spurt: {
+									points: 0
+									stats: {
+										cooldown: 18.76162d
+										damage: 0.14556d
+										distance: 3.66219d
+									}
 								}
 							}
 						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -397,25 +401,25 @@
 				{
 					count: 8L
 					id: "7D26469AFF62D8F7"
-					item: { Count: 4, id: "paraglider:spirit_orb" }
+					item: "paraglider:spirit_orb"
 					type: "item"
 				}
 				{
 					count: 64L
 					id: "2B517CF9AC0EB6AA"
-					item: { Count: 64, id: "minecraft:rotten_flesh" }
+					item: "minecraft:rotten_flesh"
 					type: "item"
 				}
 				{
 					count: 64L
 					id: "68A69AF7F1C0F0D8"
-					item: { Count: 64, id: "minecraft:bone" }
+					item: "minecraft:bone"
 					type: "item"
 				}
 				{
 					count: 3L
 					id: "7FCA758588C563A4"
-					item: { Count: 3, id: "minecraft:wither_skeleton_skull" }
+					item: "minecraft:wither_skeleton_skull"
 					type: "item"
 				}
 			]

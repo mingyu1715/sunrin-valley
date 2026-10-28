@@ -28,6 +28,14 @@
 				}
 			}
 			id: "531CCAEFB0498F98"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00034FF5DE0603A7"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -48,16 +56,6 @@
 			title: "{ftbquests.chapter.perfection.quest531CCAEFB0498F98.title}"
 			x: 6.5d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00034FF5DE0603A7"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["0C17CF9D782787BE"]
@@ -71,6 +69,14 @@
 				}
 			}
 			id: "2D9AD3D0C59E682B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009C5BFA577AD08"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -91,16 +97,6 @@
 			title: "{ftbquests.chapter.perfection.quest2D9AD3D0C59E682B.title}"
 			x: 4.5d
 			y: -4.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009C5BFA577AD08"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["7BA3A7D6D37CFA69"]
@@ -114,6 +110,14 @@
 				}
 			}
 			id: "17D1D7EDA66A95F4"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000FCCDDAAF54960"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -134,16 +138,6 @@
 			title: "{ftbquests.chapter.perfection.quest17D1D7EDA66A95F4.title}"
 			x: 4.0d
 			y: -6.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000FCCDDAAF54960"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["21B62899C63D3C4B"]
@@ -157,6 +151,14 @@
 				}
 			}
 			id: "3B928722AC96C4B0"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B1F5F53BF9F38"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -177,16 +179,6 @@
 			title: "{ftbquests.chapter.perfection.quest3B928722AC96C4B0.title}"
 			x: 4.5d
 			y: -8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B1F5F53BF9F38"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["2255D3F05F8B895A"]
@@ -200,6 +192,14 @@
 				}
 			}
 			id: "47CF88FE788DD872"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0000394E94DF1B29"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -220,16 +220,6 @@
 			title: "{ftbquests.chapter.perfection.quest47CF88FE788DD872.title}"
 			x: 6.5d
 			y: -8.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0000394E94DF1B29"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["1B4C5FEECCEE1392"]
@@ -243,6 +233,14 @@
 				}
 			}
 			id: "771697176D1B54CD"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000EB5A2CE015922"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -263,16 +261,6 @@
 			title: "{ftbquests.chapter.perfection.quest771697176D1B54CD.title}"
 			x: 8.5d
 			y: -8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000EB5A2CE015922"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["19D2D00AC36C9049"]
@@ -286,6 +274,14 @@
 				}
 			}
 			id: "1F88FD241787720B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000E9E0B1B8D4870"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -306,16 +302,6 @@
 			title: "{ftbquests.chapter.perfection.quest1F88FD241787720B.title}"
 			x: 9.0d
 			y: -6.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000E9E0B1B8D4870"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["22E44CB981A4299B"]
@@ -329,6 +315,14 @@
 				}
 			}
 			id: "67F85F959DBBE0BD"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000F932B334C2C82"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -349,16 +343,6 @@
 			title: "{ftbquests.chapter.perfection.quest67F85F959DBBE0BD.title}"
 			x: 8.5d
 			y: -4.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000F932B334C2C82"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: [
@@ -378,11 +362,12 @@
 			]
 			icon: "supplementaries:present_blue"
 			id: "272D9228BC46AEE0"
-			rewards: [{
-				id: "5BFAE126EEEBC621"
-				item: "numismatics:ancient_coin"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5BFAE126EEEBC621"
+					item: "numismatics:ancient_coin"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -429,7 +414,7 @@
 				}
 				{
 					auto: "invisible"
-					command: "/kjs stages add @p community_center_complete"
+					command: "/kjs stages add @s community_center_complete"
 					elevate_perms: true
 					id: "5C52F171AEBC2238"
 					silent: true
@@ -461,6 +446,14 @@
 		{
 			dependencies: ["7CBAF0748446A0C2"]
 			id: "6D5F31A96631A62D"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00000A103E7B1C95"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -481,20 +474,18 @@
 			title: "{ftbquests.chapter.perfection.quest6D5F31A96631A62D.title}"
 			x: 20.0d
 			y: -8.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00000A103E7B1C95"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["4B9634D942E590AB"]
 			id: "06EDF98282351F85"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0009F8A20B2514EF"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -515,20 +506,18 @@
 			title: "{ftbquests.chapter.perfection.quest6EDF98282351F85.title}"
 			x: 21.5d
 			y: -8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0009F8A20B2514EF"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["469CEB4C8B3C0EA9"]
 			id: "77780C73C016EE60"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0007BCBBD1450D98"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -549,20 +538,18 @@
 			title: "{ftbquests.chapter.perfection.quest77780C73C016EE60.title}"
 			x: 20.0d
 			y: -3.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0007BCBBD1450D98"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["3428ADDC87A77916"]
 			id: "6C7C42BC9E072DE1"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00080D518002BFA5"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -583,20 +570,18 @@
 			title: "{ftbquests.chapter.perfection.quest6C7C42BC9E072DE1.title}"
 			x: 22.5d
 			y: -6.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00080D518002BFA5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["7591439B35772AB2"]
 			id: "54E8CF90BE620790"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000DA30E9532C6C1"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 1.0d
 			tasks: [{
 				icon: {
@@ -617,16 +602,6 @@
 			title: "{ftbquests.chapter.perfection.quest54E8CF90BE620790.title}"
 			x: 21.5d
 			y: -4.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000DA30E9532C6C1"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			description: [
@@ -635,11 +610,12 @@
 				"{ftbquests.chapter.perfection.quest5875FF0D35A7E422.description2}"
 			]
 			id: "5875FF0D35A7E422"
-			rewards: [{
-				id: "005F5460944AF662"
-				item: "waystones:blue_sharestone"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "005F5460944AF662"
+					item: "waystones:blue_sharestone"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -664,11 +640,12 @@
 				"{ftbquests.chapter.perfection.quest769AC695FD3F8DC9.description2}"
 			]
 			id: "769AC695FD3F8DC9"
-			rewards: [{
-				id: "0BBEB51FFDDAFCC8"
-				item: "waystones:green_sharestone"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0BBEB51FFDDAFCC8"
+					item: "waystones:green_sharestone"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -693,11 +670,12 @@
 				"{ftbquests.chapter.perfection.quest3E074A7E5B773419.description2}"
 			]
 			id: "3E074A7E5B773419"
-			rewards: [{
-				id: "045D8E458D5D8E21"
-				item: "waystones:red_sharestone"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "045D8E458D5D8E21"
+					item: "waystones:red_sharestone"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -722,11 +700,12 @@
 				"{ftbquests.chapter.perfection.quest6C342B7B66C29823.description2}"
 			]
 			id: "6C342B7B66C29823"
-			rewards: [{
-				id: "7DC5F43AB022353F"
-				item: "waystones:purple_sharestone"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "7DC5F43AB022353F"
+					item: "waystones:purple_sharestone"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -753,11 +732,12 @@
 				"{ftbquests.chapter.perfection.questA1FA99B227284C7.description3}"
 			]
 			id: "0A1FA99B227284C7"
-			rewards: [{
-				id: "0FDD1EA76615A150"
-				item: "numismatics:ancient_coin"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "0FDD1EA76615A150"
+					item: "numismatics:ancient_coin"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -807,19 +787,20 @@
 				}
 			}
 			id: "17064AEF4212B5FF"
-			rewards: [{
-				id: "7F09D6B4763C154A"
-				item: {
-					Count: 1
-					id: "trofers:large_pillar"
-					tag: {
-						BlockEntityTag: {
-							Trophy: "trofers:perfection"
+			rewards: [
+				{
+					id: "7F09D6B4763C154A"
+					item: {
+						Count: 1
+						id: "trofers:large_pillar"
+						tag: {
+							BlockEntityTag: {
+								Trophy: "trofers:perfection"
+							}
 						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -847,6 +828,14 @@
 		{
 			dependencies: ["6EBAA004C1A50E98"]
 			id: "4A708E01E3A3B8D3"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B6C90410DC772"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				icon: {
@@ -867,16 +856,6 @@
 			title: "{ftbquests.chapter.perfection.quest4A708E01E3A3B8D3.title}"
 			x: 13.625000000000007d
 			y: -1.3214285714285765d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B6C90410DC772"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 	]
 	title: "{ftbquests.chapter.perfection.title}"

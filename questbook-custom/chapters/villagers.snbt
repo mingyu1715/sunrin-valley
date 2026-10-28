@@ -104,12 +104,13 @@
 				}
 			}
 			id: "3CF0897E67574877"
-			rewards: [{
-				count: 4
-				id: "26C56AF517918EC1"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "26C56AF517918EC1"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -155,12 +156,13 @@
 				}
 			}
 			id: "664E4A3806C40A78"
-			rewards: [{
-				count: 2
-				id: "6839878BB1EDD498"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "6839878BB1EDD498"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -202,12 +204,13 @@
 				}
 			}
 			id: "048655663A5A82FC"
-			rewards: [{
-				count: 4
-				id: "61D96A98B3584FAA"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "61D96A98B3584FAA"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -247,12 +250,13 @@
 				}
 			}
 			id: "2A64214504AAD5E5"
-			rewards: [{
-				count: 4
-				id: "4C40384A6DE0625A"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "4C40384A6DE0625A"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -292,12 +296,13 @@
 				}
 			}
 			id: "499871FDD2A65F2C"
-			rewards: [{
-				count: 4
-				id: "211263500283A787"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "211263500283A787"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -339,11 +344,12 @@
 				}
 			}
 			id: "4633C0427ACA18D3"
-			rewards: [{
-				id: "39A6E5251F5A738D"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "39A6E5251F5A738D"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -374,6 +380,14 @@
 			dependencies: ["4633C0427ACA18D3"]
 			description: ["{ftbquests.chapter.villagers.quest33338792EF0994BD.description1}"]
 			id: "33338792EF0994BD"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "00066FE579B565D5"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				id: "1A13B35BF5920741"
@@ -383,16 +397,6 @@
 			title: "{ftbquests.chapter.villagers.quest33338792EF0994BD.title}"
 			x: 7.0d
 			y: 8.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "00066FE579B565D5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["048655663A5A82FC"]
@@ -408,6 +412,14 @@
 				}
 			}
 			id: "49477F09DF6EBA50"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000B543844FACE15"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "078F96904FB1E9F6"
 				title: "{ftbquests.chapter.villagers.quest49477F09DF6EBA50.task.544819626491636214.title}"
@@ -416,16 +428,6 @@
 			title: "{ftbquests.chapter.villagers.quest49477F09DF6EBA50.title}"
 			x: 4.5d
 			y: 5.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B543844FACE15"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["33338792EF0994BD"]
@@ -438,6 +440,14 @@
 				}
 			}
 			id: "55F17BB945CA5BB2"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000686B8ABB21D15"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "243D36F88B4D14A6"
 				title: "{ftbquests.chapter.villagers.quest55F17BB945CA5BB2.task.2611303800061629606.title}"
@@ -445,22 +455,20 @@
 			}]
 			x: 6.0d
 			y: 9.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000686B8ABB21D15"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["33338792EF0994BD"]
 			description: ["{ftbquests.chapter.villagers.quest7B2AB58CA9C1C19B.description1}"]
 			icon: "brewery:beer_wheat"
 			id: "7B2AB58CA9C1C19B"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D3ADEE94443F9"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "6A31C1AEEBE3F235"
 				type: "checkmark"
@@ -468,16 +476,6 @@
 			title: "{ftbquests.chapter.villagers.quest7B2AB58CA9C1C19B.title}"
 			x: 8.0d
 			y: 9.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D3ADEE94443F9"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["66E1AC55824DF1D9"]
@@ -496,6 +494,14 @@
 				}
 			}
 			id: "52F1DCA9462F825F"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000BC93496E25687"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "3C94F73EFA3C7BCD"
 				title: "{ftbquests.chapter.villagers.quest52F1DCA9462F825F.task.4365385788687154125.title}"
@@ -504,16 +510,6 @@
 			title: "{ftbquests.chapter.villagers.quest52F1DCA9462F825F.title}"
 			x: 9.5d
 			y: 5.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000BC93496E25687"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["5A369FC904BCF5EE"]
@@ -532,6 +528,14 @@
 				}
 			}
 			id: "1348507AE17E187E"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0000197FFF7176ED"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "691F920167A31AB3"
 				title: "{ftbquests.chapter.villagers.quest1348507AE17E187E.task.7574933632991828659.title}"
@@ -540,16 +544,6 @@
 			title: "{ftbquests.chapter.villagers.quest1348507AE17E187E.title}"
 			x: 7.0d
 			y: 5.5d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0000197FFF7176ED"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["49477F09DF6EBA50"]
@@ -560,6 +554,14 @@
 			]
 			icon: "society:animal_fancy"
 			id: "0E7AAB1F6C287535"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "0006C8B51272B42B"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "6C5F6D72CE1B21A3"
 				title: "{ftbquests.chapter.villagers.questE7AAB1F6C287535.task.7809080618735313315.title}"
@@ -567,16 +569,6 @@
 			}]
 			x: 4.5d
 			y: 7.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "0006C8B51272B42B"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["52F1DCA9462F825F"]

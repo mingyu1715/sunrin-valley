@@ -10,15 +10,24 @@
 	quest_links: [ ]
 	quests: [
 		{
-			description: [
-				"{ftbquests.chapter.getting_started.quest3862A7D1A471A215.description1}"
-			]
+			dependencies: ["238702B124895A0A"]
+			description: ["{ftbquests.chapter.getting_started.quest3862A7D1A471A215.description1}"]
 			id: "3862A7D1A471A215"
 			rewards: [
 				{
-					count: 4
-					id: "071BAFAC9167564D"
-					item: "meadow:cheese_sandwich"
+					auto: "disabled"
+					count: 5
+					id: "07864E97EEB05B2A"
+					item: "numismatics:cog"
+					team_reward: false
+					type: "item"
+				}
+				{
+					auto: "disabled"
+					count: 1
+					id: "646C08510538F2EB"
+					item: "minecraft:smithing_table"
+					team_reward: false
 					type: "item"
 				}
 				{
@@ -33,70 +42,55 @@
 			size: 1.5d
 			tasks: [
 				{
+					count: 1
 					id: "42128298ECAA5F88"
-					item: "minecraft:crafting_table"
+					item: "minecraft:wooden_pickaxe"
+					title: "{ftbquests.chapter.getting_started.quest3862A7D1A471A215.task.4761011349401264008.title}"
 					type: "item"
 				}
 			]
 			title: "{ftbquests.chapter.getting_started.quest3862A7D1A471A215.title}"
 			x: -3.75d
 			y: -1.5d
-			dependencies: [
-				"238702B124895A0A"
-			]
 		}
 		{
-			dependencies: [
-				"3862A7D1A471A215"
-			]
+			dependencies: ["3862A7D1A471A215"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest1E5531421815CDB3.description1}"
 				""
 				"{ftbquests.chapter.getting_started.quest1E5531421815CDB3.description2}"
-				""
-				"{ftbquests.chapter.getting_started.quest1E5531421815CDB3.description3}"
 			]
 			id: "1E5531421815CDB3"
 			rewards: [
 				{
+					count: 5
 					id: "1402E5011DF54D5C"
 					item: "numismatics:cog"
 					type: "item"
 				}
 				{
-					id: "137899E474E8FB04"
-					item: "minecraft:smithing_table"
-					type: "item"
-				}
-				{
-					count: 20
+					count: 5
 					id: "5549518B22AEC1F1"
 					item: "kubejs:sunrin_meal"
 					type: "item"
 				}
 				{
 					auto: "disabled"
-					count: 5
-					id: "000DDD9CB6809446"
-					item: "kubejs:sunrin_meal"
+					count: 1
+					id: "0A664AFFE407096B"
+					item: "kubejs:town_warp_ticket"
 					team_reward: false
 					type: "item"
 				}
 			]
+			size: 1.5d
 			tasks: [
 				{
-					icon: {
-						Count: 1
-						id: "minecraft:wooden_pickaxe"
-						tag: {
-							Damage: 0
-						}
-					}
+					count: 1
 					id: "1802EEEEFC77234B"
-					item: "minecraft:wooden_pickaxe"
+					item: "minecraft:stone_pickaxe"
 					title: "{ftbquests.chapter.getting_started.quest1E5531421815CDB3.task.1730207917068985163.title}"
 					type: "item"
-					count: 1
 				}
 			]
 			title: "{ftbquests.chapter.getting_started.quest1E5531421815CDB3.title}"
@@ -104,9 +98,7 @@
 			y: -1.5d
 		}
 		{
-			dependencies: [
-				"1E5531421815CDB3"
-			]
+			dependencies: ["1E5531421815CDB3"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest3F759C6DEEBC61FD.description1}"
 				""
@@ -130,21 +122,17 @@
 				}
 			]
 			size: 1.5d
-			tasks: [
-				{
-					id: "303017FCE69EB127"
-					item: "shippingbin:basic_shipping_bin"
-					type: "item"
-				}
-			]
+			tasks: [{
+				id: "303017FCE69EB127"
+				item: "shippingbin:basic_shipping_bin"
+				type: "item"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest3F759C6DEEBC61FD.title}"
 			x: 0.5d
 			y: -1.5d
 		}
 		{
-			dependencies: [
-				"3F759C6DEEBC61FD"
-			]
+			dependencies: ["3F759C6DEEBC61FD"]
 			description: [
 				"{ftbquests.chapter.welcome.quest1375AE2ECAC8C147.description1}"
 				""
@@ -160,16 +148,6 @@
 			]
 			icon: "supplementaries:flag_light_blue"
 			id: "1375AE2ECAC8C147"
-			tasks: [
-				{
-					id: "656AD09E45594435"
-					title: "{ftbquests.chapter.welcome.quest1375AE2ECAC8C147.task.7307882723548939317.title}"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.chapter.welcome.quest1375AE2ECAC8C147.title}"
-			x: 0.5d
-			y: 1.0d
 			rewards: [
 				{
 					auto: "disabled"
@@ -179,24 +157,9 @@
 					team_reward: false
 					type: "item"
 				}
-			]
-		}
-		{
-			dependencies: [
-				"1375AE2ECAC8C147"
-			]
-			description: [
-				"{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.description1}"
-				""
-				"{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.description2}"
-				""
-				"{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.description3}"
-			]
-			icon: "supplementaries:slice_map"
-			id: "5FDA526D348C8A0F"
-			rewards: [
 				{
-					command: "/kjs stages add @p ftbchunks_mapping"
+					auto: "invisible"
+					command: "/kjs stages add @s ftbchunks_mapping"
 					elevate_perms: true
 					exclude_from_claim_all: true
 					icon: "supplementaries:slice_map"
@@ -207,31 +170,19 @@
 					title: "{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.reward.8465555190247819492.title}"
 					type: "command"
 				}
-				{
-					auto: "disabled"
-					count: 5
-					id: "000761CBC53C8AA4"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
 			]
-			tasks: [
-				{
-					id: "278FC13CCE8B9572"
-					title: "{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.task.2850709556056266098.title}"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.chapter.welcome.quest5FDA526D348C8A0F.title}"
-			x: 0.5d
-			y: 2.5d
-			optional: true
+			size: 1.5d
+			tasks: [{
+				id: "656AD09E45594435"
+				title: "{ftbquests.chapter.welcome.quest1375AE2ECAC8C147.task.7307882723548939317.title}"
+				type: "checkmark"
+			}]
+			title: "{ftbquests.chapter.welcome.quest1375AE2ECAC8C147.title}"
+			x: 3.0d
+			y: 0.0d
 		}
 		{
-			dependencies: [
-				"472F40ECF199DD42"
-			]
+			dependencies: ["3F759C6DEEBC61FD"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest73A85902CE35A43A.description1}"
 				""
@@ -261,21 +212,17 @@
 				}
 			]
 			size: 1.5d
-			tasks: [
-				{
-					id: "733E80E41743D011"
-					title: "{ftbquests.chapter.sunrin_test.quest73A85902CE35A43A.task.currency}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "733E80E41743D011"
+				title: "{ftbquests.chapter.sunrin_test.quest73A85902CE35A43A.task.currency}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest73A85902CE35A43A.title}"
-			x: 4.5d
-			y: -1.5d
+			x: 3.0d
+			y: -3.5d
 		}
 		{
-			dependencies: [
-				"1375AE2ECAC8C147"
-			]
+			dependencies: ["3F759C6DEEBC61FD"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest679F77E46148B5D1.description1}"
 				""
@@ -299,38 +246,37 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "3F0D74D09682750A"
-					item: {
-						Count: 1
-						id: "sophisticatedbackpacks:backpack"
-						tag: {
-							contentsUuid: [I; 1447614021, -1361622470, -1334094781, -646669453]
-							inventorySlots: 27
-							renderInfo: {
-								upgradeItems: [
-									{
-										Count: 1b
-										id: "minecraft:air"
-										tag: {}
-									}
-								]
-							}
-							upgradeSlots: 1
+			tasks: [{
+				id: "3F0D74D09682750A"
+				item: {
+					Count: 1
+					id: "sophisticatedbackpacks:backpack"
+					tag: {
+						contentsUuid: [I;
+							1447614021
+							-1361622470
+							-1334094781
+							-646669453
+						]
+						inventorySlots: 27
+						renderInfo: {
+							upgradeItems: [{
+								Count: 1b
+								id: "minecraft:air"
+								tag: { }
+							}]
 						}
+						upgradeSlots: 1
 					}
-					type: "item"
 				}
-			]
+				type: "item"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest679F77E46148B5D1.title}"
-			x: 13.0d
-			y: -1.5d
+			x: 0.5d
+			y: 0.5d
 		}
 		{
-			dependencies: [
-				"73A85902CE35A43A"
-			]
+			dependencies: ["73A85902CE35A43A"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest77E2AE3656E32182.description1}"
 				""
@@ -355,16 +301,14 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "3583CD91DE513B1D"
-					title: "{ftbquests.chapter.sunrin_test.quest77E2AE3656E32182.task.bank}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "3583CD91DE513B1D"
+				title: "{ftbquests.chapter.sunrin_test.quest77E2AE3656E32182.task.bank}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest77E2AE3656E32182.title}"
-			x: 4.5d
-			y: 0.0d
+			x: 5.0d
+			y: -3.5d
 		}
 		{
 			dependencies: ["1A4FD076999BF29F"]
@@ -415,7 +359,7 @@
 				type: "item"
 			}]
 			title: "{ftbquests.chapter.getting_started.quest34FCF481CDFD3380.title}"
-			x: 12.5d
+			x: 8.0d
 			y: 0.0d
 		}
 		{
@@ -428,11 +372,12 @@
 				"{ftbquests.chapter.getting_started.quest3385C414574E7FE2.description3}"
 			]
 			id: "3385C414574E7FE2"
-			rewards: [{
-				id: "1C7DFC06E92BCF39"
-				item: "society:prize_machine"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "1C7DFC06E92BCF39"
+					item: "society:prize_machine"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -448,11 +393,11 @@
 				type: "item"
 			}]
 			title: "{ftbquests.chapter.getting_started.quest3385C414574E7FE2.title}"
-			x: 14.0d
+			x: 10.0d
 			y: 0.0d
 		}
 		{
-			dependencies: ["73A85902CE35A43A"]
+			dependencies: ["1E5531421815CDB3"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest459BA5CC983CFAB9.description1}"
 				""
@@ -497,13 +442,11 @@
 				value: 10
 			}]
 			title: "{ftbquests.chapter.getting_started.quest459BA5CC983CFAB9.title}"
-			x: 4.5d
-			y: -3.0d
+			x: -1.5d
+			y: 0.5d
 		}
 		{
-			dependencies: [
-				"1375AE2ECAC8C147"
-			]
+			dependencies: ["1375AE2ECAC8C147"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest1A4FD076999BF29F.description1}"
 				""
@@ -518,7 +461,7 @@
 				{
 					exclude_from_claim_all: true
 					id: "11939F7CA0472064"
-					table_id: 1441633631928763452l
+					table_id: 1441633631928763452L
 					type: "choice"
 				}
 				{
@@ -530,35 +473,33 @@
 					type: "item"
 				}
 			]
-			size: 2.0d
+			size: 1.5d
 			tasks: [
 				{
 					consume_items: true
-					count: 64l
+					count: 64L
 					id: "32868E4039CBCDC9"
 					item: "minecraft:cobblestone"
 					type: "item"
 				}
 				{
 					consume_items: true
-					count: 10l
+					count: 10L
 					id: "11214822A37DCD70"
 					item: {
 						Count: 1
 						id: "meadow:fire_log"
-						tag: {}
+						tag: { }
 					}
 					type: "item"
 				}
 			]
 			title: "{ftbquests.chapter.getting_started.quest1A4FD076999BF29F.title}"
-			x: 11.0d
-			y: -1.5d
+			x: 6.0d
+			y: 0.0d
 		}
 		{
-			dependencies: [
-				"73A85902CE35A43A"
-			]
+			dependencies: ["28029230D7FD63D6"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest287FFC7E15278504.description1}"
 				""
@@ -583,25 +524,23 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "38DEE59CFD937517"
-					item: {
-						Count: 1
-						id: "minecraft:golden_pickaxe"
-						tag: {
-							Damage: 0
-						}
+			tasks: [{
+				id: "38DEE59CFD937517"
+				item: {
+					Count: 1
+					id: "minecraft:golden_pickaxe"
+					tag: {
+						Damage: 0
 					}
-					type: "item"
 				}
-			]
+				type: "item"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest287FFC7E15278504.title}"
-			x: 9.5d
-			y: 0.0d
+			x: -1.5d
+			y: -5.5d
 		}
 		{
-			dependencies: ["3F759C6DEEBC61FD"]
+			dependencies: ["1E5531421815CDB3"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest28029230D7FD63D6.description1}"
 				""
@@ -611,17 +550,18 @@
 			]
 			icon: "minecraft:anvil"
 			id: "28029230D7FD63D6"
-			rewards: [{
-				id: "5B6BE7A8ABFD9ED3"
-				item: {
-					Count: 1
-					id: "gag:escape_rope"
-					tag: {
-						Damage: 0
+			rewards: [
+				{
+					id: "5B6BE7A8ABFD9ED3"
+					item: {
+						Count: 1
+						id: "gag:escape_rope"
+						tag: {
+							Damage: 0
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -638,13 +578,11 @@
 				type: "checkmark"
 			}]
 			title: "{ftbquests.chapter.getting_started.quest28029230D7FD63D6.title}"
-			x: 0.5d
-			y: -3.0d
+			x: -1.5d
+			y: -3.5d
 		}
 		{
-			dependencies: [
-				"1375AE2ECAC8C147"
-			]
+			dependencies: ["3F759C6DEEBC61FD"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest472F40ECF199DD42.description1}"
 				""
@@ -674,22 +612,20 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "7F98B7910FAD32E9"
-					item: {
-						Count: 1
-						id: "minecraft:wooden_hoe"
-						tag: {
-							Damage: 0
-						}
+			tasks: [{
+				id: "7F98B7910FAD32E9"
+				item: {
+					Count: 1
+					id: "minecraft:wooden_hoe"
+					tag: {
+						Damage: 0
 					}
-					type: "item"
 				}
-			]
+				type: "item"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest472F40ECF199DD42.title}"
-			x: 2.5d
-			y: -1.5d
+			x: 0.5d
+			y: -3.5d
 		}
 		{
 			dependencies: ["459BA5CC983CFAB9"]
@@ -703,12 +639,13 @@
 			hide_until_deps_complete: true
 			icon: "society:crystal_of_regret_fishing"
 			id: "681EECD8B1D07F34"
-			rewards: [{
-				count: 4
-				id: "3A6F2BAF3D1FBCAD"
-				item: "society:book_of_stars"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "3A6F2BAF3D1FBCAD"
+					item: "society:book_of_stars"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -752,13 +689,11 @@
 				type: "item"
 			}]
 			title: "{ftbquests.chapter.getting_started.quest681EECD8B1D07F34.title}"
-			x: 4.5d
-			y: -4.5d
+			x: -1.5d
+			y: 2.5d
 		}
 		{
-			dependencies: [
-				"77E2AE3656E32182"
-			]
+			dependencies: ["77E2AE3656E32182"]
 			description: [
 				"{ftbquests.chapter.getting_started.quest23C02B36014CC450.description1}"
 				""
@@ -773,8 +708,8 @@
 				{
 					exclude_from_claim_all: true
 					id: "35928F071913970B"
-					type: "item"
 					item: "whimsy_deco:phone"
+					type: "item"
 				}
 				{
 					auto: "disabled"
@@ -785,55 +720,14 @@
 					type: "item"
 				}
 			]
-			tasks: [
-				{
-					id: "24C56E6ED4DB14F1"
-					title: "{ftbquests.chapter.sunrin_test.quest23C02B36014CC450.task.phone}"
-					type: "checkmark"
-				}
-			]
+			tasks: [{
+				id: "24C56E6ED4DB14F1"
+				title: "{ftbquests.chapter.sunrin_test.quest23C02B36014CC450.task.phone}"
+				type: "checkmark"
+			}]
 			title: "{ftbquests.chapter.getting_started.quest23C02B36014CC450.title}"
-			x: 14.0d
-			y: -3.0d
-		}
-		{
-			dependencies: [
-				"73A85902CE35A43A"
-			]
-			description: [
-				"{ftbquests.chapter.getting_started.quest3E08F21BA8F69499.description1}"
-				""
-				"{ftbquests.chapter.getting_started.quest3E08F21BA8F69499.description2}"
-				""
-				"{ftbquests.chapter.getting_started.quest3E08F21BA8F69499.description3}"
-			]
-			icon: "simplehats:presentsstack"
-			id: "3E08F21BA8F69499"
-			rewards: [
-				{
-					id: "29EB69F5E70B1F10"
-					item: "atmospheric:candied_orange_slices"
-					type: "item"
-				}
-				{
-					auto: "disabled"
-					count: 5
-					id: "000B5E4157767DD5"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
-			tasks: [
-				{
-					id: "4F77BA107A199EE0"
-					title: "{ftbquests.chapter.getting_started.quest3E08F21BA8F69499.task.5726250031155617504.title}"
-					type: "checkmark"
-				}
-			]
-			title: "{ftbquests.chapter.getting_started.quest3E08F21BA8F69499.title}"
-			x: 9.5d
-			y: -3.0d
+			x: 6.5d
+			y: -3.5d
 		}
 	]
 	title: "{ftbquests.chapter.getting_started.title}"

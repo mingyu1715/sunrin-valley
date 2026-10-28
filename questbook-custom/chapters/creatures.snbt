@@ -17,11 +17,12 @@
 			]
 			icon: "minecraft:carved_pumpkin"
 			id: "5045DE566B4AC009"
-			rewards: [{
-				id: "6D98C9DC104C8E07"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "6D98C9DC104C8E07"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -48,11 +49,12 @@
 				"{ftbquests.chapter.creatures.quest33E3889DD46DF291.description2}"
 			]
 			id: "33E3889DD46DF291"
-			rewards: [{
-				id: "62AC6390E9ECAE80"
-				item: "minecraft:emerald"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "62AC6390E9ECAE80"
+					item: "minecraft:emerald"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -83,12 +85,13 @@
 				"{ftbquests.chapter.creatures.quest28EE10222BF1A1E6.description2}"
 			]
 			id: "28EE10222BF1A1E6"
-			rewards: [{
-				count: 4
-				id: "7C52DD0801ED9D81"
-				item: "whimsy_deco:bamboo_candle"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "7C52DD0801ED9D81"
+					item: "whimsy_deco:bamboo_candle"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -126,11 +129,12 @@
 				"{ftbquests.chapter.creatures.quest3225DF52212FAF3E.description2}"
 			]
 			id: "3225DF52212FAF3E"
-			rewards: [{
-				id: "2C285208A3317B3B"
-				item: "buzzier_bees:bee_bottle"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2C285208A3317B3B"
+					item: "buzzier_bees:bee_bottle"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -163,11 +167,12 @@
 				"{ftbquests.chapter.creatures.quest6021F749EAFF7359.description3}"
 			]
 			id: "6021F749EAFF7359"
-			rewards: [{
-				id: "035A90641648C7BA"
-				item: "minecraft:hay_block"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "035A90641648C7BA"
+					item: "minecraft:hay_block"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -200,11 +205,12 @@
 				"{ftbquests.chapter.creatures.quest7BEAE861B07734BE.description3}"
 			]
 			id: "7BEAE861B07734BE"
-			rewards: [{
-				id: "2F37C29312D4A82A"
-				item: "clayworks:kiln"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2F37C29312D4A82A"
+					item: "clayworks:kiln"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -235,11 +241,12 @@
 				"{ftbquests.chapter.creatures.quest5FEA1AC9BA13CC63.description2}"
 			]
 			id: "5FEA1AC9BA13CC63"
-			rewards: [{
-				id: "3E98A007581FA574"
-				item: "minecraft:heart_of_the_sea"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3E98A007581FA574"
+					item: "minecraft:heart_of_the_sea"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -272,11 +279,12 @@
 				"{ftbquests.chapter.creatures.quest66C03C4DA3F21900.description3}"
 			]
 			id: "66C03C4DA3F21900"
-			rewards: [{
-				id: "27B1109DBB060572"
-				item: "splendid_slimes:slime_ticket"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "27B1109DBB060572"
+					item: "splendid_slimes:slime_ticket"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -307,12 +315,13 @@
 				"{ftbquests.chapter.creatures.quest148CCCD216B274F0.description2}"
 			]
 			id: "148CCCD216B274F0"
-			rewards: [{
-				count: 8
-				id: "1BBED16256D297E0"
-				item: "minecraft:coal"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 8
+					id: "1BBED16256D297E0"
+					item: "minecraft:coal"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -345,11 +354,12 @@
 				"{ftbquests.chapter.creatures.quest1050F9A99E0D71CE.description3}"
 			]
 			id: "1050F9A99E0D71CE"
-			rewards: [{
-				id: "5382BD614408317C"
-				item: "functionalstorage:netherite_upgrade"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "5382BD614408317C"
+					item: "functionalstorage:netherite_upgrade"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

@@ -24,6 +24,14 @@
 			]
 			icon: "meadow:fire_log"
 			id: "31F6C5811A72396C"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D617C6273999D"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			size: 2.0d
 			tasks: [{
 				id: "4FBF100AF8AE2641"
@@ -33,16 +41,6 @@
 			title: "{ftbquests.chapter.tools.quest31F6C5811A72396C.title}"
 			x: 0.0d
 			y: 0.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D617C6273999D"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["31F6C5811A72396C"]
@@ -57,17 +55,18 @@
 				tag: { }
 			}
 			id: "5837B77D1243D30F"
-			rewards: [{
-				id: "73714A09282D81A3"
-				item: {
-					Count: 1
-					id: "patchouli:guide_book"
-					tag: {
-						"patchouli:book": "buildinggadgets2:buildinggadgets2book"
+			rewards: [
+				{
+					id: "73714A09282D81A3"
+					item: {
+						Count: 1
+						id: "patchouli:guide_book"
+						tag: {
+							"patchouli:book": "buildinggadgets2:buildinggadgets2book"
+						}
 					}
+					type: "item"
 				}
-				type: "item"
-			}
 				{
 					auto: "disabled"
 					count: 5
@@ -135,11 +134,12 @@
 			]
 			icon: "copycats:copycat_stairs"
 			id: "23EFDF37F9BCD63B"
-			rewards: [{
-				id: "2A8ECF9567036899"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "2A8ECF9567036899"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -285,11 +285,12 @@
 				}
 			}
 			id: "2193ACEC05CC5B07"
-			rewards: [{
-				id: "4FE46E0F741A0364"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4FE46E0F741A0364"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -357,11 +358,12 @@
 			]
 			icon: "constructionwand:core_angel"
 			id: "086A3F527E1A973E"
-			rewards: [{
-				id: "3651413BAA3324A2"
-				item: "numismatics:crown"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "3651413BAA3324A2"
+					item: "numismatics:crown"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -404,11 +406,12 @@
 				"{ftbquests.chapter.tools.quest6DAD35E264D3E056.description2}"
 			]
 			id: "6DAD35E264D3E056"
-			rewards: [{
-				id: "67AA34004DF431AC"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "67AA34004DF431AC"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -447,11 +450,12 @@
 			dependencies: ["31F6C5811A72396C"]
 			description: ["{ftbquests.chapter.tools.quest4EAA3F652AE923B4.description1}"]
 			id: "4EAA3F652AE923B4"
-			rewards: [{
-				id: "61764C3CB845951F"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "61764C3CB845951F"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -486,11 +490,12 @@
 				}
 			}
 			id: "6C1236C00210E5A7"
-			rewards: [{
-				id: "1817392BB56F25D9"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "1817392BB56F25D9"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -532,11 +537,12 @@
 			dependencies: ["31F6C5811A72396C"]
 			description: ["{ftbquests.chapter.tools.quest574978CE534E254B.description1}"]
 			id: "574978CE534E254B"
-			rewards: [{
-				id: "62B37F698B356D6C"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "62B37F698B356D6C"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -559,11 +565,12 @@
 			dependencies: ["31F6C5811A72396C"]
 			description: ["{ftbquests.chapter.tools.quest7BCC4E221CF97D0B.description1}"]
 			id: "7BCC4E221CF97D0B"
-			rewards: [{
-				id: "40EE8779B79BE00E"
-				item: "numismatics:bevel"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "40EE8779B79BE00E"
+					item: "numismatics:bevel"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -593,11 +600,12 @@
 			]
 			icon: "refurbished_furniture:workbench"
 			id: "12ED0E637AD47FD4"
-			rewards: [{
-				id: "4A144CE04D511BEE"
-				item: "refurbished_furniture:wrench"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4A144CE04D511BEE"
+					item: "refurbished_furniture:wrench"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -634,12 +642,13 @@
 			]
 			icon: "society:tanuki_catalog"
 			id: "100B4D3BEEE9C433"
-			rewards: [{
-				count: 4
-				id: "08720CFEB5676102"
-				item: "society:furniture_box"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 4
+					id: "08720CFEB5676102"
+					item: "society:furniture_box"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -682,12 +691,13 @@
 			dependencies: ["31F6C5811A72396C"]
 			description: ["{ftbquests.chapter.tools.quest6933B95631B3A039.description1}"]
 			id: "6933B95631B3A039"
-			rewards: [{
-				count: 16
-				id: "11D3B9BC1D76E071"
-				item: "minecraft:oak_log"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 16
+					id: "11D3B9BC1D76E071"
+					item: "minecraft:oak_log"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -756,6 +766,14 @@
 				"{ftbquests.chapter.tools.quest3A5DF5AD3C5299DE.description2}"
 			]
 			id: "3A5DF5AD3C5299DE"
+			rewards: [{
+				auto: "disabled"
+				count: 5
+				id: "000D6EEABCD0CD85"
+				item: "kubejs:sunrin_meal"
+				team_reward: false
+				type: "item"
+			}]
 			tasks: [{
 				id: "4FB6C9BF2CA1409A"
 				item: "society:magnifying_glass"
@@ -763,27 +781,18 @@
 			}]
 			x: -2.5d
 			y: -1.0d
-			rewards: [
-				{
-					auto: "disabled"
-					count: 5
-					id: "000D6EEABCD0CD85"
-					item: "kubejs:sunrin_meal"
-					team_reward: false
-					type: "item"
-				}
-			]
 		}
 		{
 			dependencies: ["31F6C5811A72396C"]
 			description: ["{ftbquests.chapter.tools.quest7E94B1934D0257E8.description1}"]
 			icon: "simplehats:headphonesblue"
 			id: "7E94B1934D0257E8"
-			rewards: [{
-				id: "4EC96CD71AFA7A8A"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "4EC96CD71AFA7A8A"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -810,11 +819,12 @@
 				"{ftbquests.chapter.tools.quest7D5EB5853F9A357.description2}"
 			]
 			id: "07D5EB5853F9A357"
-			rewards: [{
-				id: "70DD9DC359B7F1E6"
-				item: "buildinggadgets2:gadget_core"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "70DD9DC359B7F1E6"
+					item: "buildinggadgets2:gadget_core"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -846,11 +856,12 @@
 			]
 			icon: "portable_blueprints:tablet"
 			id: "54B6F31A66A23AD4"
-			rewards: [{
-				id: "21EC0DE21DADD12C"
-				item: "numismatics:cog"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "21EC0DE21DADD12C"
+					item: "numismatics:cog"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

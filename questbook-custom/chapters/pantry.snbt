@@ -21,12 +21,13 @@
 		{
 			icon: "supplementaries:present_green"
 			id: "7D155FD0EFEEB5AC"
-			rewards: [{
-				count: 20
-				id: "2C7023C8330EF475"
-				item: "dew_drop_farmland_growth:weak_fertilizer"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 20
+					id: "2C7023C8330EF475"
+					item: "dew_drop_farmland_growth:weak_fertilizer"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -67,11 +68,12 @@
 			icon: "supplementaries:present_red"
 			id: "3EF57F71C1C786FE"
 			require_sequential_tasks: false
-			rewards: [{
-				id: "6517D1EFE1E30357"
-				item: "dew_drop_farmland_growth:gold_sprinkler"
-				type: "item"
-			}
+			rewards: [
+				{
+					id: "6517D1EFE1E30357"
+					item: "dew_drop_farmland_growth:gold_sprinkler"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -111,12 +113,13 @@
 		{
 			icon: "supplementaries:present_orange"
 			id: "2074A4FFF17266DB"
-			rewards: [{
-				count: 3
-				id: "761491DBA60727EF"
-				item: "society:preserves_jar"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 3
+					id: "761491DBA60727EF"
+					item: "society:preserves_jar"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -156,12 +159,13 @@
 		{
 			icon: "supplementaries:present_purple"
 			id: "314D5DDD65659FDE"
-			rewards: [{
-				exclude_from_claim_all: true
-				id: "056F5C708072416C"
-				table_id: 9002246533416223198L
-				type: "random"
-			}
+			rewards: [
+				{
+					exclude_from_claim_all: true
+					id: "056F5C708072416C"
+					table_id: 9002246533416223198L
+					type: "random"
+				}
 				{
 					auto: "disabled"
 					count: 5
@@ -244,12 +248,13 @@
 			icon: "supplementaries:present_yellow"
 			id: "43591809C1D493F5"
 			min_required_tasks: 3
-			rewards: [{
-				count: 2
-				id: "7E7399293510698C"
-				item: "minecraft:sniffer_egg"
-				type: "item"
-			}
+			rewards: [
+				{
+					count: 2
+					id: "7E7399293510698C"
+					item: "minecraft:sniffer_egg"
+					type: "item"
+				}
 				{
 					auto: "disabled"
 					count: 5

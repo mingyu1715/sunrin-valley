@@ -34,17 +34,17 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     root = Path(root).resolve()
     metadata = json.loads((root / 'client-pack/manifest.json').read_text())
     version = metadata['version']
-    if version not in {'0.2.0', '0.2.1', '0.2.2'}:
-        raise ValueError('This reviewed migration supports only candidates 0.2.0, 0.2.1 and 0.2.2')
+    if version not in {'0.2.0', '0.2.1', '0.2.2', '0.2.3'}:
+        raise ValueError('This reviewed migration supports only candidates 0.2.0 through 0.2.3')
     sources = metadata['sources']
     artifacts = verified_owned_artifacts(root, sources)
     if sources.get("packVersion") != version or {i.get("slug") for i in sources.get("ownedFiles", [])} != {"sunrin-core"}:
         raise ValueError("Candidate requires the reviewed Core source pin")
     if any(entry not in metadata["files"] for entry in resolve_owned_files(sources)):
         raise ValueError("Owned artifact manifest is stale")
-    predecessor = {'0.2.0': '0.1.4', '0.2.1': '0.2.0', '0.2.2': '0.2.1'}[version]
+    predecessor = {'0.2.0': '0.1.4', '0.2.1': '0.2.0', '0.2.2': '0.2.1', '0.2.3': '0.2.2'}[version]
     lock = json.loads((root / 'server-ops/releases' / predecessor / 'pack-lock.json').read_text())
-    if version in {'0.2.1', '0.2.2'} and lock.get('clientPackVersion') != predecessor:
+    if version in {'0.2.1', '0.2.2', '0.2.3'} and lock.get('clientPackVersion') != predecessor:
         raise ValueError('Hotfix requires the exact previous operating lock')
     lamp = next(item for item in metadata['files'] if item['source'].get('slug') == 'beatlamp')
     if (lamp['path'] != 'mods/beatlamp-forge-1.20.1-1.2.2.jar'
@@ -77,7 +77,7 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
     updater_spec = spec.spec_from_file_location('server_updater_build', Path(__file__).resolve().parents[1] / 'server-ops/updater.py')
     updater = spec.module_from_spec(updater_spec)
     updater_spec.loader.exec_module(updater)
-    if version == '0.2.2':
+    if version in {'0.2.2', '0.2.3'}:
         chapters = root / 'questbook-custom/chapters'
         if (root / 'questbook-custom').is_symlink() or chapters.is_symlink() or not chapters.is_dir():
             raise ValueError('Tutorial requires regular reviewed chapter sources')
@@ -92,7 +92,7 @@ def build_candidate(root, output=None, *, client_output=None, overlay_only=False
                         and name not in updater.QUEST_CHAPTER_PATHS else 'replace') for name, content in sorted(files.items())]
     updater.owned_entries(owned)
     reviewed = []
-    if version in {'0.2.1', '0.2.2'}:
+    if version in {'0.2.1', '0.2.2', '0.2.3'}:
         reviewed = updater.owned_entries(json.loads((root / 'server-ops/releases' / version / 'reviewed-upstream-replacements.json').read_text()))
         expected_reviewed = {updater.UPSTREAM_CHAT_PATH} if version == '0.2.1' else updater.REVIEWED_UPSTREAM_PATHS
         if ({item['path'] for item in reviewed} != expected_reviewed or not expected_reviewed.issubset(files)

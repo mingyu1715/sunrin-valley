@@ -47,15 +47,15 @@ function registerItems() {
   return items;
 }
 
-test('startup registry creates six matching resource-backed items', () => {
+test('startup registry preserves six items and adds the vanilla-map town ticket', () => {
   const items = registerItems();
-  assert.deepEqual([...items.keys()], ['kubejs:geonpi_ticket', 'kubejs:rename_ticket', 'kubejs:sunrin_meal', 'kubejs:random_box', 'kubejs:furniture_random_box', 'kubejs:name_color_ticket']);
+  assert.deepEqual([...items.keys()], ['kubejs:geonpi_ticket', 'kubejs:rename_ticket', 'kubejs:sunrin_meal', 'kubejs:random_box', 'kubejs:furniture_random_box', 'kubejs:name_color_ticket', 'kubejs:town_warp_ticket']);
   for (const item of items.values()) {
     const [namespace, name] = item.id.split(':');
-    assert.equal(item.texture, `${namespace}:item/${name}`);
+    assert.equal(item.texture, name === 'town_warp_ticket' ? 'minecraft:item/map' : `${namespace}:item/${name}`);
     const model = JSON.parse(fs.readFileSync(path.join(packRoot, 'assets', namespace, 'models', 'item', `${name}.json`), 'utf8'));
     assert.equal(model.textures.layer0, item.texture);
-    assert.ok(fs.existsSync(path.join(packRoot, 'assets', namespace, 'textures', 'item', `${name}.png`)));
+    if (name !== 'town_warp_ticket') assert.ok(fs.existsSync(path.join(packRoot, 'assets', namespace, 'textures', 'item', `${name}.png`)));
   }
 });
 
